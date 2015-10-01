@@ -16,6 +16,9 @@ class GameScene: SKScene {
         myLabel.fontSize = 65;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
+        let ball = createSpriteNode("1.png", name:  "ball")
+        self.addChild(ball)
+        
         self.addChild(myLabel)
     }
     
