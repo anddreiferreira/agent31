@@ -12,8 +12,9 @@ import SpriteKit
 
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
 let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
+let defaultFontName: String = "copperplate"
 
-func createSpriteNode(imageName: String, anchorPoint: CGPoint = defaultAnchorPoint, position: CGPoint = middleOfTheScreenPoint, name: String, scale: CGFloat = 0.5) -> SKSpriteNode{
+func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
     let spriteTexture = SKTexture(imageNamed: imageName)
     
@@ -22,6 +23,21 @@ func createSpriteNode(imageName: String, anchorPoint: CGPoint = defaultAnchorPoi
     sprite.position = position
     sprite.name = name
     sprite.setScale(scale)
+    sprite.zPosition = zPosition
     
     return sprite
+}
+
+func createLabelNode(text: String, fontName: String = defaultFontName, position: CGPoint = middleOfTheScreenPoint, fontSize: CGFloat = 32.0, color: SKColor = SKColor.whiteColor(), zPosition: CGFloat = 1.0, name: String) -> SKLabelNode{
+    var label: SKLabelNode
+    
+    label = SKLabelNode(text: text)
+    label.fontName = fontName
+    label.position = position
+    label.fontSize = fontSize
+    label.color = color
+    label.zPosition = zPosition
+    label.name = name
+    
+    return label
 }
