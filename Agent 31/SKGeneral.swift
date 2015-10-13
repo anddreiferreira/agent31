@@ -41,3 +41,28 @@ func createLabelNode(text: String, fontName: String = defaultFontName, position:
     
     return label
 }
+
+func generateTextureWithImage(imageNamed: String) -> SKTexture{
+    
+    let imageTexture = SKTexture(imageNamed: imageNamed)
+    imageTexture.filteringMode = SKTextureFilteringMode.Nearest
+    
+    return imageTexture
+}
+
+func loadAnimation(mainText: String, numberOfImages: Int) -> Array<SKTexture>{
+    
+    // All sequence of animations should start like 'mainText1'
+    let initialIndex: Int = 1
+    var texturesArray: Array<SKTexture> = []
+    
+    for(var i = initialIndex; i<=numberOfImages; i++){
+        
+        let imageName = String(format: "%@%i", arguments: [mainText, i])
+        let texture: SKTexture = generateTextureWithImage(imageName)
+        
+        texturesArray.append(texture)
+    }
+    
+    return texturesArray
+}
