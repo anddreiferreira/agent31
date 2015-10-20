@@ -38,8 +38,8 @@ class GameObject: SKSpriteNode {
     }
     
     func generatePhysicsBody(imageName: String) -> SKPhysicsBody{
-//        let texture: SKTexture! = generateTextureWithImage(imageName)
-        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        let texture: SKTexture! = generateTextureWithImage(imageName)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody.affectedByGravity = false
         
         return physicsBody
