@@ -20,6 +20,9 @@
 		6B2783361BD6A9B0009628D8 /* Television.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2783351BD6A9B0009628D8 /* Television.swift */; settings = {ASSET_TAGS = (); }; };
 		6B2783381BD6A9CE009628D8 /* TrainingCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2783371BD6A9CE009628D8 /* TrainingCenter.swift */; settings = {ASSET_TAGS = (); }; };
 		6B27833A1BD6A9E3009628D8 /* GunDevelopmentCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2783391BD6A9E3009628D8 /* GunDevelopmentCenter.swift */; settings = {ASSET_TAGS = (); }; };
+		6B27833D1BD6AAE6009628D8 /* Backpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27833C1BD6AAE6009628D8 /* Backpack.swift */; settings = {ASSET_TAGS = (); }; };
+		6B27833F1BD6AAFD009628D8 /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27833E1BD6AAFD009628D8 /* Watch.swift */; settings = {ASSET_TAGS = (); }; };
+		6B2783411BD6AB38009628D8 /* LaboratoryBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2783401BD6AB38009628D8 /* LaboratoryBackgroundLayer.swift */; settings = {ASSET_TAGS = (); }; };
 		6B2D98B31BB1C6E7005B342E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98B21BB1C6E7005B342E /* AppDelegate.swift */; };
 		6B2D98B51BB1C6E7005B342E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98B41BB1C6E7005B342E /* GameScene.sks */; };
 		6B2D98B91BB1C6E7005B342E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98B81BB1C6E7005B342E /* GameViewController.swift */; };
@@ -55,6 +58,10 @@
 		6B2783351BD6A9B0009628D8 /* Television.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Television.swift; sourceTree = "<group>"; };
 		6B2783371BD6A9CE009628D8 /* TrainingCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenter.swift; sourceTree = "<group>"; };
 		6B2783391BD6A9E3009628D8 /* GunDevelopmentCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GunDevelopmentCenter.swift; sourceTree = "<group>"; };
+		6B27833C1BD6AAE6009628D8 /* Backpack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backpack.swift; sourceTree = "<group>"; };
+		6B27833E1BD6AAFD009628D8 /* Watch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
+		6B2783401BD6AB38009628D8 /* LaboratoryBackgroundLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaboratoryBackgroundLayer.swift; sourceTree = "<group>"; };
+		6B2783421BD6AB6E009628D8 /* SKPhysics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKPhysics.h; sourceTree = "<group>"; };
 		6B2D98AD1BB1C6E7005B342E /* Agent 31.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D98B11BB1C6E7005B342E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2D98B21BB1C6E7005B342E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +168,7 @@
 			children = (
 				6B2783321BD6A98B009628D8 /* Objects */,
 				6B27832E1BD6A8F0009628D8 /* LaboratoryHudLayer.swift */,
+				6B2783401BD6AB38009628D8 /* LaboratoryBackgroundLayer.swift */,
 			);
 			name = LaboratoryLayers;
 			sourceTree = "<group>";
@@ -181,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				6B27832C1BD6A8A0009628D8 /* Agent.swift */,
+				6B27833C1BD6AAE6009628D8 /* Backpack.swift */,
+				6B27833E1BD6AAFD009628D8 /* Watch.swift */,
 			);
 			name = Agent;
 			sourceTree = "<group>";
@@ -260,6 +270,7 @@
 				091246251BBDBB39009F9DF1 /* SKGeneral.swift */,
 				6B2D98BA1BB1C6E7005B342E /* Main.storyboard */,
 				6B2D98B41BB1C6E7005B342E /* GameScene.sks */,
+				6B2783421BD6AB6E009628D8 /* SKPhysics.h */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -375,6 +386,8 @@
 				6B2783341BD6A9A1009628D8 /* Computer.swift in Sources */,
 				6B27832D1BD6A8A0009628D8 /* Agent.swift in Sources */,
 				6B2D98B91BB1C6E7005B342E /* GameViewController.swift in Sources */,
+				6B27833F1BD6AAFD009628D8 /* Watch.swift in Sources */,
+				6B27833D1BD6AAE6009628D8 /* Backpack.swift in Sources */,
 				6B27831F1BD6A781009628D8 /* GameObject.swift in Sources */,
 				6B27832F1BD6A8F0009628D8 /* LaboratoryHudLayer.swift in Sources */,
 				6B408AB81BD6A2C400D64ABF /* CityScene.swift in Sources */,
@@ -384,6 +397,7 @@
 				091246261BBDBB39009F9DF1 /* SKGeneral.swift in Sources */,
 				6B2D98B31BB1C6E7005B342E /* AppDelegate.swift in Sources */,
 				6B2783261BD6A81E009628D8 /* Character.swift in Sources */,
+				6B2783411BD6AB38009628D8 /* LaboratoryBackgroundLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
