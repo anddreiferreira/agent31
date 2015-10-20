@@ -8,6 +8,6 @@
 
 import SpriteKit
 
-class Enemy: SKNode {
+class Enemy: Character {
 
 }

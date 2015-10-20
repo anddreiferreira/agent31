@@ -8,6 +8,6 @@
 
 import SpriteKit
 
-class Agent: SKNode {
+class Agent: Character {
 
 }

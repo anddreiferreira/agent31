@@ -8,6 +8,7 @@
 
 import SpriteKit
 
-class GameObject: SKNode {
-
+class GameObject: SKSpriteNode {
+    
+    
 }
