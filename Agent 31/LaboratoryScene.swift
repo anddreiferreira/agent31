@@ -21,9 +21,6 @@ class LaboratoryScene: SKScene {
         let character = GameObject(position: CGPointMake(667/2, 375/2));
         self.addChild(character)
         
-        let label = createLabelNode("PALHAÇO", name: "label")
-        self.addChild(label)
-        
         self.addChild(myLabel)
     }
     

@@ -9,11 +9,19 @@
 import SpriteKit
 
 class GameObject: SKSpriteNode {
+    
 
-    init(position: CGPoint){
-        let texture = SKTexture(imageNamed: "1")
+    init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
+        
+        debugPrint("Initializing GameObject")
+        
+        let texture: SKTexture! = generateTextureWithImage(imageName)
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         self.position = position
+        self.zPosition = zPosition
+        
+        // Method that will be overwrited in Subclasses!
+        setBasicAttributes()
     }
     
     
@@ -28,6 +36,18 @@ class GameObject: SKSpriteNode {
             self.xScale = fabs(self.xScale)
         }
     }
+    
+    func generatePhysicsBody(imageName: String) -> SKPhysicsBody{
+//        let texture: SKTexture! = generateTextureWithImage(imageName)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        physicsBody.affectedByGravity = false
+        
+        return physicsBody
+    }
 
+    func setBasicAttributes() -> Void{
+        debugPrint("Setting basics attributes in Game Object")
+        self.physicsBody = self.generatePhysicsBody("1")
+    }
     
 }
