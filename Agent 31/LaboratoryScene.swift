@@ -11,6 +11,7 @@ import SpriteKit
 class LaboratoryScene: SKScene {
 
     override func didMoveToView(view: SKView) {
+        print("laboratory")
         /* Setup your scene here */
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello, World!";
