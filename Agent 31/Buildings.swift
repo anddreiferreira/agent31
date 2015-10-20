@@ -1,5 +1,5 @@
 //
-//  Enemy.swift
+//  Buildings.swift
 //  Agent 31
 //
 //  Created by Henrique Dutra on 20/10/15.
@@ -8,6 +8,6 @@
 
 import SpriteKit
 
-class Enemy: Character {
+class Buildings: GameObject {
 
 }
