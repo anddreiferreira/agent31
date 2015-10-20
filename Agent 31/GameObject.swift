@@ -9,6 +9,25 @@
 import SpriteKit
 
 class GameObject: SKSpriteNode {
+
+    init(position: CGPoint){
+        let texture = SKTexture(imageNamed: "1")
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        self.position = position
+    }
     
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func invertSpriteHorizontally(option: Bool) -> Void{
+        if(option == true){
+            self.xScale = -fabs(self.xScale)
+        }else{
+            self.xScale = fabs(self.xScale)
+        }
+    }
+
     
 }

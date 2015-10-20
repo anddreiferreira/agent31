@@ -18,8 +18,8 @@ class LaboratoryScene: SKScene {
         myLabel.fontSize = 65;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        //        let ball = createSpriteNode("1.png", name:  "ball")
-        //        self.addChild(ball)
+        let character = GameObject(position: CGPointMake(667/2, 375/2));
+        self.addChild(character)
         
         let label = createLabelNode("PALHAÇO", name: "label")
         self.addChild(label)
@@ -34,6 +34,7 @@ class LaboratoryScene: SKScene {
             let location = touch.locationInNode(self)
             
             let sprite = SKSpriteNode(imageNamed:"Spaceship")
+
             
             sprite.xScale = 0.5
             sprite.yScale = 0.5
