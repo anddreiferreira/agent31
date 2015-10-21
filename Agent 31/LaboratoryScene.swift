@@ -55,6 +55,22 @@ class LaboratoryScene: SKScene {
 
     }
     
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        for touch in touches {
+            
+            let location = (touch as UITouch).locationInNode(self)
+            
+            let node = self.nodeAtPoint(location)
+            
+            if node.name == "jumpButtonLab" {
+                print("Agent jump")
+            }
+        
+        }
+        
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
