@@ -10,30 +10,26 @@ import SpriteKit
 
 class LaboratoryHudLayer: SKNode {
 
-    var points : Int
-    let positionHudLayer : CGPoint
+    var laboratoryGoldLabel : SKLabelNode?
+    var laboratoryDiamondLabel : SKLabelNode?
+    var laboratoryMetalLabel : SKLabelNode?
+    var laboratoryTimeLabel : SKLabelNode?
     
-//    override init(){
-//    
-//        points = 2;
-//        
-//        super.init()
-//    }
-//    
-//    override initWithPosition(CGPoint: point){
-//    
-//        super.init()
-//
-//    }
-
+    var laboratoryHeaderSprite : SKSpriteNode?
+    
+    var laboratoryLife : SKSpriteNode?
+    
     init(positionRec: CGPoint, pointsRec: Int = 0){
-        
-        self.points = pointsRec
-        self.positionHudLayer = positionRec
         
         super.init()
         
+        self.position = positionRec
+        
+        
     }
+    
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

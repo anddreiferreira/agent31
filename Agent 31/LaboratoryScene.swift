@@ -24,8 +24,6 @@ class LaboratoryScene: SKScene {
 
     override init(size: CGSize) {
         
-//        laboratoryBackgroundLayer
-        
         self.laboratoryBackgroundLayer = LaboratoryBackgroundLayer()
         
         super.init()
