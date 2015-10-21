@@ -57,7 +57,7 @@ func createLabelNode(text: String, fontName: String = defaultFontName, position:
 
 func generateTextureWithImage(image: String) -> SKTexture{
     
-    let imageTexture: SKTexture = SKTexture(imageNamed: imageNamed)
+    let imageTexture = SKTexture(imageNamed: image)
     imageTexture.filteringMode = SKTextureFilteringMode.Nearest
     
     return imageTexture
