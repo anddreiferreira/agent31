@@ -25,7 +25,7 @@ class Agent: Character {
     }
     
     private func setGeneralAttributesForAgent(){
-        self.setScale(0.3)
+        self.setScale(0.18)
     }
     
     override func initializeAnimations(){
