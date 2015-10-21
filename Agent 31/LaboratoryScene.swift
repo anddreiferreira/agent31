@@ -10,31 +10,36 @@ import SpriteKit
 
 class LaboratoryScene: SKScene {
 
-//    var hudLayerLab : LaboratoryHudLayer
-    var laboratoryBackgroundLayer : LaboratoryBackgroundLayer
+    private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
+    private var laboratoryHudLayer : LaboratoryHudLayer!
+    
     
     override func didMoveToView(view: SKView) {
         
         print("laboratory scene entered")
-
-//        self.loadLayers()
         
+        self.putBackgroundLayer()
+        self.putHudLayer()
+        
+
     }
     
 
-    override init(size: CGSize) {
+    func putBackgroundLayer(){
         
         self.laboratoryBackgroundLayer = LaboratoryBackgroundLayer()
-        
-        super.init()
-
+        self.laboratoryBackgroundLayer.putBackground()
         self.addChild(laboratoryBackgroundLayer)
+    
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func putHudLayer(){
+        
+        self.laboratoryHudLayer = LaboratoryHudLayer()
+        self.laboratoryHudLayer.putHudLayer()
+        self.addChild(laboratoryHudLayer)
+        
     }
-
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 

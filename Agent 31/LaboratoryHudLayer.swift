@@ -10,31 +10,39 @@ import SpriteKit
 
 class LaboratoryHudLayer: SKNode {
 
-    var laboratoryGoldLabel : SKLabelNode?
-    var laboratoryDiamondLabel : SKLabelNode?
-    var laboratoryMetalLabel : SKLabelNode?
-    var laboratoryTimeLabel : SKLabelNode?
+    private var laboratoryGoldLabel : SKLabelNode?
+    private var laboratoryDiamondLabel : SKLabelNode?
+    private var laboratoryMetalLabel : SKLabelNode?
+    private var laboratoryTimeLabel : SKLabelNode?
     
     var laboratoryHeaderSprite : SKSpriteNode?
     
     var laboratoryLife : SKSpriteNode?
     
-    init(positionRec: CGPoint, pointsRec: Int = 0){
+    override init(){
         
         super.init()
         
-        self.position = positionRec
-        
+        self.loadLabels()
         
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
+    func loadLabels(){
+        
+        laboratoryGoldLabel = createLabelNode("21", position: CGPointMake(350, 350),name: "laboratoryGoldLabel")
+        
+    }
+    
+    func putHudLayer(){
+    
+        self.addChild(laboratoryGoldLabel!)
+    
+    }
 
     
     
