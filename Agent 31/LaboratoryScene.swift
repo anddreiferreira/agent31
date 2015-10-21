@@ -12,6 +12,7 @@ class LaboratoryScene: SKScene {
 
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
     private var laboratoryHudLayer : LaboratoryHudLayer!
+    private var laboratoryGameLayer : LaboratoryGameLayer!
     
     
     override func didMoveToView(view: SKView) {
@@ -20,6 +21,7 @@ class LaboratoryScene: SKScene {
         
         self.putBackgroundLayer()
         self.putHudLayer()
+        self.putGameLayer()
         
 
     }
@@ -41,8 +43,48 @@ class LaboratoryScene: SKScene {
         
     }
     
+    func putGameLayer(){
+        
+        self.laboratoryGameLayer = LaboratoryGameLayer()
+        self.laboratoryGameLayer.putGameLayer()
+        self.addChild(laboratoryGameLayer)
+        
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
+        if let touch = touches.first {
+            
+            let node = nodeAtPoint(touch.locationInNode(self))
+            
+            switch node {
+                
+            case "jumpButtonLab":
+                print("ok")
+            default:
+                print("ok")
+                
+                //                   appleNode?.position = touch.locationInNode(self)
+            }
+            
+        }
+        
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        for touch in touches {
+            
+            let location = (touch as UITouch).locationInNode(self)
+            
+            let node = self.nodeAtPoint(location)
+            
+            if node.name == "jumpButtonLab" {
+                print("Agent jump")
+            }
+        
+        }
+        
     }
     
     override func update(currentTime: CFTimeInterval) {
