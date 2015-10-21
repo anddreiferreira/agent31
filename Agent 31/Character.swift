@@ -26,4 +26,6 @@ class Character: GameObject {
     private func setGeneralAttributesForCharacter(){
         
     }
+    
+   
 }
