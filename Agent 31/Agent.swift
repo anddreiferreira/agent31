@@ -17,7 +17,7 @@ class Agent: Character {
         super.init(imageName: initialAgentImageName, position: position, scale: scale, zPosition: zPosition)
         
         setGeneralAttributesForAgent()
-        self.runAction(SKAction.repeatActionForever(self.runningAnimation!))
+        self.runAction(SKAction.repeatActionForever(self.idleAnimation!))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +31,7 @@ class Agent: Character {
     override func initializeAnimations(){
         self.runningAnimation = actionWithAnimationName("RunningAgent", numberOfImages: 6, timePerTexture: 0.1)
         self.idleAnimation = actionWithAnimationName("idleAgent", numberOfImages: 2, timePerTexture: 0.2)
-        self.jumpAnimation = actionWithAnimationName("jumpAgent", numberOfImages: 1, timePerTexture: 0.3)
+        self.jumpAnimation = actionWithAnimationName("jumpAgent", numberOfImages: 2, timePerTexture: 0.3)
         self.gotHitAnimation = actionWithAnimationName("GotHitAgent", numberOfImages: 1, timePerTexture: 0.2)
     }
     
