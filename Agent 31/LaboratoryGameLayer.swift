@@ -12,7 +12,7 @@ class LaboratoryGameLayer: SKNode {
 
     var agent31Lab : Agent?
     let analogStick = AnalogStick(diameter: 120)
-    var placeHolder : SKSpriteNode?
+//    var placeHolder : SKSpriteNode?
 
     var jumpButtonLab : SKSpriteNode?
     
@@ -21,7 +21,7 @@ class LaboratoryGameLayer: SKNode {
         super.init()
         
         self.loadButtons()
-        self.configureAnalogStick()
+//        self.configureAnalogStick()
         self.placeHolderPut()
     }
     
@@ -37,31 +37,33 @@ class LaboratoryGameLayer: SKNode {
     
     func placeHolderPut(){
 
-        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
+//        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
     
     }
     
-    func configureAnalogStick(){
-
-        let jRadius = 60
-        
-        analogStick.diameter = 120
-        analogStick.position = CGPointMake(60+15, 60+15)
-        analogStick.trackingHandler = { analogStick in
-            
-            guard let aN = self.placeHolder else { return }
-            
-            aN.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y + (analogStick.data.velocity.y * 0.12))
-        }
-        addChild(analogStick)
-    
-    }
+//    func configureAnalogStick(){
+//
+//        let jRadius = 60
+//        
+//        analogStick.diameter = 120
+//        analogStick.position = CGPointMake(60+15, 60+15)
+//        analogStick.trackingHandler = { analogStick in
+//            
+//            guard let aN = self.placeHolder else { return }
+//            
+//            aN.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y + (analogStick.data.velocity.y * 0.12))
+//        }
+//        addChild(analogStick)
+//    
+//    }
     
     func putGameLayer(){
         
+        agent31Lab = Agent()
+        self.addChild(agent31Lab!)
         self.addChild(jumpButtonLab!)
 //        self.addChild(analogStick)
-        self.addChild(placeHolder!)
+//        self.addChild(placeHolder!)
     }
     
     

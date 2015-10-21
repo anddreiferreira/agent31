@@ -168,6 +168,13 @@
 				0991DC6F1BD80C13005BA2B9 /* headerBarLab.png */,
 				0991DC701BD80C13005BA2B9 /* jumpButton.png */,
 				0991DC711BD80C13005BA2B9 /* resourcesLabImages.png */,
+				6B2783651BD802C3009628D8 /* Life Bar */,
+				6B2783551BD7F7E6009628D8 /* headerBarLab.png */,
+				6B2783561BD7F7E6009628D8 /* jumpButton.png */,
+				6B27836A1BD80C50009628D8 /* placeHolderAgent.png */,
+				6B2783571BD7F7E6009628D8 /* resourcesLabImages.png */,
+				6B2783531BD70E4C009628D8 /* backgroundLabTest.png */,
+				091246281BBDBB4B009F9DF1 /* 1.png */,
 			);
 			path = Images;
 			sourceTree = SOURCE_ROOT;

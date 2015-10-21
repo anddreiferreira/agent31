@@ -10,7 +10,7 @@ import SpriteKit
 
 class Agent: Character {
     
-    private let initialAgentImageName: String = "idleAgent"
+    private let initialAgentImageName: String = "idleAgent1"
     
     init(position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
         
@@ -25,13 +25,13 @@ class Agent: Character {
     }
     
     private func setGeneralAttributesForAgent(){
-        
+        self.setScale(0.3)
     }
     
     override func initializeAnimations(){
-        self.runningAnimation = actionWithAnimationName("RunningAgent", numberOfImages: 6, timePerTexture: 0.3)
+        self.runningAnimation = actionWithAnimationName("RunningAgent", numberOfImages: 6, timePerTexture: 0.1)
         self.idleAnimation = actionWithAnimationName("idleAgent", numberOfImages: 2, timePerTexture: 0.2)
-        self.jumpAnimation = actionWithAnimationName("jumAgent", numberOfImages: 1, timePerTexture: 0.3)
+        self.jumpAnimation = actionWithAnimationName("jumpAgent", numberOfImages: 1, timePerTexture: 0.3)
         self.gotHitAnimation = actionWithAnimationName("GotHitAgent", numberOfImages: 1, timePerTexture: 0.2)
     }
     
