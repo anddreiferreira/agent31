@@ -47,7 +47,7 @@ class LaboratoryHudLayer: SKNode {
     func loadLabels(){
         
         // label amount gold
-        laboratoryGoldLabel = createLabelNode("330", zPosition: 2, position: CGPointMake(380, 336),name: "laboratoryGoldLabel")
+        laboratoryGoldLabel = createLabelNode("330", zPosition: 2, position: CGPointMake(380, 336),alignmentMode: SKLabelHorizontalAlignmentMode.Left,name: "laboratoryGoldLabel")
         
         // label amount metal
         laboratoryMetalLabel = createLabelNode("5000", zPosition: 2, position: CGPointMake(350, 336),name: "laboratoryMetalLabel")
