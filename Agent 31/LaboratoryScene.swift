@@ -53,6 +53,22 @@ class LaboratoryScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
+        if let touch = touches.first {
+            
+            let node = nodeAtPoint(touch.locationInNode(self))
+            
+            switch node {
+                
+            case "jumpButtonLab":
+                print("ok")
+            default:
+                print("ok")
+                
+                //                   appleNode?.position = touch.locationInNode(self)
+            }
+            
+        }
+        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
