@@ -30,6 +30,9 @@
 		6B2783501BD6C2F3009628D8 /* LaboratoryGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27834F1BD6C2F3009628D8 /* LaboratoryGameLayer.swift */; settings = {ASSET_TAGS = (); }; };
 		6B2783521BD6C2FF009628D8 /* CityGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2783511BD6C2FF009628D8 /* CityGameLayer.swift */; settings = {ASSET_TAGS = (); }; };
 		6B2783541BD70E4C009628D8 /* backgroundLabTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B2783531BD70E4C009628D8 /* backgroundLabTest.png */; settings = {ASSET_TAGS = (); }; };
+		6B2783581BD7F7E6009628D8 /* headerBarLab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B2783551BD7F7E6009628D8 /* headerBarLab.png */; settings = {ASSET_TAGS = (); }; };
+		6B2783591BD7F7E6009628D8 /* jumpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B2783561BD7F7E6009628D8 /* jumpButton.png */; settings = {ASSET_TAGS = (); }; };
+		6B27835A1BD7F7E6009628D8 /* resourcesLabImages.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B2783571BD7F7E6009628D8 /* resourcesLabImages.png */; settings = {ASSET_TAGS = (); }; };
 		6B2D98B31BB1C6E7005B342E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98B21BB1C6E7005B342E /* AppDelegate.swift */; };
 		6B2D98B51BB1C6E7005B342E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98B41BB1C6E7005B342E /* GameScene.sks */; };
 		6B2D98B91BB1C6E7005B342E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98B81BB1C6E7005B342E /* GameViewController.swift */; };
@@ -76,6 +79,9 @@
 		6B27834F1BD6C2F3009628D8 /* LaboratoryGameLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaboratoryGameLayer.swift; sourceTree = "<group>"; };
 		6B2783511BD6C2FF009628D8 /* CityGameLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityGameLayer.swift; sourceTree = "<group>"; };
 		6B2783531BD70E4C009628D8 /* backgroundLabTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundLabTest.png; path = Images/backgroundLabTest.png; sourceTree = SOURCE_ROOT; };
+		6B2783551BD7F7E6009628D8 /* headerBarLab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerBarLab.png; sourceTree = "<group>"; };
+		6B2783561BD7F7E6009628D8 /* jumpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpButton.png; sourceTree = "<group>"; };
+		6B2783571BD7F7E6009628D8 /* resourcesLabImages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resourcesLabImages.png; sourceTree = "<group>"; };
 		6B2D98AD1BB1C6E7005B342E /* Agent 31.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D98B11BB1C6E7005B342E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2D98B21BB1C6E7005B342E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 		091246271BBDBB4B009F9DF1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6B2783551BD7F7E6009628D8 /* headerBarLab.png */,
+				6B2783561BD7F7E6009628D8 /* jumpButton.png */,
+				6B2783571BD7F7E6009628D8 /* resourcesLabImages.png */,
 				6B2783531BD70E4C009628D8 /* backgroundLabTest.png */,
 				091246281BBDBB4B009F9DF1 /* 1.png */,
 			);
@@ -411,7 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2D98C11BB1C6E7005B342E /* LaunchScreen.xib in Resources */,
+				6B2783591BD7F7E6009628D8 /* jumpButton.png in Resources */,
 				6B2783541BD70E4C009628D8 /* backgroundLabTest.png in Resources */,
+				6B2783581BD7F7E6009628D8 /* headerBarLab.png in Resources */,
+				6B27835A1BD7F7E6009628D8 /* resourcesLabImages.png in Resources */,
 				6B2D98BE1BB1C6E7005B342E /* Images.xcassets in Resources */,
 				6B2D98B51BB1C6E7005B342E /* GameScene.sks in Resources */,
 				6B2D98BC1BB1C6E7005B342E /* Main.storyboard in Resources */,

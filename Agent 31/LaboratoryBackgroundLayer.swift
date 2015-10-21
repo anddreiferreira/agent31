@@ -14,7 +14,7 @@ class LaboratoryBackgroundLayer: SKNode {
 
     func putBackground(){
     
-        backgroundLaboratory = createSpriteNode("backgroundLabTest", anchorPoint: CGPointMake(0,0), position: CGPointMake(0, 0),name: "backgroundLab")
+        backgroundLaboratory = createSpriteNode("backgroundLabTest", anchorPoint: CGPointMake(0,0), zPosition: 0, position: CGPointMake(0, 0),name: "backgroundLab")
         self.addChild(backgroundLaboratory!)
         
     }

@@ -10,7 +10,8 @@ import SpriteKit
 
 class LaboratoryGameLayer: SKNode {
 
-    
+    var agent31Lab : Agent?
+
     override init() {
         
         super.init()
