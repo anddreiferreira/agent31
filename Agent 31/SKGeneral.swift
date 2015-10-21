@@ -42,6 +42,18 @@ func createLabelNode(text: String, fontName: String = defaultFontName, position:
     return label
 }
 
+//func createLayerNode(position: CGPoint = CGPointZero, zPosition: CGFloat = 1.0, name: String = "") -> SKNode{
+//    
+//    var node: SKNode
+//    
+//    node = SKNode()
+//    node.position = position
+//    node.name = name
+//    node.zPosition = zPosition
+//    
+//    return node
+//}
+
 func generateTextureWithImage(imageNamed: String) -> SKTexture{
     
     let imageTexture = SKTexture(imageNamed: imageNamed)
