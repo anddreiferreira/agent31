@@ -16,7 +16,7 @@ let defaultFontName: String = "copperplate"
 
 func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
-    let spriteTexture = SKTexture(imageNamed: imageName)
+    let spriteTexture = generateTextureWithImage(imageName)
     
     sprite = SKSpriteNode(texture: spriteTexture)
     sprite.anchorPoint = anchorPoint
