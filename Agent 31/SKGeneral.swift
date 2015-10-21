@@ -28,7 +28,7 @@ func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPo
     return sprite
 }
 
-func createLabelNode(text: String, fontName: String = defaultFontName, position: CGPoint = middleOfTheScreenPoint, fontSize: CGFloat = 32.0, color: SKColor = SKColor.whiteColor(), zPosition: CGFloat = 1.0, name: String) -> SKLabelNode{
+func createLabelNode(text: String, fontName: String = defaultFontName, position: CGPoint = middleOfTheScreenPoint, fontSize: CGFloat = 32.0, color: SKColor = SKColor.whiteColor(), zPosition: CGFloat = 1.0, alignmentMode: SKLabelHorizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center,name: String) -> SKLabelNode{
     var label: SKLabelNode
     
     label = SKLabelNode(text: text)
@@ -37,6 +37,7 @@ func createLabelNode(text: String, fontName: String = defaultFontName, position:
     label.fontSize = fontSize
     label.color = color
     label.zPosition = zPosition
+    label.horizontalAlignmentMode = alignmentMode;
     label.name = name
     
     return label
@@ -54,7 +55,7 @@ func createLabelNode(text: String, fontName: String = defaultFontName, position:
 //    return node
 //}
 
-func generateTextureWithImage(imageNamed: String) -> SKTexture{
+func generateTextureWithImage(image: String) -> SKTexture{
     
     let imageTexture: SKTexture = SKTexture(imageNamed: imageNamed)
     imageTexture.filteringMode = SKTextureFilteringMode.Nearest

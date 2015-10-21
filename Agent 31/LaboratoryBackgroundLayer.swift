@@ -10,20 +10,17 @@ import SpriteKit
 
 class LaboratoryBackgroundLayer: SKNode {
 
-    var backgroundLaboratory : SKSpriteNode
-    
-    override init() {
-        
-        self.backgroundLaboratory = createSpriteNode("backgroundLabTest.png", zPosition: 0, name: "backgroundLaboratory")
-        
-        super.init()
-        
-        self.addChild(self.backgroundLaboratory)
-    }
+    private var backgroundLaboratory : SKSpriteNode?
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func putBackground(){
+    
+        backgroundLaboratory = createSpriteNode("backgroundLabTest", anchorPoint: CGPointMake(0,0), zPosition: 0, position: CGPointMake(0, 0),name: "backgroundLab")
+        self.addChild(backgroundLaboratory!)
+        
     }
     
-    
+
+ 
+
+  
 }
