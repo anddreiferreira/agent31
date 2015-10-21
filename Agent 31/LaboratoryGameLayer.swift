@@ -12,14 +12,32 @@ class LaboratoryGameLayer: SKNode {
 
     var agent31Lab : Agent?
 
-    override init() {
+    var jumpButtonLab : SKSpriteNode?
+    
+    override init(){
         
         super.init()
+        
+        self.loadButtons()
+        
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func loadButtons(){
+    
+        jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(575, 375-291), zPosition: 2, name: "jumpButtonLab")
+    
+    }
+    
+    func putGameLayer(){
+        
+        self.addChild(jumpButtonLab!)
+        
+    }
+    
     
     
 }

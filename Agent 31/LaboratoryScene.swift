@@ -12,6 +12,7 @@ class LaboratoryScene: SKScene {
 
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
     private var laboratoryHudLayer : LaboratoryHudLayer!
+    private var laboratoryGameLayer : LaboratoryGameLayer!
     
     
     override func didMoveToView(view: SKView) {
@@ -20,6 +21,7 @@ class LaboratoryScene: SKScene {
         
         self.putBackgroundLayer()
         self.putHudLayer()
+        self.putGameLayer()
         
 
     }
@@ -38,6 +40,14 @@ class LaboratoryScene: SKScene {
         self.laboratoryHudLayer = LaboratoryHudLayer()
         self.laboratoryHudLayer.putHudLayer()
         self.addChild(laboratoryHudLayer)
+        
+    }
+    
+    func putGameLayer(){
+        
+        self.laboratoryGameLayer = LaboratoryGameLayer()
+        self.laboratoryGameLayer.putGameLayer()
+        self.addChild(laboratoryGameLayer)
         
     }
     
