@@ -45,7 +45,7 @@ class GameObject: SKSpriteNode {
         return physicsBody
     }
 
-    private func setBasicAttributes() -> Void{
+    private func setBasicAttributes(){
         debugPrint("Set Basic Attributes for GameObject")
     }
     

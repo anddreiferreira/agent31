@@ -22,8 +22,7 @@ class LaboratoryScene: SKScene {
         self.putBackgroundLayer()
         self.putHudLayer()
         self.putGameLayer()
-        
-
+    
     }
     
 
@@ -53,21 +52,21 @@ class LaboratoryScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
-        if let touch = touches.first {
-            
-            let node = nodeAtPoint(touch.locationInNode(self))
-            
-            switch node {
-                
-            case "jumpButtonLab":
-                print("ok")
-            default:
-                print("ok")
-                
-                //                   appleNode?.position = touch.locationInNode(self)
-            }
-            
-        }
+//        if let touch = touches.first {
+//            
+//            let node = nodeAtPoint(touch.locationInNode(self))
+//            
+//            switch node {
+//                
+//            case "jumpButtonLab":
+//                print("ok")
+//            default:
+//                print("ok")
+//                
+//                //                   appleNode?.position = touch.locationInNode(self)
+//            }
+//
+//        }
         
     }
     
@@ -91,7 +90,7 @@ class LaboratoryScene: SKScene {
         /* Called before each frame is rendered */
         
         
-        
+        // check positions
     }
 
 }

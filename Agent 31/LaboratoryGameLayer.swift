@@ -10,8 +10,8 @@ import SpriteKit
 
 class LaboratoryGameLayer: SKNode {
 
-    var agent31Lab : Agent?
-    let analogStick = AnalogStick(diameter: 120)
+    var agent31Lab : Agent? 
+    var analogStick : AnalogStick?
     var placeHolder : SKSpriteNode?
 
     var jumpButtonLab : SKSpriteNode?
@@ -43,27 +43,26 @@ class LaboratoryGameLayer: SKNode {
     
     func configureAnalogStick(){
 
-        let jRadius = 60
-        
-        analogStick.diameter = 120
-        analogStick.position = CGPointMake(60+15, 60+15)
-        analogStick.trackingHandler = { analogStick in
+        analogStick = AnalogStick(diameter: 100)
+        analogStick!.position = CGPointMake(30, 30)
+        analogStick!.trackingHandler = { analogStick in
             
             guard let aN = self.placeHolder else { return }
             
             aN.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y + (analogStick.data.velocity.y * 0.12))
         }
-        addChild(analogStick)
+        self.addChild(analogStick!)
+    
     
     }
     
     func putGameLayer(){
         
         self.addChild(jumpButtonLab!)
-//        self.addChild(analogStick)
+//        self.addChild(analogStick!)
         self.addChild(placeHolder!)
     }
     
-    
+
     
 }
