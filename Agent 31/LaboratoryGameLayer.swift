@@ -21,7 +21,7 @@ class LaboratoryGameLayer: SKNode {
         super.init()
         
         self.loadButtons()
-        self.configureAnalogStick()
+//        self.configureAnalogStick()
         self.placeHolderPut()
     }
     
@@ -37,7 +37,7 @@ class LaboratoryGameLayer: SKNode {
     
     func placeHolderPut(){
 
-        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
+//        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
     
     }
     
@@ -58,6 +58,8 @@ class LaboratoryGameLayer: SKNode {
     
     func putGameLayer(){
         
+        agent31Lab = Agent()
+        self.addChild(agent31Lab!)
         self.addChild(jumpButtonLab!)
 //        self.addChild(analogStick!)
         self.addChild(placeHolder!)

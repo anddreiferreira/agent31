@@ -63,7 +63,7 @@ func generateTextureWithImage(image: String) -> SKTexture{
     return imageTexture
 }
 
-func loadAnimation(mainText: String, numberOfImages: Int) -> Array<SKTexture>{
+func loadAnimationTexturesArray(mainText: String, numberOfImages: Int) -> Array<SKTexture>{
     
     // All sequence of animations should start like 'mainText1'
     let initialIndex: Int = 1
@@ -78,4 +78,39 @@ func loadAnimation(mainText: String, numberOfImages: Int) -> Array<SKTexture>{
     }
     
     return texturesArray
+}
+
+func animateWithTextures(animations: Array<SKTexture>,timePerTexture: NSTimeInterval,repeatCount: Int = 1) ->SKAction{
+    
+    let action: SKAction = SKAction.animateWithTextures(animations, timePerFrame: timePerTexture)
+    let repeatedAction: SKAction = SKAction.repeatAction(action, count: repeatCount)
+    
+    return repeatedAction
+    
+}
+
+func repeatAnimationFoveverWithTextures(animations: Array<SKTexture>, timePerTexture: NSTimeInterval)->SKAction{
+    
+    let initialAction: SKAction = SKAction.animateWithTextures(animations, timePerFrame: timePerTexture)
+    let repeatForever: SKAction = SKAction.repeatActionForever(initialAction)
+    
+    return repeatForever
+    
+}
+
+func actionWithAnimationName(mainText: String, numberOfImages: Int, timePerTexture: NSTimeInterval, repeatCount: Int = 1)->SKAction{
+    
+    let texturesArray: Array<SKTexture> = loadAnimationTexturesArray(mainText, numberOfImages: numberOfImages)
+    
+    let finalAction: SKAction = animateWithTextures(texturesArray, timePerTexture: timePerTexture, repeatCount: repeatCount)
+    
+    return finalAction
+}
+
+func repeatActionForeverWithAnimationName(mainText: String, numberOfImages: Int, timePerTexture: NSTimeInterval)->SKAction{
+    let texturesArray: Array<SKTexture> = loadAnimationTexturesArray(mainText, numberOfImages: numberOfImages)
+    
+    let repeatForever: SKAction = repeatAnimationFoveverWithTextures(texturesArray, timePerTexture: timePerTexture)
+    
+    return repeatForever
 }

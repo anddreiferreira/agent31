@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameObject: SKSpriteNode {
     
+    var initialImageName: String?
 
     init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
         
@@ -20,8 +21,10 @@ class GameObject: SKSpriteNode {
         self.position = position
         self.zPosition = zPosition
         self.setScale(scale)
+        self.initialImageName = imageName
         
         setBasicAttributes()
+
     }
     
     
@@ -39,7 +42,7 @@ class GameObject: SKSpriteNode {
     
     func generatePhysicsBody(imageName: String) -> SKPhysicsBody{
         let texture: SKTexture! = generateTextureWithImage(imageName)
-        let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: CGSizeMake(self.size.width*2, self.size.height*2))
         physicsBody.affectedByGravity = false
         
         return physicsBody
@@ -47,6 +50,7 @@ class GameObject: SKSpriteNode {
 
     private func setBasicAttributes(){
         debugPrint("Set Basic Attributes for GameObject")
+        self.physicsBody = generatePhysicsBody(self.initialImageName!)
     }
     
     
