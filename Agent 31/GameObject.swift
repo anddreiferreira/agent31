@@ -22,6 +22,7 @@ class GameObject: SKSpriteNode {
         self.setScale(scale)
         
         setBasicAttributes()
+
     }
     
     

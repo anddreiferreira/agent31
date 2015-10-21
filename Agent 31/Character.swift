@@ -10,6 +10,10 @@ import SpriteKit
 
 class Character: GameObject {
     
+    var runningAnimation: SKAction?
+    var idleAnimation: SKAction?
+    var jumpAnimation: SKAction?
+    var gotHitAnimation: SKAction?
     
     override init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
         
@@ -24,8 +28,14 @@ class Character: GameObject {
     }
     
     private func setGeneralAttributesForCharacter(){
-        
+        initializeAnimations()
     }
     
+    func initializeAnimations(){
+        self.runningAnimation = nil
+        self.idleAnimation = nil
+        self.jumpAnimation = nil
+        self.gotHitAnimation = nil
+    }
    
 }
