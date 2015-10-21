@@ -19,8 +19,8 @@ class GameObject: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         self.position = position
         self.zPosition = zPosition
+        self.setScale(scale)
         
-        // Method that will be overwrited in Subclasses!
         setBasicAttributes()
     }
     
@@ -45,9 +45,9 @@ class GameObject: SKSpriteNode {
         return physicsBody
     }
 
-    func setBasicAttributes() -> Void{
-        debugPrint("Setting basics attributes in Game Object")
-        self.physicsBody = self.generatePhysicsBody("1")
+    private func setBasicAttributes() -> Void{
+        debugPrint("Set Basic Attributes for GameObject")
     }
+    
     
 }
