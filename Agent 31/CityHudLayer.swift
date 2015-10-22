@@ -35,9 +35,21 @@ class CityHudLayer: SKNode {
     private var labelMaxMetal : SKLabelNode?
     private var labelMaxDiamond : SKLabelNode?
     
+    // puting all nodes necessary
+    func putHudLayer(){
+        
+        self.addChild(cityLifeBar!)
+    
+    }
     
     
+    func appearXpBar(){}
     
+    func appearGoldBar(){}
     
+    func appearMetalBar(){}
+    
+    func appearDiamonBar(){}
+
 
 }

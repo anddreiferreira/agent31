@@ -75,15 +75,16 @@ class LaboratoryScene: SKScene {
         for touch in touches {
             
             let location = (touch as UITouch).locationInNode(self)
-            
             let node = self.nodeAtPoint(location)
             
             if node.name == "jumpButtonLab" {
-                print("Agent jump")
+                //print("Agent jump")
+                self.laboratoryGameLayer.buttonTapped(node)
             }
             else if node.name == "goToCity" {
-                print("goToCity")
-                
+                //print("goToCity")
+                self.laboratoryGameLayer.buttonTapped(node)
+
                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
                 
                 let nextScene = CityScene(size: self.scene!.size)

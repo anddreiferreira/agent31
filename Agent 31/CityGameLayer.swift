@@ -32,7 +32,6 @@ class CityGameLayer: SKNode {
         
     }
     
-    
     func putGameLayer(){
         
         self.addChild(jumpButton!)
