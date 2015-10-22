@@ -83,6 +83,13 @@ class LaboratoryScene: SKScene {
             }
             else if node.name == "goToCity" {
                 print("goToCity")
+                
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                
+                let nextScene = CityScene(size: self.scene!.size)
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                
+                self.scene!.view!.presentScene(nextScene, transition: transition)
             }
         
         }
