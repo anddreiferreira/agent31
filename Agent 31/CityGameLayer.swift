@@ -10,4 +10,34 @@ import SpriteKit
 
 class CityGameLayer: SKNode {
 
+    var jumpButton : SKSpriteNode?
+    var shootingButton : SKSpriteNode?
+
+    
+    override init(){
+        
+        super.init()
+        
+        self.loadButtons()
+ 
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadButtons(){
+        
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(575, 375-291), zPosition: 3, name: "jumpButton")
+        
+    }
+    
+    
+    func putGameLayer(){
+        
+        self.addChild(jumpButton!)
+        
+    }
+
+    
 }

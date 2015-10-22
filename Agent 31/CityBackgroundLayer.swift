@@ -10,4 +10,14 @@ import SpriteKit
 
 class CityBackgroundLayer: SKNode {
 
+    private var backgroundCity : SKSpriteNode?
+    
+    func putBackground(){
+        
+        backgroundCity = createSpriteNode("backgroundCityPlaceholder", anchorPoint: CGPointMake(0,0), zPosition: 0, position: CGPointMake(0, 0),name: "backgroundCity")
+        self.addChild(backgroundCity!)
+        
+    }
+    
+    
 }
