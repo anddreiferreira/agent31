@@ -1,10 +1,7 @@
-//
 //  CityScene.swift
 //  Agent 31
-//
 //  Created by Henrique Dutra on 20/10/15.
 //  Copyright © 2015 Agent31. All rights reserved.
-//
 
 import SpriteKit
 
@@ -19,7 +16,7 @@ class CityScene: SKScene {
         print("laboratory scene entered")
         
         self.putBackgroundLayer()
-//        self.putHudLayer()
+//        self.putBasicHudLayer()
         self.putGameLayer()
         
     }
@@ -32,12 +29,12 @@ class CityScene: SKScene {
         
     }
     
-    func putHudLayer(){
+    func putBasicHudLayer(){
         
 //        self.laboratoryHudLayer = LaboratoryHudLayer()
 //        self.laboratoryHudLayer.putHudLayer()
 //        self.addChild(laboratoryHudLayer)
-        
+    
     }
     
     func putGameLayer(){
@@ -47,7 +44,4 @@ class CityScene: SKScene {
         self.addChild(cityGameLayer)
         
     }
-    
-    
-
 }
