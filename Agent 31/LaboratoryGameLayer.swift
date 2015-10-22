@@ -11,19 +11,29 @@ import SpriteKit
 class LaboratoryGameLayer: SKNode {
 
     var agent31Lab : Agent? 
-    var analogStick : AnalogStick?
+    private var analogStick : AnalogStick?
     var placeHolder : SKSpriteNode?
 
-    var jumpButtonLab : SKSpriteNode?
-    var goToCity : SKSpriteNode?
+    private var jumpButtonLab : SKSpriteNode?
+    private var goToCity : SKSpriteNode?
     
+    var positionsOfObjects : [CGPoint]
+    
+    var desk : Desk?
+    var computer : Computer?
+    var gunDevelopmentCenter : GunDevelopmentCenter?
+    var television : Television?
+    var trainingCenter : TrainingCenter?
+
     override init(){
         
+        self.positionsOfObjects = []
+
         super.init()
         
         self.loadButtons()
 //        self.configureAnalogStick()
-        self.placeHolderPut()
+        self.putObjectPlaceHolder()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,10 +48,14 @@ class LaboratoryGameLayer: SKNode {
     
     }
     
-    func placeHolderPut(){
+    func putObjectPlaceHolder(){
 
-        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
-    
+        desk = Desk(position: CGPointMake(80, 80))
+        computer = Computer(position: CGPointMake(-50, -50))
+        television = Television(position: CGPointMake(-50, -50))
+        trainingCenter = TrainingCenter(position: CGPointMake(-50, -50))
+        gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-50, -50))
+        
     }
     
     func configureAnalogStick(){
@@ -61,12 +75,44 @@ class LaboratoryGameLayer: SKNode {
     
     func putGameLayer(){
         
+        // Agent 31
         agent31Lab = Agent()
         self.addChild(agent31Lab!)
+        
+        // Buttons
         self.addChild(jumpButtonLab!)
         self.addChild(goToCity!)
-//        self.addChild(placeHolder!)
+        
+        // Objetcs
+        self.addChild(desk!)
+        self.addChild(computer!)
+        self.addChild(television!)
+        self.addChild(gunDevelopmentCenter!)
+        self.addChild(trainingCenter!)
+        
+        // Store Positions of objects
+        self.objectPositions()
+
     }
     
+    func objectPositions(){
+        
+        let deskPosition : CGPoint = (self.desk?.positionRequiredDesk())!
+        let computerPosition : CGPoint = (self.computer?.positionRequiredComputer())!
+        let trainingCenterPosition : CGPoint = (self.trainingCenter?.positionRequiredTraining())!
+        let gunCenterPosition : CGPoint = (self.gunDevelopmentCenter?.positionRequiredGun())!
+        let televisionPosition : CGPoint = (self.television?.positionRequiredTelevision())!
+        
+        positionsOfObjects.append(deskPosition)
+        positionsOfObjects.append(computerPosition)
+        positionsOfObjects.append(trainingCenterPosition)
+        positionsOfObjects.append(gunCenterPosition)
+        positionsOfObjects.append(televisionPosition)
+        
+        for index in 0...4 {
+            print(positionsOfObjects[index])
+        }
+        
+    }
 
 }

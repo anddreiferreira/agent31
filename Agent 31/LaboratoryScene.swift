@@ -14,7 +14,6 @@ class LaboratoryScene: SKScene {
     private var laboratoryHudLayer : LaboratoryHudLayer!
     private var laboratoryGameLayer : LaboratoryGameLayer!
     
-    
     override func didMoveToView(view: SKView) {
         
         print("laboratory scene entered")
@@ -47,8 +46,10 @@ class LaboratoryScene: SKScene {
         self.laboratoryGameLayer = LaboratoryGameLayer()
         self.laboratoryGameLayer.putGameLayer()
         self.addChild(laboratoryGameLayer)
-        
+            
     }
+    
+   
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
