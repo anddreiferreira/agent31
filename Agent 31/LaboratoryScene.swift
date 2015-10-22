@@ -21,6 +21,8 @@ class LaboratoryScene: SKScene {
         self.putBackgroundLayer()
         self.putHudLayer()
         self.putGameLayer()
+        
+        self.physicsWorld.gravity = CGVectorMake(0, -9.8)
     
     }
     
@@ -52,6 +54,9 @@ class LaboratoryScene: SKScene {
    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        debugPrint("Touches began on Laboratory")
+        
 
 //        if let touch = touches.first {
 //            

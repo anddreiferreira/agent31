@@ -28,6 +28,8 @@ class Character: GameObject {
     }
     
     private func setGeneralAttributesForCharacter(){
+        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.mass = 1.0
         initializeAnimations()
     }
     
@@ -36,6 +38,11 @@ class Character: GameObject {
         self.idleAnimation = nil
         self.jumpAnimation = nil
         self.gotHitAnimation = nil
+    }
+    
+    func jump(){
+        self.runAction(self.jumpAnimation!)
+        self.physicsBody?.applyImpulse(CGVectorMake(0, 400))
     }
    
 }
