@@ -35,10 +35,30 @@ class CityHudLayer: SKNode {
     private var labelMaxMetal : SKLabelNode?
     private var labelMaxDiamond : SKLabelNode?
     
-    // puting all nodes necessary
-    func putHudLayer(){
+    override init(){
         
-        self.addChild(cityLifeBar!)
+        super.init()
+        
+        self.loadPauseCity()
+        
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func loadPauseCity(){
+    
+        cityPauseButton = createSpriteNode("pauseCity", position: CGPointMake(11, 375-5), zPosition: 2, name: "pauseCity")
+    }
+    
+    
+    // puting all nodes necessary
+    func putHudLayerCity(){
+        
+//        self.addChild(cityLifeBar!)
+        self.addChild(cityPauseButton!)
     
     }
     

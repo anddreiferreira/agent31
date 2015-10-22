@@ -79,11 +79,11 @@ class LaboratoryScene: SKScene {
             
             if node.name == "jumpButtonLab" {
                 //print("Agent jump")
-                self.laboratoryGameLayer.buttonTapped(node)
+                buttonTapped(node)
             }
             else if node.name == "goToCity" {
                 //print("goToCity")
-                self.laboratoryGameLayer.buttonTapped(node)
+                buttonTapped(node)
 
                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
                 

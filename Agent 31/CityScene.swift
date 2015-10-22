@@ -16,7 +16,7 @@ class CityScene: SKScene {
         print("laboratory scene entered")
         
         self.putBackgroundLayer()
-//        self.putBasicHudLayer()
+        self.putBasicHudLayer()
         self.putGameLayer()
         
     }
@@ -31,9 +31,9 @@ class CityScene: SKScene {
     
     func putBasicHudLayer(){
         
-//        self.laboratoryHudLayer = LaboratoryHudLayer()
-//        self.laboratoryHudLayer.putHudLayer()
-//        self.addChild(laboratoryHudLayer)
+        self.cityHudLayer = CityHudLayer()
+        self.cityHudLayer.putHudLayerCity()
+        self.addChild(cityHudLayer)
     
     }
     
@@ -44,4 +44,21 @@ class CityScene: SKScene {
         self.addChild(cityGameLayer)
         
     }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        for touch in touches {
+            
+            let location = (touch as UITouch).locationInNode(self)
+            let node = self.nodeAtPoint(location)
+            
+            if node.name == "jumpButton" {
+                buttonTapped(node)
+            }
+            
+            
+        }
+        
+    }
+
 }

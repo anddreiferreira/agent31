@@ -69,20 +69,4 @@ class LaboratoryGameLayer: SKNode {
     }
     
 
-    func buttonTapped(nodeTapped: SKNode){
-    
-        
-//        nodeTapped.setScale(scale)
-    
-        let scale1 = SKAction.scaleTo(0.52, duration: 0.01)
-        let scale2 = SKAction.scaleTo(0.54, duration: 0.01)
-        let scale3 = SKAction.scaleTo(0.56, duration: 0.01)
-        let scale4 = SKAction.scaleTo(0.50, duration: 0.01)
-        
-        let sequence = SKAction.sequence([scale1,scale2,scale3,scale2, scale1, scale4])
-        
-        nodeTapped.runAction(sequence)
-
-    }
-    
 }

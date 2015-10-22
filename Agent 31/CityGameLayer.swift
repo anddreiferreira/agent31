@@ -28,7 +28,7 @@ class CityGameLayer: SKNode {
     
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(575, 375-291), zPosition: 3, name: "jumpButton")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 3, name: "jumpButton")
         
     }
     
