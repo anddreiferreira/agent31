@@ -45,6 +45,8 @@ class GameObject: SKSpriteNode {
         let texture: SKTexture! = generateTextureWithImage(imageName)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody.affectedByGravity = false
+        physicsBody.allowsRotation = false
+        physicsBody.restitution = 0
         
         return physicsBody
     }

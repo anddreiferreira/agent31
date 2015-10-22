@@ -55,6 +55,7 @@ class LaboratoryScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         debugPrint("Touches began on Laboratory")
+        
 
 //        if let touch = touches.first {
 //            
@@ -84,6 +85,7 @@ class LaboratoryScene: SKScene {
             
             if node.name == "jumpButtonLab" {
                 print("Agent jump")
+                self.laboratoryGameLayer.agent31Lab?.jump()
             }
             else if node.name == "goToCity" {
                 print("goToCity")

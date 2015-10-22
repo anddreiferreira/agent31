@@ -27,15 +27,13 @@ class Agent: Character {
     }
     
     private func setGeneralAttributesForAgent(){
-        self.setScale(0.2)
+        self.setScale(0.1)
         self.setAgentPhysics()
     }
     
     private func setAgentPhysics(){
-        self.physicsBody?.affectedByGravity = true
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
         self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
-        self.physicsBody?.mass = 1
     }
     
     override func initializeAnimations(){
