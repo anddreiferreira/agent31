@@ -12,7 +12,9 @@ class Agent: Character {
     
     private let initialAgentImageName: String = "idleAgent1"
     
-    init(position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
+    init(position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 1.0, zPosition: CGFloat = 1.0){
+        
+        debugPrint("Initializing Agent")
         
         super.init(imageName: initialAgentImageName, position: position, scale: scale, zPosition: zPosition)
         
@@ -25,7 +27,15 @@ class Agent: Character {
     }
     
     private func setGeneralAttributesForAgent(){
-        self.setScale(0.18)
+        self.setScale(0.2)
+        self.setAgentPhysics()
+    }
+    
+    private func setAgentPhysics(){
+        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
+        self.physicsBody?.mass = 1
     }
     
     override func initializeAnimations(){

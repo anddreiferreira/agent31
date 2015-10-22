@@ -61,13 +61,26 @@ class LaboratoryGameLayer: SKNode {
     
     func putGameLayer(){
         
-        agent31Lab = Agent()
-        self.addChild(agent31Lab!)
+        putGround()
+        putAgent()
         self.addChild(jumpButtonLab!)
         self.addChild(goToCity!)
 //        self.addChild(placeHolder!)
     }
     
+    func putGround(){
+        let ground = GameObject(imageName: "Ground", position: CGPointMake(667/2, 0), zPosition: 1)
+        ground.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
+        ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+        ground.physicsBody?.mass = 999.0*999.0
+        ground.physicsBody?.affectedByGravity = false
+        self.addChild(ground)
+    }
+    
+    func putAgent(){
+        agent31Lab = Agent()
+        self.addChild(agent31Lab!)
+    }
 
     
 }
