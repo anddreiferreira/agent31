@@ -81,6 +81,9 @@ class LaboratoryScene: SKScene {
             if node.name == "jumpButtonLab" {
                 print("Agent jump")
             }
+            else if node.name == "goToCity" {
+                print("goToCity")
+            }
         
         }
         

@@ -15,6 +15,7 @@ class LaboratoryGameLayer: SKNode {
     var placeHolder : SKSpriteNode?
 
     var jumpButtonLab : SKSpriteNode?
+    var goToCity : SKSpriteNode?
     
     override init(){
         
@@ -32,6 +33,8 @@ class LaboratoryGameLayer: SKNode {
     func loadButtons(){
     
         jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(575, 375-291), zPosition: 2, name: "jumpButtonLab")
+        
+        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-212), zPosition: 2, name: "goToCity")
     
     }
     
@@ -61,8 +64,8 @@ class LaboratoryGameLayer: SKNode {
         agent31Lab = Agent()
         self.addChild(agent31Lab!)
         self.addChild(jumpButtonLab!)
-//        self.addChild(analogStick!)
-        self.addChild(placeHolder!)
+        self.addChild(goToCity!)
+//        self.addChild(placeHolder!)
     }
     
 

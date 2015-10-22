@@ -69,6 +69,7 @@
 		6B299A621BD926990045C3CC /* headerBarLab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B299A421BD926990045C3CC /* headerBarLab.png */; settings = {ASSET_TAGS = (); }; };
 		6B299A631BD926990045C3CC /* life1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B299A431BD926990045C3CC /* life1.png */; settings = {ASSET_TAGS = (); }; };
 		6B299A641BD926990045C3CC /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B299A441BD926990045C3CC /* 1.png */; settings = {ASSET_TAGS = (); }; };
+		6B299A701BD929930045C3CC /* cityButtonPlaceHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B299A6F1BD929930045C3CC /* cityButtonPlaceHolder.png */; settings = {ASSET_TAGS = (); }; };
 		6B2D98B31BB1C6E7005B342E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98B21BB1C6E7005B342E /* AppDelegate.swift */; };
 		6B2D98B51BB1C6E7005B342E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98B41BB1C6E7005B342E /* GameScene.sks */; };
 		6B2D98B91BB1C6E7005B342E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98B81BB1C6E7005B342E /* GameViewController.swift */; };
@@ -151,6 +152,7 @@
 		6B299A421BD926990045C3CC /* headerBarLab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerBarLab.png; sourceTree = "<group>"; };
 		6B299A431BD926990045C3CC /* life1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = life1.png; sourceTree = "<group>"; };
 		6B299A441BD926990045C3CC /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		6B299A6F1BD929930045C3CC /* cityButtonPlaceHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cityButtonPlaceHolder.png; sourceTree = "<group>"; };
 		6B2D98AD1BB1C6E7005B342E /* Agent 31.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D98B11BB1C6E7005B342E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2D98B21BB1C6E7005B342E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		0991DC821BD81FFE005BA2B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6B299A6F1BD929930045C3CC /* cityButtonPlaceHolder.png */,
 				6B299A671BD9276F0045C3CC /* Laboratory */,
 				6B299A661BD927680045C3CC /* City */,
 				6B299A651BD9272A0045C3CC /* Character */,
@@ -645,6 +648,7 @@
 				6B299A581BD926990045C3CC /* tapHereButton.png in Resources */,
 				0991DC511BD800EE005BA2B9 /* (null) in Resources */,
 				6B299A541BD926990045C3CC /* lifeCity1.png in Resources */,
+				6B299A701BD929930045C3CC /* cityButtonPlaceHolder.png in Resources */,
 				0991DC4F1BD800EE005BA2B9 /* (null) in Resources */,
 				6B299A5B1BD926990045C3CC /* life5.png in Resources */,
 				6B299A4B1BD926990045C3CC /* lifeCity3.png in Resources */,
