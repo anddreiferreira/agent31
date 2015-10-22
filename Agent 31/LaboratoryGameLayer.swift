@@ -37,7 +37,7 @@ class LaboratoryGameLayer: SKNode {
     
     func placeHolderPut(){
 
-//        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
+        placeHolder = createSpriteNode("placeHolderAgent", zPosition: 4, name: "placeHolderAgent")
     
     }
     
