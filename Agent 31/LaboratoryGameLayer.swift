@@ -46,7 +46,7 @@ class LaboratoryGameLayer: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadButtons(){
+    private func loadButtons(){
     
         jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 2, name: "jumpButtonLab")
         
@@ -54,7 +54,7 @@ class LaboratoryGameLayer: SKNode {
     
     }
     
-    func putObjectPlaceHolder(){
+    private func putObjectPlaceHolder(){
 
         desk = Desk(position: CGPointMake(100, 220))
         computer = Computer(position: CGPointMake(-100, 220))
@@ -105,7 +105,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     // outer image
-    var isSetJoystickStickImage: Bool {
+    private var isSetJoystickStickImage: Bool {
             
         get { return _isSetJoystickStickImage }
             
@@ -119,7 +119,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     // inner image
-    var isSetJoystickSubstrateImage: Bool {
+    private var isSetJoystickSubstrateImage: Bool {
             
         get { return _isSetJoystickSubstrateImage }
             
@@ -133,7 +133,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     // diamater of the analog stick
-    var joysticksdiameters: CGFloat {
+    private var joysticksdiameters: CGFloat {
             
         get { return max(analogStick!.diameter, analogStick!.diameter) }
             
@@ -143,7 +143,7 @@ class LaboratoryGameLayer: SKNode {
         }
     }
         
-    func configureAnalogStick(){
+    private func configureAnalogStick(){
         
         // initate an analog stick
         analogStick = AnalogStick(diameter: kAnalogStickdiameter, substrateImage:  UIImage(named: "analogBg"), stickImage: UIImage(named: "analogBtn"))
@@ -172,6 +172,7 @@ class LaboratoryGameLayer: SKNode {
         
     }
     
+
    
     
         

@@ -116,6 +116,7 @@ class LaboratoryScene: SKScene {
     func checkAgentPositionAndObjetcs(){
     
         var check : Bool = false
+        var nodeNumber : Int?
         
         for index in 0...4{
         
@@ -133,6 +134,8 @@ class LaboratoryScene: SKScene {
         
         if check{
             print("Oh yes")
+            
+//            self.laboratoryGameLayer!.
         }
         
     }
