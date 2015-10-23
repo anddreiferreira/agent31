@@ -60,12 +60,13 @@ class LaboratoryGameLayer: SKNode {
     
     func putObjectPlaceHolder(){
 
-        desk = Desk(position: CGPointMake(-80, -80))
+        desk = Desk(position: CGPointMake(0150, -150))
         computer = Computer(position: CGPointMake(-50, -50))
         television = Television(position: CGPointMake(-50, -50))
         trainingCenter = TrainingCenter(position: CGPointMake(-50, -50))
         gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-50, -50))
         
+
     }
     
     func putGameLayer(){
@@ -126,6 +127,10 @@ class LaboratoryGameLayer: SKNode {
         self.addChild(agent31Lab!)
     }
     
+    func putTestCharacter(){
+        //        self.testCharacter = Character(imageName: "pernasParado1")
+        self.addChild(self.testCharacter!)
+    }
     
     // outer image
     var isSetJoystickStickImage: Bool {

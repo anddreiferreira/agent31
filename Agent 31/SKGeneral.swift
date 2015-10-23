@@ -56,6 +56,15 @@ func buttonTapped(nodeTapped: SKNode){
     
 }
 
+func nodeLighting(nodeTapped: SKNode){
+
+    let action1 : SKAction = SKAction.fadeAlphaTo(0.1, duration: 1)
+    let action2 : SKAction = SKAction.fadeAlphaTo(1, duration: 1)
+    let action3 : SKAction = SKAction.sequence([action1, action2])
+
+    nodeTapped.runAction(SKAction.repeatActionForever(action3))
+}
+
 
 func generateTextureWithImage(image: String) -> SKTexture{
     
