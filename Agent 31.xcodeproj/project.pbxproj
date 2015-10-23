@@ -224,8 +224,8 @@
 		6B06CD821BD6A0C0009F38F4 /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
-				6B53A7081BDA9FCD002E7808 /* LaboratoryScene.swift */,
 				6B27832B1BD6A875009628D8 /* LaboratoryLayers */,
+				6B53A7081BDA9FCD002E7808 /* LaboratoryScene.swift */,
 			);
 			name = Laboratory;
 			sourceTree = "<group>";
@@ -283,10 +283,10 @@
 		6B27832B1BD6A875009628D8 /* LaboratoryLayers */ = {
 			isa = PBXGroup;
 			children = (
+				6B2783321BD6A98B009628D8 /* Objects */,
 				6B53A7051BDA9FCD002E7808 /* LaboratoryBackgroundLayer.swift */,
 				6B53A7061BDA9FCD002E7808 /* LaboratoryGameLayer.swift */,
 				6B53A7071BDA9FCD002E7808 /* LaboratoryHudLayer.swift */,
-				6B2783321BD6A98B009628D8 /* Objects */,
 			);
 			name = LaboratoryLayers;
 			sourceTree = "<group>";

@@ -20,7 +20,6 @@ class Character: GameObject {
         super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
         
         setGeneralAttributesForCharacter()
-
     }
     
     required init?(coder aDecoder: NSCoder) {
