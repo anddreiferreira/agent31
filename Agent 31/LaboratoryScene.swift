@@ -86,6 +86,7 @@ class LaboratoryScene: SKScene {
             if node.name == "jumpButtonLab" {
                 //print("Agent jump")
                 buttonTapped(node)
+                self.laboratoryGameLayer.agent31Lab?.jump()
             }
             else if node.name == "goToCity" {
                 //print("goToCity")
