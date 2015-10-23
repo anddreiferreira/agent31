@@ -75,13 +75,11 @@ class LaboratoryGameLayer: SKNode {
     
     func putGameLayer(){
         
-        // Agent 31
-        agent31Lab = Agent()
-        self.addChild(agent31Lab!)
-        
-        // Buttons
         putGround()
         putAgent()
+
+        
+        // Buttons
         self.addChild(jumpButtonLab!)
         self.addChild(goToCity!)
         
