@@ -112,6 +112,10 @@ public class AnalogStick: SKNode {
         self.diameter = diameter
         self.stickImage = stickImage
         self.substrateImage = substrateImage
+        
+        stickNode.zPosition = 6
+        substrateNode.zPosition = 5
+        
         addChild(substrateNode)
         addChild(stickNode)
         

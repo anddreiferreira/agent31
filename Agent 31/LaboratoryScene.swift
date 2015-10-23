@@ -6,6 +6,8 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
+//let kAnalogStickdiameter: CGFloat = 110
+
 import SpriteKit
 
 class LaboratoryScene: SKScene {
@@ -13,7 +15,7 @@ class LaboratoryScene: SKScene {
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
     private var laboratoryHudLayer : LaboratoryHudLayer!
     private var laboratoryGameLayer : LaboratoryGameLayer!
-    
+
     override func didMoveToView(view: SKView) {
         
         print("laboratory scene entered")
@@ -23,7 +25,6 @@ class LaboratoryScene: SKScene {
         self.putGameLayer()
         
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
-    
     }
     
 
@@ -51,29 +52,9 @@ class LaboratoryScene: SKScene {
             
     }
     
-   
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         debugPrint("Touches began on Laboratory")
-        
-
-//        if let touch = touches.first {
-//            
-//            let node = nodeAtPoint(touch.locationInNode(self))
-//            
-//            switch node {
-//                
-//            case "jumpButtonLab":
-//                print("ok")
-//            default:
-//                print("ok")
-//                
-//                //                   appleNode?.position = touch.locationInNode(self)
-//            }
-//
-//        }
-        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
