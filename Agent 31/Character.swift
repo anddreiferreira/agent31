@@ -10,14 +10,20 @@ import SpriteKit
 
 class Character: GameObject {
     
+    var tronco: SKSpriteNode?
     var runningAnimation: SKAction?
     var idleAnimation: SKAction?
     var jumpAnimation: SKAction?
     var gotHitAnimation: SKAction?
     
-    override init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
+    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: legsImage, position: position, zPosition: zPosition)
+        
+        let troncoTexture: SKTexture = generateTextureWithImage(torsoImage)
+        self.tronco = SKSpriteNode(texture: troncoTexture)
+        
+        self.addChild(tronco!)
         
         setGeneralAttributesForCharacter()
     }
@@ -27,6 +33,7 @@ class Character: GameObject {
     }
     
     private func setGeneralAttributesForCharacter(){
+        self.setScale(4.0)
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.mass = 1.0
         initializeAnimations()
@@ -40,7 +47,7 @@ class Character: GameObject {
     }
     
     func jump(){
-        self.runAction(self.jumpAnimation!)
+//        self.runAction(self.jumpAnimation!)
         self.physicsBody?.applyImpulse(CGVectorMake(0, 400))
     }
    
