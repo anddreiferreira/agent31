@@ -18,8 +18,6 @@ class LaboratoryGameLayer: SKNode {
     private var jumpButtonLab : SKSpriteNode?
     private var goToCity : SKSpriteNode?
     
-    var positionsOfObjects : [CGPoint]
-    
     var desk : Desk?
     var computer : Computer?
     var gunDevelopmentCenter : GunDevelopmentCenter?
@@ -37,8 +35,6 @@ class LaboratoryGameLayer: SKNode {
     
     override init(){
         
-        self.positionsOfObjects = []
-
         super.init()
         
         self.loadButtons()
@@ -60,12 +56,11 @@ class LaboratoryGameLayer: SKNode {
     
     func putObjectPlaceHolder(){
 
-        desk = Desk(position: CGPointMake(0150, -150))
-        computer = Computer(position: CGPointMake(-50, -50))
-        television = Television(position: CGPointMake(-50, -50))
-        trainingCenter = TrainingCenter(position: CGPointMake(-50, -50))
-        gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-50, -50))
-        
+        desk = Desk(position: CGPointMake(100, 220))
+        computer = Computer(position: CGPointMake(-100, 220))
+        television = Television(position: CGPointMake(-200, 220))
+        trainingCenter = TrainingCenter(position: CGPointMake(-300, 220))
+        gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-400, 220))
 
     }
     
@@ -75,7 +70,6 @@ class LaboratoryGameLayer: SKNode {
 //        putTestCharacter()
         putAgent()
 
-        
         // Buttons
         self.addChild(jumpButtonLab!)
         self.addChild(goToCity!)
@@ -87,10 +81,9 @@ class LaboratoryGameLayer: SKNode {
         self.addChild(gunDevelopmentCenter!)
         self.addChild(trainingCenter!)
         
-        // Store Positions of objects
-        self.objectPositions()
-
     }
+    
+    
     
     func putGround(){
         let ground = GameObject(imageName: "Ground", position: CGPointMake(667/2, 0), zPosition: 1)
@@ -99,27 +92,6 @@ class LaboratoryGameLayer: SKNode {
         ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
         self.addChild(ground)
-    }
-    
-    // objetcts in the lab
-    func objectPositions(){
-        
-        let deskPosition : CGPoint = (self.desk?.positionRequiredDesk())!
-        let computerPosition : CGPoint = (self.computer?.positionRequiredComputer())!
-        let trainingCenterPosition : CGPoint = (self.trainingCenter?.positionRequiredTraining())!
-        let gunCenterPosition : CGPoint = (self.gunDevelopmentCenter?.positionRequiredGun())!
-        let televisionPosition : CGPoint = (self.television?.positionRequiredTelevision())!
-        
-        positionsOfObjects.append(deskPosition)
-        positionsOfObjects.append(computerPosition)
-        positionsOfObjects.append(trainingCenterPosition)
-        positionsOfObjects.append(gunCenterPosition)
-        positionsOfObjects.append(televisionPosition)
-        
-        for index in 0...4 {
-            print(positionsOfObjects[index])
-        }
-        
     }
     
     func putAgent(){
@@ -195,6 +167,7 @@ class LaboratoryGameLayer: SKNode {
         // setting it's visual properties
         isSetJoystickStickImage = _isSetJoystickStickImage
         isSetJoystickSubstrateImage = _isSetJoystickSubstrateImage
+        
         
         
     }

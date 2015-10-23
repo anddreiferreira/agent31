@@ -16,15 +16,22 @@ class LaboratoryScene: SKScene {
     private var laboratoryHudLayer : LaboratoryHudLayer!
     private var laboratoryGameLayer : LaboratoryGameLayer!
 
+    var positionsOfObjects : [CGPoint] = []
+
     override func didMoveToView(view: SKView) {
         
         print("laboratory scene entered")
         
+        // Put all necessary layers
         self.putBackgroundLayer()
         self.putHudLayer()
         self.putGameLayer()
         
+        // Gravity
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
+        
+        // Store Positions of objects
+        self.objectPositions()
     }
     
 
@@ -85,11 +92,56 @@ class LaboratoryScene: SKScene {
         
     }
     
+    // objetcts in the lab
+    func objectPositions(){
+        
+        let deskPosition : CGPoint = (self.laboratoryGameLayer.desk?.positionRequiredDesk())!
+        let computerPosition : CGPoint = (self.laboratoryGameLayer.computer?.positionRequiredComputer())!
+        let trainingCenterPosition : CGPoint = (self.laboratoryGameLayer.trainingCenter?.positionRequiredTraining())!
+        let gunCenterPosition : CGPoint = (self.laboratoryGameLayer.gunDevelopmentCenter?.positionRequiredGun())!
+        let televisionPosition : CGPoint = (self.laboratoryGameLayer.television?.positionRequiredTelevision())!
+        
+        positionsOfObjects.append(deskPosition)
+        positionsOfObjects.append(computerPosition)
+        positionsOfObjects.append(trainingCenterPosition)
+        positionsOfObjects.append(gunCenterPosition)
+        positionsOfObjects.append(televisionPosition)
+        
+        for index in 0...4 {
+            print(positionsOfObjects[index])
+        }
+        
+    }
+    
+    func checkAgentPositionAndObjetcs(){
+    
+        var check : Bool = false
+        
+        for index in 0...4{
+        
+            let objPos : CGPoint = positionsOfObjects[index]
+            let agentPos : CGPoint = (self.laboratoryGameLayer.agent31Lab?.position)!
+            let objPosPlus : CGPoint = CGPointMake(objPos.x + 30, objPos.y)
+            
+            if agentPos.x > objPos.x && agentPos.x < objPosPlus.x{
+            
+                check = true
+                break
+            }
+            
+        }
+        
+        if check{
+            print("Oh yes")
+        }
+        
+    }
+    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+      
+        checkAgentPositionAndObjetcs()
         
         
-        // check positions
     }
 
 }
