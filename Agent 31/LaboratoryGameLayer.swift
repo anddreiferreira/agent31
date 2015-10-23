@@ -98,8 +98,8 @@ class LaboratoryGameLayer: SKNode {
     func putGround(){
         let ground = GameObject(imageName: "Ground", position: CGPointMake(667/2, 0), zPosition: 1)
         ground.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
-        //        ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
-        ground.physicsBody?.mass = 999999.0*999999.0
+        ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+        ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
         self.addChild(ground)
     }
