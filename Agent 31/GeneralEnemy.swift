@@ -10,9 +10,8 @@ import SpriteKit
 
 class GeneralEnemy: Character {
     
-    override init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
-        
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
+        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
         
         setGeneralAttributesForGeneralEnemy()
     }

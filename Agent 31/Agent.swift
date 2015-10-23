@@ -10,24 +10,24 @@ import SpriteKit
 
 class Agent: Character {
     
-    private let initialAgentImageName: String = "idleAgent1"
+    private let initialLegs: String = "pernasParado1"
+    private let initialTorso: String = "troncoParado1"
     
-    init(position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 1.0, zPosition: CGFloat = 1.0){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
         debugPrint("Initializing Agent")
         
-        super.init(imageName: initialAgentImageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
         
         setGeneralAttributesForAgent()
-        self.runAction(SKAction.repeatActionForever(self.idleAnimation!))
+//        self.runAction(SKAction.repeatActionForever(self.idleAnimation!))
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setGeneralAttributesForAgent(){
-        self.setScale(0.1)
         self.setAgentPhysics()
     }
     

@@ -10,6 +10,7 @@ import SpriteKit
 
 class LaboratoryGameLayer: SKNode {
 
+    var testCharacter: Character?
     var agent31Lab : Agent? 
     private var analogStick : AnalogStick?
     var placeHolder : SKSpriteNode?
@@ -76,6 +77,7 @@ class LaboratoryGameLayer: SKNode {
     func putGameLayer(){
         
         putGround()
+//        putTestCharacter()
         putAgent()
 
         
@@ -127,6 +129,11 @@ class LaboratoryGameLayer: SKNode {
     func putAgent(){
         agent31Lab = Agent()
         self.addChild(agent31Lab!)
+    }
+    
+    func putTestCharacter(){
+//        self.testCharacter = Character(imageName: "pernasParado1")
+        self.addChild(self.testCharacter!)
     }
 
 }
