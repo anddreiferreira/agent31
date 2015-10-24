@@ -10,20 +10,25 @@ import SpriteKit
 
 class Character: GameObject {
     
-    var tronco: SKSpriteNode?
-    var runningAnimation: SKAction?
-    var idleAnimation: SKAction?
-    var jumpAnimation: SKAction?
-    var gotHitAnimation: SKAction?
+    var torso: SKSpriteNode?
+    var walkingTorso: SKAction?
+    var walkingLegs: SKAction?
+    var attackingUpTorso: SKAction?
+    var attackingTorso: SKAction?
+    var stoppedTorso: SKAction?
+    var jumpingLegs: SKAction?
+    var jumpingTorso: SKAction?
+    var getHitTorso: SKAction?
+    var getHitLegs: SKAction?
     
     init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
-        let troncoTexture: SKTexture = generateTextureWithImage(torsoImage)
-        self.tronco = SKSpriteNode(texture: troncoTexture)
+        let torsoTexture: SKTexture = generateTextureWithImage(torsoImage)
+        self.torso = SKSpriteNode(texture: torsoTexture)
         
-        self.addChild(tronco!)
+        self.addChild(torso!)
         
         setGeneralAttributesForCharacter()
     }
@@ -36,19 +41,41 @@ class Character: GameObject {
         self.setScale(4.0)
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.mass = 1.0
+        self.physicsBody?.restitution = 0.0
         initializeAnimations()
     }
     
     func initializeAnimations(){
-        self.runningAnimation = nil
-        self.idleAnimation = nil
-        self.jumpAnimation = nil
-        self.gotHitAnimation = nil
+        
+        
+        self.walkingTorso = nil
+        self.walkingLegs = nil
+        
+        self.attackingUpTorso = nil
+        self.attackingTorso = nil
+        
+        self.stoppedTorso = nil
+        
+        self.jumpingLegs = nil
+        self.jumpingTorso = nil
+        
+        self.getHitTorso = nil
+        self.getHitLegs = nil
+        
     }
     
     func jump(){
-//        self.runAction(self.jumpAnimation!)
+        
+        if(self.jumpingTorso != nil && self.jumpingLegs != nil){
+            let jump = SKAction.group([self.jumpingTorso!, self.jumpingLegs!])
+            self.runAction(jump)
+        }
+        
         self.physicsBody?.applyImpulse(CGVectorMake(0, 400))
+    }
+    
+    func stoppedAnimationForever(){
+        torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!))
     }
    
 }
