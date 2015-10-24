@@ -85,7 +85,7 @@ class LaboratoryScene: SKScene {
             }
             else if node.name == "deskPlaceholder" {
             
-                print("vai")
+                self.laboratoryGameLayer!.messageTapObjectButton(0)
             
             }
         }

@@ -173,9 +173,9 @@ class LaboratoryGameLayer: SKNode {
     
     func messageTapObjectButton(number : Int){
 
-        let pos : CGPoint = CGPointMake((self.desk?.position.x)!, (self.desk?.position.y)!+20)
+        let pos : CGPoint = CGPointMake((self.desk?.position.x)!, (self.desk?.position.y)!+60)
         
-        tapObjectButton = createSpriteNode("tapHereButton", position: pos , zPosition : 10, name: "tapHereButton")
+        tapObjectButton = createSpriteNode("tapHereButton",position: pos , zPosition : 10, scale: 1.0, name: "tapHereButton")
         
         self.addChild(tapObjectButton!)
         nodeLighting(tapObjectButton!)
