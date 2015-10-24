@@ -66,16 +66,19 @@ class Character: GameObject {
     
     func jump(){
         
-        if(self.jumpingTorso != nil && self.jumpingLegs != nil){
-            let jump = SKAction.group([self.jumpingTorso!, self.jumpingLegs!])
-            self.runAction(jump)
-        }
-        
+        jumpAnimationOnce()
         self.physicsBody?.applyImpulse(CGVectorMake(0, 400))
     }
     
     func stoppedAnimationForever(){
-        torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!))
+        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!))
+    }
+    
+    func jumpAnimationOnce(){
+        if(self.jumpingTorso != nil && self.jumpingLegs != nil){
+            self.runAction(self.jumpingLegs!)
+            self.torso?.runAction(self.jumpingTorso!)
+        }
     }
    
 }
