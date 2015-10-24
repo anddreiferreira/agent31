@@ -17,6 +17,9 @@ class LaboratoryScene: SKScene {
     private var laboratoryGameLayer : LaboratoryGameLayer!
 
     var positionsOfObjects : [CGPoint] = []
+    var checkAgentAndObjectPosition : Bool = false
+
+    var possibileObjectNumber : Int = 0
 
     override func didMoveToView(view: SKView) {
         
@@ -77,19 +80,44 @@ class LaboratoryScene: SKScene {
                 self.laboratoryGameLayer.agent31Lab?.jump()
             }
             else if node.name == "goToCity" {
-                //print("goToCity")
                 buttonTapped(node)
-
-                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-                
-                let nextScene = CityScene(size: self.scene!.size)
-                nextScene.scaleMode = SKSceneScaleMode.AspectFill
-                
-                self.scene!.view!.presentScene(nextScene, transition: transition)
+                self.agentFoToCity()
             }
-        
+            else if node.name == "deskPlaceholder" {
+            
+                self.laboratoryGameLayer!.messageTapObjectButton(0)
+                possibileObjectNumber = 0
+            }
+            else if node.name == "tapHereButton" {
+                
+                self.laboratoryGameLayer!.removeTapObjectButton()
+                self.putObjectLayer()
+                
+            }
         }
         
+    }
+    
+    private func putObjectLayer(){
+    
+        if possibileObjectNumber == 0{
+    
+            self.laboratoryGameLayer.putDeskLayer()
+        }
+    
+        possibileObjectNumber = -1
+    }
+    
+    private func agentFoToCity(){
+    
+        //print("goToCity")
+        
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        
+        let nextScene = CityScene(size: self.scene!.size)
+        nextScene.scaleMode = SKSceneScaleMode.AspectFill
+        
+        self.scene!.view!.presentScene(nextScene, transition: transition)
     }
     
     // objetcts in the lab
@@ -115,31 +143,50 @@ class LaboratoryScene: SKScene {
     
     func checkAgentPositionAndObjetcs(){
     
-        var check : Bool = false
+        var nodeNumber : Int?
         
         for index in 0...4{
-        
+
             let objPos : CGPoint = positionsOfObjects[index]
             let agentPos : CGPoint = (self.laboratoryGameLayer.agent31Lab?.position)!
             let objPosPlus : CGPoint = CGPointMake(objPos.x + 30, objPos.y)
             
+            // checks if the position of the agent is next to an object
             if agentPos.x > objPos.x && agentPos.x < objPosPlus.x{
             
-                check = true
-                break
+                // verifies if it is the first time he goes near the object
+                if possibileObjectNumber != 0{
+                    
+                    checkAgentAndObjectPosition = true
+                    nodeNumber = index
+                    possibileObjectNumber = index
+                    
+                    break
+                }
+                
+            }
+            else{
+                possibileObjectNumber = 0
             }
             
         }
         
-        if check{
-            print("Oh yes")
+        if checkAgentAndObjectPosition && possibileObjectNumber != 0{
+            
+            self.laboratoryGameLayer!.messageTapObjectButton(nodeNumber!)
+        }
+        else if checkAgentAndObjectPosition && possibileObjectNumber == 0{
+//            checkAgentAndObjectPosition = false
+            
+//            self.laboratoryGameLayer!.removeTapObjectButton()
+
         }
         
     }
     
     override func update(currentTime: CFTimeInterval) {
       
-        checkAgentPositionAndObjetcs()
+        //checkAgentPositionAndObjetcs()
         
         
     }

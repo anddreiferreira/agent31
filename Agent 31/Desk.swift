@@ -12,9 +12,9 @@ class Desk: GameObject {
 
     var positionRecieved : CGPoint?
     
-    override init(imageName: String = "placeHolderMesa", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0){
+    override init(imageName: String = "placeHolderMesa", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
         
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition, nameP: "deskPlaceholder")
         
     }
     

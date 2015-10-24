@@ -24,7 +24,8 @@ class LaboratoryGameLayer: SKNode {
     var television : Television?
     var trainingCenter : TrainingCenter?
     
-    // analog
+    var tapObjectButton : SKSpriteNode?
+// analog
     
     let kAnalogStickdiameter: CGFloat = 110
     let jSizePlusSpriteNode = SKSpriteNode(imageNamed: "analogBtn"), jSizeMinusSpriteNode = SKSpriteNode(imageNamed: "analogBg")
@@ -46,15 +47,15 @@ class LaboratoryGameLayer: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadButtons(){
+    private func loadButtons(){
     
         jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 2, name: "jumpButtonLab")
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-212), zPosition: 2, name: "goToCity")
-    
+
     }
     
-    func putObjectPlaceHolder(){
+    private func putObjectPlaceHolder(){
 
         desk = Desk(position: CGPointMake(100, 220))
         computer = Computer(position: CGPointMake(-100, 220))
@@ -105,7 +106,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     // outer image
-    var isSetJoystickStickImage: Bool {
+    private var isSetJoystickStickImage: Bool {
             
         get { return _isSetJoystickStickImage }
             
@@ -119,7 +120,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     // inner image
-    var isSetJoystickSubstrateImage: Bool {
+    private var isSetJoystickSubstrateImage: Bool {
             
         get { return _isSetJoystickSubstrateImage }
             
@@ -133,7 +134,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     // diamater of the analog stick
-    var joysticksdiameters: CGFloat {
+    private var joysticksdiameters: CGFloat {
             
         get { return max(analogStick!.diameter, analogStick!.diameter) }
             
@@ -143,7 +144,7 @@ class LaboratoryGameLayer: SKNode {
         }
     }
         
-    func configureAnalogStick(){
+    private func configureAnalogStick(){
         
         // initate an analog stick
         analogStick = AnalogStick(diameter: kAnalogStickdiameter, substrateImage:  UIImage(named: "analogBg"), stickImage: UIImage(named: "analogBtn"))
@@ -169,11 +170,30 @@ class LaboratoryGameLayer: SKNode {
         isSetJoystickStickImage = _isSetJoystickStickImage
         isSetJoystickSubstrateImage = _isSetJoystickSubstrateImage
         
+    }
+    
+    func putDeskLayer(){
+    
         
         
     }
     
+    func messageTapObjectButton(number : Int){
+
+        let pos : CGPoint = CGPointMake((self.desk?.position.x)!, (self.desk?.position.y)!+60)
+        
+        tapObjectButton = createSpriteNode("tapHereButton",position: pos , zPosition : 10, scale: 1.0, name: "tapHereButton")
+        
+        self.addChild(tapObjectButton!)
+        nodeLighting(tapObjectButton!)
+    
+    }
    
+    func removeTapObjectButton(){
+    
+        tapObjectButton?.removeFromParent()
+        
+    }
     
         
 }
