@@ -171,6 +171,12 @@ class LaboratoryGameLayer: SKNode {
         
     }
     
+    func putDeskLayer(){
+    
+        
+        
+    }
+    
     func messageTapObjectButton(number : Int){
 
         let pos : CGPoint = CGPointMake((self.desk?.position.x)!, (self.desk?.position.y)!+60)

@@ -86,10 +86,26 @@ class LaboratoryScene: SKScene {
             else if node.name == "deskPlaceholder" {
             
                 self.laboratoryGameLayer!.messageTapObjectButton(0)
-            
+                possibileObjectNumber = 0
+            }
+            else if node.name == "tapHereButton" {
+                
+                self.laboratoryGameLayer!.removeTapObjectButton()
+                self.putObjectLayer()
+                
             }
         }
         
+    }
+    
+    private func putObjectLayer(){
+    
+        if possibileObjectNumber == 0{
+    
+            self.laboratoryGameLayer.putDeskLayer()
+        }
+    
+        possibileObjectNumber = -1
     }
     
     private func agentFoToCity(){
