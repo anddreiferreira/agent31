@@ -159,7 +159,8 @@ class LaboratoryGameLayer: SKNode {
             
         guard let aN = self.agent31Lab else { return }
         
-        aN.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y + (analogStick.data.velocity.y * 0.12))
+        self.agent31Lab!.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y)
+
         }
         
         addChild(analogStick!)
