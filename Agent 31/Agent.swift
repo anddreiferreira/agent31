@@ -20,7 +20,6 @@ class Agent: Character {
         super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
         
         setGeneralAttributesForAgent()
-//        self.runAction(SKAction.repeatActionForever(self.idleAnimation!))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -28,6 +27,7 @@ class Agent: Character {
     }
     
     private func setGeneralAttributesForAgent(){
+        stoppedAnimationForever()
         self.setAgentPhysics()
     }
     
@@ -37,10 +37,9 @@ class Agent: Character {
     }
     
     override func initializeAnimations(){
-        self.runningAnimation = actionWithAnimationName("RunningAgent", numberOfImages: 6, timePerTexture: 0.1)
-        self.idleAnimation = actionWithAnimationName("idleAgent", numberOfImages: 2, timePerTexture: 0.2)
-        self.jumpAnimation = actionWithAnimationName("jumpAgent", numberOfImages: 2, timePerTexture: 0.3)
-        self.gotHitAnimation = actionWithAnimationName("GotHitAgent", numberOfImages: 1, timePerTexture: 0.2)
+        self.stoppedTorso = actionWithAnimationName("troncoParado", numberOfImages: 4, timePerTexture: 0.15)
+        self.jumpingLegs = actionWithAnimationName("pernasPulando", numberOfImages: 8, timePerTexture: 0.1)
+        self.jumpingTorso = actionWithAnimationName("troncoPulando", numberOfImages: 8, timePerTexture: 0.1)
     }
     
 }
