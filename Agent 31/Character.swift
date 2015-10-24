@@ -80,5 +80,12 @@ class Character: GameObject {
             self.torso?.runAction(self.jumpingTorso!)
         }
     }
+    
+    func walkingAnimationOnce(){
+        if(self.walkingLegs != nil && self.walkingTorso != nil){
+            self.torso?.runAction(self.walkingTorso!)
+            self.runAction(self.walkingLegs!)
+        }
+    }
    
 }

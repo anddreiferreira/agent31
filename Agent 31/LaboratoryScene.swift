@@ -81,7 +81,8 @@ class LaboratoryScene: SKScene {
             }
             else if node.name == "goToCity" {
                 buttonTapped(node)
-                self.agentFoToCity()
+//                self.agentGoToCity()
+                self.laboratoryGameLayer.agent31Lab?.walkingAnimationOnce()
             }
             else if node.name == "deskPlaceholder" {
             
@@ -108,7 +109,7 @@ class LaboratoryScene: SKScene {
         possibileObjectNumber = -1
     }
     
-    private func agentFoToCity(){
+    private func agentGoToCity(){
     
         //print("goToCity")
         
