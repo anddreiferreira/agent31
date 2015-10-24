@@ -24,7 +24,8 @@ class LaboratoryGameLayer: SKNode {
     var television : Television?
     var trainingCenter : TrainingCenter?
     
-    // analog
+    var tapObjectButton : SKSpriteNode?
+// analog
     
     let kAnalogStickdiameter: CGFloat = 110
     let jSizePlusSpriteNode = SKSpriteNode(imageNamed: "analogBtn"), jSizeMinusSpriteNode = SKSpriteNode(imageNamed: "analogBg")
@@ -51,7 +52,7 @@ class LaboratoryGameLayer: SKNode {
         jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 2, name: "jumpButtonLab")
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-212), zPosition: 2, name: "goToCity")
-    
+
     }
     
     private func putObjectPlaceHolder(){
@@ -168,12 +169,24 @@ class LaboratoryGameLayer: SKNode {
         isSetJoystickStickImage = _isSetJoystickStickImage
         isSetJoystickSubstrateImage = _isSetJoystickSubstrateImage
         
-        
-        
     }
     
+    func messageTapObjectButton(number : Int){
 
+        let pos : CGPoint = CGPointMake((self.desk?.position.x)!, (self.desk?.position.y)!+20)
+        
+        tapObjectButton = createSpriteNode("tapHereButton", position: pos , zPosition : 10, name: "tapHereButton")
+        
+        self.addChild(tapObjectButton!)
+        nodeLighting(tapObjectButton!)
+    
+    }
    
+    func removeTapObjectButton(){
+    
+        tapObjectButton?.removeFromParent()
+        
+    }
     
         
 }

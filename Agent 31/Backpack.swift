@@ -10,7 +10,7 @@ import UIKit
 
 class Backpack: GameObject {
     
-    override init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0){
+   override init(imageName: String = "placeHolderBackPack", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
         
         super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
         

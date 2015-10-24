@@ -12,7 +12,7 @@ class GameObject: SKSpriteNode {
     
     var initialImageName: String?
 
-    init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 1.0, zPosition: CGFloat = 1.0){
+    init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 1.0, zPosition: CGFloat = 1.0, nameP: String = ""){
         
         debugPrint("Initializing GameObject")
         
@@ -21,6 +21,7 @@ class GameObject: SKSpriteNode {
         self.position = position
         self.zPosition = zPosition
         self.setScale(scale)
+        self.name = nameP
         self.initialImageName = imageName
         
         setBasicAttributes()
