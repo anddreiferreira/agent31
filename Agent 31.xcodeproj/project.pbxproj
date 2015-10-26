@@ -90,6 +90,7 @@
 		09ED60261BDB167D00A58F13 /* troncoAndando6.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ED60181BDB167D00A58F13 /* troncoAndando6.png */; };
 		09ED60271BDB167D00A58F13 /* troncoAndando7.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ED60191BDB167D00A58F13 /* troncoAndando7.png */; };
 		597825A71BDE8EF50066183B /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597825A61BDE8EF50066183B /* CloudKitHelper.swift */; };
+		59EBA42D1BDEA95C00F67D67 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */; };
 		6B2D98BC1BB1C6E7005B342E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BA1BB1C6E7005B342E /* Main.storyboard */; };
 		6B2D98BE1BB1C6E7005B342E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BD1BB1C6E7005B342E /* Images.xcassets */; };
 		6B2D98C11BB1C6E7005B342E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BF1BB1C6E7005B342E /* LaunchScreen.xib */; };
@@ -222,6 +223,8 @@
 		09ED60181BDB167D00A58F13 /* troncoAndando6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = troncoAndando6.png; sourceTree = "<group>"; };
 		09ED60191BDB167D00A58F13 /* troncoAndando7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = troncoAndando7.png; sourceTree = "<group>"; };
 		597825A61BDE8EF50066183B /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		597825A81BDE99E40066183B /* Agent 31.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Agent 31.entitlements"; sourceTree = "<group>"; };
+		59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		6B2D98AD1BB1C6E7005B342E /* Agent 31.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D98BB1BB1C6E7005B342E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B2D98BD1BB1C6E7005B342E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59EBA42D1BDEA95C00F67D67 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +693,7 @@
 		6B2D98A41BB1C6E7005B342E = {
 			isa = PBXGroup;
 			children = (
+				59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */,
 				6B2D98AF1BB1C6E7005B342E /* Agent 31 */,
 				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
 				6B2D98AE1BB1C6E7005B342E /* Products */,
@@ -707,6 +712,7 @@
 		6B2D98AF1BB1C6E7005B342E /* Agent 31 */ = {
 			isa = PBXGroup;
 			children = (
+				597825A81BDE99E40066183B /* Agent 31.entitlements */,
 				597825A31BDE89E60066183B /* CloudKit */,
 				6B408AB41BD6A1A800D64ABF /* General */,
 				6B2783241BD6A800009628D8 /* Entities */,
@@ -819,6 +825,12 @@
 				TargetAttributes = {
 					6B2D98AC1BB1C6E7005B342E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = T2YH3U96FN;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					6B2D98C51BB1C6E8005B342E = {
 						CreatedOnToolsVersion = 6.4;
@@ -1116,6 +1128,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Agent 31/Agent 31.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
@@ -1132,6 +1145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Agent 31/Agent 31.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
