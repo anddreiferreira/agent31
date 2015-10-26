@@ -7,3 +7,30 @@
 //
 
 import Foundation
+import CloudKit
+
+class CloudKitHelper {
+    
+    var container: CKContainer
+    let privateDataBase: CKDatabase
+    
+    init() {
+        container = CKContainer.defaultContainer()
+        privateDataBase = container.privateCloudDatabase
+    }
+}
+
+// MARK: CRUD to Character attributes
+extension CloudKitHelper {
+    
+}
+
+// MARK: CRUD to Guns' attributes
+extension CloudKitHelper {
+    
+}
+
+// MARK: CRUD to Resources' attributes
+extension CloudKitHelper {
+    
+}
