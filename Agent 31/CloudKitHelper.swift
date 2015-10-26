@@ -52,6 +52,33 @@ extension CloudKitHelper {
             
         }))
     }
+    
+    func getCharacterRecord() { //should return a character
+
+        let predicate = NSPredicate(value: true)
+//        let sort = NSSortDescriptor(key: "Jump", ascending: false)
+        
+        let query = CKQuery(recordType: "Character", predicate: predicate)
+//        query.sortDescriptors = [ sort ]
+        
+        privateDataBase.performQuery(query, inZoneWithID: nil, completionHandler: ({
+            results, error in
+            if error == nil {
+                for r in results! {  // Should populate an object with the attributes
+                    let jump = r["Jump"] as! Int
+                    let speed = r["Speed"] as! Int
+                    let sRange = r["ShootingRange"] as! Int
+                    let sPower = r["ShootingPower"] as! Int
+                    let bp = r["BackPack"] as! Int
+                    let level = r["Level"] as! Int
+                    
+                    print( "Agent attributes are: Jump(\(jump)), Speed(\(speed)), ShootingRange(\(sRange)), ShootingPower(\(sPower)), BackPack(\(bp)), Level(\(level))")
+                }
+            } else {
+                print("Query error")
+            }
+        }))
+    }
 }
 
 // MARK: CRUD to Guns' attributes
