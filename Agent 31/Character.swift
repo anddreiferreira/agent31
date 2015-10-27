@@ -11,11 +11,17 @@ import SpriteKit
 class Character: GameObject {
     
     var torso: SKSpriteNode?
+    
+    
+    // Animations
     var walkingTorso: SKAction?
     var walkingLegs: SKAction?
+    var runningTorso: SKAction?
+    var runningLegs: SKAction?
     var attackingUpTorso: SKAction?
     var attackingTorso: SKAction?
     var stoppedTorso: SKAction?
+    var stoppedLegs: SKAction?
     var jumpingLegs: SKAction?
     var jumpingTorso: SKAction?
     var getHitTorso: SKAction?
@@ -47,14 +53,17 @@ class Character: GameObject {
     
     func initializeAnimations(){
         
+        self.stoppedTorso = nil
+        self.stoppedLegs = nil
         
         self.walkingTorso = nil
         self.walkingLegs = nil
         
+        self.runningTorso = nil
+        self.runningLegs = nil
+        
         self.attackingUpTorso = nil
         self.attackingTorso = nil
-        
-        self.stoppedTorso = nil
         
         self.jumpingLegs = nil
         self.jumpingTorso = nil
@@ -71,7 +80,8 @@ class Character: GameObject {
     }
     
     func stoppedAnimationForever(){
-        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!))
+        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
+        self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
     }
     
     func jumpAnimationOnce(){
