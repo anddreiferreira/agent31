@@ -14,68 +14,69 @@ class CloudKitHelper {
     var container: CKContainer
     let privateDataBase: CKDatabase
     
+//    var currentCharacterRecord: CKRecord!
+    let characterRecordId = CKRecordID(recordName: "CharacterRec")
+    
     init() {
         container = CKContainer.defaultContainer()
         privateDataBase = container.privateCloudDatabase
+//        currentCharacterRecord = CKRecord(recordType: "Character", recordID: CKRecordID(recordName: "CharacterRec"))
     }
 }
 
 // MARK: CRUD to Character attributes
 extension CloudKitHelper {
-//    Level Jump
-//    Level Speed
-//    Level Shooting Range
-//    Level Shooting Power
-//    Level backpack
-//    Level geral
+    
     func saveCharacterProperties( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int )
     {
-        let characterRec = CKRecord( recordType: "Character" )
-        characterRec.setValue( jump, forKey: "Jump" )
-        characterRec.setValue( speed, forKey: "Speed" )
-        characterRec.setValue( shootingRange, forKey: "ShootingRange" )
-        characterRec.setValue( shootingPower, forKey: "ShootingPower" )
-        characterRec.setValue( backPack, forKey: "BackPack" )
-        characterRec.setValue( level, forKey: "Level" )
         
-        privateDataBase.saveRecord( characterRec, completionHandler: ({
-            returnRecord, error in
+        self.privateDataBase.fetchRecordWithID( self.characterRecordId, completionHandler: ({
+            fetchedRecord, error in
             
             if let err = error {
-                print( "Save Error" )
+                print( "Fetch Error" )
                 print( err.description )
+                self.createRecord( jump, speed: speed, shootingRange: shootingRange, shootingPower: shootingPower, backPack: backPack, level: level )
             } else {
-                dispatch_async( dispatch_get_main_queue() ) {
-                    print( "Success" )
-                }
+                fetchedRecord?.setValue( jump, forKey: "Jump" )
+                fetchedRecord?.setValue( speed, forKey: "Speed" )
+                fetchedRecord?.setValue( shootingRange, forKey: "ShootingRange" )
+                fetchedRecord?.setValue( shootingPower, forKey: "ShootingPower" )
+                fetchedRecord?.setValue( backPack, forKey: "BackPack" )
+                fetchedRecord?.setValue( level, forKey: "Level" )
+                
+                self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
+                    savedRecord, sError in
+                    
+                    if let sErr = sError {
+                        print( "Save Error" )
+                        print( sErr.description )
+                    } else {
+                        print( "Save successful" )
+                    }
+                }))
             }
             
         }))
     }
     
-    func getCharacterRecord() { //should return a character
-
-        let predicate = NSPredicate(value: true)
-//        let sort = NSSortDescriptor(key: "Jump", ascending: false)
+    private func createRecord( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int ) {
         
-        let query = CKQuery(recordType: "Character", predicate: predicate)
-//        query.sortDescriptors = [ sort ]
+        let newRecord = CKRecord( recordType: "Character", recordID: self.characterRecordId )
+        newRecord.setValue( jump, forKey: "Jump" )
+        newRecord.setValue( speed, forKey: "Speed" )
+        newRecord.setValue( shootingRange, forKey: "ShootingRange" )
+        newRecord.setValue( shootingPower, forKey: "ShootingPower" )
+        newRecord.setValue( backPack, forKey: "BackPack" )
+        newRecord.setValue( level, forKey: "Level" )
         
-        privateDataBase.performQuery(query, inZoneWithID: nil, completionHandler: ({
-            results, error in
-            if error == nil {
-                for r in results! {  // Should populate an object with the attributes
-                    let jump = r["Jump"] as! Int
-                    let speed = r["Speed"] as! Int
-                    let sRange = r["ShootingRange"] as! Int
-                    let sPower = r["ShootingPower"] as! Int
-                    let bp = r["BackPack"] as! Int
-                    let level = r["Level"] as! Int
-                    
-                    print( "Agent attributes are: Jump(\(jump)), Speed(\(speed)), ShootingRange(\(sRange)), ShootingPower(\(sPower)), BackPack(\(bp)), Level(\(level))")
-                }
+        self.privateDataBase.saveRecord( newRecord, completionHandler: ({
+            savedRecord, error in
+            if let err = error {
+                print( "Save Error" )
+                print( err.description )
             } else {
-                print("Query error")
+                print( "Save successful" )
             }
         }))
     }
