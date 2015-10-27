@@ -112,4 +112,8 @@ class Character: GameObject {
         }
     }
    
+    func move(xvelocity: CGFloat){
+        debugPrint(xvelocity)
+        self.position = CGPointMake(self.position.x + (xvelocity * 0.12), self.position.y)
+    }
 }
