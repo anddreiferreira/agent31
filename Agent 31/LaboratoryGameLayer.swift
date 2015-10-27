@@ -158,7 +158,7 @@ class LaboratoryGameLayer: SKNode {
         
         // fixating the agent's position to the analog
             
-        guard let aN = self.agent31Lab else { return }
+//        guard let aN = self.agent31Lab else { return }
         
         let xvelocity = analogStick.data.velocity.x
         self.agent31Lab!.move(xvelocity)

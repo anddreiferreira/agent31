@@ -6,11 +6,17 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
+
 import SpriteKit
 
 class Character: GameObject {
     
+    // Defines
+    let TURNED_RIGHT = true
+    let TURNED_LEFT = false
+    
     var torso: SKSpriteNode?
+    var orientation: Bool?
     
     var velocity: CGFloat?
     
@@ -48,6 +54,8 @@ class Character: GameObject {
         
         // Initialize velocity as zero (stopped)
         self.velocity = 0.0
+        // Initialize orientation as right
+        self.orientation = TURNED_RIGHT
         
         initializeCharacterPhysicsBody()
         initializeAnimations()
@@ -113,7 +121,25 @@ class Character: GameObject {
     }
    
     func move(xvelocity: CGFloat){
-        debugPrint(xvelocity)
-        self.position = CGPointMake(self.position.x + (xvelocity * 0.12), self.position.y)
+        self.velocity = xvelocity
+        
+        invertAccordingToVelocity()
+        
+        run()
+    }
+    
+    func run(){
+        self.position = CGPointMake(self.position.x + (self.velocity! * 0.12), self.position.y)
+    }
+    
+    func invertAccordingToVelocity(){
+        if((self.velocity! > 0.0 && self.orientation != TURNED_RIGHT) || (self.velocity < 0.0 && self.orientation != TURNED_LEFT)){
+            
+            invertSpriteHorizontally(true)
+            
+        }else{
+            
+            invertSpriteHorizontally(false)
+        }
     }
 }
