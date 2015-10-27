@@ -12,6 +12,7 @@ class Character: GameObject {
     
     var torso: SKSpriteNode?
     
+    var velocity: CGFloat?
     
     // Animations
     var walkingTorso: SKAction?
@@ -31,10 +32,7 @@ class Character: GameObject {
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
-        let torsoTexture: SKTexture = generateTextureWithImage(torsoImage)
-        self.torso = SKSpriteNode(texture: torsoTexture)
-        
-        self.addChild(torso!)
+        initializeTorso(torsoImage)
         
         setGeneralAttributesForCharacter()
     }
@@ -44,11 +42,27 @@ class Character: GameObject {
     }
     
     private func setGeneralAttributesForCharacter(){
+        
+        // Provisory Scale
         self.setScale(4.0)
+        
+        // Initialize velocity as zero (stopped)
+        self.velocity = 0.0
+        
+        initializeCharacterPhysicsBody()
+        initializeAnimations()
+    }
+    
+    private func initializeTorso(image: String){
+        let torsoTexture: SKTexture = generateTextureWithImage(image)
+        self.torso = SKSpriteNode(texture: torsoTexture)
+        self.addChild(torso!)
+    }
+    
+    private func initializeCharacterPhysicsBody(){
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.mass = 1.0
         self.physicsBody?.restitution = 0.0
-        initializeAnimations()
     }
     
     func initializeAnimations(){
