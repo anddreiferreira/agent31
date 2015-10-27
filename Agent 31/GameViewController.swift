@@ -31,8 +31,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let ckhelper = CloudKitHelper()
-//        ckhelper.saveCharacterProperties(90, speed: 323, shootingRange: 171, shootingPower: 97, backPack: 500, level: 300)
+        let ckhelper = CloudKitHelper()
+        ckhelper.saveCharacterProperties(90, speed: 323, shootingRange: 171, shootingPower: 97, backPack: 500, level: 300)
+        ckhelper.saveResourcesProperties(99, metal: 90, diamond: 80)
         
         let scene = LaboratoryScene(size: CGSize(width: 667, height: 375))
         
