@@ -12,14 +12,16 @@ import SpriteKit
 class Character: GameObject {
     
     // Defines
-    let TURNED_RIGHT = true
-    let TURNED_LEFT = false
+    let TURNED_RIGHT: Bool = true
+    let TURNED_LEFT: Bool = false
+    let MAX_VELOCITY: CGFloat = 40.0
+    let MIN_VELOCITY: CGFloat = -40.0
     
     var torso: SKSpriteNode?
     var orientation: Bool?
     
-    var velocity: CGFloat?
-    
+    var velocity: CGFloat = 0.0
+    var running: Bool = false
     // Animations...
     
     //...all animations
@@ -60,8 +62,6 @@ class Character: GameObject {
         // Provisory Scale
         self.setScale(4.0)
         
-        // Initialize velocity as zero (stopped)
-        self.velocity = 0.0
         // Initialize orientation as right
         self.orientation = TURNED_RIGHT
         
@@ -127,14 +127,26 @@ class Character: GameObject {
     }
     
     func walkingAnimationOnce(){
-        if(self.walkingLegs != nil && self.walkingTorso != nil){
+        if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
+            self.running = true
+            
             self.torso?.runAction(self.walkingTorso!)
-            self.runAction(self.walkingLegs!)
+            self.runAction(self.walkingLegs!, completion: {
+                    self.running = false
+                })
         }
     }
    
     func move(xvelocity: CGFloat){
-        self.velocity = xvelocity
+        let futureVelocity = self.velocity + xvelocity
+        
+        if(futureVelocity < MAX_VELOCITY && futureVelocity > MIN_VELOCITY){
+            self.velocity += xvelocity
+        }else if(futureVelocity > MAX_VELOCITY){
+            self.velocity = MAX_VELOCITY
+        }else if(futureVelocity < MIN_VELOCITY){
+            self.velocity = MIN_VELOCITY
+        }
         
         invertAccordingToVelocity()
         
@@ -142,11 +154,13 @@ class Character: GameObject {
     }
     
     func run(){
-        self.position = CGPointMake(self.position.x + (self.velocity! * 0.12), self.position.y)
+        self.walkingAnimationOnce()
+        debugPrint(self.velocity)
+        self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
     }
     
     func invertAccordingToVelocity(){
-        if((self.velocity! > 0.0 && self.orientation != TURNED_RIGHT) || (self.velocity < 0.0 && self.orientation != TURNED_LEFT)){
+        if((self.velocity > 0.0 && self.orientation != TURNED_RIGHT) || (self.velocity < 0.0 && self.orientation != TURNED_LEFT)){
             
             invertSpriteHorizontally(true)
             
