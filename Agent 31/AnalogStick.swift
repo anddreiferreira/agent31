@@ -24,6 +24,7 @@ let kStickOfSubstrateWidthPercent: CGFloat = 0.5 // [0..1]
 
 public class AnalogStick: SKNode {
     
+    
     let stickNode = SKSpriteNode()
     let substrateNode = SKSpriteNode()
     
@@ -34,6 +35,13 @@ public class AnalogStick: SKNode {
     
     private var _stickColor = UIColor.lightGrayColor()
     private var _substrateColor = UIColor.darkGrayColor()
+    
+    // analog
+    
+    let kAnalogStickdiameter: CGFloat = 110
+    private var _isSetJoystickStickImage = true, _isSetJoystickSubstrateImage = true
+    let setJoystickStickImageBtn = SKLabelNode()
+    let setJoystickSubstrateImageBtn = SKLabelNode()
     
     var stickColor: UIColor {
         
@@ -104,17 +112,22 @@ public class AnalogStick: SKNode {
     let kThumbSpringBackDuration: NSTimeInterval = 0.15 // action duration
     var anchorPointInPoints = CGPointZero
     
-    init(diameter: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil) {
+    init(diameter: CGFloat = 110, substrateImage: UIImage? = UIImage(named: "analogBg"), stickImage: UIImage? = UIImage(named: "analogBtn")) {
         
         super.init()
         userInteractionEnabled = true;
         
+        let radius = diameter/2
+        self.position = CGPointMake(radius+15, radius+15)
         self.diameter = diameter
         self.stickImage = stickImage
         self.substrateImage = substrateImage
         
         stickNode.zPosition = 6
         substrateNode.zPosition = 5
+        
+        self.isSetJoystickStickImage = true
+        self.isSetJoystickSubstrateImage = true
         
         addChild(substrateNode)
         addChild(stickNode)
@@ -206,6 +219,45 @@ public class AnalogStick: SKNode {
         
         super.touchesCancelled(touches, withEvent: event)
         resetStick()
+    }
+    
+    // outer image
+    var isSetJoystickStickImage: Bool {
+        
+        get { return _isSetJoystickStickImage }
+        
+        set {
+            
+            _isSetJoystickStickImage = newValue
+            let image = newValue ? UIImage(named: "analogBtn") : nil
+            self.stickImage = image
+            setJoystickStickImageBtn.text = newValue ? "Remove Stick Images" : "Set Stick Images"
+        }
+    }
+    
+    // inner image
+    var isSetJoystickSubstrateImage: Bool {
+        
+        get { return _isSetJoystickSubstrateImage }
+        
+        set {
+            
+            _isSetJoystickSubstrateImage = newValue
+            let image = newValue ? UIImage(named: "analogBg") : nil
+            self.substrateImage = image
+            setJoystickSubstrateImageBtn.text = newValue ? "Remove Substrate Images" : "Set Substrate Images"
+        }
+    }
+    
+    // diamater of the analog stick
+    var joysticksdiameters: CGFloat {
+        
+        get { return max(self.diameter, self.diameter) }
+        
+        set(newdiameter) {
+            
+            self.diameter = newdiameter
+        }
     }
 }
 
