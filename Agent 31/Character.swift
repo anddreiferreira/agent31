@@ -20,7 +20,9 @@ class Character: GameObject {
     
     var velocity: CGFloat?
     
-    // Animations
+    // Animations...
+    
+    //...all animations
     var walkingTorso: SKAction?
     var walkingLegs: SKAction?
     var runningTorso: SKAction?
@@ -33,11 +35,17 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var getHitTorso: SKAction?
     var getHitLegs: SKAction?
+//    
+//    
+//    //...actual animation
+//    var actualTorso: SKAction?
+//    var actualLegs: SKAction?
     
     init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
+        self.zPosition = 1
         initializeTorso(torsoImage)
         
         setGeneralAttributesForCharacter()
@@ -64,6 +72,7 @@ class Character: GameObject {
     private func initializeTorso(image: String){
         let torsoTexture: SKTexture = generateTextureWithImage(image)
         self.torso = SKSpriteNode(texture: torsoTexture)
+        self.torso?.zPosition = 1
         self.addChild(torso!)
     }
     
@@ -92,6 +101,10 @@ class Character: GameObject {
         
         self.getHitTorso = nil
         self.getHitLegs = nil
+        
+        
+//        self.actualTorso = nil
+//        self.actualLegs = nil
         
     }
     
