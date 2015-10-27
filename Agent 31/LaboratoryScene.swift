@@ -197,7 +197,7 @@ class LaboratoryScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
       
-        //checkAgentPositionAndObjetcs()
+       self.laboratoryGameLayer.conformAgentToAnalogic()
         
         
     }

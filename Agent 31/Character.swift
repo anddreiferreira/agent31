@@ -147,7 +147,7 @@ class Character: GameObject {
         }
     }
    
-    func move(xvelocity: CGFloat){
+    func changeVelocity(xvelocity: CGFloat){
         let futureVelocity = self.velocity + xvelocity
         
         if(futureVelocity < MAX_VELOCITY && futureVelocity > MIN_VELOCITY){
@@ -158,14 +158,13 @@ class Character: GameObject {
             self.velocity = MIN_VELOCITY
         }
         
-        invertAccordingToVelocity()
-        
-        run()
     }
     
     func run(){
+        invertAccordingToVelocity()
+        
         self.walkingAnimationOnce()
-        debugPrint(self.velocity)
+
         self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
     }
     

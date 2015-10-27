@@ -11,7 +11,7 @@ import SpriteKit
 class LaboratoryGameLayer: SKNode {
 
     var testCharacter: Character?
-    var agent31Lab : Agent? 
+    var agent31Lab : Agent?
     private var analogStick : AnalogStick?
     var placeHolder : SKSpriteNode?
 
@@ -107,7 +107,7 @@ class LaboratoryGameLayer: SKNode {
         analogStick!.trackingHandler = { analogStick in
         
             let xvelocity = analogStick.data.velocity.x
-            self.agent31Lab!.move(xvelocity)
+            self.agent31Lab!.changeVelocity(xvelocity)
             
         }
         
@@ -135,6 +135,16 @@ class LaboratoryGameLayer: SKNode {
     
         tapObjectButton?.removeFromParent()
         
+    }
+    
+    func conformAgentToAnalogic(){
+        if(self.agent31Lab?.velocity != 0){
+            if(self.analogStick?.data.velocity == CGPointZero){
+                self.agent31Lab?.changeVelocity(-1)
+            }else{
+                self.agent31Lab?.run()
+            }
+        }
     }
     
         
