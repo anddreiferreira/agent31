@@ -76,6 +76,16 @@ class Character: GameObject {
         self.addChild(torso!)
     }
     
+    override func generatePhysicsBody() -> SKPhysicsBody {
+        let rectangleSize = CGSizeMake(self.size.width*0.6, self.size.height*0.7)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
+        physicsBody.affectedByGravity = false
+        physicsBody.allowsRotation = false
+        physicsBody.restitution = 0
+        
+        return physicsBody
+    }
+    
     private func initializeCharacterPhysicsBody(){
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.mass = 1.0
