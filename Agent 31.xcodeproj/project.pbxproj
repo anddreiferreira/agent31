@@ -829,11 +829,9 @@
 			isa = PBXGroup;
 			children = (
 				6B2D98AF1BB1C6E7005B342E /* Agent 31 */,
-				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
+				E068A3151BE1403600055E35 /* Tests */,
 				E068A2A71BE13AEA00055E35 /* Agent 31 OS X */,
-				E068A2BB1BE13AEA00055E35 /* Agent 31 OS XTests */,
 				E068A2CA1BE13B4A00055E35 /* Agent 31 tvOS */,
-				E068A2E21BE13B4A00055E35 /* Agent 31 tvOSTests */,
 				E068A2EF1BE13BA700055E35 /* Agent 31 watchOS */,
 				E068A2FE1BE13BA700055E35 /* Agent 31 watchOS Extension */,
 				6B2D98AE1BB1C6E7005B342E /* Products */,
@@ -993,6 +991,16 @@
 				E068A3001BE13BA700055E35 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E068A3151BE1403600055E35 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
+				E068A2BB1BE13AEA00055E35 /* Agent 31 OS XTests */,
+				E068A2E21BE13B4A00055E35 /* Agent 31 tvOSTests */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1904,6 +1912,7 @@
 				E068A2C01BE13AEA00055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E068A2C41BE13AEA00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 OS XTests" */ = {
 			isa = XCConfigurationList;
@@ -1912,6 +1921,7 @@
 				E068A2C21BE13AEA00055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E068A2E61BE13B4A00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1920,6 +1930,7 @@
 				E068A2E81BE13B4A00055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E068A2E91BE13B4A00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1928,6 +1939,7 @@
 				E068A2EB1BE13B4A00055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E068A30D1BE13BA800055E35 /* Build configuration list for PBXNativeTarget "Agent 31 watchOS Extension" */ = {
 			isa = XCConfigurationList;
@@ -1936,6 +1948,7 @@
 				E068A30F1BE13BA800055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E068A3111BE13BA800055E35 /* Build configuration list for PBXNativeTarget "Agent 31 watchOS" */ = {
 			isa = XCConfigurationList;
@@ -1944,6 +1957,7 @@
 				E068A3131BE13BA800055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
