@@ -30,10 +30,14 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+  
+        // Testando o cloudkit
         
-        let ckhelper = CloudKitHelper()
-        ckhelper.saveCharacterProperties(90, speed: 323, shootingRange: 171, shootingPower: 97, backPack: 500, level: 300)
-        ckhelper.saveResourcesProperties(99, metal: 90, diamond: 80)
+//        let ckhelper = CloudKitHelper()
+//        ckhelper.saveCharacterProperties(90, speed: 323, shootingRange: 171, shootingPower: 97, backPack: 500, level: 300)
+//        ckhelper.saveResourcesProperties(99, metal: 90, diamond: 80)
+//        ckhelper.saveGunProperties("Kalashnikov", level: 7, price: 200, blocked: false, secret: false, time: 200)
+//        ckhelper.saveGunProperties("AK47", level: 8, price: 100, blocked: false, secret: false, time: 200)
         
         let scene = LaboratoryScene(size: CGSize(width: 667, height: 375))
         

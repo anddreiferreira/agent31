@@ -81,20 +81,71 @@ extension CloudKitHelper {
 
 // MARK: CRUD to Guns' attributes
 extension CloudKitHelper {
-//    Level
-//    Tipo
-//    Preço
-//    Block ou unblocked
-//    Secreto ou não
-//    Tempo de desenvolvimento para próximo level
 
+    func saveGunProperties( type: String, level: Int, price: Int, blocked: Bool, secret: Bool, time: NSTimeInterval ) {
+        
+        let gunId = CKRecordID(recordName: type)
+        
+        self.privateDataBase.fetchRecordWithID( gunId, completionHandler: ({
+            fetchedRecord, error in
+            
+            if let _ = error {
+                self.createGunRecord( type, level: level, price: price, blocked: blocked, secret: secret, time: time )
+            } else {
+                let blockedInt = blocked == true ? 1 : 0
+                let secretInt = secret == true ? 1 : 0
+                
+                fetchedRecord!.setValue( level, forKey: "Level" )
+                fetchedRecord!.setValue( price, forKey: "Price" )
+                fetchedRecord!.setValue( blockedInt, forKey: "Blocked" )
+                fetchedRecord!.setValue( secretInt, forKey: "Secret" )
+                fetchedRecord!.setValue( time, forKey: "Time" )
+                
+                self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
+                    savedRec, sError in
+                    if let sErr = sError {
+                        print( "Error trying to update gun" ) // Fazer tratamento adequado
+                        print( sErr.description )
+                    } else {
+                        print( "Gun update successful")
+                    }
+                }))
+
+            }
+        }))
+    }
+    
+    func createGunRecord ( type: String, level: Int, price: Int, blocked: Bool, secret: Bool, time: NSTimeInterval ) {
+        
+        // OBS: Fazer a verificacao do nome numa lista com o nome das armas validas
+        
+        let gunId = CKRecordID( recordName: type )
+        let gunRec = CKRecord(recordType: "Gun", recordID: gunId)
+        
+        let blockedValue = blocked == true ? 1 : 0
+        let secretValue = secret == true ? 1 : 0
+        
+        gunRec.setValue( type, forKey: "Type")
+        gunRec.setValue( level, forKey: "Level")
+        gunRec.setValue( price, forKey: "Price")
+        gunRec.setValue( blockedValue, forKey: "Blocked")
+        gunRec.setValue( secretValue, forKey: "Secret")
+        gunRec.setValue( time, forKey: "Time")
+        
+        self.privateDataBase.saveRecord( gunRec, completionHandler: ({
+            savedRec, error in
+            if let err = error {
+                print( "Error creating gun record" ) // Fazer tratamento adequado
+                print( err.description )
+            } else {
+                print( "New gun saved with success")
+            }
+        }))
+    }
 }
 
 // MARK: CRUD to Resources' attributes
 extension CloudKitHelper {
-//    Quantidade de moedas
-//    Quantidade de metal
-//    Quantidade de diamante
     
     func saveResourcesProperties ( gold: Int, metal: Int, diamond: Int ) {
         
