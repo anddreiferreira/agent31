@@ -11,17 +11,13 @@ import SpriteKit
 
 class Character: GameObject {
     
-    // Defines
-    let TURNED_RIGHT: Bool = true
-    let TURNED_LEFT: Bool = false
-    let MAX_VELOCITY: CGFloat = 40.0
-    let MIN_VELOCITY: CGFloat = -40.0
-    
     var torso: SKSpriteNode?
-    var orientation: Bool?
+    var orientation: Int?
+    var running: Bool = false
+
     
     var velocity: CGFloat = 0.0
-    var running: Bool = false
+    
     // Animations...
     
     //...all animations
@@ -29,8 +25,8 @@ class Character: GameObject {
     var walkingLegs: SKAction?
     var runningTorso: SKAction?
     var runningLegs: SKAction?
-    var attackingUpTorso: SKAction?
     var attackingTorso: SKAction?
+    var attackingUpTorso: SKAction?
     var stoppedTorso: SKAction?
     var stoppedLegs: SKAction?
     var jumpingLegs: SKAction?
@@ -119,10 +115,10 @@ class Character: GameObject {
     }
     
     func jump(){
-        
         jumpAnimationOnce()
         self.physicsBody?.applyImpulse(CGVectorMake(0, 400))
     }
+    
     
     func stoppedAnimationForever(){
         self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
@@ -135,7 +131,7 @@ class Character: GameObject {
             self.torso?.runAction(self.jumpingTorso!)
         }
     }
-    
+
     func walkingAnimationOnce(){
         if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
             self.running = true
@@ -148,14 +144,14 @@ class Character: GameObject {
     }
    
     func changeVelocity(xvelocity: CGFloat){
-        let futureVelocity = self.velocity + xvelocity
+        let futureVelocity = self.velocity + xvelocity/2.0
         
-        if(futureVelocity < MAX_VELOCITY && futureVelocity > MIN_VELOCITY){
+        if(futureVelocity < MAX_CHARACTER_VELOCITY && futureVelocity > MIN_CHARACTER_VELOCITY){
             self.velocity += xvelocity
-        }else if(futureVelocity > MAX_VELOCITY){
-            self.velocity = MAX_VELOCITY
-        }else if(futureVelocity < MIN_VELOCITY){
-            self.velocity = MIN_VELOCITY
+        }else if(futureVelocity > MAX_CHARACTER_VELOCITY){
+            self.velocity = MAX_CHARACTER_VELOCITY
+        }else if(futureVelocity < MIN_CHARACTER_VELOCITY){
+            self.velocity = MIN_CHARACTER_VELOCITY
         }
         
     }
