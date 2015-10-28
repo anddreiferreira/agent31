@@ -93,6 +93,8 @@
 		6B2D98BE1BB1C6E7005B342E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BD1BB1C6E7005B342E /* Images.xcassets */; };
 		6B2D98C11BB1C6E7005B342E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BF1BB1C6E7005B342E /* LaunchScreen.xib */; };
 		6B2D98CD1BB1C6E8005B342E /* Agent_31Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D98CC1BB1C6E8005B342E /* Agent_31Tests.swift */; };
+		6B49F9C61BDE991F00E7164D /* mapOfTheLab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B49F9C51BDE991F00E7164D /* mapOfTheLab.png */; };
+		6B49F9C81BDE9A8300E7164D /* LaboratoryScene2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6B49F9C71BDE9A8300E7164D /* LaboratoryScene2.sks */; };
 		6B53A7121BDA9FCD002E7808 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A6EE1BDA9FCD002E7808 /* Agent.swift */; };
 		6B53A7141BDA9FCD002E7808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A6F01BDA9FCD002E7808 /* AppDelegate.swift */; };
 		6B53A7151BDA9FCD002E7808 /* Backpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A6F11BDA9FCD002E7808 /* Backpack.swift */; };
@@ -227,6 +229,8 @@
 		6B2D98C61BB1C6E8005B342E /* Agent 31Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Agent 31Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D98CB1BB1C6E8005B342E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2D98CC1BB1C6E8005B342E /* Agent_31Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent_31Tests.swift; sourceTree = "<group>"; };
+		6B49F9C51BDE991F00E7164D /* mapOfTheLab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapOfTheLab.png; path = Images/Placeholders/mapOfTheLab.png; sourceTree = SOURCE_ROOT; };
+		6B49F9C71BDE9A8300E7164D /* LaboratoryScene2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LaboratoryScene2.sks; sourceTree = "<group>"; };
 		6B53A6EE1BDA9FCD002E7808 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		6B53A6F01BDA9FCD002E7808 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B53A6F11BDA9FCD002E7808 /* Backpack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backpack.swift; sourceTree = "<group>"; };
@@ -454,6 +458,7 @@
 		09ED5F8A1BDB019900A58F13 /* Placeholders */ = {
 			isa = PBXGroup;
 			children = (
+				6B49F9C51BDE991F00E7164D /* mapOfTheLab.png */,
 				09ED5F8B1BDB019900A58F13 /* 1.png */,
 				09ED5F8C1BDB019900A58F13 /* backgroundCityPlaceholder.png */,
 				09ED5F8D1BDB019900A58F13 /* backgroundLabTest.png */,
@@ -535,6 +540,7 @@
 			children = (
 				6B27832B1BD6A875009628D8 /* LaboratoryLayers */,
 				6B53A7081BDA9FCD002E7808 /* LaboratoryScene.swift */,
+				6B49F9C71BDE9A8300E7164D /* LaboratoryScene2.sks */,
 			);
 			name = Laboratory;
 			sourceTree = "<group>";
@@ -854,6 +860,7 @@
 				09ED601A1BDB167D00A58F13 /* pernasAndando1.png in Resources */,
 				09ED5FC01BDB019900A58F13 /* Ground.png in Resources */,
 				09ED5FBE1BDB019900A58F13 /* backgroundCityPlaceholder.png in Resources */,
+				6B49F9C81BDE9A8300E7164D /* LaboratoryScene2.sks in Resources */,
 				09ED5FBF1BDB019900A58F13 /* backgroundLabTest.png in Resources */,
 				09ED60211BDB167D00A58F13 /* troncoAndando1.png in Resources */,
 				09ED5FC21BDB019900A58F13 /* placeHolderMesaArmas.png in Resources */,
@@ -899,6 +906,7 @@
 				09ED5FA31BDB019900A58F13 /* RunningAgent6.png in Resources */,
 				09ED60001BDB13DA00A58F13 /* pernasPulando6.png in Resources */,
 				09ED5FA21BDB019900A58F13 /* RunningAgent5.png in Resources */,
+				6B49F9C61BDE991F00E7164D /* mapOfTheLab.png in Resources */,
 				09ED5FC11BDB019900A58F13 /* placeHolderMesa.png in Resources */,
 				09ED5FAB1BDB019900A58F13 /* jumpButton.png in Resources */,
 				09ED60081BDB13DA00A58F13 /* troncoPulando6.png in Resources */,

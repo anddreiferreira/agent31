@@ -34,16 +34,26 @@ class LaboratoryScene: SKScene {
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
         
         // Store Positions of objects
-        self.objectPositions()
+        // self.objectPositions()
+        
+//        self.initiateNodes()
     }
     
 
+    func initiateNodes(){
+    
+        var algo = self.childNodeWithName("headerLab")
+        algo?.alpha = 0.3
+        algo?.removeFromParent()
+        
+    }
+    
+    
     func putBackgroundLayer(){
         
         self.laboratoryBackgroundLayer = LaboratoryBackgroundLayer()
         self.laboratoryBackgroundLayer.putBackground()
         self.addChild(laboratoryBackgroundLayer)
-    
     }
 
     func putHudLayer(){
@@ -51,7 +61,6 @@ class LaboratoryScene: SKScene {
         self.laboratoryHudLayer = LaboratoryHudLayer()
         self.laboratoryHudLayer.putHudLayer()
         self.addChild(laboratoryHudLayer)
-        
     }
     
     func putGameLayer(){
@@ -66,6 +75,7 @@ class LaboratoryScene: SKScene {
         
         debugPrint("Touches began on Laboratory")
     }
+    
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
