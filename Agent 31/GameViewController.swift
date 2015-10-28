@@ -56,6 +56,8 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .AspectFill
         
+        self.view.multipleTouchEnabled = true
+        
         skView.presentScene(scene)
         
     }

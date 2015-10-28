@@ -30,8 +30,8 @@ class LaboratoryScene: SKScene {
         self.putHudLayer()
         self.putGameLayer()
         
-        // Gravity
-        self.physicsWorld.gravity = CGVectorMake(0, -9.8)
+        // Physics
+        self.setLaboratoryPhysics()
         
         // Store Positions of objects
         // self.objectPositions()
@@ -39,6 +39,16 @@ class LaboratoryScene: SKScene {
 //        self.initiateNodes()
     }
     
+    func setLaboratoryPhysics(){
+        
+        // Creating a border so the player won't fall off the screen
+        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsBody = borderBody
+        self.physicsBody?.friction = 2.0
+        
+        // Gravity
+        self.physicsWorld.gravity = CGVectorMake(0, -9.8)
+    }
 
     func initiateNodes(){
     
@@ -197,7 +207,7 @@ class LaboratoryScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
       
-        //checkAgentPositionAndObjetcs()
+       self.laboratoryGameLayer.conformAgentToAnalogic()
         
         
     }

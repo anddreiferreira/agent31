@@ -11,7 +11,7 @@ import SpriteKit
 class LaboratoryGameLayer: SKNode {
 
     var testCharacter: Character?
-    var agent31Lab : Agent? 
+    var agent31Lab : Agent?
     private var analogStick : AnalogStick?
     var placeHolder : SKSpriteNode?
 
@@ -25,15 +25,10 @@ class LaboratoryGameLayer: SKNode {
     var trainingCenter : TrainingCenter?
     
     var tapObjectButton : SKSpriteNode?
-// analog
     
-    let kAnalogStickdiameter: CGFloat = 110
-    let jSizePlusSpriteNode = SKSpriteNode(imageNamed: "analogBtn"), jSizeMinusSpriteNode = SKSpriteNode(imageNamed: "analogBg")
+    // Analog
     private var _isSetJoystickStickImage = true, _isSetJoystickSubstrateImage = true
-    
-    let setJoystickStickImageBtn = SKLabelNode()
-    let setJoystickSubstrateImageBtn = SKLabelNode()
-    
+
     override init(){
         
         super.init()
@@ -49,9 +44,9 @@ class LaboratoryGameLayer: SKNode {
     
     private func loadButtons(){
     
-        jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 2, name: "jumpButtonLab")
+        jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 100, name: "jumpButtonLab")
         
-        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-212), zPosition: 2, name: "goToCity")
+        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-212), zPosition: 100, name: "goToCity")
 
     }
     
@@ -104,72 +99,19 @@ class LaboratoryGameLayer: SKNode {
         //        self.testCharacter = Character(imageName: "pernasParado1")
         self.addChild(self.testCharacter!)
     }
-    
-    // outer image
-    private var isSetJoystickStickImage: Bool {
-            
-        get { return _isSetJoystickStickImage }
-            
-        set {
-                
-            _isSetJoystickStickImage = newValue
-            let image = newValue ? UIImage(named: "analogBtn") : nil
-            analogStick!.stickImage = image
-            setJoystickStickImageBtn.text = newValue ? "Remove Stick Images" : "Set Stick Images"
-        }
-    }
-    
-    // inner image
-    private var isSetJoystickSubstrateImage: Bool {
-            
-        get { return _isSetJoystickSubstrateImage }
-            
-        set {
-                
-            _isSetJoystickSubstrateImage = newValue
-            let image = newValue ? UIImage(named: "analogBg") : nil
-            analogStick!.substrateImage = image
-            setJoystickSubstrateImageBtn.text = newValue ? "Remove Substrate Images" : "Set Substrate Images"
-        }
-    }
-    
-    // diamater of the analog stick
-    private var joysticksdiameters: CGFloat {
-            
-        get { return max(analogStick!.diameter, analogStick!.diameter) }
-            
-        set(newdiameter) {
-                
-            analogStick!.diameter = newdiameter
-        }
-    }
-        
+
     private func configureAnalogStick(){
+        // Initialize an analog stick
+        analogStick = AnalogStick()
         
-        // initate an analog stick
-        analogStick = AnalogStick(diameter: kAnalogStickdiameter, substrateImage:  UIImage(named: "analogBg"), stickImage: UIImage(named: "analogBtn"))
-        
-        let jRadius = kAnalogStickdiameter / 2
-        
-        // setting analog stick's properties
-        analogStick!.diameter = kAnalogStickdiameter
-        analogStick!.position = CGPointMake(jRadius + 15, jRadius + 15)
         analogStick!.trackingHandler = { analogStick in
         
-        // fixating the agent's position to the analog
+            let xvelocity = analogStick.data.velocity.x
+            self.agent31Lab!.changeVelocity(xvelocity)
             
-        guard let aN = self.agent31Lab else { return }
-        
-        self.agent31Lab!.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y)
-
         }
         
-        addChild(analogStick!)
-        
-        // setting it's visual properties
-        isSetJoystickStickImage = _isSetJoystickStickImage
-        isSetJoystickSubstrateImage = _isSetJoystickSubstrateImage
-        
+        addChild(analogStick!)        
     }
     
     func putDeskLayer(){
@@ -193,6 +135,16 @@ class LaboratoryGameLayer: SKNode {
     
         tapObjectButton?.removeFromParent()
         
+    }
+    
+    func conformAgentToAnalogic(){
+        if(self.agent31Lab?.velocity != 0){
+            if(self.analogStick?.data.velocity == CGPointZero){
+                self.agent31Lab?.changeVelocity(-1)
+            }else{
+                self.agent31Lab?.run()
+            }
+        }
     }
     
         

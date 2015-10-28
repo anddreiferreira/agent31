@@ -41,9 +41,8 @@ class GameObject: SKSpriteNode {
         }
     }
     
-    func generatePhysicsBody(imageName: String) -> SKPhysicsBody{
-        debugPrint("Initial image name \(imageName)")
-        let texture: SKTexture! = generateTextureWithImage(imageName)
+    func generatePhysicsBody() -> SKPhysicsBody{
+        let texture: SKTexture! = generateTextureWithImage(self.initialImageName!)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = false
@@ -54,7 +53,7 @@ class GameObject: SKSpriteNode {
 
     private func setBasicAttributes(){
         debugPrint("Set Basic Attributes for GameObject")
-        self.physicsBody = generatePhysicsBody(self.initialImageName!)
+        self.physicsBody = generatePhysicsBody()
     }
     
     
