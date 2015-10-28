@@ -10,11 +10,13 @@ import SpriteKit
 
 class GunDevelopmentCenter: GameObject {
 
-    var positionRecieved : CGPoint?
+    var positionReceived : CGPoint?
     
-    override init(imageName: String = "placeHolderMesaArmas", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
+    init(imageName: String = "placeHolderMesaArmas", position: CGPoint, zPosition: CGFloat = 5.0){
         
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: imageName, position: position, zPosition: zPosition)
+        
+        self.setGunDevelopmentAttributes()
         
     }
     
@@ -28,6 +30,10 @@ class GunDevelopmentCenter: GameObject {
         
         return self.position
         
+    }
+    
+    func setGunDevelopmentAttributes(){
+        self.setScale(0.5)
     }
     
     

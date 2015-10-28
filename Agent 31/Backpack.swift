@@ -10,9 +10,11 @@ import UIKit
 
 class Backpack: GameObject {
     
-   override init(imageName: String = "placeHolderBackPack", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
+   init(imageName: String = "placeHolderBackPack", position: CGPoint, zPosition: CGFloat = 5.0){
         
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: imageName, position: position, zPosition: zPosition)
+    
+        self.setGeneralAttributesForBackpack()
         
     }
     
@@ -21,6 +23,6 @@ class Backpack: GameObject {
     }
     
     private func setGeneralAttributesForBackpack(){
-        
+        self.setScale(0.5)
     }
 }

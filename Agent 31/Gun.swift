@@ -10,12 +10,11 @@ import SpriteKit
 
 class Gun : SKSpriteNode {
     
-    var level: Int?
-    var gunName: String?
-    var owner: String?
-    var damageBase: Int?
-    var rangeBase: Int?
-    var cost: Int?
+    var level: Int
+    var gunName: String
+    var owner: String
+    var damageBase: Int
+    var rangeBase: Int
     
     init(gunName: String, level: Int = 1, owner: String = "Enemy", damageBase: Int, rangeBase: Int, zPosition: CGFloat = 1.0, scale: CGFloat = 1.0){
         debugPrint("Initializing Gun")

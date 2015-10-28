@@ -10,12 +10,13 @@ import SpriteKit
 
 class TrainingCenter: GameObject {
 
-    var positionRecieved : CGPoint?
+    var positionReceived : CGPoint?
     
-    override init(imageName: String = "placeHolderTreinamento", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
+    init(imageName: String = "placeHolderTreinamento", position: CGPoint, zPosition: CGFloat = 5.0){
         
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: imageName, position: position, zPosition: zPosition)
         
+        self.setTrainingCenterAttributes()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,6 +29,10 @@ class TrainingCenter: GameObject {
         
         return self.position
         
+    }
+    
+    func setTrainingCenterAttributes(){
+        self.setScale(0.5)
     }
     
 }

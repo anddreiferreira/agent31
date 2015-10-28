@@ -10,9 +10,11 @@ import UIKit
 
 class Watch: GameObject {
     
-   override init(imageName: String = "placeHolderTreinamento", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
+   init(imageName: String = "placeHolderTreinamento", position: CGPoint, zPosition: CGFloat = 5.0){
     
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: imageName, position: position, zPosition: zPosition)
+    
+        self.setGeneralAttributesForWatch()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,7 +22,7 @@ class Watch: GameObject {
     }
     
     private func setGeneralAttributesForWatch(){
-        
+        self.setScale(0.5)
     }
 
 }
