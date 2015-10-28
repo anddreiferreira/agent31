@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 import SpriteKit
 
+// Defines
+let TURNED_LEFT: Int = 1
+let TURNED_UP: Int = 3
+let TURNED_RIGHT: Int = 2
+let MAX_CHARACTER_VELOCITY: CGFloat = 40.0
+let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
 let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
