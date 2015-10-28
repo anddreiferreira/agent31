@@ -132,6 +132,28 @@
 		6B53A7341BDA9FCD002E7808 /* TrainingCenterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */; };
 		6B53A7351BDA9FCD002E7808 /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7111BDA9FCD002E7808 /* Watch.swift */; };
 		6B9FBFDE1BDAAE3B00ED08C3 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */; };
+		E068A2A91BE13AEA00055E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2A81BE13AEA00055E35 /* AppDelegate.swift */; };
+		E068A2AB1BE13AEA00055E35 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2AA1BE13AEA00055E35 /* GameScene.swift */; };
+		E068A2AD1BE13AEA00055E35 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E068A2AC1BE13AEA00055E35 /* GameScene.sks */; };
+		E068A2AF1BE13AEA00055E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E068A2AE1BE13AEA00055E35 /* Assets.xcassets */; };
+		E068A2B21BE13AEA00055E35 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E068A2B01BE13AEA00055E35 /* MainMenu.xib */; };
+		E068A2BD1BE13AEA00055E35 /* Agent_31_OS_XTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2BC1BE13AEA00055E35 /* Agent_31_OS_XTests.swift */; };
+		E068A2CC1BE13B4A00055E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2CB1BE13B4A00055E35 /* AppDelegate.swift */; };
+		E068A2CE1BE13B4A00055E35 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E068A2CD1BE13B4A00055E35 /* GameScene.sks */; };
+		E068A2D01BE13B4A00055E35 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2CF1BE13B4A00055E35 /* GameScene.swift */; };
+		E068A2D21BE13B4A00055E35 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2D11BE13B4A00055E35 /* GameViewController.swift */; };
+		E068A2D41BE13B4A00055E35 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E068A2D31BE13B4A00055E35 /* Game.xcassets */; };
+		E068A2D71BE13B4A00055E35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E068A2D51BE13B4A00055E35 /* Main.storyboard */; };
+		E068A2D91BE13B4A00055E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E068A2D81BE13B4A00055E35 /* Assets.xcassets */; };
+		E068A2E41BE13B4A00055E35 /* Agent_31_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2E31BE13B4A00055E35 /* Agent_31_tvOSTests.swift */; };
+		E068A2F21BE13BA700055E35 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E068A2F01BE13BA700055E35 /* Interface.storyboard */; };
+		E068A2F41BE13BA700055E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E068A2F31BE13BA700055E35 /* Assets.xcassets */; };
+		E068A2FB1BE13BA700055E35 /* Agent 31 watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E068A2FA1BE13BA700055E35 /* Agent 31 watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E068A3021BE13BA700055E35 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A3011BE13BA700055E35 /* InterfaceController.swift */; };
+		E068A3041BE13BA800055E35 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A3031BE13BA700055E35 /* ExtensionDelegate.swift */; };
+		E068A3061BE13BA800055E35 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A3051BE13BA800055E35 /* NotificationController.swift */; };
+		E068A3081BE13BA800055E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E068A3071BE13BA800055E35 /* Assets.xcassets */; };
+		E068A30C1BE13BA800055E35 /* Agent 31 watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E068A2EE1BE13BA700055E35 /* Agent 31 watchOS.app */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,7 +164,60 @@
 			remoteGlobalIDString = 6B2D98AC1BB1C6E7005B342E;
 			remoteInfo = "Agent 31";
 		};
+		E068A2B91BE13AEA00055E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B2D98A51BB1C6E7005B342E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E068A2A51BE13AEA00055E35;
+			remoteInfo = "Agent 31 OS X";
+		};
+		E068A2E01BE13B4A00055E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B2D98A51BB1C6E7005B342E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E068A2C81BE13B4A00055E35;
+			remoteInfo = "Agent 31 tvOS";
+		};
+		E068A2FC1BE13BA700055E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B2D98A51BB1C6E7005B342E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E068A2F91BE13BA700055E35;
+			remoteInfo = "Agent 31 watchOS Extension";
+		};
+		E068A30A1BE13BA800055E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B2D98A51BB1C6E7005B342E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E068A2ED1BE13BA700055E35;
+			remoteInfo = "Agent 31 watchOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E068A3101BE13BA800055E35 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E068A2FB1BE13BA700055E35 /* Agent 31 watchOS Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A3141BE13BA800055E35 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E068A30C1BE13BA800055E35 /* Agent 31 watchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09A6D7C01BE14264007A77EC /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
@@ -271,6 +346,39 @@
 		6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenterLayer.swift; sourceTree = "<group>"; };
 		6B53A7111BDA9FCD002E7808 /* Watch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
 		6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
+		E068A2A61BE13AEA00055E35 /* Agent 31 OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31 OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E068A2A81BE13AEA00055E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E068A2AA1BE13AEA00055E35 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E068A2AC1BE13AEA00055E35 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		E068A2AE1BE13AEA00055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E068A2B11BE13AEA00055E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E068A2B31BE13AEA00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E068A2B81BE13AEA00055E35 /* Agent 31 OS XTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Agent 31 OS XTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E068A2BC1BE13AEA00055E35 /* Agent_31_OS_XTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent_31_OS_XTests.swift; sourceTree = "<group>"; };
+		E068A2BE1BE13AEA00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E068A2C91BE13B4A00055E35 /* Agent 31 tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31 tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E068A2CB1BE13B4A00055E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E068A2CD1BE13B4A00055E35 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		E068A2CF1BE13B4A00055E35 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E068A2D11BE13B4A00055E35 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		E068A2D31BE13B4A00055E35 /* Game.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Game.xcassets; sourceTree = "<group>"; };
+		E068A2D61BE13B4A00055E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E068A2D81BE13B4A00055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E068A2DA1BE13B4A00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E068A2DF1BE13B4A00055E35 /* Agent 31 tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Agent 31 tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E068A2E31BE13B4A00055E35 /* Agent_31_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent_31_tvOSTests.swift; sourceTree = "<group>"; };
+		E068A2E51BE13B4A00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E068A2EE1BE13BA700055E35 /* Agent 31 watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31 watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E068A2F11BE13BA700055E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E068A2F31BE13BA700055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E068A2F51BE13BA700055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E068A2FA1BE13BA700055E35 /* Agent 31 watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Agent 31 watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E068A3001BE13BA700055E35 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E068A3011BE13BA700055E35 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E068A3031BE13BA700055E35 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E068A3051BE13BA800055E35 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		E068A3071BE13BA800055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E068A3091BE13BA800055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +390,41 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6B2D98C31BB1C6E8005B342E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2A31BE13AEA00055E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2B51BE13AEA00055E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2C61BE13B4A00055E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2DC1BE13B4A00055E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2F71BE13BA700055E35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -700,7 +843,11 @@
 			isa = PBXGroup;
 			children = (
 				6B2D98AF1BB1C6E7005B342E /* Agent 31 */,
-				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
+				E068A3151BE1403600055E35 /* Tests */,
+				E068A2A71BE13AEA00055E35 /* Agent 31 OS X */,
+				E068A2CA1BE13B4A00055E35 /* Agent 31 tvOS */,
+				E068A2EF1BE13BA700055E35 /* Agent 31 watchOS */,
+				E068A2FE1BE13BA700055E35 /* Agent 31 watchOS Extension */,
 				6B2D98AE1BB1C6E7005B342E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -710,6 +857,12 @@
 			children = (
 				6B2D98AD1BB1C6E7005B342E /* Agent 31.app */,
 				6B2D98C61BB1C6E8005B342E /* Agent 31Tests.xctest */,
+				E068A2A61BE13AEA00055E35 /* Agent 31 OS X.app */,
+				E068A2B81BE13AEA00055E35 /* Agent 31 OS XTests.xctest */,
+				E068A2C91BE13B4A00055E35 /* Agent 31 tvOS.app */,
+				E068A2DF1BE13B4A00055E35 /* Agent 31 tvOSTests.xctest */,
+				E068A2EE1BE13BA700055E35 /* Agent 31 watchOS.app */,
+				E068A2FA1BE13BA700055E35 /* Agent 31 watchOS Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -777,6 +930,93 @@
 			name = General;
 			sourceTree = "<group>";
 		};
+		E068A2A71BE13AEA00055E35 /* Agent 31 OS X */ = {
+			isa = PBXGroup;
+			children = (
+				E068A2A81BE13AEA00055E35 /* AppDelegate.swift */,
+				E068A2AA1BE13AEA00055E35 /* GameScene.swift */,
+				E068A2AC1BE13AEA00055E35 /* GameScene.sks */,
+				E068A2AE1BE13AEA00055E35 /* Assets.xcassets */,
+				E068A2B01BE13AEA00055E35 /* MainMenu.xib */,
+				E068A2B31BE13AEA00055E35 /* Info.plist */,
+			);
+			path = "Agent 31 OS X";
+			sourceTree = "<group>";
+		};
+		E068A2BB1BE13AEA00055E35 /* Agent 31 OS XTests */ = {
+			isa = PBXGroup;
+			children = (
+				E068A2BC1BE13AEA00055E35 /* Agent_31_OS_XTests.swift */,
+				E068A2BE1BE13AEA00055E35 /* Info.plist */,
+			);
+			path = "Agent 31 OS XTests";
+			sourceTree = "<group>";
+		};
+		E068A2CA1BE13B4A00055E35 /* Agent 31 tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				E068A2CB1BE13B4A00055E35 /* AppDelegate.swift */,
+				E068A2CD1BE13B4A00055E35 /* GameScene.sks */,
+				E068A2CF1BE13B4A00055E35 /* GameScene.swift */,
+				E068A2D11BE13B4A00055E35 /* GameViewController.swift */,
+				E068A2D31BE13B4A00055E35 /* Game.xcassets */,
+				E068A2D51BE13B4A00055E35 /* Main.storyboard */,
+				E068A2D81BE13B4A00055E35 /* Assets.xcassets */,
+				E068A2DA1BE13B4A00055E35 /* Info.plist */,
+			);
+			path = "Agent 31 tvOS";
+			sourceTree = "<group>";
+		};
+		E068A2E21BE13B4A00055E35 /* Agent 31 tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				E068A2E31BE13B4A00055E35 /* Agent_31_tvOSTests.swift */,
+				E068A2E51BE13B4A00055E35 /* Info.plist */,
+			);
+			path = "Agent 31 tvOSTests";
+			sourceTree = "<group>";
+		};
+		E068A2EF1BE13BA700055E35 /* Agent 31 watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				E068A2F01BE13BA700055E35 /* Interface.storyboard */,
+				E068A2F31BE13BA700055E35 /* Assets.xcassets */,
+				E068A2F51BE13BA700055E35 /* Info.plist */,
+			);
+			path = "Agent 31 watchOS";
+			sourceTree = "<group>";
+		};
+		E068A2FE1BE13BA700055E35 /* Agent 31 watchOS Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E068A3011BE13BA700055E35 /* InterfaceController.swift */,
+				E068A3031BE13BA700055E35 /* ExtensionDelegate.swift */,
+				E068A3051BE13BA800055E35 /* NotificationController.swift */,
+				E068A3071BE13BA800055E35 /* Assets.xcassets */,
+				E068A3091BE13BA800055E35 /* Info.plist */,
+				E068A2FF1BE13BA700055E35 /* Supporting Files */,
+			);
+			path = "Agent 31 watchOS Extension";
+			sourceTree = "<group>";
+		};
+		E068A2FF1BE13BA700055E35 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E068A3001BE13BA700055E35 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E068A3151BE1403600055E35 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
+				E068A2BB1BE13AEA00055E35 /* Agent 31 OS XTests */,
+				E068A2E21BE13B4A00055E35 /* Agent 31 tvOSTests */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -787,10 +1027,12 @@
 				6B2D98A91BB1C6E7005B342E /* Sources */,
 				6B2D98AA1BB1C6E7005B342E /* Frameworks */,
 				6B2D98AB1BB1C6E7005B342E /* Resources */,
+				E068A3141BE13BA800055E35 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E068A30B1BE13BA800055E35 /* PBXTargetDependency */,
 			);
 			name = "Agent 31";
 			productName = "Agent 31";
@@ -815,6 +1057,110 @@
 			productReference = 6B2D98C61BB1C6E8005B342E /* Agent 31Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E068A2A51BE13AEA00055E35 /* Agent 31 OS X */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E068A2C31BE13AEA00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 OS X" */;
+			buildPhases = (
+				E068A2A21BE13AEA00055E35 /* Sources */,
+				E068A2A31BE13AEA00055E35 /* Frameworks */,
+				E068A2A41BE13AEA00055E35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Agent 31 OS X";
+			productName = "Agent 31 OS X";
+			productReference = E068A2A61BE13AEA00055E35 /* Agent 31 OS X.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E068A2B71BE13AEA00055E35 /* Agent 31 OS XTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E068A2C41BE13AEA00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 OS XTests" */;
+			buildPhases = (
+				E068A2B41BE13AEA00055E35 /* Sources */,
+				E068A2B51BE13AEA00055E35 /* Frameworks */,
+				E068A2B61BE13AEA00055E35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E068A2BA1BE13AEA00055E35 /* PBXTargetDependency */,
+			);
+			name = "Agent 31 OS XTests";
+			productName = "Agent 31 OS XTests";
+			productReference = E068A2B81BE13AEA00055E35 /* Agent 31 OS XTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E068A2C81BE13B4A00055E35 /* Agent 31 tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E068A2E61BE13B4A00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 tvOS" */;
+			buildPhases = (
+				E068A2C51BE13B4A00055E35 /* Sources */,
+				E068A2C61BE13B4A00055E35 /* Frameworks */,
+				E068A2C71BE13B4A00055E35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Agent 31 tvOS";
+			productName = "Agent 31 tvOS";
+			productReference = E068A2C91BE13B4A00055E35 /* Agent 31 tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E068A2DE1BE13B4A00055E35 /* Agent 31 tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E068A2E91BE13B4A00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 tvOSTests" */;
+			buildPhases = (
+				E068A2DB1BE13B4A00055E35 /* Sources */,
+				E068A2DC1BE13B4A00055E35 /* Frameworks */,
+				E068A2DD1BE13B4A00055E35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E068A2E11BE13B4A00055E35 /* PBXTargetDependency */,
+			);
+			name = "Agent 31 tvOSTests";
+			productName = "Agent 31 tvOSTests";
+			productReference = E068A2DF1BE13B4A00055E35 /* Agent 31 tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E068A2ED1BE13BA700055E35 /* Agent 31 watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E068A3111BE13BA800055E35 /* Build configuration list for PBXNativeTarget "Agent 31 watchOS" */;
+			buildPhases = (
+				E068A2EC1BE13BA700055E35 /* Resources */,
+				E068A3101BE13BA800055E35 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E068A2FD1BE13BA700055E35 /* PBXTargetDependency */,
+			);
+			name = "Agent 31 watchOS";
+			productName = "Agent 31 watchOS";
+			productReference = E068A2EE1BE13BA700055E35 /* Agent 31 watchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E068A2F91BE13BA700055E35 /* Agent 31 watchOS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E068A30D1BE13BA800055E35 /* Build configuration list for PBXNativeTarget "Agent 31 watchOS Extension" */;
+			buildPhases = (
+				E068A2F61BE13BA700055E35 /* Sources */,
+				E068A2F71BE13BA700055E35 /* Frameworks */,
+				E068A2F81BE13BA700055E35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Agent 31 watchOS Extension";
+			productName = "Agent 31 watchOS Extension";
+			productReference = E068A2FA1BE13BA700055E35 /* Agent 31 watchOS Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -833,6 +1179,26 @@
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 6B2D98AC1BB1C6E7005B342E;
 					};
+					E068A2A51BE13AEA00055E35 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					E068A2B71BE13AEA00055E35 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = E068A2A51BE13AEA00055E35;
+					};
+					E068A2C81BE13B4A00055E35 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					E068A2DE1BE13B4A00055E35 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = E068A2C81BE13B4A00055E35;
+					};
+					E068A2ED1BE13BA700055E35 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					E068A2F91BE13BA700055E35 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 				};
 			};
 			buildConfigurationList = 6B2D98A81BB1C6E7005B342E /* Build configuration list for PBXProject "Agent 31" */;
@@ -850,6 +1216,12 @@
 			targets = (
 				6B2D98AC1BB1C6E7005B342E /* Agent 31 */,
 				6B2D98C51BB1C6E8005B342E /* Agent 31Tests */,
+				E068A2A51BE13AEA00055E35 /* Agent 31 OS X */,
+				E068A2B71BE13AEA00055E35 /* Agent 31 OS XTests */,
+				E068A2C81BE13B4A00055E35 /* Agent 31 tvOS */,
+				E068A2DE1BE13B4A00055E35 /* Agent 31 tvOSTests */,
+				E068A2ED1BE13BA700055E35 /* Agent 31 watchOS */,
+				E068A2F91BE13BA700055E35 /* Agent 31 watchOS Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -957,6 +1329,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E068A2A41BE13AEA00055E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2AF1BE13AEA00055E35 /* Assets.xcassets in Resources */,
+				E068A2AD1BE13AEA00055E35 /* GameScene.sks in Resources */,
+				E068A2B21BE13AEA00055E35 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2B61BE13AEA00055E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2C71BE13B4A00055E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2D71BE13B4A00055E35 /* Main.storyboard in Resources */,
+				E068A2CE1BE13B4A00055E35 /* GameScene.sks in Resources */,
+				E068A2D91BE13B4A00055E35 /* Assets.xcassets in Resources */,
+				E068A2D41BE13B4A00055E35 /* Game.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2DD1BE13B4A00055E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2EC1BE13BA700055E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2F41BE13BA700055E35 /* Assets.xcassets in Resources */,
+				E068A2F21BE13BA700055E35 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2F81BE13BA700055E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A3081BE13BA800055E35 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1011,6 +1435,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E068A2A21BE13AEA00055E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2AB1BE13AEA00055E35 /* GameScene.swift in Sources */,
+				E068A2A91BE13AEA00055E35 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2B41BE13AEA00055E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2BD1BE13AEA00055E35 /* Agent_31_OS_XTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2C51BE13B4A00055E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2D01BE13B4A00055E35 /* GameScene.swift in Sources */,
+				E068A2D21BE13B4A00055E35 /* GameViewController.swift in Sources */,
+				E068A2CC1BE13B4A00055E35 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2DB1BE13B4A00055E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A2E41BE13B4A00055E35 /* Agent_31_tvOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E068A2F61BE13BA700055E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E068A3061BE13BA800055E35 /* NotificationController.swift in Sources */,
+				E068A3041BE13BA800055E35 /* ExtensionDelegate.swift in Sources */,
+				E068A3021BE13BA700055E35 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1018,6 +1487,26 @@
 			isa = PBXTargetDependency;
 			target = 6B2D98AC1BB1C6E7005B342E /* Agent 31 */;
 			targetProxy = 6B2D98C71BB1C6E8005B342E /* PBXContainerItemProxy */;
+		};
+		E068A2BA1BE13AEA00055E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E068A2A51BE13AEA00055E35 /* Agent 31 OS X */;
+			targetProxy = E068A2B91BE13AEA00055E35 /* PBXContainerItemProxy */;
+		};
+		E068A2E11BE13B4A00055E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E068A2C81BE13B4A00055E35 /* Agent 31 tvOS */;
+			targetProxy = E068A2E01BE13B4A00055E35 /* PBXContainerItemProxy */;
+		};
+		E068A2FD1BE13BA700055E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E068A2F91BE13BA700055E35 /* Agent 31 watchOS Extension */;
+			targetProxy = E068A2FC1BE13BA700055E35 /* PBXContainerItemProxy */;
+		};
+		E068A30B1BE13BA800055E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E068A2ED1BE13BA700055E35 /* Agent 31 watchOS */;
+			targetProxy = E068A30A1BE13BA800055E35 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1036,6 +1525,30 @@
 				6B2D98C01BB1C6E7005B342E /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		E068A2B01BE13AEA00055E35 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E068A2B11BE13AEA00055E35 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		E068A2D51BE13B4A00055E35 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E068A2D61BE13B4A00055E35 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E068A2F01BE13BA700055E35 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E068A2F11BE13BA700055E35 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1190,6 +1703,194 @@
 			};
 			name = Release;
 		};
+		E068A2BF1BE13AEA00055E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Agent 31 OS X/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-OS-X";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E068A2C01BE13AEA00055E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Agent 31 OS X/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-OS-X";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E068A2C11BE13AEA00055E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Agent 31 OS XTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-OS-XTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Agent 31 OS X.app/Contents/MacOS/Agent 31 OS X";
+			};
+			name = Debug;
+		};
+		E068A2C21BE13AEA00055E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Agent 31 OS XTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-OS-XTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Agent 31 OS X.app/Contents/MacOS/Agent 31 OS X";
+			};
+			name = Release;
+		};
+		E068A2E71BE13B4A00055E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Agent 31 tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		E068A2E81BE13B4A00055E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Agent 31 tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		E068A2EA1BE13B4A00055E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Agent 31 tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Agent 31 tvOS.app/Agent 31 tvOS";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		E068A2EB1BE13B4A00055E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Agent 31 tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "BEPiD.Agent-31-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Agent 31 tvOS.app/Agent 31 tvOS";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		E068A30E1BE13BA800055E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Agent 31 watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HenriqueDutra.Agent-31.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		E068A30F1BE13BA800055E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Agent 31 watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HenriqueDutra.Agent-31.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		E068A3121BE13BA800055E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = Agent_31_watchOS_Extension;
+				INFOPLIST_FILE = "Agent 31 watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "HenriqueDutra.Agent-31.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		E068A3131BE13BA800055E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = Agent_31_watchOS_Extension;
+				INFOPLIST_FILE = "Agent 31 watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "HenriqueDutra.Agent-31.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1216,6 +1917,60 @@
 			buildConfigurations = (
 				6B2D98D41BB1C6E8005B342E /* Debug */,
 				6B2D98D51BB1C6E8005B342E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E068A2C31BE13AEA00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 OS X" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E068A2BF1BE13AEA00055E35 /* Debug */,
+				E068A2C01BE13AEA00055E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E068A2C41BE13AEA00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 OS XTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E068A2C11BE13AEA00055E35 /* Debug */,
+				E068A2C21BE13AEA00055E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E068A2E61BE13B4A00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E068A2E71BE13B4A00055E35 /* Debug */,
+				E068A2E81BE13B4A00055E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E068A2E91BE13B4A00055E35 /* Build configuration list for PBXNativeTarget "Agent 31 tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E068A2EA1BE13B4A00055E35 /* Debug */,
+				E068A2EB1BE13B4A00055E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E068A30D1BE13BA800055E35 /* Build configuration list for PBXNativeTarget "Agent 31 watchOS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E068A30E1BE13BA800055E35 /* Debug */,
+				E068A30F1BE13BA800055E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E068A3111BE13BA800055E35 /* Build configuration list for PBXNativeTarget "Agent 31 watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E068A3121BE13BA800055E35 /* Debug */,
+				E068A3131BE13BA800055E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
