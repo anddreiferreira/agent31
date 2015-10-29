@@ -49,7 +49,7 @@ class Agent: Character {
         self.runningTorso = actionWithAnimationName("troncoAndando", numberOfImages: 7, timePerTexture: 0.1)
         self.runningLegs = actionWithAnimationName("pernasAndando", numberOfImages: 7, timePerTexture: 0.1)
         
-        self.attackingTorso = actionWithAnimationName("", numberOfImages: 3, timePerTexture: 0.1)
+        self.attackingTorso = actionWithAnimationName("troncoAtacando", numberOfImages: 3, timePerTexture: 0.08)
         
         
     }

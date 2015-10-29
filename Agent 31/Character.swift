@@ -144,6 +144,12 @@ class Character: GameObject {
         }
     }
    
+    func attackingAnimationOnce(){
+        if(self.attackingTorso != nil){
+            self.torso?.runAction(self.attackingTorso!)
+        }
+    }
+    
     func changeVelocity(xvelocity: CGFloat){
         let futureVelocity = self.velocity + xvelocity/2.0
         
@@ -181,21 +187,14 @@ class Character: GameObject {
             invertSpriteHorizontally(false)
         }
     }
-    
-    func attack(){
-        debugPrint("Character will attack")
-        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y)
-        let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
-        bullet.fire()
-        
-    }
-    
+
     func shoot(){
-        debugPrint("oyesando")
-        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y)
-        debugPrint("Character orientation === \(self.orientation!)")
+        self.attackingAnimationOnce()
+        
+        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y*0.85)
         let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
         self.parent?.addChild(bullet)
+        
         bullet.fire()
     }
 }
