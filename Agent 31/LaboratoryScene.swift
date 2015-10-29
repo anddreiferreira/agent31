@@ -44,7 +44,9 @@ class LaboratoryScene: SKScene {
         // Creating a border so the player won't fall off the screen
         let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         self.physicsBody = borderBody
-        self.physicsBody?.friction = 2.0
+        self.physicsBody?.categoryBitMask = ColliderType.None.rawValue | ColliderType.Bullet.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue
         
         // Gravity
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
@@ -102,7 +104,7 @@ class LaboratoryScene: SKScene {
             else if node.name == "goToCity" {
                 buttonTapped(node)
 //                self.agentGoToCity()
-                self.laboratoryGameLayer.agent31Lab?.walkingAnimationOnce()
+                self.laboratoryGameLayer.agent31Lab?.shoot()
             }
             else if node.name == "deskPlaceholder" {
             

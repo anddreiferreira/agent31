@@ -85,7 +85,7 @@ class Character: GameObject {
     
     private func initializeCharacterPhysicsBody(){
         self.physicsBody?.affectedByGravity = true
-        self.physicsBody?.mass = 1.0
+        self.physicsBody?.mass = 50.0
         self.physicsBody?.restitution = 0.0
     }
     
@@ -117,7 +117,7 @@ class Character: GameObject {
     
     func jump(){
         jumpAnimationOnce()
-        self.physicsBody?.applyImpulse(CGVectorMake(0, 400))
+        self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
     }
     
     
@@ -166,13 +166,36 @@ class Character: GameObject {
     }
     
     func invertAccordingToVelocity(){
-        if((self.velocity > 0.0 && self.orientation != TURNED_RIGHT) || (self.velocity < 0.0 && self.orientation != TURNED_LEFT)){
+        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
             
             invertSpriteHorizontally(true)
+            self.orientation = TURNED_RIGHT
+            
+        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
+
+            invertSpriteHorizontally(true)
+            self.orientation = TURNED_LEFT
             
         }else{
             
             invertSpriteHorizontally(false)
         }
+    }
+    
+    func attack(){
+        debugPrint("Character will attack")
+        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y)
+        let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
+        bullet.fire()
+        
+    }
+    
+    func shoot(){
+        debugPrint("oyesando")
+        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y)
+        debugPrint("Character orientation === \(self.orientation!)")
+        let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
+        self.parent?.addChild(bullet)
+        bullet.fire()
     }
 }
