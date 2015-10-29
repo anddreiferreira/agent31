@@ -144,6 +144,7 @@ class LaboratoryGameLayer: SKNode {
         if(self.agent31Lab?.velocity != 0){
             if(self.analogStick?.data.velocity == CGPointZero){
                 self.agent31Lab?.changeVelocity(-1)
+                self.agent31Lab?.lookUp(0)
             }else{
                 self.agent31Lab?.run()
             }

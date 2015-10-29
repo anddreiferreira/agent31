@@ -13,6 +13,7 @@ class Character: GameObject {
     
     var torso: SKSpriteNode?
     var orientation: Int?
+    var lookingUp: Bool = false
     var running: Bool = false
 
     
@@ -179,6 +180,9 @@ class Character: GameObject {
     func lookUp(yvelocity: CGFloat){
         if(yvelocity >= 48){
             lookUpAnimationOnce()
+            self.lookingUp = true
+        }else{
+            self.lookingUp = false
         }
     }
     
@@ -207,12 +211,24 @@ class Character: GameObject {
     }
 
     func shoot(){
-        self.attackingAnimationOnce()
+        if(lookingUp == false){
+            self.attackingAnimationOnce()
+            
+            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y*0.85)
+            let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
+            self.parent?.addChild(bullet)
+            
+            bullet.fire()
+            
+        }else if(lookingUp == true){
+            
+            self.attackingUpAnimationOnce()
+            let initialPosition = CGPointMake(self.position.x, self.size.height*1.1)
+            let bullet = Bullet(initialPosition: initialPosition, orientation: TURNED_UP, zPosition: 3)
+            self.parent?.addChild(bullet)
+            
+            bullet.fire()
+        }
         
-        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y*0.85)
-        let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
-        self.parent?.addChild(bullet)
-        
-        bullet.fire()
     }
 }

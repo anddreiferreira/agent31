@@ -65,7 +65,8 @@ class Bullet : GameObject {
             self.invertSpriteHorizontally(true)
             return CGVectorMake(-1000.0, 0.0)
         }else if(orientation == TURNED_UP){
-            return CGVectorMake(0, 500.0)
+            self.zRotation = CGFloat(M_PI/2)
+            return CGVectorMake(0, 1000.0)
         }else{
             debugPrint("Error defining Bullet direction")
             return CGVectorMake(0, 0)
