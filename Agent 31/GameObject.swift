@@ -35,9 +35,9 @@ class GameObject: SKSpriteNode {
     
     func invertSpriteHorizontally(option: Bool) -> Void{
         if(option == true){
-            self.xScale = -fabs(self.xScale)
+            self.xScale = -self.xScale
         }else{
-            self.xScale = fabs(self.xScale)
+            
         }
     }
     
