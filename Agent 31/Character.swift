@@ -14,6 +14,7 @@ class Character: GameObject {
     var torso: SKSpriteNode?
     var orientation: Int?
     var lookingUp: Bool = false
+    var attacking: Bool = false
     var running: Bool = false
 
     
@@ -148,18 +149,22 @@ class Character: GameObject {
    
     func attackingAnimationOnce(){
         if(self.attackingTorso != nil){
-            self.torso?.runAction(self.attackingTorso!)
+            self.torso?.runAction(self.attackingTorso!, completion: {
+                self.attacking = false
+            })
         }
     }
     
     func attackingUpAnimationOnce(){
         if(self.attackingUpTorso != nil){
-            self.torso?.runAction(self.attackingUpTorso!)
+            self.torso?.runAction(self.attackingUpTorso!, completion:  {
+                self.attacking = false
+            })
         }
     }
     
     func lookUpAnimationOnce(){
-        if(self.lookingUpTorso != nil){
+        if(self.lookingUpTorso != nil && self.attacking == false){
             self.torso?.runAction(self.lookingUpTorso!)
         }
     }
@@ -211,6 +216,7 @@ class Character: GameObject {
     }
 
     func shoot(){
+        self.attacking = true
         if(lookingUp == false){
             self.attackingAnimationOnce()
             
