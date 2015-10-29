@@ -109,6 +109,9 @@ class LaboratoryGameLayer: SKNode {
             let xvelocity = analogStick.data.velocity.x
             self.agent31Lab!.changeVelocity(xvelocity)
             
+            let yvelocity = analogStick.data.velocity.y
+            self.agent31Lab!.lookUp(yvelocity)
+            
         }
         
         addChild(analogStick!)        

@@ -26,6 +26,7 @@ class Character: GameObject {
     var runningTorso: SKAction?
     var runningLegs: SKAction?
     var attackingTorso: SKAction?
+    var lookingUpTorso: SKAction?
     var attackingUpTorso: SKAction?
     var stoppedTorso: SKAction?
     var stoppedLegs: SKAction?
@@ -100,6 +101,7 @@ class Character: GameObject {
         self.runningTorso = nil
         self.runningLegs = nil
         
+        self.lookingUpTorso = nil
         self.attackingUpTorso = nil
         self.attackingTorso = nil
         
@@ -108,7 +110,6 @@ class Character: GameObject {
         
         self.getHitTorso = nil
         self.getHitLegs = nil
-        
         
 //        self.actualTorso = nil
 //        self.actualLegs = nil
@@ -150,6 +151,18 @@ class Character: GameObject {
         }
     }
     
+    func attackingUpAnimationOnce(){
+        if(self.attackingUpTorso != nil){
+            self.torso?.runAction(self.attackingUpTorso!)
+        }
+    }
+    
+    func lookUpAnimationOnce(){
+        if(self.lookingUpTorso != nil){
+            self.torso?.runAction(self.lookingUpTorso!)
+        }
+    }
+    
     func changeVelocity(xvelocity: CGFloat){
         let futureVelocity = self.velocity + xvelocity/2.0
         
@@ -161,6 +174,12 @@ class Character: GameObject {
             self.velocity = MIN_CHARACTER_VELOCITY
         }
         
+    }
+    
+    func lookUp(yvelocity: CGFloat){
+        if(yvelocity >= 48){
+            lookUpAnimationOnce()
+        }
     }
     
     func run(){
@@ -183,7 +202,6 @@ class Character: GameObject {
             self.orientation = TURNED_LEFT
             
         }else{
-            
             invertSpriteHorizontally(false)
         }
     }
