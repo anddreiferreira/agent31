@@ -132,3 +132,15 @@ func repeatActionForeverWithAnimationName(mainText: String, numberOfImages: Int,
     
     return repeatForever
 }
+
+// MARK: Notification
+func scheduleNotification(launchInterval: NSTimeInterval, textBody: String, badge: Int)
+{
+    let notification:UILocalNotification = UILocalNotification()
+    notification.fireDate = NSDate().dateByAddingTimeInterval(launchInterval)
+    notification.timeZone = NSTimeZone.defaultTimeZone()
+    notification.alertBody = textBody
+    notification.applicationIconBadgeNumber = badge
+    notification.soundName = UILocalNotificationDefaultSoundName
+    UIApplication.sharedApplication().scheduleLocalNotification(notification)
+}
