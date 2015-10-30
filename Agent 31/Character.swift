@@ -185,6 +185,7 @@ class Character: GameObject {
     func lookUp(yvelocity: CGFloat){
         if(yvelocity >= 48){
             lookUpAnimationOnce()
+            self.velocity /= 2
             self.lookingUp = true
         }else{
             self.lookingUp = false
