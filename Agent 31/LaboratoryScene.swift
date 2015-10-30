@@ -54,7 +54,7 @@ class LaboratoryScene: SKScene {
 
     func initiateNodes(){
     
-        var algo = self.childNodeWithName("headerLab")
+        let algo = self.childNodeWithName("headerLab")
         algo?.alpha = 0.3
         algo?.removeFromParent()
         
@@ -105,8 +105,8 @@ class LaboratoryScene: SKScene {
                 self.laboratoryGameLayer.agent31Lab?.shoot()
             }else if node.name == "goToCity" {
                 buttonTapped(node)
-                self.agentGoToCity()
-//                self.goToTestCity()
+//                self.agentGoToCity()
+                self.goToTestCity()
             }else if node.name == "deskPlaceholder" {
             
                 self.laboratoryGameLayer!.messageTapObjectButton(0)

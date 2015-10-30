@@ -59,7 +59,7 @@ class Character: GameObject {
     private func setGeneralAttributesForCharacter(){
         
         // Provisory Scale
-        self.setScale(4.0)
+        self.setScale(3.0)
         
         // Initialize orientation as right
         self.orientation = TURNED_RIGHT

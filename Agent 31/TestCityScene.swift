@@ -56,11 +56,17 @@ class TestCityScene: SKScene {
             
             if node.name == "jumpButton" {
                 buttonTapped(node)
+                self.cityGameLayer.agent31!.jump()
+            }else if node.name == "shootButton"{
+                buttonTapped(node)
+                self.cityGameLayer.agent31!.shoot()
             }
-            
-            
         }
         
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        self.cityGameLayer.conformAgentToAnalogic()
     }
 
 }
