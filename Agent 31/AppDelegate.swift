@@ -21,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+        // Check for internet connection availability
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            debugPrint("Offline, do not load the game")
+        case .Online:
+            debugPrint("Online, load the game")
+        }
+        
         // Override point for customization after application launch.
         return true
     }
@@ -54,4 +63,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
