@@ -130,7 +130,7 @@ class Character: GameObject {
     }
     
     func jumpAnimationOnce(){
-        if(self.jumpingTorso != nil && self.jumpingLegs != nil){
+        if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
             self.runAction(self.jumpingLegs!)
             self.torso?.runAction(self.jumpingTorso!)
         }
