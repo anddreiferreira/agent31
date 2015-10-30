@@ -16,7 +16,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var skView: SKView!
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(aNotification: NSNotification)
+    {
+        
+        // Check for internet connection availability
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            debugPrint("Offline, do not load the game")
+        case .Online:
+            debugPrint("Online, load the game")
+        }
+        
         /* Pick a size for the scene */
         if let scene = GameScene(fileNamed:"GameScene") {
             /* Set the scale mode to scale to fit the window */
