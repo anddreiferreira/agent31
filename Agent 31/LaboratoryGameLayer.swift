@@ -10,7 +10,6 @@ import SpriteKit
 
 class LaboratoryGameLayer: SKNode {
 
-    var testCharacter: Character?
     var agent31Lab : Agent?
     private var analogStick : AnalogStick?
     var placeHolder : SKSpriteNode?
@@ -36,7 +35,6 @@ class LaboratoryGameLayer: SKNode {
         
         self.loadButtons()
         self.configureAnalogStick()
-        self.putObjectPlaceHolder()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,39 +44,36 @@ class LaboratoryGameLayer: SKNode {
     private func loadButtons(){
     
         jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(569, 375-206), zPosition: 100, name: "jumpButtonLab")
+        self.addChild(jumpButtonLab!)
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-60), zPosition: 100, name: "goToCity")
-
+        self.addChild(goToCity!)
+        
         shootButton = createSpriteNode("shootButton", position: CGPointMake(479, 375-274), zPosition: 100, name: "shootButton")
+        self.addChild(shootButton!)
     }
     
     private func putObjectPlaceHolder(){
 
-        desk = Desk(position: CGPointMake(100, 220))
-        computer = Computer(position: CGPointMake(-100, 220))
-        television = Television(position: CGPointMake(-200, 220))
-        trainingCenter = TrainingCenter(position: CGPointMake(-300, 220))
-        gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-400, 220))
+        self.desk = Desk(position: CGPointMake(100, 220))
+        self.computer = Computer(position: CGPointMake(-100, 220))
+        self.television = Television(position: CGPointMake(-200, 220))
+        self.trainingCenter = TrainingCenter(position: CGPointMake(-300, 220))
+        self.gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-400, 220))
 
-    }
-    
-    func putGameLayer(){
-        
-        putGround()
-//        putTestCharacter()
-        putAgent()
-
-        // Buttons
-        self.addChild(jumpButtonLab!)
-        self.addChild(goToCity!)
-        self.addChild(shootButton!)
-        
         // Objetcs
         self.addChild(desk!)
         self.addChild(computer!)
         self.addChild(television!)
         self.addChild(gunDevelopmentCenter!)
         self.addChild(trainingCenter!)
+    }
+    
+    func putGameLayer(){
+        
+        self.putGround()
+        self.putAgent()
+        self.putObjectPlaceHolder()
         
     }
     
@@ -98,11 +93,6 @@ class LaboratoryGameLayer: SKNode {
         self.addChild(agent31Lab!)
     }
     
-    func putTestCharacter(){
-        //        self.testCharacter = Character(imageName: "pernasParado1")
-        self.addChild(self.testCharacter!)
-    }
-
     private func configureAnalogStick(){
         // Initialize an analog stick
         analogStick = AnalogStick()
@@ -139,7 +129,7 @@ class LaboratoryGameLayer: SKNode {
    
     func removeTapObjectButton(){
     
-        tapObjectButton?.removeFromParent()
+        self.tapObjectButton?.removeFromParent()
         
     }
     
