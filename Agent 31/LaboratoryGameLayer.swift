@@ -17,6 +17,7 @@ class LaboratoryGameLayer: SKNode {
 
     private var jumpButtonLab : SKSpriteNode?
     private var goToCity : SKSpriteNode?
+    private var shootButton: SKSpriteNode?
     
     var desk : Desk?
     var computer : Computer?
@@ -44,10 +45,11 @@ class LaboratoryGameLayer: SKNode {
     
     private func loadButtons(){
     
-        jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(537, 375-274), zPosition: 100, name: "jumpButtonLab")
+        jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(569, 375-206), zPosition: 100, name: "jumpButtonLab")
         
-        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-212), zPosition: 100, name: "goToCity")
+        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-60), zPosition: 100, name: "goToCity")
 
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(479, 375-274), zPosition: 100, name: "shootButton")
     }
     
     private func putObjectPlaceHolder(){
@@ -69,6 +71,7 @@ class LaboratoryGameLayer: SKNode {
         // Buttons
         self.addChild(jumpButtonLab!)
         self.addChild(goToCity!)
+        self.addChild(shootButton!)
         
         // Objetcs
         self.addChild(desk!)

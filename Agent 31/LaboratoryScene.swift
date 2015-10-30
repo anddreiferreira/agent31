@@ -100,18 +100,17 @@ class LaboratoryScene: SKScene {
                 //print("Agent jump")
                 buttonTapped(node)
                 self.laboratoryGameLayer.agent31Lab?.jump()
-            }
-            else if node.name == "goToCity" {
+            }else if node.name == "shootButton"{
                 buttonTapped(node)
-//                self.agentGoToCity()
                 self.laboratoryGameLayer.agent31Lab?.shoot()
-            }
-            else if node.name == "deskPlaceholder" {
+            }else if node.name == "goToCity" {
+                buttonTapped(node)
+                self.agentGoToCity()
+            }else if node.name == "deskPlaceholder" {
             
                 self.laboratoryGameLayer!.messageTapObjectButton(0)
                 possibileObjectNumber = 0
-            }
-            else if node.name == "tapHereButton" {
+            }else if node.name == "tapHereButton" {
                 
                 self.laboratoryGameLayer!.removeTapObjectButton()
                 self.putObjectLayer()
