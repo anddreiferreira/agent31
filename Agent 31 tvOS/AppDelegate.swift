@@ -14,7 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        // Check for internet connection availability
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            debugPrint("Offline, do not load the game")
+        case .Online:
+            debugPrint("Online, load the game")
+        }
+        
         // Override point for customization after application launch.
         return true
     }
