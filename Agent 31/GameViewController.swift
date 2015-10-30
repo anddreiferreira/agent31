@@ -38,6 +38,20 @@ class GameViewController: UIViewController {
 //        ckhelper.saveResourcesProperties(99, metal: 90, diamond: 80)
 //        ckhelper.saveGunProperties("Kalashnikov", level: 7, price: 200, blocked: false, secret: false, time: 200)
 //        ckhelper.saveGunProperties("AK47", level: 8, price: 100, blocked: false, secret: false, time: 200)
+//        let character = CharacterData()
+//        ckhelper.fetchCharacterProperties(character)
+//        
+//        let delay = 1.0
+//        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+//        dispatch_after(time, dispatch_get_main_queue()) {
+//            print("Character JUMP = \(character.jump)")
+//            print("Character SPEED = \(character.speed)")
+//            print("Character SHOOTINGRANGE = \(character.shootingRange)")
+//            print("Character SHOOTINGPOWER = \(character.shootingPower)")
+//            print("Character BACKPACK = \(character.backPack)")
+//            print("Character LEVEL = \(character.level)")
+//
+//        }
         
         let scene = LaboratoryScene(size: CGSize(width: 667, height: 375))
         

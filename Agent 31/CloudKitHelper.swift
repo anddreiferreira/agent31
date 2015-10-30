@@ -46,15 +46,42 @@ extension CloudKitHelper {
                     savedRecord, sError in
                     
                     if let sErr = sError {
-                        print( "Save Error - method saveCharacterProperties in CloudKitHelper" ) //Fazer o tratamento adequado
-                        print( sErr.description )
+                        debugPrint( "Save Error - method saveCharacterProperties in CloudKitHelper" ) //Fazer o tratamento adequado
+                        debugPrint( sErr.description )
                     } else {
-                        print( "Character record updated successful" )
+                        debugPrint( "Character record updated successful" )
                     }
                 }))
             }
             
         }))
+    }
+    
+    func fetchCharacterProperties(character: CharacterData) //-> CharacterData
+    {
+//        let character = CharacterData()
+        
+        self.privateDataBase.fetchRecordWithID(self.characterRecordId, completionHandler: ({
+            fetchedRecord, error in
+            
+            if let err = error {
+                debugPrint("Error fetching data - method fetchCharacterProperties in CloudKitHelper")
+                debugPrint(err.description)
+            } else {
+                print( "Fetching Data")
+                character.jump = fetchedRecord?.objectForKey("Jump") as! Int
+                character.backPack = fetchedRecord?.objectForKey("BackPack") as! Int
+                character.level = fetchedRecord?.objectForKey("Level") as! Int
+                character.shootingPower = fetchedRecord?.objectForKey("ShootingPower") as! Int
+                character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
+                character.speed = fetchedRecord?.objectForKey("Speed") as! Int
+//                CharacterData.printCharacter(character)
+                
+                
+            }
+        }))
+        
+        print( "PORRAA" )
     }
     
     private func createCharacterRecord( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int ) {
@@ -70,10 +97,10 @@ extension CloudKitHelper {
         self.privateDataBase.saveRecord( newRecord, completionHandler: ({
             savedRecord, error in
             if let err = error {
-                print( "Save Error - method createCharacterRecord in CloudKitHelper" ) // Fazer tratamento adequado
-                print( err.description )
+                debugPrint( "Save Error - method createCharacterRecord in CloudKitHelper" ) // Fazer tratamento adequado
+                debugPrint( err.description )
             } else {
-                print( "Save character record successful" )
+                debugPrint( "Save character record successful" )
             }
         }))
     }
@@ -104,10 +131,10 @@ extension CloudKitHelper {
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRec, sError in
                     if let sErr = sError {
-                        print( "Error trying to update gun" ) // Fazer tratamento adequado
-                        print( sErr.description )
+                        debugPrint( "Error trying to update gun" ) // Fazer tratamento adequado
+                        debugPrint( sErr.description )
                     } else {
-                        print( "Gun update successful")
+                        debugPrint( "Gun update successful")
                     }
                 }))
 
@@ -115,7 +142,7 @@ extension CloudKitHelper {
         }))
     }
     
-    func createGunRecord ( type: String, level: Int, price: Int, blocked: Bool, secret: Bool, time: NSTimeInterval ) {
+    private func createGunRecord ( type: String, level: Int, price: Int, blocked: Bool, secret: Bool, time: NSTimeInterval ) {
         
         // OBS: Fazer a verificacao do nome numa lista com o nome das armas validas
         
@@ -135,10 +162,10 @@ extension CloudKitHelper {
         self.privateDataBase.saveRecord( gunRec, completionHandler: ({
             savedRec, error in
             if let err = error {
-                print( "Error creating gun record" ) // Fazer tratamento adequado
-                print( err.description )
+                debugPrint( "Error creating gun record" ) // Fazer tratamento adequado
+                debugPrint( err.description )
             } else {
-                print( "New gun saved with success")
+                debugPrint( "New gun saved with success")
             }
         }))
     }
@@ -161,10 +188,10 @@ extension CloudKitHelper {
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRec, error in
                     if let err = error {
-                        print( "Save error - method saveResourcesProperties in CloudKitHelper" ) // Fazer tratamento adequado
-                        print( err.description )
+                        debugPrint( "Save error - method saveResourcesProperties in CloudKitHelper" ) // Fazer tratamento adequado
+                        debugPrint( err.description )
                     } else {
-                        print( "Resources updated successful" )
+                        debugPrint( "Resources updated successful" )
                     }
                 }))
             }
@@ -182,10 +209,10 @@ extension CloudKitHelper {
             savedRecord, error in
             
             if let err = error {
-                print( "Save error - method createResourcesRecord in CloudKitHelper") // Fazer o tratamento adequado
-                print( err.description )
+                debugPrint( "Save error - method createResourcesRecord in CloudKitHelper") // Fazer o tratamento adequado
+                debugPrint( err.description )
             } else {
-                print( "Save resources record successful" )
+                debugPrint( "Save resources record successful" )
             }
         }))
     }
