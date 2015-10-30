@@ -106,6 +106,7 @@ class LaboratoryScene: SKScene {
             }else if node.name == "goToCity" {
                 buttonTapped(node)
                 self.agentGoToCity()
+//                self.goToTestCity()
             }else if node.name == "deskPlaceholder" {
             
                 self.laboratoryGameLayer!.messageTapObjectButton(0)
@@ -131,12 +132,19 @@ class LaboratoryScene: SKScene {
     }
     
     private func agentGoToCity(){
-    
-        //print("goToCity")
         
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
         
         let nextScene = CityScene(size: self.scene!.size)
+        nextScene.scaleMode = SKSceneScaleMode.AspectFill
+        
+        self.scene!.view!.presentScene(nextScene, transition: transition)
+    }
+    
+    private func goToTestCity(){
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        
+        let nextScene = TestCityScene(size: self.scene!.size)
         nextScene.scaleMode = SKSceneScaleMode.AspectFill
         
         self.scene!.view!.presentScene(nextScene, transition: transition)

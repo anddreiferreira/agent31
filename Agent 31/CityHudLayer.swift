@@ -51,14 +51,13 @@ class CityHudLayer: SKNode {
     func loadPauseCity(){
     
         cityPauseButton = createSpriteNode("pauseCity", position: CGPointMake(11, 375-5), zPosition: 2, name: "pauseCity")
+        self.addChild(cityPauseButton!)
     }
     
     
     // puting all nodes necessary
     func putHudLayerCity(){
         
-//        self.addChild(cityLifeBar!)
-        self.addChild(cityPauseButton!)
     
     }
     

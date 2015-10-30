@@ -1,19 +1,21 @@
-//  CityScene.swift
+//
+//  TestCityScene.swift
 //  Agent 31
-//  Created by Henrique Dutra on 20/10/15.
+//
+//  Created by Julio Xavier on 30/10/15.
 //  Copyright © 2015 Agent31. All rights reserved.
+//
 
 import SpriteKit
 
-class CityScene: SKScene {
-    
-    private var cityGameLayer : CityGameLayer!
+class TestCityScene: SKScene {
+    private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
     private var cityHudLayer : CityHudLayer!
     
     override func didMoveToView(view: SKView) {
         
-        debugPrint("City scene entered")
+        debugPrint("ENTERED IN TEST CITY")
         
         self.putBackgroundLayer()
         self.putBasicHudLayer()
@@ -34,12 +36,12 @@ class CityScene: SKScene {
         self.cityHudLayer = CityHudLayer()
         self.cityHudLayer.putHudLayerCity()
         self.addChild(cityHudLayer)
-    
+        
     }
     
     func putGameLayer(){
         
-        self.cityGameLayer = CityGameLayer()
+        self.cityGameLayer = TestCityGameLayer()
         self.cityGameLayer.putGameLayer()
         self.addChild(cityGameLayer)
         
