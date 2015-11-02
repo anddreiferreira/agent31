@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let ckhelper = CloudKitHelper()
     var characterDataOn = false
-    var resourcesDataOn = true // modificar apos implementar o metodo
+    var resourcesDataOn = false
     var character = CharacterData()
     var resources = ResourcesData()
 
@@ -23,10 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         ckhelper.fetchCharacterProperties(character)
+        ckhelper.fetchResourcesProperties(resources)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
-        while( self.characterDataOn == false ) {
-            print("Wait")
+        while( self.characterDataOn == false || self.resourcesDataOn == false ) {
+//            print("Wait")
         }
 
         return true

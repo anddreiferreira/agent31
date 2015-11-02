@@ -57,10 +57,8 @@ extension CloudKitHelper {
         }))
     }
     
-    func fetchCharacterProperties(character: CharacterData) //-> CharacterData
+    func fetchCharacterProperties(character: CharacterData) // Pass by reference
     {
-//        let character = CharacterData()
-        
         self.privateDataBase.fetchRecordWithID(self.characterRecordId, completionHandler: ({
             fetchedRecord, error in
             
@@ -68,22 +66,16 @@ extension CloudKitHelper {
                 debugPrint("Error fetching data - method fetchCharacterProperties in CloudKitHelper")
                 debugPrint(err.description)
             } else {
-                print( "Fetching Data")
+                debugPrint( "Fetching Character Data")
                 character.jump = fetchedRecord?.objectForKey("Jump") as! Int
                 character.backPack = fetchedRecord?.objectForKey("BackPack") as! Int
                 character.level = fetchedRecord?.objectForKey("Level") as! Int
                 character.shootingPower = fetchedRecord?.objectForKey("ShootingPower") as! Int
                 character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
                 character.speed = fetchedRecord?.objectForKey("Speed") as! Int
-//                CharacterData.printCharacter(character)
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))
-    }
-    
-    private func saveCharacterPropertiesInGameData( record: CKRecord ) {
-        
-//        let gameData: GameData
     }
     
     private func createCharacterRecord( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int ) {
@@ -196,6 +188,24 @@ extension CloudKitHelper {
                         debugPrint( "Resources updated successful" )
                     }
                 }))
+            }
+        }))
+    }
+    
+    func fetchResourcesProperties(resources: ResourcesData ) // Pass by reference
+    {
+        self.privateDataBase.fetchRecordWithID(self.resourcesRecordId, completionHandler: ({
+            fetchedRecord, error in
+            
+            if let err = error {
+                debugPrint("Error fetching data - method fetchCharacterProperties in CloudKitHelper")
+                debugPrint(err.description)
+            } else {
+                debugPrint( "Fetching Resources Data")
+                resources.metal = fetchedRecord?.objectForKey("Metal") as! Int
+                resources.gold = fetchedRecord?.objectForKey("Gold") as! Int
+                resources.diamond = fetchedRecord?.objectForKey("Diamond") as! Int
+                NSNotificationCenter.defaultCenter().postNotificationName("resourcesDataNotification", object: nil)
             }
         }))
     }
