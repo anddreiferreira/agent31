@@ -8,8 +8,24 @@
 
 import UIKit
 
+private let _sharedInstance = GameData()
+
 class GameData: NSObject {
 
+    var characterData = CharacterData()
+    var resourcesData = ResourcesData()
+    
+    private override init() {
+        
+    }
+    
+    func hello() {
+        print( "HELLO, I`m a Singleton instance" )
+    }
+    class var sharedInstance: GameData {
+        return _sharedInstance
+    }
+    
     enum LabLayers {
         case DeskNumber
         case ComputerNumber
