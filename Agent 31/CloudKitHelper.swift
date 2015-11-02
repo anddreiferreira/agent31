@@ -76,12 +76,14 @@ extension CloudKitHelper {
                 character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
                 character.speed = fetchedRecord?.objectForKey("Speed") as! Int
 //                CharacterData.printCharacter(character)
-                
-                
+                NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))
+    }
+    
+    private func saveCharacterPropertiesInGameData( record: CKRecord ) {
         
-        print( "PORRAA" )
+//        let gameData: GameData
     }
     
     private func createCharacterRecord( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int ) {
