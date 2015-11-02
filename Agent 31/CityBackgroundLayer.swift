@@ -10,7 +10,7 @@ import SpriteKit
 
 class CityBackgroundLayer: SKNode {
 
-    private var backgroundCity : SKSpriteNode?
+    var backgroundCity : SKSpriteNode?
     
     func putBackground(){
         

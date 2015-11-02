@@ -144,10 +144,14 @@ class LaboratoryScene: SKScene {
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
         
-        let nextScene = TestCityScene(size: self.scene!.size)
-        nextScene.scaleMode = SKSceneScaleMode.AspectFill
-        
-        self.scene!.view!.presentScene(nextScene, transition: transition)
+        if #available(iOS 9.0, *) {
+            let nextScene = TestCityScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            
+            self.scene!.view!.presentScene(nextScene, transition: transition)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     // objetcts in the lab
