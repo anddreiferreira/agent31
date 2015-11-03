@@ -29,6 +29,9 @@ class TestCityGameLayer: SKNode {
     func putGameLayer(){
         self.putGround()
         self.putAgent()
+        
+        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
+        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
     }
     
     func putGround(){
@@ -38,6 +41,16 @@ class TestCityGameLayer: SKNode {
         ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
         self.addChild(ground)
+    }
+    
+    func createBlock(position: CGPoint){
+        let block = GameObject(imageName: "testCityBlock", position: position, zPosition: 1)
+        block.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
+        block.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+        block.physicsBody?.dynamic = false
+        block.physicsBody?.affectedByGravity = false
+        block.yScale = (block.yScale)/2
+        self.addChild(block)
     }
     
     func putAgent(){
