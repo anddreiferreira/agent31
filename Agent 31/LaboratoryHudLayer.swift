@@ -19,7 +19,7 @@ class LaboratoryHudLayer: SKNode {
     private var laboratoryTimeLabel : SKLabelNode?
     
     private var laboratoryLifeBar : SKSpriteNode?
-    private var messageRaminingLife : SKLabelNode?
+    private var messageRemainingLife : SKLabelNode?
     private var timeRemainingLife : SKLabelNode?
     
     override init(){
@@ -40,24 +40,24 @@ class LaboratoryHudLayer: SKNode {
     func loadheader(){
         
         // header
-        laboratoryHeaderSprite = createSpriteNode("headerBarLab", position: CGPointMake(20, 375-9), zPosition: 1, name: "headerBarLab")
+        laboratoryHeaderSprite = createSpriteNode("headerBarLab", position: CGPointMake(-middleOfTheScreenPoint.x + 20, -middleOfTheScreenPoint.y + 366), zPosition: 1, name: "headerBarLab")
         laboratoryHeaderSprite?.alpha = 0.3
         
         // resources images
-        laboratoryHeaderSpriteResources = createSpriteNode("resourcesLabImages", position: CGPointMake(339, 375-15), zPosition: 2, name: "resourcesLabImages")
+        laboratoryHeaderSpriteResources = createSpriteNode("resourcesLabImages", position: CGPointMake(-middleOfTheScreenPoint.x + 339, -middleOfTheScreenPoint.y + 360), zPosition: 2, name: "resourcesLabImages")
         
     }
     
     func loadLabels(){
         
         // label amount gold
-        laboratoryGoldLabel = createLabelNode("330", zPosition: 2, position: CGPointMake(380, 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        laboratoryGoldLabel = createLabelNode("330", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 380, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         // label amount metal
-        laboratoryMetalLabel = createLabelNode("5000", zPosition: 2, position: CGPointMake(480, 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        laboratoryMetalLabel = createLabelNode("5000", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 480, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         // label amount diamong
-        laboratoryDiamondLabel = createLabelNode("32", zPosition: 2, position: CGPointMake(600, 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        laboratoryDiamondLabel = createLabelNode("32", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 600, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
     }
     
@@ -71,7 +71,7 @@ class LaboratoryHudLayer: SKNode {
         lifeName.appendString("life")
         lifeName.appendString(livesString)
         
-        laboratoryLifeBar = createSpriteNode(lifeName as String, position: CGPointMake(37, 375-16), zPosition: 2, name: "laboratoryLifeBar")
+        laboratoryLifeBar = createSpriteNode(lifeName as String, position: CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359), zPosition: 2, name: "laboratoryLifeBar")
         
     }
     
@@ -86,7 +86,7 @@ class LaboratoryHudLayer: SKNode {
         self.addChild(laboratoryMetalLabel!)
 
         self.addChild(laboratoryLifeBar!)
-        self.addChild(messageRaminingLife!)
+        self.addChild(messageRemainingLife!)
 
     }
 
@@ -96,7 +96,7 @@ class LaboratoryHudLayer: SKNode {
         
         if number == 5 {
             
-            messageRaminingLife = createLabelNode("All Lives Availibe", fontName: "Helvetica", position: CGPointMake(90, 323), fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
+            messageRemainingLife = createLabelNode("All Lives Available", fontName: "Helvetica", position: CGPointMake(-middleOfTheScreenPoint.x + 90, -middleOfTheScreenPoint.y + 323), fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
         }
 //        else{
 //        

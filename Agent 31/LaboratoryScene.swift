@@ -119,7 +119,7 @@ class LaboratoryScene: SKScene {
         
         self.laboratoryHudLayer = LaboratoryHudLayer()
         self.laboratoryHudLayer.putHudLayer()
-        self.addChild(laboratoryHudLayer)
+        cam.addChild(laboratoryHudLayer)
     }
     
     func putGameLayer(){
@@ -127,7 +127,7 @@ class LaboratoryScene: SKScene {
         self.laboratoryGameLayer = LaboratoryGameLayer()
         self.laboratoryGameLayer.putGameLayer()
         self.addChild(laboratoryGameLayer)
-            
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
