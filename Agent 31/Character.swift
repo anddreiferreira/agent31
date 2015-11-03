@@ -77,7 +77,7 @@ class Character: GameObject {
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let rectangleSize = CGSizeMake(self.size.width*0.6, self.size.height*0.7)
+        let rectangleSize = CGSizeMake(self.size.width*0.35, self.size.height*0.7)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
         physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = false
