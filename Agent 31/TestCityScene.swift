@@ -15,11 +15,10 @@ class TestCityScene: SKScene {
     private var cityBackgroundLayer : CityBackgroundLayer!
     private var cityHudLayer : CityHudLayer!
     
+    var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton : SKSpriteNode?
     var shootButton : SKSpriteNode?
-    
-    var cam = SKCameraNode()
     
     override func didMoveToView(view: SKView) {
         
@@ -126,15 +125,15 @@ class TestCityScene: SKScene {
         }
     }
     
-    override func update(currentTime: NSTimeInterval) {
-        self.conformAgentToAnalogic()
-        self.updateCameraPosition()
-    }
-    
     func updateCameraPosition(){
         let yPositionOfAgentInGround: CGFloat = 93.6249923706055
         self.cam.position.x = (self.cityGameLayer.agent31?.position.x)!
         self.cam.position.y = middleOfTheScreenPoint.y + ((self.cityGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        self.conformAgentToAnalogic()
+        self.updateCameraPosition()
     }
 
 }

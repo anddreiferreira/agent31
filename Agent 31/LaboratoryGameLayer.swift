@@ -10,13 +10,8 @@ import SpriteKit
 
 class LaboratoryGameLayer: SKNode {
 
-    var agent31Lab : Agent?
-    private var analogStick : AnalogStick?
+    var agent31 : Agent?
     var placeHolder : SKSpriteNode?
-
-    private var jumpButtonLab : SKSpriteNode?
-    private var goToCity : SKSpriteNode?
-    private var shootButton: SKSpriteNode?
     
     var desk : Desk?
     var computer : Computer?
@@ -26,32 +21,17 @@ class LaboratoryGameLayer: SKNode {
     
     var tapObjectButton : SKSpriteNode?
     
-    // Analog
-    private var _isSetJoystickStickImage = true, _isSetJoystickSubstrateImage = true
 
     override init(){
         
         super.init()
         
-        self.loadButtons()
-        self.configureAnalogStick()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func loadButtons(){
-    
-        jumpButtonLab = createSpriteNode("jumpButton", position: CGPointMake(569, 375-206), zPosition: 100, name: "jumpButtonLab")
-        self.addChild(jumpButtonLab!)
-        
-        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(598, 375-60), zPosition: 100, name: "goToCity")
-        self.addChild(goToCity!)
-        
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(479, 375-274), zPosition: 100, name: "shootButton")
-        self.addChild(shootButton!)
-    }
     
     private func putObjectPlaceHolder(){
 
@@ -89,25 +69,8 @@ class LaboratoryGameLayer: SKNode {
     }
     
     func putAgent(){
-        agent31Lab = Agent()
-        self.addChild(agent31Lab!)
-    }
-    
-    private func configureAnalogStick(){
-        // Initialize an analog stick
-        analogStick = AnalogStick()
-        
-        analogStick!.trackingHandler = { analogStick in
-        
-            let xvelocity = analogStick.data.velocity.x
-            self.agent31Lab!.changeVelocity(xvelocity)
-            
-            let yvelocity = analogStick.data.velocity.y
-            self.agent31Lab!.lookUp(yvelocity)
-            
-        }
-        
-        addChild(analogStick!)        
+        agent31 = Agent()
+        self.addChild(agent31!)
     }
     
     func putDeskLayer(){
@@ -131,17 +94,6 @@ class LaboratoryGameLayer: SKNode {
     
         self.tapObjectButton?.removeFromParent()
         
-    }
-    
-    func conformAgentToAnalogic(){
-        if(self.agent31Lab?.velocity != 0){
-            if(self.analogStick?.data.velocity == CGPointZero){
-                self.agent31Lab?.changeVelocity(-1)
-                self.agent31Lab?.lookUp(0)
-            }else{
-                self.agent31Lab?.run()
-            }
-        }
     }
     
         

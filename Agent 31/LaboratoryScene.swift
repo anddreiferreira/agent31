@@ -10,8 +10,15 @@
 
 import SpriteKit
 
+@available(iOS 9.0, *)
 class LaboratoryScene: SKScene {
 
+    var cam = SKCameraNode()
+    private var analogStick: AnalogStick!
+    var jumpButton : SKSpriteNode?
+    var shootButton : SKSpriteNode?
+    var goToCity: SKSpriteNode?
+    
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
     private var laboratoryHudLayer : LaboratoryHudLayer!
     private var laboratoryGameLayer : LaboratoryGameLayer!
@@ -30,13 +37,11 @@ class LaboratoryScene: SKScene {
         self.putHudLayer()
         self.putGameLayer()
         
+        self.configureCamera()
+        
         // Physics
         self.setLaboratoryPhysics()
         
-        // Store Positions of objects
-        // self.objectPositions()
-        
-//        self.initiateNodes()
     }
     
     func setLaboratoryPhysics(){
@@ -52,6 +57,48 @@ class LaboratoryScene: SKScene {
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
     }
 
+    func configureCamera(){
+        cam.position = middleOfTheScreenPoint
+        
+        self.configureAnalogStick()
+        self.loadButtons()
+        
+        self.addChild(cam)
+        self.camera = cam
+    }
+    
+    private func configureAnalogStick(){
+        // Initialize an analog stick
+        analogStick = AnalogStick()
+        
+        analogStick.position = CGPointMake(-self.size.width/2.5, -self.size.height/3)
+        analogStick!.trackingHandler = { analogStick in
+            
+            let xvelocity = analogStick.data.velocity.x
+            self.laboratoryGameLayer.agent31!.changeVelocity(xvelocity)
+            
+            let yvelocity = analogStick.data.velocity.y
+            self.laboratoryGameLayer.agent31!.lookUp(yvelocity)
+            
+            
+        }
+        
+        cam.addChild(analogStick!)
+    }
+    
+    private func loadButtons(){
+        
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 100, name: "jumpButtonLab")
+        cam.addChild(jumpButton!)
+        
+        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
+        cam.addChild(goToCity!)
+        
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        
+        cam.addChild(shootButton!)
+    }
+    
     func initiateNodes(){
     
         let algo = self.childNodeWithName("headerLab")
@@ -99,10 +146,10 @@ class LaboratoryScene: SKScene {
             if node.name == "jumpButtonLab" {
                 //print("Agent jump")
                 buttonTapped(node)
-                self.laboratoryGameLayer.agent31Lab?.jump()
+                self.laboratoryGameLayer.agent31?.jump()
             }else if node.name == "shootButton"{
                 buttonTapped(node)
-                self.laboratoryGameLayer.agent31Lab?.shoot()
+                self.laboratoryGameLayer.agent31?.shoot()
             }else if node.name == "goToCity" {
                 buttonTapped(node)
 //                self.agentGoToCity()
@@ -144,14 +191,12 @@ class LaboratoryScene: SKScene {
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
         
-        if #available(iOS 9.0, *) {
             let nextScene = TestCityScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             
             self.scene!.view!.presentScene(nextScene, transition: transition)
-        } else {
             // Fallback on earlier versions
-        }
+
     }
     
     // objetcts in the lab
@@ -182,7 +227,7 @@ class LaboratoryScene: SKScene {
         for index in 0...4{
 
             let objPos : CGPoint = positionsOfObjects[index]
-            let agentPos : CGPoint = (self.laboratoryGameLayer.agent31Lab?.position)!
+            let agentPos : CGPoint = (self.laboratoryGameLayer.agent31?.position)!
             let objPosPlus : CGPoint = CGPointMake(objPos.x + 30, objPos.y)
             
             // checks if the position of the agent is next to an object
@@ -218,9 +263,27 @@ class LaboratoryScene: SKScene {
         
     }
     
+    func conformAgentToAnalogic(){
+        debugPrint(self.laboratoryGameLayer.agent31?.position.y)
+        if(self.laboratoryGameLayer.agent31?.velocity != 0){
+            if(self.analogStick?.data.velocity == CGPointZero){
+                self.laboratoryGameLayer.agent31?.changeVelocity(-1)
+                self.laboratoryGameLayer.agent31?.lookUp(0)
+            }else{
+                self.laboratoryGameLayer.agent31?.run()
+            }
+        }
+    }
+    
+    func updateCameraPosition(){
+        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
+        self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
+        self.cam.position.y = middleOfTheScreenPoint.y + ((self.laboratoryGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
+    }
+    
     override func update(currentTime: CFTimeInterval) {
-      
-       self.laboratoryGameLayer.conformAgentToAnalogic()
+        self.conformAgentToAnalogic()
+        self.updateCameraPosition()
         
         
     }
