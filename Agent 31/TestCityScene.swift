@@ -25,18 +25,22 @@ class TestCityScene: SKScene {
         
         debugPrint("ENTERED IN TEST CITY")
         
-        cam.position = middleOfTheScreenPoint
-        
         self.putBackgroundLayer()
         self.putBasicHudLayer()
         self.putGameLayer()
+        
+        self.configureCamera()
+        
+    }
+    
+    func configureCamera(){
+        cam.position = middleOfTheScreenPoint
         
         self.configureAnalogStick()
         self.loadButtons()
         
         self.addChild(cam)
         self.camera = cam
-        
     }
     
     func loadButtons(){
@@ -111,19 +115,26 @@ class TestCityScene: SKScene {
     }
     
     func conformAgentToAnalogic(){
-                if(self.cityGameLayer.agent31?.velocity != 0){
-                    if(self.analogStick?.data.velocity == CGPointZero){
-                        self.cityGameLayer.agent31?.changeVelocity(-1)
-                        self.cityGameLayer.agent31?.lookUp(0)
-                    }else{
-                        self.cityGameLayer.agent31?.run()
-                    }
-                }
+        debugPrint(self.cityGameLayer.agent31?.position.y)
+        if(self.cityGameLayer.agent31?.velocity != 0){
+            if(self.analogStick?.data.velocity == CGPointZero){
+                self.cityGameLayer.agent31?.changeVelocity(-1)
+                self.cityGameLayer.agent31?.lookUp(0)
+            }else{
+                self.cityGameLayer.agent31?.run()
+            }
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {
         self.conformAgentToAnalogic()
+        self.updateCameraPosition()
+    }
+    
+    func updateCameraPosition(){
+        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
         self.cam.position.x = (self.cityGameLayer.agent31?.position.x)!
+        self.cam.position.y = middleOfTheScreenPoint.y + ((self.cityGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
     }
 
 }
