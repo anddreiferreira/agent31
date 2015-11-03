@@ -264,7 +264,6 @@ class LaboratoryScene: SKScene {
     }
     
     func conformAgentToAnalogic(){
-        debugPrint(self.laboratoryGameLayer.agent31?.position.y)
         if(self.laboratoryGameLayer.agent31?.velocity != 0){
             if(self.analogStick?.data.velocity == CGPointZero){
                 self.laboratoryGameLayer.agent31?.changeVelocity(-1)

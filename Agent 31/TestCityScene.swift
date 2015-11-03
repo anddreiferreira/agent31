@@ -114,7 +114,6 @@ class TestCityScene: SKScene {
     }
     
     func conformAgentToAnalogic(){
-        debugPrint(self.cityGameLayer.agent31?.position.y)
         if(self.cityGameLayer.agent31?.velocity != 0){
             if(self.analogStick?.data.velocity == CGPointZero){
                 self.cityGameLayer.agent31?.changeVelocity(-1)
