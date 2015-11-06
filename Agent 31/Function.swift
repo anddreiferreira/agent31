@@ -28,23 +28,23 @@ func gunLeveUp(gunName: String, gunLevel: Int) -> (timeLevelUp: NSTimeInterval, 
 {
     switch gunName {
         case "gun1":
-            return (Double(gunLevel) * 300.0, 0)
+            return (Double(gunLevel) * 300.0, gunLevel * 5)
         case "gun2":
-            return (Double(gunLevel) * 600.0, 2 * 25)
+            return (Double(gunLevel) * 600.0, gunLevel * 25)
         case "gun3":
-            return (Double(gunLevel) * 1200.0, 2 * 125)
+            return (Double(gunLevel) * 1200.0, gunLevel * 125)
         case "gun4", "gun5":
-            return (Double(gunLevel) * 1800.0, 2 * 625)
+            return (Double(gunLevel) * 1800.0, gunLevel * 625)
         case "gun6", "gun7":
-            return (Double(gunLevel) * 2400.0, 2 * 3125)
+            return (Double(gunLevel) * 2400.0, gunLevel * 3125)
         case "gun8", "gun9", "gun10":
-            return (Double(gunLevel) * 3000.0, 2 * 15625)
+            return (Double(gunLevel) * 3000.0, gunLevel * 15625)
         case "gun11", "gun12":
-            return (Double(gunLevel) * 3600.0, 2 * 78125)
+            return (Double(gunLevel) * 3600.0, gunLevel * 78125)
         case "gun13", "gun14":
-            return (Double(gunLevel) * 4200.0, 2 * 390625)
+            return (Double(gunLevel) * 4200.0, gunLevel * 390625)
         case "gun15":
-            return (Double(gunLevel) * 4800.0, 2 * 1953125)
+            return (Double(gunLevel) * 4800.0, gunLevel * 1953125)
         default:
             return (0.00, 0)
     }
@@ -52,25 +52,9 @@ func gunLeveUp(gunName: String, gunLevel: Int) -> (timeLevelUp: NSTimeInterval, 
 
 /*
  * Level up de atributos
- * Shooting power:
- * Shooting range:
- * Jump:
- * Speed:
+ * 30 minutos e
  */
 func attributeLevelUp(attributeName: String, attributeLevel: Int) -> (timeLevelUp: NSTimeInterval, resourceLevelUp: Int)
 {
-    switch attributeName {
-        case "shootingPower":
-            return (Double(attributeLevel) * 0.0, 0)
-        case "shootingRange":
-            return (Double(attributeLevel) * 0.0, 0)
-        case "jump":
-            return (Double(attributeLevel) * 0.0, 0)
-        case "speed":
-            return (Double(attributeLevel) * 0.0, 0)
-        case "backpack":
-            return (Double(attributeLevel) * 0.0, 0)
-        default:
-            return (0.0, 0)
-    }
+    return (Double(attributeLevel) * 1800, attributeLevel * 2000)
 }
