@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
         while( self.characterDataOn == false || self.resourcesDataOn == false ) {
-//            print("Wait")
+//            print("Wait")           
         }
 
         return true

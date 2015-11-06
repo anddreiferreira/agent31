@@ -9,7 +9,13 @@
 import Foundation
 
 class ResourcesData {
-    var gold = -1
-    var metal = -1
-    var diamond = -1
+    var gold: Int
+    var metal: Int
+    var diamond: Int
+    
+    init() {
+        gold = -1
+        metal = -1
+        diamond = -1
+    }
 }

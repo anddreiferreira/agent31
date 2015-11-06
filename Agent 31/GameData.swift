@@ -19,9 +19,6 @@ class GameData: NSObject {
         
     }
     
-    func hello() {
-        print( "HELLO, I`m a Singleton instance" )
-    }
     class var sharedInstance: GameData {
         return _sharedInstance
     }
