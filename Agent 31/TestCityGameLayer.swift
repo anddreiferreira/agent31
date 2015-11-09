@@ -29,6 +29,7 @@ class TestCityGameLayer: SKNode {
     func putGameLayer(){
         self.putGround()
         self.putAgent()
+        self.putTestEnemy()
         
         createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
         createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
@@ -56,6 +57,11 @@ class TestCityGameLayer: SKNode {
     func putAgent(){
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, middleOfTheScreenPoint.y/3))
         self.addChild(agent31!)
+    }
+    
+    func putTestEnemy(){
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x + 100, middleOfTheScreenPoint.y))
+        self.addChild(testEnemy)
     }
     
 
