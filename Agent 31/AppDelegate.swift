@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var characterDataOn = false
     var resourcesDataOn = false
     var character = CharacterData.sharedInstance
-    var resources = ResourcesData()
+    var resources = ResourcesData.sharedInstance
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
@@ -42,10 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
         while( self.characterDataOn == false || self.resourcesDataOn == false ) {
-//            print("Wait")           
+//             print("Wait") // -> vai ficar na tela de loading enquanto nao carregar os dados do cloudkit
         }
-        self.character.initTraining("BackPack")
-        debugPrint( self.character.getAttributeValue( "Speed" ) )
+//        self.character.initTraining("BackPack")
+        debugPrint( "Qtd de diamantes = \(ResourcesData.sharedInstance.metal)" )
 
         return true
     }
@@ -81,8 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: Notifications actions
 extension AppDelegate {
+    
     func turnOnCharacterData() {
-//        GameData.sharedInstance.characterData = self.character
         CharacterData.sharedInstance.jump = self.character.jump
         CharacterData.sharedInstance.speed = self.character.speed
         CharacterData.sharedInstance.shootingPower = self.character.shootingPower
@@ -94,7 +94,11 @@ extension AppDelegate {
     }
     
     func turnOnResourcesData() {
-        GameData.sharedInstance.resourcesData = self.resources
+        
+        ResourcesData.sharedInstance.metal = self.resources.metal
+        ResourcesData.sharedInstance.gold = self.resources.gold
+        ResourcesData.sharedInstance.diamond = self.resources.diamond
+        
         self.resourcesDataOn = true
     }
 }

@@ -8,14 +8,20 @@
 
 import Foundation
 
-class ResourcesData {
+private let _sharedInstance = ResourcesData()
+
+class ResourcesData : NSObject {
     var gold: Int
     var metal: Int
     var diamond: Int
     
-    init() {
+    private override init() {
         gold = -1
         metal = -1
         diamond = -1
+    }
+    
+    class var sharedInstance: ResourcesData {
+        return _sharedInstance
     }
 }
