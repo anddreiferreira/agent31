@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         while( self.characterDataOn == false || self.resourcesDataOn == false ) {
 //            print("Wait")           
         }
-        self.character.initTraining("Jump")
+        self.character.initTraining("BackPack")
         debugPrint( self.character.getAttributeValue( "Speed" ) )
 
         return true
