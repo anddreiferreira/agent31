@@ -65,6 +65,7 @@ class LaboratoryGameLayer: SKNode {
         ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
         ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
+        ground.alpha = 0.0
         self.addChild(ground)
     }
     

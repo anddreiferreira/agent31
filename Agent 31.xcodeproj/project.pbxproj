@@ -91,7 +91,6 @@
 		09DE1E7D1BE937D400DE8061 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E1E1BE937D400DE8061 /* 1.png */; };
 		09DE1E7E1BE937D400DE8061 /* backgroundCityPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E1F1BE937D400DE8061 /* backgroundCityPlaceholder.png */; };
 		09DE1E7F1BE937D400DE8061 /* backgroundLabTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E201BE937D400DE8061 /* backgroundLabTest.png */; };
-		09DE1E801BE937D400DE8061 /* bragaPhysic.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E211BE937D400DE8061 /* bragaPhysic.png */; };
 		09DE1E811BE937D400DE8061 /* Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E221BE937D400DE8061 /* Ground.png */; };
 		09DE1E821BE937D400DE8061 /* placeHolderMesa.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E241BE937D400DE8061 /* placeHolderMesa.png */; };
 		09DE1E831BE937D400DE8061 /* placeHolderMesaArmas.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DE1E251BE937D400DE8061 /* placeHolderMesaArmas.png */; };
@@ -320,7 +319,6 @@
 		09DE1E1E1BE937D400DE8061 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		09DE1E1F1BE937D400DE8061 /* backgroundCityPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundCityPlaceholder.png; sourceTree = "<group>"; };
 		09DE1E201BE937D400DE8061 /* backgroundLabTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundLabTest.png; sourceTree = "<group>"; };
-		09DE1E211BE937D400DE8061 /* bragaPhysic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bragaPhysic.png; sourceTree = "<group>"; };
 		09DE1E221BE937D400DE8061 /* Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ground.png; sourceTree = "<group>"; };
 		09DE1E241BE937D400DE8061 /* placeHolderMesa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeHolderMesa.png; sourceTree = "<group>"; };
 		09DE1E251BE937D400DE8061 /* placeHolderMesaArmas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeHolderMesaArmas.png; sourceTree = "<group>"; };
@@ -729,7 +727,6 @@
 				09DE1E1E1BE937D400DE8061 /* 1.png */,
 				09DE1E1F1BE937D400DE8061 /* backgroundCityPlaceholder.png */,
 				09DE1E201BE937D400DE8061 /* backgroundLabTest.png */,
-				09DE1E211BE937D400DE8061 /* bragaPhysic.png */,
 				09DE1E221BE937D400DE8061 /* Ground.png */,
 				09DE1E231BE937D400DE8061 /* ObjectsLab */,
 				09DE1E2A1BE937D400DE8061 /* placeHolderAgent.png */,
@@ -1374,7 +1371,6 @@
 				09DE1E5F1BE937D400DE8061 /* troncoPulando3.png in Resources */,
 				09DE1E6D1BE937D400DE8061 /* shootingButton.png in Resources */,
 				6B2D98BC1BB1C6E7005B342E /* Main.storyboard in Resources */,
-				09DE1E801BE937D400DE8061 /* bragaPhysic.png in Resources */,
 				09DE1E761BE937D400DE8061 /* life1.png in Resources */,
 				09DE1E3F1BE937D400DE8061 /* pernasAndando4.png in Resources */,
 				09DE1E341BE937D400DE8061 /* jumpAgent1.png in Resources */,
