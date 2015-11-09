@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         while( self.characterDataOn == false || self.resourcesDataOn == false ) {
 //            print("Wait")           
         }
+        self.character.initTraining("Jump")
+        
 
         return true
     }

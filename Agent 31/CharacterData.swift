@@ -79,13 +79,15 @@ extension CharacterData {
         debugPrint("Inicializando o Timer do atributo")
         let timeInterval = NSTimeInterval(time)
 
-        NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "finishTraining", userInfo: self, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
     }
     
-    func finishTraining(/* attribute: String */) {
+    func finishTraining(timer: NSTimer) {
         
         // incrementar o valor do atributo
         debugPrint("**************** Valor do atributo atualizado com sucesso *************" )
+//        debugPrint("\(GameData.sharedInstance.jump)")
+        timer.invalidate()
     }
 }
 
