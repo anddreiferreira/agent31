@@ -129,14 +129,14 @@ class Character: GameObject {
         self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
     }
     
-    func jumpAnimationOnce(){
+    private func jumpAnimationOnce(){
         if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
             self.runAction(self.jumpingLegs!)
             self.torso?.runAction(self.jumpingTorso!)
         }
     }
 
-    func walkingAnimationOnce(){
+    private func walkingAnimationOnce(){
         if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
             self.running = true
             
@@ -147,7 +147,7 @@ class Character: GameObject {
         }
     }
    
-    func attackingAnimationOnce(){
+    private func attackingAnimationOnce(){
         if(self.attackingTorso != nil){
             self.torso?.runAction(self.attackingTorso!, completion: {
                 self.attacking = false
@@ -155,7 +155,7 @@ class Character: GameObject {
         }
     }
     
-    func attackingUpAnimationOnce(){
+    private func attackingUpAnimationOnce(){
         if(self.attackingUpTorso != nil){
             self.torso?.runAction(self.attackingUpTorso!, completion:  {
                 self.attacking = false
@@ -237,5 +237,9 @@ class Character: GameObject {
             bullet.fire()
         }
         
+    }
+    
+    func update(currentTime: NSTimeInterval){
+        debugPrint("\(currentTime % 10)")
     }
 }

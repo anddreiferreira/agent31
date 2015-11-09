@@ -96,6 +96,5 @@ class LaboratoryGameLayer: SKNode {
         self.tapObjectButton?.removeFromParent()
         
     }
-    
-        
+            
 }

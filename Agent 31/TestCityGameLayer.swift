@@ -61,9 +61,25 @@ class TestCityGameLayer: SKNode {
     
     func putTestEnemy(){
         let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x + 100, middleOfTheScreenPoint.y))
+        testEnemy.name = "enemy"
         self.addChild(testEnemy)
     }
     
+    func updateEnemy(currentTime: NSTimeInterval){
+        self.enumerateChildNodesWithName("enemy", usingBlock: {
+            node, stop in
+            // Block below is executed if a enemy is found
+            
+            if let foundEnemy = node as? GeneralEnemy{
+                
+                foundEnemy.update(currentTime)
+                
+            }else{
+                debugPrint("Enemy isn't found")
+            }
+            
+        })
+    }
 
 
 }
