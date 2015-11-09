@@ -12,7 +12,7 @@ class GameObject: SKSpriteNode {
     
     var initialImageName: String?
 
-    init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 1.0, zPosition: CGFloat = 1.0, nameP: String = ""){
+    init(imageName: String = "1", position: CGPoint = middleOfTheScreenPoint, scale: CGFloat = 1.0, zPosition: CGFloat = 1.0){
         
         debugPrint("Initializing GameObject")
         
@@ -21,7 +21,7 @@ class GameObject: SKSpriteNode {
         self.position = position
         self.zPosition = zPosition
         self.setScale(scale)
-        self.name = nameP
+        self.name = imageName
         self.initialImageName = imageName
         
         setBasicAttributes()
@@ -35,15 +35,14 @@ class GameObject: SKSpriteNode {
     
     func invertSpriteHorizontally(option: Bool) -> Void{
         if(option == true){
-            self.xScale = -fabs(self.xScale)
+            self.xScale = -self.xScale
         }else{
-            self.xScale = fabs(self.xScale)
+            
         }
     }
     
-    func generatePhysicsBody(imageName: String) -> SKPhysicsBody{
-        debugPrint("Initial image name \(imageName)")
-        let texture: SKTexture! = generateTextureWithImage(imageName)
+    func generatePhysicsBody() -> SKPhysicsBody{
+        let texture: SKTexture! = generateTextureWithImage(self.initialImageName!)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = false
@@ -54,7 +53,7 @@ class GameObject: SKSpriteNode {
 
     private func setBasicAttributes(){
         debugPrint("Set Basic Attributes for GameObject")
-        self.physicsBody = generatePhysicsBody(self.initialImageName!)
+        self.physicsBody = generatePhysicsBody()
     }
     
     

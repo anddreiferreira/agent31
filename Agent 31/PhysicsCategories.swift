@@ -11,4 +11,7 @@ import Foundation
 enum ColliderType: UInt32 {
     case Agent = 1
     case Ground = 2
+    case Bullet = 3
+    case Enemy = 4
+    case None = 1000
 }

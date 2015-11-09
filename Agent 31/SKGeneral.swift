@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 import SpriteKit
 
+// Defines
+let TURNED_LEFT: Int = 1
+let TURNED_UP: Int = 3
+let TURNED_RIGHT: Int = 2
+let MAX_CHARACTER_VELOCITY: CGFloat = 40.0
+let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
 let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
@@ -125,4 +131,16 @@ func repeatActionForeverWithAnimationName(mainText: String, numberOfImages: Int,
     let repeatForever: SKAction = repeatAnimationFoveverWithTextures(texturesArray, timePerTexture: timePerTexture)
     
     return repeatForever
+}
+
+// MARK: Notification
+func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int)
+{
+    let notification:UILocalNotification = UILocalNotification()
+    notification.fireDate = NSDate().dateByAddingTimeInterval(launchInterval)
+    notification.timeZone = NSTimeZone.defaultTimeZone()
+    notification.alertBody = "\(itemName) upgrade to \(itemLevel) finished"
+    notification.applicationIconBadgeNumber = badge
+    notification.soundName = UILocalNotificationDefaultSoundName
+    UIApplication.sharedApplication().scheduleLocalNotification(notification)
 }

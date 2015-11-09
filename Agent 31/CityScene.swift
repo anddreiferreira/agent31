@@ -13,7 +13,7 @@ class CityScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         
-        print("laboratory scene entered")
+        debugPrint("City scene entered")
         
         self.putBackgroundLayer()
         self.putBasicHudLayer()

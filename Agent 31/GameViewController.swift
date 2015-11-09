@@ -10,22 +10,23 @@ import UIKit
 import SpriteKit
 
 
-extension SKNode {
-    class func unarchiveFromFile(file : String) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            let sceneData = try! NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe)
-            let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-            
-            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! LaboratoryScene
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
-        }
-    }
-}
+//extension SKNode {
+//    class func unarchiveFromFile(file : String) -> SKNode? {
+//        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
+//            let sceneData = try! NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe)
+//            let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+//            
+//            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
+//            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! LaboratoryScene
+//            archiver.finishDecoding()
+//            return scene
+//        } else {
+//            return nil
+//        }
+//    }
+//}
 
+@available(iOS 9.0, *)
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -61,6 +62,8 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .AspectFill
+        
+        self.view.multipleTouchEnabled = true
         
         skView.presentScene(scene)
         

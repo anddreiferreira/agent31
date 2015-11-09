@@ -19,7 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var character = CharacterData()
     var resources = ResourcesData()
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        // Setting up notifications for user
+        let notificationTypes: UIUserNotificationType = [.Alert, .Badge, .Badge]
+        let notificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        // Check for internet connection availability
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            debugPrint("Offline, do not load the game")
+        case .Online:
+            debugPrint("Online, load the game")
+        }
+        
         // Override point for customization after application launch.
         
         ckhelper.fetchCharacterProperties(character)
@@ -35,6 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
+    {
+        debugPrint("Notification in background received")
+    }    
+
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

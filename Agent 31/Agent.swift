@@ -38,12 +38,21 @@ class Agent: Character {
     
     override func initializeAnimations(){
         self.stoppedTorso = actionWithAnimationName("troncoParado", numberOfImages: 4, timePerTexture: 0.15)
+        self.stoppedLegs = actionWithAnimationName("pernasParado", numberOfImages: 1, timePerTexture: 0.3)
         
         self.jumpingLegs = actionWithAnimationName("pernasPulando", numberOfImages: 8, timePerTexture: 0.1)
         self.jumpingTorso = actionWithAnimationName("troncoPulando", numberOfImages: 8, timePerTexture: 0.1)
         
-        self.walkingTorso = actionWithAnimationName("troncoAndando", numberOfImages: 7, timePerTexture: 0.1)
-        self.walkingLegs = actionWithAnimationName("pernasAndando", numberOfImages: 7, timePerTexture: 0.1)
+        self.walkingTorso = actionWithAnimationName("troncoAndando", numberOfImages: 7, timePerTexture: 0.15)
+        self.walkingLegs = actionWithAnimationName("pernasAndando", numberOfImages: 7, timePerTexture: 0.15)
+        
+        self.runningTorso = actionWithAnimationName("troncoAndando", numberOfImages: 7, timePerTexture: 0.1)
+        self.runningLegs = actionWithAnimationName("pernasAndando", numberOfImages: 7, timePerTexture: 0.1)
+        
+        self.lookingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 1, timePerTexture: 0.2)
+        self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
+        self.attackingTorso = actionWithAnimationName("troncoAtacando", numberOfImages: 3, timePerTexture: 0.08)
+        
         
     }
     

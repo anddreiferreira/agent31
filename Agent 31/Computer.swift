@@ -10,11 +10,13 @@ import SpriteKit
 
 class Computer: GameObject {
 
-    var positionRecieved : CGPoint?
-    
-    override init(imageName: String = "placeHolderPC", position: CGPoint, scale : CGFloat = 0.5,  zPosition: CGFloat = 5.0, nameP name : String = ""){
+    var positionReceived : CGPoint?
+
+    init(imageName: String = "placeHolderPC", position: CGPoint,  zPosition: CGFloat = 5.0){
         
-        super.init(imageName: imageName, position: position, scale: scale, zPosition: zPosition)
+        super.init(imageName: imageName, position: position, zPosition: zPosition)
+        
+        self.setComputerAttributes()
         
     }
     
@@ -22,12 +24,14 @@ class Computer: GameObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     func positionRequiredComputer() -> CGPoint{
         
         return self.position
         
+    }
+    
+    func setComputerAttributes(){
+        self.setScale(0.5)
     }
     
     
