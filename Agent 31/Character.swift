@@ -221,7 +221,7 @@ class Character: GameObject {
         if(lookingUp == false){
             self.attackingAnimationOnce()
             
-            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y*0.85)
+            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y - self.size.height/8)
             let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
             self.parent?.addChild(bullet)
             
