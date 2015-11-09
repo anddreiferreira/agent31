@@ -12,7 +12,7 @@ private let _sharedInstance = GameData()
 
 class GameData: NSObject {
 
-    var characterData = CharacterData()
+//    var characterData = CharacterData()
     var resourcesData = ResourcesData()
     
     private override init() {

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ckhelper = CloudKitHelper()
     var characterDataOn = false
     var resourcesDataOn = false
-    var character = CharacterData()
+    var character = CharacterData.sharedInstance
     var resources = ResourcesData()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("Wait")           
         }
         self.character.initTraining("Jump")
-        
+        debugPrint( self.character.getAttributeValue( "Speed" ) )
 
         return true
     }
@@ -82,7 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: Notifications actions
 extension AppDelegate {
     func turnOnCharacterData() {
-        GameData.sharedInstance.characterData = self.character
+//        GameData.sharedInstance.characterData = self.character
+        CharacterData.sharedInstance.jump = self.character.jump
+        CharacterData.sharedInstance.speed = self.character.speed
+        CharacterData.sharedInstance.shootingPower = self.character.shootingPower
+        CharacterData.sharedInstance.shootingRange = self.character.shootingRange
+        CharacterData.sharedInstance.backPack = self.character.backPack
+        CharacterData.sharedInstance.level = self.character.level
+        
         self.characterDataOn = true
     }
     

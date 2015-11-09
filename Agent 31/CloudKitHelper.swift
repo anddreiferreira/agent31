@@ -26,21 +26,21 @@ class CloudKitHelper {
 // MARK: CRUD to Character attributes
 extension CloudKitHelper {
     
-    func saveCharacterProperties( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int )
+    func saveCharacterProperties( character: CharacterData )
     {
         
         self.privateDataBase.fetchRecordWithID( self.characterRecordId, completionHandler: ({
             fetchedRecord, error in
             
             if let _ = error {
-                self.createCharacterRecord( jump, speed: speed, shootingRange: shootingRange, shootingPower: shootingPower, backPack: backPack, level: level )
+                self.createCharacterRecord( character )
             } else {
-                fetchedRecord?.setValue( jump, forKey: "Jump" )
-                fetchedRecord?.setValue( speed, forKey: "Speed" )
-                fetchedRecord?.setValue( shootingRange, forKey: "ShootingRange" )
-                fetchedRecord?.setValue( shootingPower, forKey: "ShootingPower" )
-                fetchedRecord?.setValue( backPack, forKey: "BackPack" )
-                fetchedRecord?.setValue( level, forKey: "Level" )
+                fetchedRecord?.setValue( character.jump, forKey: "Jump" )
+                fetchedRecord?.setValue( character.speed, forKey: "Speed" )
+                fetchedRecord?.setValue( character.shootingRange, forKey: "ShootingRange" )
+                fetchedRecord?.setValue( character.shootingPower, forKey: "ShootingPower" )
+                fetchedRecord?.setValue( character.backPack, forKey: "BackPack" )
+                fetchedRecord?.setValue( character.level, forKey: "Level" )
                 
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRecord, sError in
@@ -78,15 +78,15 @@ extension CloudKitHelper {
         }))
     }
     
-    private func createCharacterRecord( jump: Int, speed: Int, shootingRange: Int, shootingPower: Int, backPack: Int, level: Int ) {
+    private func createCharacterRecord( character: CharacterData ) {
         
         let newRecord = CKRecord( recordType: "Character", recordID: self.characterRecordId )
-        newRecord.setValue( jump, forKey: "Jump" )
-        newRecord.setValue( speed, forKey: "Speed" )
-        newRecord.setValue( shootingRange, forKey: "ShootingRange" )
-        newRecord.setValue( shootingPower, forKey: "ShootingPower" )
-        newRecord.setValue( backPack, forKey: "BackPack" )
-        newRecord.setValue( level, forKey: "Level" )
+        newRecord.setValue( character.jump, forKey: "Jump" )
+        newRecord.setValue( character.speed, forKey: "Speed" )
+        newRecord.setValue( character.shootingRange, forKey: "ShootingRange" )
+        newRecord.setValue( character.shootingPower, forKey: "ShootingPower" )
+        newRecord.setValue( character.backPack, forKey: "BackPack" )
+        newRecord.setValue( character.level, forKey: "Level" )
         
         self.privateDataBase.saveRecord( newRecord, completionHandler: ({
             savedRecord, error in

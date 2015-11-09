@@ -8,6 +8,8 @@
 
 import Foundation
 
+private let _sharedInstance = CharacterData()
+
 class CharacterData : NSObject {
     
     var jump: Int
@@ -17,7 +19,11 @@ class CharacterData : NSObject {
     var backPack: Int
     var level: Int
     
-    override init() {
+    class var sharedInstance: CharacterData {
+        return _sharedInstance
+    }
+    
+    private override init() {
 //        super.init()
         self.jump = 0
         self.speed = 0
@@ -59,27 +65,42 @@ extension CharacterData {
         }
     }
     
+    func setAttributeValue( attribute: String, value: Int ) {
+        if( attribute == "Jump" ) {
+            self.jump = value
+        } else if ( attribute == "Speed" ) {
+            self.speed = value
+        } else if ( attribute == "ShootingRange" ) {
+            self.shootingRange = value
+        } else if ( attribute == "ShootingPower" ) {
+            self.shootingPower = value
+        } else if ( attribute == "backPack" ) {
+            self.backPack = value
+        } else if ( attribute == "level" ) {
+            self.level = value
+        } else {
+            // Do nothing
+        }
+    }
+    
     func initTraining( attribute: String ) {
         
         debugPrint( "Inicializando o treino do atributo \(attribute)" )
         let currentValue = self.getAttributeValue( attribute )
         
-        // verificar o custo do treino desse atributo e e reduzir da quantidade de ouro
-//        let cost = self.getCostOfTraining( attribute, value: currentValue )
+        // recuperar o tempo e o custo necessário para o treinamento
+        let tuple = self.characterLevelUp( attribute, value: currentValue )
         
-        // recuperar o tempo necessário para o treinamento
-        let time = self.getTimeOfTraining( attribute, value: currentValue )
-        
-        // iniciar o NSTimer e ao terminar o tempo chamar a funcao de terminar treino
-        self.initTimer(time, value: currentValue)
+        // iniciar o NSTimer
+        self.initTimer(tuple.time, value: currentValue)
     }
     
-    func initTimer( time: Int, value: Int )
+    func initTimer( time: NSTimeInterval, value: Int )
     {
         debugPrint("Inicializando o Timer do atributo")
-        let timeInterval = NSTimeInterval(time)
+//        let timeInterval = NSTimeInterval(time)
 
-        NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
     }
     
     func finishTraining(timer: NSTimer) {
@@ -94,17 +115,20 @@ extension CharacterData {
 // MARK: stub functions to test funcionalities
 extension CharacterData {
     
-    func getCostOfTraining( attribute: String, value: Int ) -> Int {
+    // STUB para a funcao que o Artaxexes esta fazendo
+    func characterLevelUp( attribute: String, value: Int ) -> ( time: NSTimeInterval, cost: Int ) {
+        var ncost = 0
+        let ntime = NSTimeInterval(10)
+        
         if value < 2 {
-            return 300
+            ncost = 300
         } else if value < 5 {
-            return 600
+            ncost = 600
         } else {
-            return 100
+            ncost = 100
         }
-    }
-    
-    func getTimeOfTraining( attribute: String, value: Int ) -> Int {
-        return 10
+        
+        return (ntime, ncost)
+
     }
 }
