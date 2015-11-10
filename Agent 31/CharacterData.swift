@@ -108,7 +108,7 @@ extension CharacterData {
         self.initTimer(tuple.time, value: currentValue)
     }
     
-    func initTimer( time: NSTimeInterval, value: Int )
+    private func initTimer( time: NSTimeInterval, value: Int )
     {
         debugPrint("Inicializando o Timer do atributo \(self.currentTrainingAttribute)")
 
