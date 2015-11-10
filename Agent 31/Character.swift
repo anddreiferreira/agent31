@@ -82,7 +82,7 @@ class Character: GameObject {
         physicsBody.affectedByGravity = true
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
-        
+
         return physicsBody
     }
     
@@ -197,8 +197,8 @@ class Character: GameObject {
         
         self.walkingAnimationOnce()
 
-//        self.position = CGPointMake(self.position.x + (self.velocity * 0.8), self.position.y)
-        self.runAction(SKAction.moveTo(CGPointMake(self.position.x + self.velocity*0.8, self.position.y), duration: 0.1))
+        self.position = CGPointMake(self.position.x + (self.velocity * 0.3), self.position.y)
+//        self.runAction(SKAction.moveTo(CGPointMake(self.position.x + self.velocity*0.8, self.position.y), duration: 0.1))
     }
     
     func invertAccordingToVelocity(){

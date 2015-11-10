@@ -17,7 +17,7 @@ class LaboratoryScene: SKScene {
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton : SKSpriteNode?
-//    var shootButton : SKSpriteNode?
+    var shootButton : SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -63,7 +63,7 @@ class LaboratoryScene: SKScene {
     }
 
     func fireLaboratoryClock(){
-        let clock = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
         clock.fire()
     }
 
@@ -104,9 +104,9 @@ class LaboratoryScene: SKScene {
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
         cam.addChild(goToCity!)
         
-//        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
         
-//        cam.addChild(shootButton!)
+        cam.addChild(shootButton!)
     }
     
     func initiateNodes(){
@@ -295,9 +295,9 @@ class LaboratoryScene: SKScene {
     }
     
     func update2(time: CGFloat){
-        self.timeElapsed += 0.1
-        debugPrint(self.timeElapsed)
+        self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
+//        debugPrint(self.laboratoryGameLayer.agent31?.position.x)
     }
 
 }

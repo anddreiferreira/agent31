@@ -56,4 +56,9 @@ class Agent: Character {
         
     }
     
+    override func update(currentTime: NSTimeInterval) {
+        debugPrint(self.position.x)
+    }
+    
+    
 }

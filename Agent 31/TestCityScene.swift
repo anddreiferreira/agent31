@@ -11,6 +11,7 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TestCityScene: SKScene {
     
+    var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
     private var cityHudLayer : CityHudLayer!
@@ -29,6 +30,8 @@ class TestCityScene: SKScene {
         self.putBasicHudLayer()
         self.putGameLayer()
         
+        self.fireClock()
+        
         self.configureCamera()
         
     }
@@ -41,6 +44,11 @@ class TestCityScene: SKScene {
         
         self.addChild(cam)
         self.camera = cam
+    }
+    
+    func fireClock(){
+        let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        clock.fire()
     }
     
     func loadButtons(){
@@ -132,9 +140,13 @@ class TestCityScene: SKScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
-        self.cityGameLayer.updateEnemy(currentTime)
-        self.conformAgentToAnalogic()
         self.updateCameraPosition()
+    }
+    
+    func update2(currentTime: NSTimeInterval){
+        self.timeElapsed += 0.5
+        self.conformAgentToAnalogic()
+        self.cityGameLayer.updateEnemy(currentTime)
     }
 
 }
