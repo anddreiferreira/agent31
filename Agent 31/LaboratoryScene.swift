@@ -281,9 +281,11 @@ class LaboratoryScene: SKScene {
                 self.laboratoryGameLayer.agent31?.changeVelocity(-1)
                 self.laboratoryGameLayer.agent31?.lookUp(0)
             }else{
-//                if(self.laboratoryGameLayer.agent31?.position.x > 43 && self.laboratoryGameLayer.agent31?.position.x < 632){
+
+                if(!(self.laboratoryGameLayer.agent31?.position.x < 43 && self.analogStick?.data.velocity.x < 0) &&
+                    !(self.laboratoryGameLayer.agent31?.position.x > 632 && self.analogStick?.data.velocity.x > 0)){
                     self.laboratoryGameLayer.agent31?.run()
-//                }
+                }
             }
         }
     }
