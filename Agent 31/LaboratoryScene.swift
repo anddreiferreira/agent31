@@ -13,6 +13,7 @@ import SpriteKit
 @available(iOS 9.0, *)
 class LaboratoryScene: SKScene {
 
+    var timeElapsed: Float = 0.0
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton : SKSpriteNode?
@@ -37,10 +38,14 @@ class LaboratoryScene: SKScene {
         self.putHudLayer()
         self.putGameLayer()
         
+        self.fireLaboratoryClock()
+        
         self.configureCamera()
         
         // Physics
         self.setLaboratoryPhysics()
+        
+        
         
     }
     
@@ -55,6 +60,11 @@ class LaboratoryScene: SKScene {
         
         // Gravity
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
+    }
+
+    func fireLaboratoryClock(){
+        let clock = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        clock.fire()
     }
 
     func configureCamera(){
@@ -281,10 +291,13 @@ class LaboratoryScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        self.conformAgentToAnalogic()
         self.updateCameraPosition()
-        
-        
+    }
+    
+    func update2(time: CGFloat){
+        self.timeElapsed += 0.1
+        debugPrint(self.timeElapsed)
+        self.conformAgentToAnalogic()
     }
 
 }

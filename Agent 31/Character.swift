@@ -197,7 +197,8 @@ class Character: GameObject {
         
         self.walkingAnimationOnce()
 
-        self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
+//        self.position = CGPointMake(self.position.x + (self.velocity * 0.8), self.position.y)
+        self.runAction(SKAction.moveTo(CGPointMake(self.position.x + self.velocity*0.8, self.position.y), duration: 0.1))
     }
     
     func invertAccordingToVelocity(){
