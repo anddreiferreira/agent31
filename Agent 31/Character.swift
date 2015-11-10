@@ -238,8 +238,4 @@ class Character: GameObject {
         }
         
     }
-    
-    func update(currentTime: NSTimeInterval){
-        debugPrint("\(currentTime % 10)")
-    }
 }

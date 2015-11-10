@@ -24,6 +24,7 @@ class TestCityScene: SKScene {
         
         debugPrint("ENTERED IN TEST CITY")
         
+        
         self.putBackgroundLayer()
         self.putBasicHudLayer()
         self.putGameLayer()

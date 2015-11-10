@@ -56,5 +56,16 @@ class GameObject: SKSpriteNode {
         self.physicsBody = generatePhysicsBody()
     }
     
+    func beginContact(node: SKNode, bitmask: UInt32, andContact: SKPhysicsContact){
+        
+    }
+    
+    func endContact(node: SKNode, bitmask: UInt32, andContact: SKPhysicsContact){
+        
+    }
+    
+    func update(currentTime: NSTimeInterval){
+
+    }
     
 }

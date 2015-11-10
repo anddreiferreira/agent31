@@ -96,4 +96,6 @@ class Bullet : GameObject {
             self.removeFromParent()
             })
     }
+    
+    
 }
