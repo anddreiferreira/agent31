@@ -131,6 +131,7 @@ class TestCityScene: SKScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
+        self.cityGameLayer.updateEnemy(currentTime)
         self.conformAgentToAnalogic()
         self.updateCameraPosition()
     }

@@ -77,9 +77,9 @@ class Character: GameObject {
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let rectangleSize = CGSizeMake(self.size.width*0.6, self.size.height*0.7)
+        let rectangleSize = CGSizeMake(self.size.width*0.35, self.size.height*0.7)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
-        physicsBody.affectedByGravity = false
+        physicsBody.affectedByGravity = true
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
         
@@ -129,14 +129,14 @@ class Character: GameObject {
         self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
     }
     
-    func jumpAnimationOnce(){
+    private func jumpAnimationOnce(){
         if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
             self.runAction(self.jumpingLegs!)
             self.torso?.runAction(self.jumpingTorso!)
         }
     }
 
-    func walkingAnimationOnce(){
+    private func walkingAnimationOnce(){
         if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
             self.running = true
             
@@ -147,7 +147,7 @@ class Character: GameObject {
         }
     }
    
-    func attackingAnimationOnce(){
+    private func attackingAnimationOnce(){
         if(self.attackingTorso != nil){
             self.torso?.runAction(self.attackingTorso!, completion: {
                 self.attacking = false
@@ -155,7 +155,7 @@ class Character: GameObject {
         }
     }
     
-    func attackingUpAnimationOnce(){
+    private func attackingUpAnimationOnce(){
         if(self.attackingUpTorso != nil){
             self.torso?.runAction(self.attackingUpTorso!, completion:  {
                 self.attacking = false
@@ -221,7 +221,7 @@ class Character: GameObject {
         if(lookingUp == false){
             self.attackingAnimationOnce()
             
-            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y*0.85)
+            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y - self.size.height/8)
             let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
             self.parent?.addChild(bullet)
             
@@ -237,5 +237,9 @@ class Character: GameObject {
             bullet.fire()
         }
         
+    }
+    
+    func update(currentTime: NSTimeInterval){
+        debugPrint("\(currentTime % 10)")
     }
 }

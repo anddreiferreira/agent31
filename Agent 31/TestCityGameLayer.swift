@@ -29,6 +29,7 @@ class TestCityGameLayer: SKNode {
     func putGameLayer(){
         self.putGround()
         self.putAgent()
+        self.putTestEnemy()
         
         createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
         createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
@@ -58,6 +59,27 @@ class TestCityGameLayer: SKNode {
         self.addChild(agent31!)
     }
     
+    func putTestEnemy(){
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x + 100, middleOfTheScreenPoint.y))
+        testEnemy.name = "enemy"
+        self.addChild(testEnemy)
+    }
+    
+    func updateEnemy(currentTime: NSTimeInterval){
+        self.enumerateChildNodesWithName("enemy", usingBlock: {
+            node, stop in
+            // Block below is executed if a enemy is found
+            
+            if let foundEnemy = node as? GeneralEnemy{
+                
+                foundEnemy.update(currentTime)
+                
+            }else{
+                debugPrint("Enemy isn't found")
+            }
+            
+        })
+    }
 
 
 }

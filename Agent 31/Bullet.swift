@@ -55,6 +55,7 @@ class Bullet : GameObject {
     }
     
     private func setBulletAttributes(){
+        self.setScale(0.5)
         self.physicsBody = self.getPhysicsBody()
     }
     

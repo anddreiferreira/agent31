@@ -60,11 +60,12 @@ class LaboratoryGameLayer: SKNode {
     
     
     func putGround(){
-        let ground = GameObject(imageName: "Ground", position: CGPointMake(667/2, 0), zPosition: 1)
+        let ground = GameObject(imageName: "Ground", position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
         ground.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
-        ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+        ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Enemy.rawValue
         ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
+        ground.alpha = 0.0
         self.addChild(ground)
     }
     
@@ -95,6 +96,5 @@ class LaboratoryGameLayer: SKNode {
         self.tapObjectButton?.removeFromParent()
         
     }
-    
-        
+            
 }
