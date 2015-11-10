@@ -57,9 +57,11 @@ class LaboratoryScene: SKScene {
         self.physicsBody?.categoryBitMask = ColliderType.None.rawValue | ColliderType.Bullet.rawValue
         self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue
+
         
         // Gravity
-        self.physicsWorld.gravity = CGVectorMake(0, -9.8)
+        self.physicsWorld.gravity = CGVectorMake(0, -6.0)
+        // Set the physics world delegate
     }
 
     func fireLaboratoryClock(){
@@ -279,7 +281,9 @@ class LaboratoryScene: SKScene {
                 self.laboratoryGameLayer.agent31?.changeVelocity(-1)
                 self.laboratoryGameLayer.agent31?.lookUp(0)
             }else{
-                self.laboratoryGameLayer.agent31?.run()
+//                if(self.laboratoryGameLayer.agent31?.position.x > 43 && self.laboratoryGameLayer.agent31?.position.x < 632){
+                    self.laboratoryGameLayer.agent31?.run()
+//                }
             }
         }
     }
@@ -297,7 +301,7 @@ class LaboratoryScene: SKScene {
     func update2(time: CGFloat){
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
-//        debugPrint(self.laboratoryGameLayer.agent31?.position.x)
+        debugPrint(self.laboratoryGameLayer.agent31?.position.x)
     }
 
 }

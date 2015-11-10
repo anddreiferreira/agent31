@@ -51,6 +51,13 @@ class TestCityScene: SKScene {
         clock.fire()
     }
     
+    func setPhysicsWorld(){
+        
+        self.physicsWorld.gravity = CGVectorMake(0.0, -6.0)
+        
+        // Set the physics world delegate
+    }
+    
     func loadButtons(){
         
         jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 3, name: "jumpButton")
