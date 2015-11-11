@@ -81,5 +81,23 @@ class TestCityGameLayer: SKNode {
         })
     }
 
+}
 
+// MARK: CONTACT
+extension TestCityGameLayer{
+    func didBeginContact(contact: SKPhysicsContact){
+        
+        let node1: SKNode = contact.bodyA.node!
+        let node2: SKNode = contact.bodyB.node!
+        
+        if(node1.isKindOfClass(Bullet) || node2.isKindOfClass(Bullet)){
+            debugPrint("Contato com bala!")
+        }
+    }
+    
+    func didEndContact(contact: SKPhysicsContact){
+        
+        let node1: SKNode = contact.bodyA.node!
+        let node2: SKNode = contact.bodyB.node!
+    }
 }
