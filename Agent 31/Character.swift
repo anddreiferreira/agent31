@@ -11,7 +11,7 @@ import SpriteKit
 
 class Character: GameObject {
     
-    var torso: SKSpriteNode?
+    var torso: SKSpriteNode!
     var orientation: Int?
     var lookingUp: Bool = false
     var attacking: Bool = false
@@ -34,8 +34,8 @@ class Character: GameObject {
     var stoppedLegs: SKAction?
     var jumpingLegs: SKAction?
     var jumpingTorso: SKAction?
-    var getHitTorso: SKAction?
-    var getHitLegs: SKAction?
+    var gotHitTorso: SKAction?
+    var gotHitLegs: SKAction?
     
     init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
@@ -129,6 +129,16 @@ extension Character{
         }
     }
     
+    func gotHit(damage: Int){
+        debugPrint("Character HP \(self.HP) -> \(self.HP - damage)")
+        self.gotHitAnimationOnce()
+        self.HP = self.HP - damage
+        
+        if(self.HP <= 0){
+            self.die()
+        }
+    }
+    
     func run(){
         invertAccordingToVelocity()
         
@@ -197,14 +207,16 @@ extension Character{
         self.jumpingLegs = nil
         self.jumpingTorso = nil
         
-        self.getHitTorso = nil
-        self.getHitLegs = nil
+        self.gotHitTorso = nil
+        self.gotHitLegs = nil
         
     }
     
     func stoppedAnimationForever(){
-        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
-        self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
+        if(self.stoppedTorso != nil && self.stoppedLegs != nil){
+            self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
+            self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
+        }
     }
     
     private func jumpAnimationOnce(){
@@ -247,4 +259,10 @@ extension Character{
         }
     }
     
+    func gotHitAnimationOnce(){
+        if(self.gotHitLegs != nil && self.gotHitTorso != nil){
+            self.runAction(self.gotHitLegs!)
+            self.torso?.runAction(self.gotHitTorso!)
+        }
+    }
 }

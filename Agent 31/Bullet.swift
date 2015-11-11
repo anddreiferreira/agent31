@@ -100,5 +100,17 @@ class Bullet : GameObject {
             })
     }
     
+    func hittedSomething(){
+        // Remove MOVE action
+        self.removeAllActions()
+        // Count just one CONTACT per bullet
+        self.physicsBody = nil
+        
+        // Wait 0.1 seconds before to disappear
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            self.removeFromParent()
+        })
+    }
+    
     
 }

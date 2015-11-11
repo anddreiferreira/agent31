@@ -56,6 +56,8 @@ class Agent: Character {
         self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingTorso = actionWithAnimationName("troncoAtacando", numberOfImages: 3, timePerTexture: 0.08)
         
+        self.gotHitLegs = actionWithAnimationName("pernasGetHit", numberOfImages: 1, timePerTexture: 0.1)
+        self.gotHitTorso = actionWithAnimationName("troncoGetHit", numberOfImages: 1, timePerTexture: 0.1)
         
     }
     

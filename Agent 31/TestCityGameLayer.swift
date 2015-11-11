@@ -92,14 +92,19 @@ extension TestCityGameLayer{
         let node2: SKNode = contact.bodyB.node!
         
         if(node1.isKindOfClass(Bullet)){
+            let bullet = (node1 as? Bullet)!
+            bullet.hittedSomething()
             if(node2.isKindOfClass(Character)){
-                
-                bulletHitted((node2 as? Character)!, bullet:(node1 as? Bullet)!)
+                let charac = (node2 as? Character)!
+                charac.gotHit(bullet.damage)
 
             }
         }else if(node2.isKindOfClass(Bullet)){
+            let bullet = (node2 as? Bullet)!
+            bullet.hittedSomething()
             if(node1.isKindOfClass(Character)){
-                bulletHitted((node1 as? Character)!, bullet: (node2 as? Bullet)!)
+                let charac = (node1 as? Character)!
+                charac.gotHit(bullet.damage)
                 
             }
         }
@@ -111,26 +116,4 @@ extension TestCityGameLayer{
 //        let node2: SKNode = contact.bodyB.node!
     }
     
-    func bulletHitted(charac: Character, bullet: Bullet){
-        
-        debugPrint("Character hitted by bullet")
-        
-        // Remove MOVE action
-        bullet.removeAllActions()
-        // Count just one CONTACT per bullet
-        bullet.physicsBody = nil
-        bullet.runAction(SKAction.waitForDuration(0.15), completion: {
-            bullet.removeFromParent()
-        })
-
-        debugPrint("Character HP \(charac.HP) -> \(charac.HP - bullet.damage)")
-        
-        charac.HP = charac.HP - bullet.damage
-        
-        if(charac.HP <= 0){
-            charac.die()
-        }
-        
-        
-    }
 }
