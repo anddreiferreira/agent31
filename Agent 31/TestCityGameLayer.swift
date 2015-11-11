@@ -87,17 +87,50 @@ class TestCityGameLayer: SKNode {
 extension TestCityGameLayer{
     func didBeginContact(contact: SKPhysicsContact){
         
+        
         let node1: SKNode = contact.bodyA.node!
         let node2: SKNode = contact.bodyB.node!
         
-        if(node1.isKindOfClass(Bullet) || node2.isKindOfClass(Bullet)){
-            debugPrint("Contato com bala!")
+        if(node1.isKindOfClass(Bullet)){
+            if(node2.isKindOfClass(Character)){
+                
+                bulletHitted((node2 as? Character)!, bullet:(node1 as? Bullet)!)
+
+            }
+        }else if(node2.isKindOfClass(Bullet)){
+            if(node1.isKindOfClass(Character)){
+                bulletHitted((node1 as? Character)!, bullet: (node2 as? Bullet)!)
+                
+            }
         }
     }
     
     func didEndContact(contact: SKPhysicsContact){
         
-        let node1: SKNode = contact.bodyA.node!
-        let node2: SKNode = contact.bodyB.node!
+//        let node1: SKNode = contact.bodyA.node!
+//        let node2: SKNode = contact.bodyB.node!
+    }
+    
+    func bulletHitted(charac: Character, bullet: Bullet){
+        
+        debugPrint("Character hitted by bullet")
+        
+        // Remove MOVE action
+        bullet.removeAllActions()
+        // Count just one CONTACT per bullet
+        bullet.physicsBody = nil
+        bullet.runAction(SKAction.waitForDuration(0.15), completion: {
+            bullet.removeFromParent()
+        })
+
+        debugPrint("Character HP \(charac.HP) -> \(charac.HP - bullet.damage)")
+        
+        charac.HP = charac.HP - bullet.damage
+        
+        if(charac.HP <= 0){
+            charac.die()
+        }
+        
+        
     }
 }

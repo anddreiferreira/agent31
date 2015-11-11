@@ -9,7 +9,7 @@
 import SpriteKit
 
 @available(iOS 9.0, *)
-class TestCityScene: SKScene, SKPhysicsContactDelegate {
+class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
@@ -27,6 +27,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate {
         
         
         self.putLayers()
+        self.setPhysicsWorld()
         
         self.fireClock()
         
@@ -178,7 +179,6 @@ extension TestCityScene{
 extension TestCityScene{
     
     func setPhysicsWorld(){
-        
         self.physicsWorld.gravity = CGVectorMake(0.0, -6.0)
         
         // Set the physics world delegate

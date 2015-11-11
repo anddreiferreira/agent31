@@ -13,7 +13,7 @@ class Bullet : GameObject {
     var orientation: Int
     var imageName: String?
     var velocity: Int?
-    var damage: Int?
+    var damage: Int!
     var ownerGun: Gun?
 
     init(ownerGun: Gun, orientation: Int, zPosition: CGFloat){
@@ -22,6 +22,7 @@ class Bullet : GameObject {
         self.orientation = orientation
         
         super.init(imageName: self.imageName!, position: CGPointZero, zPosition: zPosition)
+        self.defineDamage()
         self.position = ownerGun.position
     }
     
@@ -30,6 +31,7 @@ class Bullet : GameObject {
         self.orientation = orientation
         
         super.init(imageName: "bullet1", position: CGPointZero, zPosition: zPosition)
+        self.defineDamage()
         self.position = initialPosition
         
     }
@@ -45,7 +47,7 @@ class Bullet : GameObject {
     
     private func defineDamage(){
         // Define damage according to Agent and Gun
-        self.damage = 1
+        self.damage = 10
     }
     
     private func defineInitialImage() -> String{

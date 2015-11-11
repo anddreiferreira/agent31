@@ -17,7 +17,7 @@ class Character: GameObject {
     var attacking: Bool = false
     var running: Bool = false
 
-    var HP: CGFloat = 100.0
+    var HP: Int = 100
     var velocity: CGFloat = 0.0
     
     // Animations...
@@ -165,6 +165,14 @@ extension Character{
             bullet.fire()
         }
         
+    }
+    
+    func die(){
+        // Call dying animation here
+        // Change the duration
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            self.removeFromParent()
+        })
     }
 }
 
