@@ -17,7 +17,7 @@ class Character: GameObject {
     var attacking: Bool = false
     var running: Bool = false
 
-    
+    var HP: CGFloat = 100.0
     var velocity: CGFloat = 0.0
     
     // Animations...
@@ -36,20 +36,22 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var getHitTorso: SKAction?
     var getHitLegs: SKAction?
-//    
-//    
-//    //...actual animation
-//    var actualTorso: SKAction?
-//    var actualLegs: SKAction?
     
     init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
-        self.zPosition = 1
         initializeTorso(torsoImage)
         
         setGeneralAttributesForCharacter()
+    }
+    
+    private func initializeTorso(image: String){
+        let torsoTexture: SKTexture = generateTextureWithImage(image)
+        self.torso = SKSpriteNode(texture: torsoTexture)
+        self.torso?.zPosition = 1
+        
+        self.addChild(torso!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,14 +70,6 @@ class Character: GameObject {
         initializeAnimations()
     }
     
-    private func initializeTorso(image: String){
-        let torsoTexture: SKTexture = generateTextureWithImage(image)
-        self.torso = SKSpriteNode(texture: torsoTexture)
-        self.torso?.zPosition = 1
-        
-        self.addChild(torso!)
-    }
-    
     override func generatePhysicsBody() -> SKPhysicsBody {
         let rectangleSize = CGSizeMake(self.size.width*0.35, self.size.height*0.7)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
@@ -92,83 +86,6 @@ class Character: GameObject {
         self.physicsBody?.restitution = 0.0
     }
     
-    func initializeAnimations(){
-        
-        self.stoppedTorso = nil
-        self.stoppedLegs = nil
-        
-        self.walkingTorso = nil
-        self.walkingLegs = nil
-        
-        self.runningTorso = nil
-        self.runningLegs = nil
-        
-        self.lookingUpTorso = nil
-        self.attackingUpTorso = nil
-        self.attackingTorso = nil
-        
-        self.jumpingLegs = nil
-        self.jumpingTorso = nil
-        
-        self.getHitTorso = nil
-        self.getHitLegs = nil
-        
-//        self.actualTorso = nil
-//        self.actualLegs = nil
-        
-    }
-    
-    func jump(){
-        jumpAnimationOnce()
-        self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
-    }
-    
-    
-    func stoppedAnimationForever(){
-        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
-        self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
-    }
-    
-    private func jumpAnimationOnce(){
-        if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
-            self.runAction(self.jumpingLegs!)
-            self.torso?.runAction(self.jumpingTorso!)
-        }
-    }
-
-    private func walkingAnimationOnce(){
-        if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
-            self.running = true
-            
-            self.torso?.runAction(self.walkingTorso!)
-            self.runAction(self.walkingLegs!, completion: {
-                    self.running = false
-                })
-        }
-    }
-   
-    private func attackingAnimationOnce(){
-        if(self.attackingTorso != nil){
-            self.torso?.runAction(self.attackingTorso!, completion: {
-                self.attacking = false
-            })
-        }
-    }
-    
-    private func attackingUpAnimationOnce(){
-        if(self.attackingUpTorso != nil){
-            self.torso?.runAction(self.attackingUpTorso!, completion:  {
-                self.attacking = false
-            })
-        }
-    }
-    
-    func lookUpAnimationOnce(){
-        if(self.lookingUpTorso != nil && self.attacking == false){
-            self.torso?.runAction(self.lookingUpTorso!)
-        }
-    }
-    
     func changeVelocity(xvelocity: CGFloat){
         let futureVelocity = self.velocity + xvelocity/2.0
         
@@ -180,6 +97,26 @@ class Character: GameObject {
             self.velocity = MIN_CHARACTER_VELOCITY
         }
         
+    }
+    
+}
+
+// MARK: Actions
+extension Character{
+    func invertAccordingToVelocity(){
+        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
+            
+            invertSpriteHorizontally(true)
+            self.orientation = TURNED_RIGHT
+            
+        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
+            
+            invertSpriteHorizontally(true)
+            self.orientation = TURNED_LEFT
+            
+        }else{
+            invertSpriteHorizontally(false)
+        }
     }
     
     func lookUp(yvelocity: CGFloat){
@@ -196,27 +133,17 @@ class Character: GameObject {
         invertAccordingToVelocity()
         
         self.walkingAnimationOnce()
-
+        
+        //WARNING: verificar isso depois
         self.position = CGPointMake(self.position.x + (self.velocity * 0.3), self.position.y)
-//        self.runAction(SKAction.moveTo(CGPointMake(self.position.x + self.velocity*0.8, self.position.y), duration: 0.1))
+        //        self.runAction(SKAction.moveTo(CGPointMake(self.position.x + self.velocity*0.3, self.position.y), duration: 0.1))
     }
     
-    func invertAccordingToVelocity(){
-        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
-            
-            invertSpriteHorizontally(true)
-            self.orientation = TURNED_RIGHT
-            
-        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
-
-            invertSpriteHorizontally(true)
-            self.orientation = TURNED_LEFT
-            
-        }else{
-            invertSpriteHorizontally(false)
-        }
+    func jump(){
+        jumpAnimationOnce()
+        self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
     }
-
+    
     func shoot(){
         self.attacking = true
         if(lookingUp == false){
@@ -239,4 +166,77 @@ class Character: GameObject {
         }
         
     }
+}
+
+// MARK: Animations
+extension Character{
+    
+    func initializeAnimations(){
+        
+        self.stoppedTorso = nil
+        self.stoppedLegs = nil
+        
+        self.walkingTorso = nil
+        self.walkingLegs = nil
+        
+        self.runningTorso = nil
+        self.runningLegs = nil
+        
+        self.lookingUpTorso = nil
+        self.attackingUpTorso = nil
+        self.attackingTorso = nil
+        
+        self.jumpingLegs = nil
+        self.jumpingTorso = nil
+        
+        self.getHitTorso = nil
+        self.getHitLegs = nil
+        
+    }
+    
+    func stoppedAnimationForever(){
+        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
+        self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
+    }
+    
+    private func jumpAnimationOnce(){
+        if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
+            self.runAction(self.jumpingLegs!)
+            self.torso?.runAction(self.jumpingTorso!)
+        }
+    }
+    
+    private func walkingAnimationOnce(){
+        if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
+            self.running = true
+            
+            self.torso?.runAction(self.walkingTorso!)
+            self.runAction(self.walkingLegs!, completion: {
+                self.running = false
+            })
+        }
+    }
+    
+    private func attackingAnimationOnce(){
+        if(self.attackingTorso != nil){
+            self.torso?.runAction(self.attackingTorso!, completion: {
+                self.attacking = false
+            })
+        }
+    }
+    
+    private func attackingUpAnimationOnce(){
+        if(self.attackingUpTorso != nil){
+            self.torso?.runAction(self.attackingUpTorso!, completion:  {
+                self.attacking = false
+            })
+        }
+    }
+    
+    func lookUpAnimationOnce(){
+        if(self.lookingUpTorso != nil && self.attacking == false){
+            self.torso?.runAction(self.lookingUpTorso!)
+        }
+    }
+    
 }

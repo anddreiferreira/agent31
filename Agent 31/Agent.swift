@@ -29,6 +29,8 @@ class Agent: Character {
     private func setGeneralAttributesForAgent(){
         stoppedAnimationForever()
         self.setAgentPhysics()
+        
+        self.HP = 100
     }
     
     private func setAgentPhysics(){
