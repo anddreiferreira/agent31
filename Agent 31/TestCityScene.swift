@@ -40,25 +40,16 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: SKPhysicsContactDelegate methods
-    func didBeginContact(contact: SKPhysicsContact)
-    {
-        debugPrint("Contact begin")
+    func didBeginContact(contact: SKPhysicsContact){
         
         let node1: SKNode = contact.bodyA.node!
         let node2: SKNode = contact.bodyB.node!
         
-        if node1.isKindOfClass(Bullet) {
-            // Remove bullet
-            node1.removeFromParent()
-            if node2.isKindOfClass(GeneralEnemy) {
-                // Reduce enemy life
-                debugPrint("Enemy hit")
-            } else if node2.isKindOfClass(Agent) {
-                // Reduce agent print
-                debugPrint("Agent hit")
-            }
+        if(node1.isKindOfClass(Bullet) || node2.isKindOfClass(Bullet)){
+            debugPrint("Contato com bala!")
         }
     }
+    
     
     func configureCamera(){
         cam.position = middleOfTheScreenPoint

@@ -83,6 +83,7 @@ class Bullet : GameObject {
         physicsBody.mass = 1.0
         physicsBody.categoryBitMask = ColliderType.Bullet.rawValue
         physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+        physicsBody.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
         
         
         

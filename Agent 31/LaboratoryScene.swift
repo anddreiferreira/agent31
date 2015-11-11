@@ -303,7 +303,6 @@ class LaboratoryScene: SKScene {
     func update2(time: CGFloat){
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
-        debugPrint(self.laboratoryGameLayer.agent31?.position.x)
     }
 
 }
