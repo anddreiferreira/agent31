@@ -9,7 +9,7 @@
 import SpriteKit
 
 @available(iOS 9.0, *)
-class TestCityScene: SKScene {
+class TestCityScene: SKScene, SKPhysicsContactDelegate {
     
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
@@ -34,6 +34,30 @@ class TestCityScene: SKScene {
         
         self.configureCamera()
         
+        // Set the physics world delegate
+        self.physicsWorld.contactDelegate = self
+        
+    }
+    
+    // MARK: SKPhysicsContactDelegate methods
+    func didBeginContact(contact: SKPhysicsContact)
+    {
+        debugPrint("Contact begin")
+        
+        let node1: SKNode = contact.bodyA.node!
+        let node2: SKNode = contact.bodyB.node!
+        
+        if node1.isKindOfClass(Bullet) {
+            // Remove bullet
+            node1.removeFromParent()
+            if node2.isKindOfClass(GeneralEnemy) {
+                // Reduce enemy life
+                debugPrint("Enemy hit")
+            } else if node2.isKindOfClass(Agent) {
+                // Reduce agent print
+                debugPrint("Agent hit")
+            }
+        }
     }
     
     func configureCamera(){
