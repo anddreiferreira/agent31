@@ -48,98 +48,10 @@ class LaboratoryScene: SKScene {
         
         
     }
-    
-    func setLaboratoryPhysics(){
-        
-//        // Creating a border so the player won't fall off the screen
-//        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-//        self.physicsBody = borderBody
-//        self.physicsBody?.categoryBitMask = ColliderType.None.rawValue | ColliderType.Bullet.rawValue
-//        self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
-//        self.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue
-
-        
-        // Gravity
-        self.physicsWorld.gravity = CGVectorMake(0, -6.0)
-        // Set the physics world delegate
-    }
 
     func fireLaboratoryClock(){
         let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
         clock.fire()
-    }
-
-    func configureCamera(){
-        cam.position = middleOfTheScreenPoint
-        
-        self.configureAnalogStick()
-        self.loadButtons()
-        
-        self.addChild(cam)
-        self.camera = cam
-    }
-    
-    private func configureAnalogStick(){
-        // Initialize an analog stick
-        analogStick = AnalogStick()
-        
-        analogStick.position = CGPointMake(-self.size.width/2.5, -self.size.height/3)
-        analogStick!.trackingHandler = { analogStick in
-            
-            let xvelocity = analogStick.data.velocity.x
-            self.laboratoryGameLayer.agent31!.changeVelocity(xvelocity)
-            
-            let yvelocity = analogStick.data.velocity.y
-            self.laboratoryGameLayer.agent31!.lookUp(yvelocity)
-            
-            
-        }
-        
-        cam.addChild(analogStick!)
-    }
-    
-    private func loadButtons(){
-        
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 100, name: "jumpButtonLab")
-        cam.addChild(jumpButton!)
-        
-        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
-        cam.addChild(goToCity!)
-        
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
-        
-        cam.addChild(shootButton!)
-    }
-    
-    func initiateNodes(){
-    
-        let algo = self.childNodeWithName("headerLab")
-        algo?.alpha = 0.3
-        algo?.removeFromParent()
-        
-    }
-    
-    
-    func putBackgroundLayer(){
-        
-        self.laboratoryBackgroundLayer = LaboratoryBackgroundLayer()
-        self.laboratoryBackgroundLayer.putBackground()
-        self.addChild(laboratoryBackgroundLayer)
-    }
-
-    func putHudLayer(){
-        
-        self.laboratoryHudLayer = LaboratoryHudLayer()
-        self.laboratoryHudLayer.putHudLayer()
-        cam.addChild(laboratoryHudLayer)
-    }
-    
-    func putGameLayer(){
-        
-        self.laboratoryGameLayer = LaboratoryGameLayer()
-        self.laboratoryGameLayer.putGameLayer()
-        self.addChild(laboratoryGameLayer)
-        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -156,7 +68,6 @@ class LaboratoryScene: SKScene {
             let node = self.nodeAtPoint(location)
             
             if node.name == "jumpButtonLab" {
-                //print("Agent jump")
                 buttonTapped(node)
                 self.laboratoryGameLayer.agent31?.jump()
             }else if node.name == "shootButton"{
@@ -166,28 +77,10 @@ class LaboratoryScene: SKScene {
                 buttonTapped(node)
 //                self.agentGoToCity()
                 self.goToTestCity()
-            }else if node.name == "deskPlaceholder" {
-            
-                self.laboratoryGameLayer!.messageTapObjectButton(0)
-                possibileObjectNumber = 0
-            }else if node.name == "tapHereButton" {
-                
-                self.laboratoryGameLayer!.removeTapObjectButton()
-                self.putObjectLayer()
-                
             }
+            
         }
         
-    }
-    
-    private func putObjectLayer(){
-    
-        if possibileObjectNumber == 0{
-    
-            self.laboratoryGameLayer.putDeskLayer()
-        }
-    
-        possibileObjectNumber = -1
     }
     
     private func agentGoToCity(){
@@ -207,7 +100,6 @@ class LaboratoryScene: SKScene {
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             
             self.scene!.view!.presentScene(nextScene, transition: transition)
-            // Fallback on earlier versions
 
     }
     
@@ -275,6 +167,116 @@ class LaboratoryScene: SKScene {
         
     }
     
+    override func update(currentTime: CFTimeInterval) {
+        self.updateCameraPosition()
+    }
+    
+    func update2(time: CGFloat){
+        self.timeElapsed += 0.05
+        self.conformAgentToAnalogic()
+    }
+
+}
+
+// MARK: PUT LAYERS METHODS
+@available(iOS 9.0, *)
+extension LaboratoryScene{
+    
+    func putBackgroundLayer(){
+        
+        self.laboratoryBackgroundLayer = LaboratoryBackgroundLayer()
+        self.laboratoryBackgroundLayer.putBackground()
+        self.addChild(laboratoryBackgroundLayer)
+    }
+    
+    func putHudLayer(){
+        
+        self.laboratoryHudLayer = LaboratoryHudLayer()
+        self.laboratoryHudLayer.putHudLayer()
+        cam.addChild(laboratoryHudLayer)
+    }
+    
+    func putGameLayer(){
+        
+        self.laboratoryGameLayer = LaboratoryGameLayer()
+        self.laboratoryGameLayer.putGameLayer()
+        self.addChild(laboratoryGameLayer)
+        
+    }
+    
+    private func putObjectLayer(){
+        
+        if possibileObjectNumber == 0{
+            
+            self.laboratoryGameLayer.putDeskLayer()
+        }
+        
+        possibileObjectNumber = -1
+    }
+}
+
+// MARK: CAMERA
+@available(iOS 9.0, *)
+extension LaboratoryScene{
+    
+    func configureCamera(){
+        cam.position = middleOfTheScreenPoint
+        
+        self.configureAnalogStick()
+        self.loadButtons()
+        
+        self.addChild(cam)
+        self.camera = cam
+    }
+    
+    func updateCameraPosition(){
+        
+        // UPDATE X POSITION
+        self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
+        
+        //        // UPDATE Y POSITION
+        //        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
+        //        self.cam.position.y = middleOfTheScreenPoint.y + ((self.laboratoryGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
+    }
+    
+    private func loadButtons(){
+        
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 100, name: "jumpButtonLab")
+        cam.addChild(jumpButton!)
+        
+        goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
+        cam.addChild(goToCity!)
+        
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        
+        cam.addChild(shootButton!)
+    }
+    
+}
+
+// MARK: ANALOG METHODS
+@available(iOS 9.0, *)
+extension LaboratoryScene{
+    
+    private func configureAnalogStick(){
+        // Initialize an analog stick
+        analogStick = AnalogStick()
+        
+        analogStick.position = CGPointMake(-self.size.width/2.5, -self.size.height/3)
+        analogStick!.trackingHandler = { analogStick in
+            
+            let xvelocity = analogStick.data.velocity.x
+            self.laboratoryGameLayer.agent31!.changeVelocity(xvelocity)
+            
+            let yvelocity = analogStick.data.velocity.y
+            self.laboratoryGameLayer.agent31!.lookUp(yvelocity)
+            
+            
+        }
+        
+        cam.addChild(analogStick!)
+    }
+    
     func conformAgentToAnalogic(){
         if(self.laboratoryGameLayer.agent31?.velocity != 0){
             if(self.analogStick?.data.velocity == CGPointZero){
@@ -285,30 +287,21 @@ class LaboratoryScene: SKScene {
                 let rightLimit: CGFloat = 718.0
                 if(!(self.laboratoryGameLayer.agent31?.position.x < leftLimit && self.analogStick?.data.velocity.x < 0) &&
                     !(self.laboratoryGameLayer.agent31?.position.x > rightLimit && self.analogStick?.data.velocity.x > 0)){
-                    self.laboratoryGameLayer.agent31?.run()
+                        self.laboratoryGameLayer.agent31?.run()
                 }
             }
         }
     }
-    
-    func updateCameraPosition(){
-        
-        // UPDATE X POSITION
-        self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
-        
-//        // UPDATE Y POSITION
-//        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
-//        self.cam.position.y = middleOfTheScreenPoint.y + ((self.laboratoryGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
-    }
-    
-    override func update(currentTime: CFTimeInterval) {
-        self.updateCameraPosition()
-    }
-    
-    func update2(time: CGFloat){
-        self.timeElapsed += 0.05
-        self.conformAgentToAnalogic()
-        debugPrint(self.laboratoryGameLayer.agent31?.position.x)
-    }
+}
 
+// MARK: PHYSICS
+@available(iOS 9.0, *)
+extension LaboratoryScene{
+    func setLaboratoryPhysics(){
+        // Gravity
+        
+        self.physicsWorld.gravity = CGVectorMake(0, -6.0)
+    }
+    
+    
 }
