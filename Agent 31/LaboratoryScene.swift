@@ -71,6 +71,8 @@ class LaboratoryScene: SKScene {
                 buttonTapped(node)
 //                self.agentGoToCity()
                 self.goToTestCity()
+            }else if node.name == "balloon" {
+                self.showLabObjectLayer((node as? SKSpriteNode)!)
             }
             
         }
@@ -134,6 +136,20 @@ extension LaboratoryScene{
         self.laboratoryGameLayer.putGameLayer()
         self.addChild(laboratoryGameLayer)
         
+    }
+    
+    func showLabObjectLayer(balloon: SKSpriteNode){
+        if(balloon.parent?.name == "placeHolderMesa"){
+            debugPrint("DESK!");
+        }else if(balloon.parent?.name == "placeHolderPC"){
+            debugPrint("PC!")
+        }else if(balloon.parent?.name == "placeHolderTV"){
+            debugPrint("TV")
+        }else if(balloon.parent?.name == "placeHolderTreinamento"){
+            debugPrint("TREINAMENTO")
+        }else if(balloon.parent?.name == "placeHolderMesaArmas"){
+            debugPrint("ARMAS")
+        }
     }
 }
 

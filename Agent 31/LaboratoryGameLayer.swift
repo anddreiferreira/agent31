@@ -36,19 +36,16 @@ class LaboratoryGameLayer: SKNode {
     private func putObjectPlaceHolder(){
         
         self.desk = LabObject(imageNamed: "placeHolderMesa" , groundPosition: CGPointMake(100,100))
+        self.computer = LabObject(imageNamed: "placeHolderPC", groundPosition: CGPointMake(-150, 100))
+        self.television = LabObject(imageNamed: "placeHolderTV", groundPosition: CGPointMake(-300, 100))
+        self.trainingCenter = LabObject(imageNamed: "placeHolderTreinamento", groundPosition: CGPointMake(-450, 100))
+        self.gunDevelopmentCenter = LabObject(imageNamed: "placeHolderMesaArmas", groundPosition: CGPointMake(250, 100))
 
-//        self.desk = Desk(position: CGPointMake(100, 220))
-//        self.computer = Computer(position: CGPointMake(-100, 220))
-//        self.television = Television(position: CGPointMake(-200, 220))
-//        self.trainingCenter = TrainingCenter(position: CGPointMake(-300, 220))
-//        self.gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-400, 220))
-//
-//        // Objetcs
         self.addChild(desk!)
-//        self.addChild(computer!)
-//        self.addChild(television!)
-//        self.addChild(gunDevelopmentCenter!)
-//        self.addChild(trainingCenter!)
+        self.addChild(computer!)
+        self.addChild(television!)
+        self.addChild(gunDevelopmentCenter!)
+        self.addChild(trainingCenter!)
     }
     
     func putGameLayer(){
@@ -76,12 +73,6 @@ class LaboratoryGameLayer: SKNode {
         self.addChild(agent31!)
     }
     
-    func putDeskLayer(){
-    
-        debugPrint("Chama layer da desk")
-        
-    }
-    
     func verifyObjectBalloon(obj: LabObject){
         if(distanceBetweenPoints(obj.position, second: (self.agent31?.position)!) < 100){
             obj.putBalloon()
@@ -92,6 +83,10 @@ class LaboratoryGameLayer: SKNode {
     
     func updateLabGameLayer(){
         self.verifyObjectBalloon(self.desk!)
+        self.verifyObjectBalloon(self.computer!)
+        self.verifyObjectBalloon(self.television!)
+        self.verifyObjectBalloon(self.trainingCenter!)
+        self.verifyObjectBalloon(self.gunDevelopmentCenter!)
     }
     
 }
