@@ -51,12 +51,12 @@ class LaboratoryScene: SKScene {
     
     func setLaboratoryPhysics(){
         
-        // Creating a border so the player won't fall off the screen
-        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        self.physicsBody = borderBody
-        self.physicsBody?.categoryBitMask = ColliderType.None.rawValue | ColliderType.Bullet.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
-        self.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue
+//        // Creating a border so the player won't fall off the screen
+//        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+//        self.physicsBody = borderBody
+//        self.physicsBody?.categoryBitMask = ColliderType.None.rawValue | ColliderType.Bullet.rawValue
+//        self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+//        self.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue
 
         
         // Gravity
@@ -281,9 +281,10 @@ class LaboratoryScene: SKScene {
                 self.laboratoryGameLayer.agent31?.changeVelocity(-1)
                 self.laboratoryGameLayer.agent31?.lookUp(0)
             }else{
-
-                if(!(self.laboratoryGameLayer.agent31?.position.x < 43 && self.analogStick?.data.velocity.x < 0) &&
-                    !(self.laboratoryGameLayer.agent31?.position.x > 632 && self.analogStick?.data.velocity.x > 0)){
+                let leftLimit: CGFloat = -718.0
+                let rightLimit: CGFloat = 718.0
+                if(!(self.laboratoryGameLayer.agent31?.position.x < leftLimit && self.analogStick?.data.velocity.x < 0) &&
+                    !(self.laboratoryGameLayer.agent31?.position.x > rightLimit && self.analogStick?.data.velocity.x > 0)){
                     self.laboratoryGameLayer.agent31?.run()
                 }
             }
@@ -291,9 +292,13 @@ class LaboratoryScene: SKScene {
     }
     
     func updateCameraPosition(){
-        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
+        
+        // UPDATE X POSITION
         self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
-        self.cam.position.y = middleOfTheScreenPoint.y + ((self.laboratoryGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
+        
+//        // UPDATE Y POSITION
+//        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
+//        self.cam.position.y = middleOfTheScreenPoint.y + ((self.laboratoryGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -303,6 +308,7 @@ class LaboratoryScene: SKScene {
     func update2(time: CGFloat){
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
+        debugPrint(self.laboratoryGameLayer.agent31?.position.x)
     }
 
 }
