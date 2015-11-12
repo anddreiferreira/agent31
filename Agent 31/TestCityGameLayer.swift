@@ -60,7 +60,7 @@ class TestCityGameLayer: SKNode {
     }
     
     func putTestEnemy(){
-        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x + 100, middleOfTheScreenPoint.y))
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, middleOfTheScreenPoint.y))
         testEnemy.name = "enemy"
         self.addChild(testEnemy)
     }
@@ -72,6 +72,7 @@ class TestCityGameLayer: SKNode {
             
             if let foundEnemy = node as? GeneralEnemy{
                 
+                foundEnemy.setDistanceToAgent( (self.agent31?.position)! )
                 foundEnemy.update(currentTime)
                 
             }else{

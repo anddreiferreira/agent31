@@ -144,3 +144,7 @@ func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, item
     notification.soundName = UILocalNotificationDefaultSoundName
     UIApplication.sharedApplication().scheduleLocalNotification(notification)
 }
+
+func distanceBetweenPoints( first: CGPoint, second: CGPoint ) -> CGFloat {
+    return CGFloat(hypotf(Float(second.x - first.x), Float(second.y - first.y)))
+}

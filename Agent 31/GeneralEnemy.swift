@@ -13,6 +13,8 @@ class GeneralEnemy: Character {
     private let initialLegs: String = "pernasParado1"
     private let initialTorso: String = "troncoParado1"
     
+    var distanceToAgent: CGFloat?
+    
 //    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
 //        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
 //        
@@ -75,11 +77,15 @@ class GeneralEnemy: Character {
         
     }
     
+    var direcao: Int = -1
     override func update(currentTime: NSTimeInterval) {
-        let intTime = Int(currentTime)
-        if(intTime%15 == 5){
-            self.jump()
+//        let intTime = Int(currentTime)
+        if(self.distanceToAgent < 180){
+            self.shoot()
         }
     }
     
+    func setDistanceToAgent( agentPosition: CGPoint ) {
+        self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
+    }
 }
