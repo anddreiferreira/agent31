@@ -13,11 +13,11 @@ class LaboratoryGameLayer: SKNode {
     var agent31 : Agent?
     var placeHolder : SKSpriteNode?
     
-    var desk : Desk?
-    var computer : Computer?
-    var gunDevelopmentCenter : GunDevelopmentCenter?
-    var television : Television?
-    var trainingCenter : TrainingCenter?
+    var desk : LabObject?
+    var computer : LabObject?
+    var gunDevelopmentCenter : LabObject?
+    var television : LabObject?
+    var trainingCenter : LabObject?
     
     var tapObjectButton : SKSpriteNode?
     
@@ -34,19 +34,21 @@ class LaboratoryGameLayer: SKNode {
     
     
     private func putObjectPlaceHolder(){
+        
+        self.desk = LabObject(imageNamed: "placeHolderMesa" , groundPosition: CGPointMake(100,100))
 
-        self.desk = Desk(position: CGPointMake(100, 220))
-        self.computer = Computer(position: CGPointMake(-100, 220))
-        self.television = Television(position: CGPointMake(-200, 220))
-        self.trainingCenter = TrainingCenter(position: CGPointMake(-300, 220))
-        self.gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-400, 220))
-
-        // Objetcs
+//        self.desk = Desk(position: CGPointMake(100, 220))
+//        self.computer = Computer(position: CGPointMake(-100, 220))
+//        self.television = Television(position: CGPointMake(-200, 220))
+//        self.trainingCenter = TrainingCenter(position: CGPointMake(-300, 220))
+//        self.gunDevelopmentCenter = GunDevelopmentCenter(position: CGPointMake(-400, 220))
+//
+//        // Objetcs
         self.addChild(desk!)
-        self.addChild(computer!)
-        self.addChild(television!)
-        self.addChild(gunDevelopmentCenter!)
-        self.addChild(trainingCenter!)
+//        self.addChild(computer!)
+//        self.addChild(television!)
+//        self.addChild(gunDevelopmentCenter!)
+//        self.addChild(trainingCenter!)
     }
     
     func putGameLayer(){
@@ -76,25 +78,20 @@ class LaboratoryGameLayer: SKNode {
     
     func putDeskLayer(){
     
-        
+        debugPrint("Chama layer da desk")
         
     }
     
-    func messageTapObjectButton(number : Int){
-
-        let pos : CGPoint = CGPointMake((self.desk?.position.x)!, (self.desk?.position.y)!+60)
-        
-        tapObjectButton = createSpriteNode("tapHereButton",position: pos , zPosition : 10, scale: 1.0, name: "tapHereButton")
-        
-        self.addChild(tapObjectButton!)
-        nodeLighting(tapObjectButton!)
-    
+    func verifyObjectBalloon(obj: LabObject){
+        if(distanceBetweenPoints(obj.position, second: (self.agent31?.position)!) < 100){
+            obj.putBalloon()
+        }else{
+            obj.removeBalloon()
+        }
     }
-   
-    func removeTapObjectButton(){
     
-        self.tapObjectButton?.removeFromParent()
-        
+    func updateLabGameLayer(){
+        self.verifyObjectBalloon(self.desk!)
     }
-            
+    
 }

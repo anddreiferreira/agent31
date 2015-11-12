@@ -6,7 +6,6 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
-//let kAnalogStickdiameter: CGFloat = 110
 
 import SpriteKit
 
@@ -23,11 +22,6 @@ class LaboratoryScene: SKScene {
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
     private var laboratoryHudLayer : LaboratoryHudLayer!
     private var laboratoryGameLayer : LaboratoryGameLayer!
-
-    var positionsOfObjects : [CGPoint] = []
-    var checkAgentAndObjectPosition : Bool = false
-
-    var possibileObjectNumber : Int = 0
 
     override func didMoveToView(view: SKView) {
         
@@ -103,69 +97,6 @@ class LaboratoryScene: SKScene {
 
     }
     
-    // objetcts in the lab
-    func objectPositions(){
-        
-        let deskPosition : CGPoint = (self.laboratoryGameLayer.desk?.positionRequiredDesk())!
-        let computerPosition : CGPoint = (self.laboratoryGameLayer.computer?.positionRequiredComputer())!
-        let trainingCenterPosition : CGPoint = (self.laboratoryGameLayer.trainingCenter?.positionRequiredTraining())!
-        let gunCenterPosition : CGPoint = (self.laboratoryGameLayer.gunDevelopmentCenter?.positionRequiredGun())!
-        let televisionPosition : CGPoint = (self.laboratoryGameLayer.television?.positionRequiredTelevision())!
-        
-        positionsOfObjects.append(deskPosition)
-        positionsOfObjects.append(computerPosition)
-        positionsOfObjects.append(trainingCenterPosition)
-        positionsOfObjects.append(gunCenterPosition)
-        positionsOfObjects.append(televisionPosition)
-        
-        for index in 0...4 {
-            print(positionsOfObjects[index])
-        }
-        
-    }
-    
-    func checkAgentPositionAndObjetcs(){
-    
-        var nodeNumber : Int?
-        
-        for index in 0...4{
-
-            let objPos : CGPoint = positionsOfObjects[index]
-            let agentPos : CGPoint = (self.laboratoryGameLayer.agent31?.position)!
-            let objPosPlus : CGPoint = CGPointMake(objPos.x + 30, objPos.y)
-            
-            // checks if the position of the agent is next to an object
-            if agentPos.x > objPos.x && agentPos.x < objPosPlus.x{
-            
-                // verifies if it is the first time he goes near the object
-                if possibileObjectNumber != 0{
-                    
-                    checkAgentAndObjectPosition = true
-                    nodeNumber = index
-                    possibileObjectNumber = index
-                    
-                    break
-                }
-                
-            }
-            else{
-                possibileObjectNumber = 0
-            }
-            
-        }
-        
-        if checkAgentAndObjectPosition && possibileObjectNumber != 0{
-            
-            self.laboratoryGameLayer!.messageTapObjectButton(nodeNumber!)
-        }
-        else if checkAgentAndObjectPosition && possibileObjectNumber == 0{
-//            checkAgentAndObjectPosition = false
-            
-//            self.laboratoryGameLayer!.removeTapObjectButton()
-
-        }
-        
-    }
     
     override func update(currentTime: CFTimeInterval) {
         self.updateCameraPosition()
@@ -174,6 +105,7 @@ class LaboratoryScene: SKScene {
     func update2(time: CGFloat){
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
+        self.laboratoryGameLayer.updateLabGameLayer()
     }
 
 }
@@ -202,16 +134,6 @@ extension LaboratoryScene{
         self.laboratoryGameLayer.putGameLayer()
         self.addChild(laboratoryGameLayer)
         
-    }
-    
-    private func putObjectLayer(){
-        
-        if possibileObjectNumber == 0{
-            
-            self.laboratoryGameLayer.putDeskLayer()
-        }
-        
-        possibileObjectNumber = -1
     }
 }
 

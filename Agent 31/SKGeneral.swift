@@ -133,9 +133,9 @@ func repeatActionForeverWithAnimationName(mainText: String, numberOfImages: Int,
     return repeatForever
 }
 
+
 // MARK: Notification
-func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int)
-{
+func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int){
     let notification:UILocalNotification = UILocalNotification()
     notification.fireDate = NSDate().dateByAddingTimeInterval(launchInterval)
     notification.timeZone = NSTimeZone.defaultTimeZone()
@@ -143,4 +143,8 @@ func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, item
     notification.applicationIconBadgeNumber = badge
     notification.soundName = UILocalNotificationDefaultSoundName
     UIApplication.sharedApplication().scheduleLocalNotification(notification)
+}
+
+func distanceBetweenPoints( first: CGPoint, second: CGPoint ) -> CGFloat {
+    return CGFloat(hypotf(Float(second.x - first.x), Float(second.y - first.y)))
 }
