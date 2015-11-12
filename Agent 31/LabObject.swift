@@ -41,9 +41,14 @@ class LabObject: SKSpriteNode {
     }
     
     func setBalloon(){
+        let scaleAction = SKAction.scaleBy(1.1, duration: 0.8)
+        let unscaleAction = scaleAction.reversedAction()
+        let sequence = SKAction.sequence([scaleAction, unscaleAction])
+        
         balloon = createSpriteNode("tapHereButton", name: "balloon");
-        balloon!.position = CGPointMake(self.size.width/2, self.size.height)
+        balloon!.position = CGPointMake(self.size.width/1.8, self.size.height)
         balloon!.setScale(2.0)
+        balloon?.runAction(SKAction.repeatActionForever(sequence))
     }
     
     func putBalloon(){
