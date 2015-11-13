@@ -22,6 +22,12 @@ class LaboratoryScene: SKScene {
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
     private var laboratoryHudLayer : LaboratoryHudLayer!
     private var laboratoryGameLayer : LaboratoryGameLayer!
+    
+    private var gunDevelopmentCenterLayer: GunDevelopmentCenterLayer!
+    private var deskLayer: DeskLayer!
+    private var computerLayer: ComputerLayer!
+    private var televisionLayer: TelevisionLayer!
+    private var trainingCenterLayer: TrainingCenterLayer!
 
     override func didMoveToView(view: SKView) {
         
@@ -138,17 +144,32 @@ extension LaboratoryScene{
         
     }
     
-    func showLabObjectLayer(balloon: SKSpriteNode){
-        if(balloon.parent?.name == "placeHolderMesa"){
-            debugPrint("DESK!");
-        }else if(balloon.parent?.name == "placeHolderPC"){
-            debugPrint("PC!")
-        }else if(balloon.parent?.name == "placeHolderTV"){
+    func showLabObjectLayer(balloon: SKSpriteNode) {
+        if(balloon.parent?.name == "placeHolderMesa") {
+            debugPrint("Desk")
+            deskLayer = DeskLayer()
+            deskLayer.putDeskLayer()
+            self.addChild(deskLayer)
+        } else if(balloon.parent?.name == "placeHolderPC") {
+            debugPrint("PC")
+            computerLayer = ComputerLayer()
+            computerLayer.putComputerLayer()
+            self.addChild(computerLayer)
+        } else if(balloon.parent?.name == "placeHolderTV") {
             debugPrint("TV")
-        }else if(balloon.parent?.name == "placeHolderTreinamento"){
-            debugPrint("TREINAMENTO")
-        }else if(balloon.parent?.name == "placeHolderMesaArmas"){
-            debugPrint("ARMAS")
+            televisionLayer = TelevisionLayer()
+            televisionLayer.putTelevisionLayer()
+            self.addChild(televisionLayer)
+        } else if(balloon.parent?.name == "placeHolderTreinamento") {
+            debugPrint("Training Center")
+            trainingCenterLayer = TrainingCenterLayer()
+            trainingCenterLayer.putTrainingCenterLayer()
+            self.addChild(trainingCenterLayer)
+        } else if(balloon.parent?.name == "placeHolderMesaArmas") {
+            debugPrint("Guns")
+            self.gunDevelopmentCenterLayer = GunDevelopmentCenterLayer()
+            self.gunDevelopmentCenterLayer.putGunDevelopmentCenterLayer()
+            self.addChild(gunDevelopmentCenterLayer)
         }
     }
 }
