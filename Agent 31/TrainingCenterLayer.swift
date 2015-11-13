@@ -8,9 +8,26 @@
 
 import SpriteKit
 
-class TrainingCenterLayer: SKNode {
-
-   
+class TrainingCenterLayer: SKNode
+{
+    var trainingCenter: SKSpriteNode?
     
+    override init() {
+        super.init()
+        self.loadtrainingCenter()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadtrainingCenter() {
+        //trainingCenter = createSpriteNode()
+        debugPrint("Load Training Center layer")
+    }
+    
+    func putTrainingCenterLayer() {
+        self.addChild(trainingCenter!)
+    }
     
 }
