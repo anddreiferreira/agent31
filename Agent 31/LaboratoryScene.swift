@@ -170,7 +170,11 @@ extension LaboratoryScene{
     func updateCameraPosition(){
         
         // UPDATE X POSITION
-        self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
+        
+        if(!(self.laboratoryGameLayer.agent31?.position.x > 382) &&
+            !(self.laboratoryGameLayer.agent31?.position.x < -382)){
+            self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
+        }
         
         //        // UPDATE Y POSITION
         //        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
