@@ -21,9 +21,18 @@ class GunDevelopmentCenterLayer: SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
+    func putGunDevelopmentCenterBackground() {
+//        let background = GameObject(imageName: "testCityBackground", position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
+//        self.addChild(background)
+        debugPrint("putGunDevelopmentCenterBackground entered")
+        gunDevelopmentCenter = createSpriteNode("testCityBackground", anchorPoint: CGPointMake(0,0), zPosition: 0, position: CGPointMake(0, 0),name: "backgroundCity")
+        self.addChild(gunDevelopmentCenter!)
+    }
+    
     func loadGunDevelopment() {
-        //gunDevelopmentCenter = createSpriteNode()
         debugPrint("Load Gun Development Center layer")
+        gunDevelopmentCenter = createSpriteNode("testCityBackground", anchorPoint: CGPointMake(0,0), zPosition: 0, position: CGPointMake(0, 0),name: "backgroundCity")
+        self.addChild(gunDevelopmentCenter!)
     }
     
     func putGunDevelopmentCenterLayer() {

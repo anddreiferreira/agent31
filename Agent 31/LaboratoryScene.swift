@@ -15,8 +15,8 @@ class LaboratoryScene: SKScene {
     var timeElapsed: Float = 0.0
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
-    var jumpButton : SKSpriteNode?
-    var shootButton : SKSpriteNode?
+    var jumpButton: SKSpriteNode?
+    var shootButton: SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -30,7 +30,6 @@ class LaboratoryScene: SKScene {
     private var trainingCenterLayer: TrainingCenterLayer!
 
     override func didMoveToView(view: SKView) {
-        
         print("laboratory scene entered")
         
         // Put all necessary layers
@@ -45,72 +44,57 @@ class LaboratoryScene: SKScene {
         // Physics
         self.setLaboratoryPhysics()
         
-        
-        
     }
 
-    func fireLaboratoryClock(){
+    func fireLaboratoryClock() {
         let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
         clock.fire()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
         debugPrint("Touches began on Laboratory")
     }
     
-    
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
         for touch in touches {
-            
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
-            
             if node.name == "jumpButtonLab" {
                 buttonTapped(node)
                 self.laboratoryGameLayer.agent31?.jump()
-            }else if node.name == "shootButton"{
+            } else if node.name == "shootButton" {
                 buttonTapped(node)
                 self.laboratoryGameLayer.agent31?.shoot()
-            }else if node.name == "goToCity" {
+            } else if node.name == "goToCity" {
                 buttonTapped(node)
-//                self.agentGoToCity()
+                //self.agentGoToCity()
                 self.goToTestCity()
-            }else if node.name == "balloon" {
+            } else if node.name == "balloon" {
                 self.showLabObjectLayer((node as? SKSpriteNode)!)
             }
-            
         }
         
     }
     
-    private func agentGoToCity(){
-        
+    private func agentGoToCity() {
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-        
         let nextScene = CityScene(size: self.scene!.size)
         nextScene.scaleMode = SKSceneScaleMode.AspectFill
-        
         self.scene!.view!.presentScene(nextScene, transition: transition)
     }
     
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-        
-            let nextScene = TestCityScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            
-            self.scene!.view!.presentScene(nextScene, transition: transition)
-
+        let nextScene = TestCityScene(size: self.scene!.size)
+        nextScene.scaleMode = SKSceneScaleMode.AspectFill
+        self.scene!.view!.presentScene(nextScene, transition: transition)
     }
-    
     
     override func update(currentTime: CFTimeInterval) {
         self.updateCameraPosition()
     }
     
-    func update2(time: CGFloat){
+    func update2(time: CGFloat) {
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
         self.laboratoryGameLayer.updateLabGameLayer()
@@ -120,56 +104,56 @@ class LaboratoryScene: SKScene {
 
 // MARK: PUT LAYERS METHODS
 @available(iOS 9.0, *)
-extension LaboratoryScene{
+extension LaboratoryScene {
     
-    func putBackgroundLayer(){
-        
+    func putBackgroundLayer() {
         self.laboratoryBackgroundLayer = LaboratoryBackgroundLayer()
         self.laboratoryBackgroundLayer.putBackground()
         self.addChild(laboratoryBackgroundLayer)
     }
     
-    func putHudLayer(){
-        
+    func putHudLayer() {
         self.laboratoryHudLayer = LaboratoryHudLayer()
         self.laboratoryHudLayer.putHudLayer()
         cam.addChild(laboratoryHudLayer)
     }
     
-    func putGameLayer(){
-        
+    func putGameLayer() {
         self.laboratoryGameLayer = LaboratoryGameLayer()
         self.laboratoryGameLayer.putGameLayer()
         self.addChild(laboratoryGameLayer)
-        
     }
     
     func showLabObjectLayer(balloon: SKSpriteNode) {
-        if(balloon.parent?.name == "placeHolderMesa") {
+        if(balloon.parent?.name == "placeHolderMesaArmas") {
+            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+            let nextScene = GunDevelopmentCenterScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.scene!.view!.presentScene(nextScene, transition: transition)
+        } else if (balloon.parent?.name == "placeHolderMesa") {
             debugPrint("Desk")
-            deskLayer = DeskLayer()
-            deskLayer.putDeskLayer()
-            self.addChild(deskLayer)
+            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+            let nextScene = DeskScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderPC") {
             debugPrint("PC")
-            computerLayer = ComputerLayer()
-            computerLayer.putComputerLayer()
-            self.addChild(computerLayer)
+            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+            let nextScene = ComputerScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderTV") {
             debugPrint("TV")
-            televisionLayer = TelevisionLayer()
-            televisionLayer.putTelevisionLayer()
-            self.addChild(televisionLayer)
+            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+            let nextScene = TelevisionScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderTreinamento") {
             debugPrint("Training Center")
-            trainingCenterLayer = TrainingCenterLayer()
-            trainingCenterLayer.putTrainingCenterLayer()
-            self.addChild(trainingCenterLayer)
-        } else if(balloon.parent?.name == "placeHolderMesaArmas") {
-            debugPrint("Guns")
-            self.gunDevelopmentCenterLayer = GunDevelopmentCenterLayer()
-            self.gunDevelopmentCenterLayer.putGunDevelopmentCenterLayer()
-            self.addChild(gunDevelopmentCenterLayer)
+            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+            let nextScene = TrainingCenterScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.scene!.view!.presentScene(nextScene, transition: transition)
         }
     }
 }
@@ -240,7 +224,7 @@ extension LaboratoryScene{
         cam.addChild(analogStick!)
     }
     
-    func conformAgentToAnalogic(){
+    func conformAgentToAnalogic() {
         if(self.laboratoryGameLayer.agent31?.velocity != 0){
             if(self.analogStick?.data.velocity == CGPointZero){
                 self.laboratoryGameLayer.agent31?.changeVelocity(-1)
@@ -259,12 +243,9 @@ extension LaboratoryScene{
 
 // MARK: PHYSICS
 @available(iOS 9.0, *)
-extension LaboratoryScene{
-    func setLaboratoryPhysics(){
+extension LaboratoryScene {
+    func setLaboratoryPhysics() {
         // Gravity
-        
         self.physicsWorld.gravity = CGVectorMake(0, -6.0)
     }
-    
-    
 }
