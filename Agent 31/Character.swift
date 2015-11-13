@@ -182,6 +182,14 @@ class Character: GameObject {
         
     }
     
+    override func invertSpriteHorizontally(option: Bool) {
+        super.invertSpriteHorizontally(option)
+        
+        if option == true {
+            self.orientation = self.orientation! * -1
+        }
+    }
+    
     func lookUp(yvelocity: CGFloat){
         if(yvelocity >= 48){
             lookUpAnimationOnce()
@@ -201,16 +209,8 @@ class Character: GameObject {
     }
     
     func invertAccordingToVelocity(){
-        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
-            
+        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT || self.velocity < 0.0 && self.orientation != TURNED_LEFT ){
             invertSpriteHorizontally(true)
-            self.orientation = TURNED_RIGHT
-            
-        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
-
-            invertSpriteHorizontally(true)
-            self.orientation = TURNED_LEFT
-            
         }else{
             invertSpriteHorizontally(false)
         }

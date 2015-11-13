@@ -14,6 +14,7 @@ class GeneralEnemy: Character {
     private let initialTorso: String = "troncoParado1"
     
     var distanceToAgent: CGFloat?
+    var agentPos: CGPoint?
     
 //    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
 //        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
@@ -34,6 +35,13 @@ class GeneralEnemy: Character {
         self.name = "enemy"
         
         setGeneralAttributesForGeneralEnemy()
+        
+//        let isChild = self.parent is TestCityGameLayer
+//        if isChild {
+//            print( "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Enemy is child of TestCityGameLayer &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" )
+//        } else {
+//            print( "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OH NO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" )
+//        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,15 +85,33 @@ class GeneralEnemy: Character {
         
     }
     
-    var direcao: Int = -1
     override func update(currentTime: NSTimeInterval) {
 //        let intTime = Int(currentTime)
+
+        enemyBehaviourGuarding()
+        
         if(self.distanceToAgent < 180){
-            self.shoot()
+            enemyBehaviourAttack()
         }
     }
     
+    func enemyBehaviourAttack() {
+        if( self.agentPos?.x > self.position.x && self.orientation == TURNED_LEFT ) {
+            self.invertSpriteHorizontally(true)
+        } else if( self.agentPos?.x < self.position.x && self.orientation == TURNED_RIGHT ) {
+            self.invertSpriteHorizontally(true)
+        }
+        
+        self.shoot()
+    }
+    
+    func enemyBehaviourGuarding() {
+        
+    }
+    
     func setDistanceToAgent( agentPosition: CGPoint ) {
+        
+        self.agentPos = agentPosition
         self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
     }
 }

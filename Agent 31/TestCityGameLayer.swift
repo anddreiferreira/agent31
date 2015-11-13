@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class TestCityGameLayer: SKNode {
+class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
     
@@ -63,6 +63,10 @@ class TestCityGameLayer: SKNode {
         let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, middleOfTheScreenPoint.y))
         testEnemy.name = "enemy"
         self.addChild(testEnemy)
+    }
+    
+    func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {
+        return distanceBetweenPoints( self.agent31!.position, second: enemyPosition )
     }
     
     func updateEnemy(currentTime: NSTimeInterval){
