@@ -8,10 +8,26 @@
 
 import SpriteKit
 
-class GunDevelopmentCenterLayer: SKNode {
+class GunDevelopmentCenterLayer: SKNode
+{
+    var gunDevelopmentCenter: SKSpriteNode?
+    
+    override init() {
+        super.init()
+        self.loadGunDevelopment()
+    }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    func loadGunDevelopment() {
+        //gunDevelopmentCenter = createSpriteNode()
+        debugPrint("Load Gun Development Center layer")
+    }
     
-    
-    
+    func putGunDevelopmentCenterLayer() {
+        self.addChild(gunDevelopmentCenter!)
+    }
+
 }
