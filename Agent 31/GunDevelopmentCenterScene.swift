@@ -11,11 +11,13 @@ import SpriteKit
 @available(iOS 9.0, *)
 class GunDevelopmentCenterScene: SKScene
 {
-    private var gunDevCenterBackgroundLayer: LaboratoryBackgroundLayer!
+    private var gunDevCenterBackground: LaboratoryBackgroundLayer!
+    private var gunDevCenterLayer: GunDevelopmentCenterLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Gun Development Center scene")
         putBackgroundLayer()
+        putGunDevCenterLayer()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -30,8 +32,13 @@ class GunDevelopmentCenterScene: SKScene
 @available(iOS 9.0, *)
 extension GunDevelopmentCenterScene {
     private func putBackgroundLayer() {
-        gunDevCenterBackgroundLayer = LaboratoryBackgroundLayer()
-        gunDevCenterBackgroundLayer.putBackground()
-        addChild(gunDevCenterBackgroundLayer)
+        gunDevCenterBackground = LaboratoryBackgroundLayer()
+        gunDevCenterBackground.putBackground()
+        addChild(gunDevCenterBackground)
+    }
+    private func putGunDevCenterLayer() {
+        gunDevCenterLayer = GunDevelopmentCenterLayer()
+        gunDevCenterLayer.putGunDevCenterLayer()
+        addChild(gunDevCenterLayer)
     }
 }

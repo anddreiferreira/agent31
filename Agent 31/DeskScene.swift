@@ -11,7 +11,8 @@ import SpriteKit
 @available(iOS 9.0, *)
 class DeskScene: SKScene
 {
-    private var deskBackgroundLayer: LaboratoryBackgroundLayer!
+    private var deskBackground: LaboratoryBackgroundLayer!
+    private var deskLayer: DeskLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Desk scene")
@@ -30,8 +31,13 @@ class DeskScene: SKScene
 @available(iOS 9.0, *)
 extension DeskScene {
     private func putBackgroundLayer() {
-        deskBackgroundLayer = LaboratoryBackgroundLayer()
-        deskBackgroundLayer.putBackground()
-        addChild(deskBackgroundLayer)
+        deskBackground = LaboratoryBackgroundLayer()
+        deskBackground.putBackground()
+        addChild(deskBackground)
+    }
+    private func putDeskLayer() {
+        deskLayer = DeskLayer()
+        deskLayer.putDeskLayer()
+        addChild(deskLayer)
     }
 }

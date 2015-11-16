@@ -14,7 +14,7 @@ class ComputerLayer: SKNode
     
     override init() {
         super.init()
-        self.loadComputer()
+        loadComputer()
     }
     
     required init?(coder aDecoder: NSCoder) {

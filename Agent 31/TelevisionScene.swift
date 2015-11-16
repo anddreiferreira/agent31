@@ -11,7 +11,8 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TelevisionScene: SKScene
 {
-    private var tvBackgroundLayer: LaboratoryBackgroundLayer!
+    private var tvBackground: LaboratoryBackgroundLayer!
+    private var tvLayer: TelevisionLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Television scene")
@@ -30,8 +31,13 @@ class TelevisionScene: SKScene
 @available(iOS 9.0, *)
 extension TelevisionScene {
     private func putBackgroundLayer() {
-        tvBackgroundLayer = LaboratoryBackgroundLayer()
-        tvBackgroundLayer.putBackground()
-        addChild(tvBackgroundLayer)
+        tvBackground = LaboratoryBackgroundLayer()
+        tvBackground.putBackground()
+        addChild(tvBackground)
+    }
+    private func putTelevisionLayer() {
+        tvLayer = TelevisionLayer()
+        tvLayer.putTelevisionLayer()
+        addChild(tvLayer)
     }
 }

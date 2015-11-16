@@ -14,7 +14,7 @@ class TelevisionLayer: SKNode
     
     override init() {
         super.init()
-        self.loadTelevision()
+        loadTelevision()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -14,7 +14,7 @@ class DeskLayer: SKNode
     
     override init() {
         super.init()
-        self.loadDesk()
+        loadDesk()
     }
     
     required init?(coder aDecoder: NSCoder) {

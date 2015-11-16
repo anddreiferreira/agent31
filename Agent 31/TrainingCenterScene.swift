@@ -11,11 +11,13 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TrainingCenterScene: SKScene
 {
-    private var trainingCenterBackgroundLayer: LaboratoryBackgroundLayer!
+    private var trainingCenterBackground: LaboratoryBackgroundLayer!
+    private var trainingCenterLayer: TrainingCenterLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Training Center scene")
         putBackgroundLayer()
+        putTrainingCenterLayer()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -30,8 +32,13 @@ class TrainingCenterScene: SKScene
 @available(iOS 9.0, *)
 extension TrainingCenterScene {
     private func putBackgroundLayer() {
-        trainingCenterBackgroundLayer = LaboratoryBackgroundLayer()
-        trainingCenterBackgroundLayer.putBackground()
-        addChild(trainingCenterBackgroundLayer)
+        trainingCenterBackground = LaboratoryBackgroundLayer()
+        trainingCenterBackground.putBackground()
+        addChild(trainingCenterBackground)
+    }
+    private func putTrainingCenterLayer() {
+        trainingCenterLayer = TrainingCenterLayer()
+        trainingCenterLayer.putTrainingCenterLayer()
+        addChild(trainingCenterLayer)
     }
 }

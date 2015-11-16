@@ -11,7 +11,8 @@ import SpriteKit
 @available(iOS 9.0, *)
 class ComputerScene: SKScene
 {
-    private var computerBackgroundLayer: LaboratoryBackgroundLayer!
+    private var computerBackground: LaboratoryBackgroundLayer!
+    private var computerLayer: ComputerLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Computer scene")
@@ -30,8 +31,13 @@ class ComputerScene: SKScene
 @available(iOS 9.0, *)
 extension ComputerScene {
     private func putBackgroundLayer() {
-        computerBackgroundLayer = LaboratoryBackgroundLayer()
-        computerBackgroundLayer.putBackground()
-        addChild(computerBackgroundLayer)
+        computerBackground = LaboratoryBackgroundLayer()
+        computerBackground.putBackground()
+        addChild(computerBackground)
+    }
+    private func putComputerLayer() {
+        computerLayer = ComputerLayer()
+        computerLayer.putComputerLayer()
+        addChild(computerLayer)
     }
 }

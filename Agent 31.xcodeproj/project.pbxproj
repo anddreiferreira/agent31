@@ -143,6 +143,7 @@
 		6B53A7341BDA9FCD002E7808 /* TrainingCenterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */; };
 		6B9FBFDE1BDAAE3B00ED08C3 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
+		E0659E941BFA1BBA00BA9A83 /* tableTrain.png in Resources */ = {isa = PBXBuildFile; fileRef = E0659E931BFA1BBA00BA9A83 /* tableTrain.png */; };
 		E068A2A91BE13AEA00055E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2A81BE13AEA00055E35 /* AppDelegate.swift */; };
 		E068A2AB1BE13AEA00055E35 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2AA1BE13AEA00055E35 /* GameScene.swift */; };
 		E068A2AD1BE13AEA00055E35 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E068A2AC1BE13AEA00055E35 /* GameScene.sks */; };
@@ -379,6 +380,7 @@
 		6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenterLayer.swift; sourceTree = "<group>"; };
 		6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		E0659E931BFA1BBA00BA9A83 /* tableTrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableTrain.png; sourceTree = "<group>"; };
 		E068A2A61BE13AEA00055E35 /* Agent 31 OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31 OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E068A2A81BE13AEA00055E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E068A2AA1BE13AEA00055E35 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 		0951AEEB1BF4FAD9009E570C /* Placeholders */ = {
 			isa = PBXGroup;
 			children = (
+				E0659E931BFA1BBA00BA9A83 /* tableTrain.png */,
 				0951AEEC1BF4FAD9009E570C /* 1.png */,
 				0951AEED1BF4FAD9009E570C /* backgroundCityPlaceholder.png */,
 				0951AEEE1BF4FAD9009E570C /* backgroundLab.png */,
@@ -1345,6 +1348,7 @@
 				0951AF121BF4FAD9009E570C /* troncoAndando2.png in Resources */,
 				0951AF091BF4FAD9009E570C /* RunningAgent6.png in Resources */,
 				0951AEFD1BF4FAD9009E570C /* analogBtn.png in Resources */,
+				E0659E941BFA1BBA00BA9A83 /* tableTrain.png in Resources */,
 				0951AEFF1BF4FAD9009E570C /* GotHitAgent1.png in Resources */,
 				6B49F9C81BDE9A8300E7164D /* LaboratoryScene2.sks in Resources */,
 				0951AF171BF4FAD9009E570C /* troncoAndando7.png in Resources */,
