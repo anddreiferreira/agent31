@@ -208,6 +208,17 @@ class Character: GameObject {
         self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
     }
     
+    // Sobrescrever para o inimigo que possui velocidade nula
+    func run( steps: Int ) {
+        self.velocity = CGFloat(steps) * CGFloat(self.orientation!)
+        
+        invertAccordingToVelocity()
+        
+        self.walkingAnimationOnce()
+        
+        self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
+    }
+    
     func invertAccordingToVelocity(){
         if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT || self.velocity < 0.0 && self.orientation != TURNED_LEFT ){
             invertSpriteHorizontally(true)

@@ -103,6 +103,7 @@ class GeneralEnemy: Character {
         }
         
         self.shoot()
+        self.run(7)
     }
     
     func enemyBehaviourGuarding() {
