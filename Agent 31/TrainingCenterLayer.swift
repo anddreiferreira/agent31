@@ -6,6 +6,7 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
+import Foundation
 import SpriteKit
 
 class TrainingCenterLayer: SKNode
@@ -31,37 +32,39 @@ class TrainingCenterLayer: SKNode
         // Table
         tableTraining = SKSpriteNode(imageNamed: "tableTrain")
         tableTraining!.position = CGPointMake(100, 100)
-        // Speed label
-        labelSpeed = SKLabelNode(fontNamed: "Cooperplate")
-        labelSpeed!.text = "Speed"
-        labelSpeed!.fontSize = 30
-        labelSpeed!.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        // Jump label
-        labelJump = SKLabelNode(fontNamed: "Cooperplate")
-        labelJump!.text = "Jump"
-        labelJump!.fontSize = 30
-        labelJump!.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        // Shooting power label
-        labelShootingPower = SKLabelNode(fontNamed: "Cooperplate")
-        labelShootingPower!.text = "Shooting Power"
-        labelShootingPower!.fontSize = 30
-        labelShootingPower!.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        // Shooting range label
-        labelShootingRange = SKLabelNode(fontNamed: "Cooperplate")
-        labelShootingRange!.text = "Shooting range"
-        labelShootingRange!.fontSize = 30
-        labelShootingRange!.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        // Backpack label
-        labelBackpack = SKLabelNode(fontNamed: "Cooperplate")
-        labelBackpack!.text = "Backpack"
-        labelBackpack!.fontSize = 30
-        labelBackpack!.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        
-        debugPrint("Load Training Center layer")
+        tableTraining!.zPosition = 1
+        loadLabels()
+    }
+    
+    func loadLabels() {
+        // Speed
+        labelSpeed = SKLabelNode(text: "Speed")
+        labelSpeed!.position = CGPointMake(100, 280)
+        labelSpeed!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        labelSpeed!.zPosition = 2
+        // Jump
+        labelJump = SKLabelNode(text: "Jump")
+        labelJump!.position = CGPointMake(100, 230)
+        labelJump!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        labelJump!.zPosition = 2
+        // Shooting Power
+        labelShootingPower = SKLabelNode(text: "Shooting Power")
+        labelShootingPower!.position = CGPointMake(100, 180)
+        labelShootingPower!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        labelShootingPower!.zPosition = 2
+        // Shooting Range
+        labelShootingRange = SKLabelNode(text: "Shooting Range")
+        labelShootingRange!.position = CGPointMake(100, 130)
+        labelShootingRange!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        labelShootingRange!.zPosition = 2
+        // Backpack
+        labelBackpack = SKLabelNode(text: "Backpack")
+        labelBackpack!.position = CGPointMake(100, 80)
+        labelBackpack!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        labelBackpack!.zPosition = 2
     }
     
     func putTrainingCenterLayer() {
-        //addChild(trainingCenter!)
         addChild(tableTraining!)
         addChild(labelSpeed!)
         addChild(labelJump!)
