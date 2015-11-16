@@ -19,6 +19,12 @@ class TrainingCenterLayer: SKNode
     var labelShootingRange: SKLabelNode?
     var labelBackpack: SKLabelNode?
     
+    var btnSpeed: SKSpriteNode?
+    var btnJump: SKSpriteNode?
+    var btnShootingPower: SKSpriteNode?
+    var btnShootingRange: SKSpriteNode?
+    var btnBackpack: SKSpriteNode?
+    
     override init() {
         super.init()
         loadtrainingCenter()
@@ -42,26 +48,31 @@ class TrainingCenterLayer: SKNode
         labelSpeed!.position = CGPointMake(100, 280)
         labelSpeed!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         labelSpeed!.zPosition = 2
+        labelSpeed!.name = "speed"
         // Jump
         labelJump = SKLabelNode(text: "Jump")
         labelJump!.position = CGPointMake(100, 230)
         labelJump!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         labelJump!.zPosition = 2
+        labelJump!.name = "jump"
         // Shooting Power
         labelShootingPower = SKLabelNode(text: "Shooting Power")
         labelShootingPower!.position = CGPointMake(100, 180)
         labelShootingPower!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         labelShootingPower!.zPosition = 2
+        labelShootingPower!.name = "shootingPower"
         // Shooting Range
         labelShootingRange = SKLabelNode(text: "Shooting Range")
         labelShootingRange!.position = CGPointMake(100, 130)
         labelShootingRange!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         labelShootingRange!.zPosition = 2
+        labelShootingRange!.name = "shootingRange"
         // Backpack
         labelBackpack = SKLabelNode(text: "Backpack")
         labelBackpack!.position = CGPointMake(100, 80)
         labelBackpack!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         labelBackpack!.zPosition = 2
+        labelBackpack!.name = "backpack"
     }
     
     func putTrainingCenterLayer() {

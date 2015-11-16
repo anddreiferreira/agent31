@@ -11,8 +11,9 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TrainingCenterScene: SKScene
 {
-    private var trainingCenterBackground: LaboratoryBackgroundLayer!
-    private var trainingCenterLayer: TrainingCenterLayer!
+    var trainingCenterBackground: LaboratoryBackgroundLayer!
+    var trainingCenterLayer: TrainingCenterLayer!
+    
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Training Center scene")
@@ -21,11 +22,25 @@ class TrainingCenterScene: SKScene
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        debugPrint("Touches began on Training Center scene")
+        for touch in touches {
+            let location = (touch as UITouch).locationInNode(self)
+            let node = self.nodeAtPoint(location)
+            if node.name == "speed" {
+                debugPrint("Speed")
+            } else if node.name == "jump" {
+                debugPrint("Jump")
+            } else if node.name == "shootingPower" {
+                debugPrint("Shooting Power")
+            } else if node.name == "shootingRange" {
+                debugPrint("Shooting Range")
+            } else if node.name == "backpack" {
+                debugPrint("Backpack")
+            }
+        }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        debugPrint("Touches ended on Training Center scene")
+        
     }
 }
 
