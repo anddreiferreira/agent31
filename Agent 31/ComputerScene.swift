@@ -11,33 +11,27 @@ import SpriteKit
 @available(iOS 9.0, *)
 class ComputerScene: SKScene
 {
-    private var computerLayer: ComputerLayer!
+    private var computerBackgroundLayer: LaboratoryBackgroundLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Computer scene")
+        putBackgroundLayer()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         debugPrint("Touches began on Computer scene")
-        for touch in touches {
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            if node.name == "" {
-                buttonTapped(node)
-            }
-        }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         debugPrint("Touches ended on Computer scene")
-        for touch in touches {
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            if node.name == "" {
-                buttonTapped(node)
-            } else if node.name == "" {
-                buttonTapped(node)
-            }
-        }
+    }
+}
+
+@available(iOS 9.0, *)
+extension ComputerScene {
+    private func putBackgroundLayer() {
+        computerBackgroundLayer = LaboratoryBackgroundLayer()
+        computerBackgroundLayer.putBackground()
+        addChild(computerBackgroundLayer)
     }
 }

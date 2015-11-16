@@ -11,33 +11,27 @@ import SpriteKit
 @available(iOS 9.0, *)
 class DeskScene: SKScene
 {
-    private var deskLayer: DeskLayer!
+    private var deskBackgroundLayer: LaboratoryBackgroundLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Desk scene")
+        putBackgroundLayer()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        debugPrint("Touches began on Desk")
-        for touch in touches {
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            if node.name == "" {
-                buttonTapped(node)
-            }
-        }
+        debugPrint("Touches began on Desk scene")
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        debugPrint("Touches ended on Desk")
-        for touch in touches {
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            if node.name == "" {
-                buttonTapped(node)
-            } else if node.name == "" {
-                buttonTapped(node)
-            }
-        }
+        debugPrint("Touches ended on Desk scene")
+    }
+}
+
+@available(iOS 9.0, *)
+extension DeskScene {
+    private func putBackgroundLayer() {
+        deskBackgroundLayer = LaboratoryBackgroundLayer()
+        deskBackgroundLayer.putBackground()
+        addChild(deskBackgroundLayer)
     }
 }

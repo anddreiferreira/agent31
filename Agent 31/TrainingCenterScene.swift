@@ -11,33 +11,27 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TrainingCenterScene: SKScene
 {
-    private var trainingCenter: TrainingCenterLayer!
+    private var trainingCenterBackgroundLayer: LaboratoryBackgroundLayer!
     
     override func didMoveToView(view: SKView) {
         debugPrint("Entered Training Center scene")
+        putBackgroundLayer()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         debugPrint("Touches began on Training Center scene")
-        for touch in touches {
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            if node.name == "" {
-                buttonTapped(node)
-            }
-        }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         debugPrint("Touches ended on Training Center scene")
-        for touch in touches {
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            if node.name == "" {
-                buttonTapped(node)
-            } else if node.name == "" {
-                buttonTapped(node)
-            }
-        }
+    }
+}
+
+@available(iOS 9.0, *)
+extension TrainingCenterScene {
+    private func putBackgroundLayer() {
+        trainingCenterBackgroundLayer = LaboratoryBackgroundLayer()
+        trainingCenterBackgroundLayer.putBackground()
+        addChild(trainingCenterBackgroundLayer)
     }
 }

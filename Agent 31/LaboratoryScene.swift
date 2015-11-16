@@ -30,7 +30,7 @@ class LaboratoryScene: SKScene {
     private var trainingCenterLayer: TrainingCenterLayer!
 
     override func didMoveToView(view: SKView) {
-        print("laboratory scene entered")
+        print("Laboratory scene entered")
         
         // Put all necessary layers
         self.putBackgroundLayer()
