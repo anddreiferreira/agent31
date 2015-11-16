@@ -18,12 +18,7 @@ class TrainingCenterLayer: SKNode
     var labelShootingPower: SKLabelNode?
     var labelShootingRange: SKLabelNode?
     var labelBackpack: SKLabelNode?
-    
-    var btnSpeed: SKSpriteNode?
-    var btnJump: SKSpriteNode?
-    var btnShootingPower: SKSpriteNode?
-    var btnShootingRange: SKSpriteNode?
-    var btnBackpack: SKSpriteNode?
+    var areaAnimation: SKSpriteNode?
     
     override init() {
         super.init()
@@ -35,10 +30,13 @@ class TrainingCenterLayer: SKNode
     }
     
     func loadtrainingCenter() {
-        // Table
+        // Table attributes
         tableTraining = SKSpriteNode(imageNamed: "tableTrain")
         tableTraining!.position = CGPointMake(100, 100)
-        tableTraining!.zPosition = 1
+        // Area animation
+        areaAnimation = SKSpriteNode(imageNamed: "animationArea")
+        areaAnimation!.position = CGPointMake(300, 100)
+        // Labels attributes
         loadLabels()
     }
     
@@ -75,8 +73,21 @@ class TrainingCenterLayer: SKNode
         labelBackpack!.name = "backpack"
     }
     
+    func loadAttributeForUpgrade(attributeName: String) {
+        let attributeForUpgrade = SKSpriteNode(imageNamed: "bgBlur")
+        attributeForUpgrade.position = middleOfTheScreenPoint
+        attributeForUpgrade.zPosition = 200
+        attributeForUpgrade.name = "attributeForUpgrade"
+        let attributeNameForUpgrade = SKLabelNode(text: attributeName)
+        attributeNameForUpgrade.position = middleOfTheScreenPoint
+        attributeNameForUpgrade.zPosition = 300
+        attributeForUpgrade.addChild(attributeNameForUpgrade)
+        addChild(attributeForUpgrade)
+    }
+    
     func putTrainingCenterLayer() {
         addChild(tableTraining!)
+        addChild(areaAnimation!)
         addChild(labelSpeed!)
         addChild(labelJump!)
         addChild(labelShootingPower!)

@@ -174,6 +174,8 @@
 		E0C3D6571BE3E976008D7713 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C3D6561BE3E976008D7713 /* Reach.swift */; };
 		E0C3D6581BE3E976008D7713 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C3D6561BE3E976008D7713 /* Reach.swift */; };
 		E0C3D6591BE3E976008D7713 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C3D6561BE3E976008D7713 /* Reach.swift */; };
+		E0DEE4DC1BFA6CDC00B39671 /* animationArea.png in Resources */ = {isa = PBXBuildFile; fileRef = E0DEE4DB1BFA6CDC00B39671 /* animationArea.png */; };
+		E0DEE4DE1BFA6FC700B39671 /* bgBlur.png in Resources */ = {isa = PBXBuildFile; fileRef = E0DEE4DD1BFA6FC700B39671 /* bgBlur.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -420,6 +422,8 @@
 		E084641D1BF649F0005FE704 /* TelevisionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelevisionScene.swift; sourceTree = "<group>"; };
 		E084641F1BF64A05005FE704 /* TrainingCenterScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenterScene.swift; sourceTree = "<group>"; };
 		E0C3D6561BE3E976008D7713 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		E0DEE4DB1BFA6CDC00B39671 /* animationArea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animationArea.png; sourceTree = "<group>"; };
+		E0DEE4DD1BFA6FC700B39671 /* bgBlur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgBlur.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -735,6 +739,8 @@
 		0951AEEB1BF4FAD9009E570C /* Placeholders */ = {
 			isa = PBXGroup;
 			children = (
+				E0DEE4DB1BFA6CDC00B39671 /* animationArea.png */,
+				E0DEE4DD1BFA6FC700B39671 /* bgBlur.png */,
 				E0659E931BFA1BBA00BA9A83 /* tableTrain.png */,
 				0951AEEC1BF4FAD9009E570C /* 1.png */,
 				0951AEED1BF4FAD9009E570C /* backgroundCityPlaceholder.png */,
@@ -1362,6 +1368,7 @@
 				0951AF301BF4FAD9009E570C /* troncoPulando4.png in Resources */,
 				0951AF231BF4FAD9009E570C /* troncoParado3.png in Resources */,
 				0951AF141BF4FAD9009E570C /* troncoAndando4.png in Resources */,
+				E0DEE4DC1BFA6CDC00B39671 /* animationArea.png in Resources */,
 				0951AF1F1BF4FAD9009E570C /* troncoGetHit1.png in Resources */,
 				0951AF101BF4FAD9009E570C /* pernasAndando7.png in Resources */,
 				0951AF461BF4FAD9009E570C /* life1.png in Resources */,
@@ -1405,6 +1412,7 @@
 				0951AF241BF4FAD9009E570C /* troncoParado4.png in Resources */,
 				0951AF051BF4FAD9009E570C /* RunningAgent2.png in Resources */,
 				0951AF191BF4FAD9009E570C /* troncoAtacando2.png in Resources */,
+				E0DEE4DE1BFA6FC700B39671 /* bgBlur.png in Resources */,
 				0951AF391BF4FAD9009E570C /* diamondCity.png in Resources */,
 				0951AF531BF4FAD9009E570C /* placeHolderMesaArmas.png in Resources */,
 				0951AF0A1BF4FAD9009E570C /* pernasAndando1.png in Resources */,

@@ -23,18 +23,24 @@ class TrainingCenterScene: SKScene
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
+            let trainScreen = trainingCenterLayer
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
             if node.name == "speed" {
                 debugPrint("Speed")
+                trainScreen.loadAttributeForUpgrade("Speed")
             } else if node.name == "jump" {
                 debugPrint("Jump")
+                trainScreen.loadAttributeForUpgrade("Jump")
             } else if node.name == "shootingPower" {
                 debugPrint("Shooting Power")
+                trainScreen.loadAttributeForUpgrade("Shooting Power")
             } else if node.name == "shootingRange" {
                 debugPrint("Shooting Range")
+                trainScreen.loadAttributeForUpgrade("Shooting Range")
             } else if node.name == "backpack" {
                 debugPrint("Backpack")
+                trainScreen.loadAttributeForUpgrade("Backpack")
             }
         }
     }
