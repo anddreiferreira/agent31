@@ -15,6 +15,9 @@ class GeneralEnemy: Character {
     
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
+    var hasBullet: Bool = false
+    var hasBulletFrequency: Double = 1.0
+    var enemyLevel: Int = 3
     
 //    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
 //        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
@@ -30,22 +33,23 @@ class GeneralEnemy: Character {
         debugPrint("Initializing Enemy")
         
         super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
+ 
+        // Frequencia que o inimigo vai atirar de acordo com o nível do inimigo
+        hasBulletFrequency = 1 / Double(self.enemyLevel)
+        NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "setHasBulletTrue", userInfo: nil, repeats: true)
         
         colorizeEnemy(SKColor.redColor())
         self.name = "enemy"
         
         setGeneralAttributesForGeneralEnemy()
-        
-//        let isChild = self.parent is TestCityGameLayer
-//        if isChild {
-//            print( "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Enemy is child of TestCityGameLayer &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" )
-//        } else {
-//            print( "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OH NO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" )
-//        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setHasBulletTrue() {
+        self.hasBullet = true
     }
     
     private func setGeneralAttributesForGeneralEnemy(){
@@ -87,22 +91,26 @@ class GeneralEnemy: Character {
     
     override func update(currentTime: NSTimeInterval) {
 //        let intTime = Int(currentTime)
-
+        
         enemyBehaviourGuarding()
         
         if(self.distanceToAgent < 180){
             enemyBehaviourAttack()
         }
     }
-    
+
     func enemyBehaviourAttack() {
+        
         if( self.agentPos?.x > self.position.x && self.orientation == TURNED_LEFT ) {
             self.invertSpriteHorizontally(true)
         } else if( self.agentPos?.x < self.position.x && self.orientation == TURNED_RIGHT ) {
             self.invertSpriteHorizontally(true)
         }
         
-        self.shoot()
+        if hasBullet == true {
+            shoot()
+            self.hasBullet = false
+        }
         self.run(7)
     }
     

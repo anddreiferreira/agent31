@@ -247,8 +247,8 @@ class Character: GameObject {
             
             bullet.fire()
         }
-        
     }
+    
     
     func update(currentTime: NSTimeInterval){
         debugPrint("\(currentTime % 10)")
