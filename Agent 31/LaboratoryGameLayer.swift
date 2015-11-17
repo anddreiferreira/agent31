@@ -18,6 +18,7 @@ class LaboratoryGameLayer: SKNode {
     var gunDevelopmentCenter : LabObject?
     var television : LabObject?
     var trainingCenter : LabObject?
+    var duelMode: LabObject?
     
     var tapObjectButton : SKSpriteNode?
     
@@ -40,12 +41,15 @@ class LaboratoryGameLayer: SKNode {
         self.television = LabObject(imageNamed: "placeHolderTV", groundPosition: CGPointMake(-300, 100))
         self.trainingCenter = LabObject(imageNamed: "placeHolderTreinamento", groundPosition: CGPointMake(-450, 100))
         self.gunDevelopmentCenter = LabObject(imageNamed: "placeHolderMesaArmas", groundPosition: CGPointMake(250, 100))
+        self.duelMode = LabObject(imageNamed: "placeHolderDuelMode", groundPosition: CGPointMake(-600, 100))
+        
 
         self.addChild(desk!)
         self.addChild(computer!)
         self.addChild(television!)
         self.addChild(gunDevelopmentCenter!)
         self.addChild(trainingCenter!)
+        self.addChild(duelMode!)
     }
     
     func putGameLayer(){
@@ -87,6 +91,7 @@ class LaboratoryGameLayer: SKNode {
         self.verifyObjectBalloon(self.television!)
         self.verifyObjectBalloon(self.trainingCenter!)
         self.verifyObjectBalloon(self.gunDevelopmentCenter!)
+        self.verifyObjectBalloon(self.duelMode!)
     }
     
 }

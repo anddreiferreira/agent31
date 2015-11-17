@@ -28,6 +28,7 @@ class LaboratoryScene: SKScene {
     private var computerLayer: ComputerLayer!
     private var televisionLayer: TelevisionLayer!
     private var trainingCenterLayer: TrainingCenterLayer!
+    private var duelMode: DuelModeLayer!
 
     override func didMoveToView(view: SKView) {
         print("Laboratory scene entered")
@@ -125,35 +126,35 @@ extension LaboratoryScene {
     }
     
     func showLabObjectLayer(balloon: SKSpriteNode) {
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
         if(balloon.parent?.name == "placeHolderMesaArmas") {
-            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
             let nextScene = GunDevelopmentCenterScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if (balloon.parent?.name == "placeHolderMesa") {
             debugPrint("Desk")
-            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
             let nextScene = DeskScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderPC") {
             debugPrint("PC")
-            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
             let nextScene = ComputerScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderTV") {
             debugPrint("TV")
-            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
             let nextScene = TelevisionScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderTreinamento") {
             debugPrint("Training Center")
-            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
             let nextScene = TrainingCenterScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
             self.scene!.view!.presentScene(nextScene, transition: transition)
+        } else if(balloon.parent?.name == "placeHolderDuelMode") {
+            debugPrint("Duel Mode")
+            //let nextScene = DuelModeScene(size: self.scene!.size)
+            //nextScene.scaleMode = SKSceneScaleMode.AspectFill
         }
     }
 }
