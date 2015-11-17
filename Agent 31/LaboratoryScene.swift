@@ -153,8 +153,8 @@ extension LaboratoryScene {
             self.scene!.view!.presentScene(nextScene, transition: transition)
         } else if(balloon.parent?.name == "placeHolderDuelMode") {
             debugPrint("Duel Mode")
-            //let nextScene = DuelModeScene(size: self.scene!.size)
-            //nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            let nextScene = DuelModeScene(size: self.scene!.size)
+            nextScene.scaleMode = SKSceneScaleMode.AspectFill
         }
     }
 }

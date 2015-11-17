@@ -6,8 +6,28 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
-class DuelModeLayer {
+class DuelModeLayer: SKNode
+{
+    var duelModeLayer: SKSpriteNode?
+    
+    override init() {
+        super.init()
+        loadDuelMode()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadDuelMode() {
+        //duelMode = createSpriteNode()
+        debugPrint("Duel Mode layer")
+    }
+    
+    func putDuelModeLayer() {
+        addChild(duelModeLayer!)
+    }
     
 }
