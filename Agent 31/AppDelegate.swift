@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .Online:
             debugPrint("Online, load the game")
         }
+        
+        // CloudKit account status
+        CKContainer.defaultContainer().accountStatusWithCompletionHandler({
+            accountStatus, error in
+            if accountStatus == CKAccountStatus.NoAccount {
+                //Present alert
+            }
+        })
         
         // Override point for customization after application launch.
         return true
