@@ -209,8 +209,8 @@ class Character: GameObject {
     }
     
     // Sobrescrever para o inimigo que possui velocidade nula
-    func run( steps: Int ) {
-        self.velocity = CGFloat(steps) * CGFloat(self.orientation!)
+    func run( enemyLevel: Int ) {
+        self.velocity = CGFloat(enemyLevel)*7.0 * CGFloat(self.orientation!)
         
         invertAccordingToVelocity()
         

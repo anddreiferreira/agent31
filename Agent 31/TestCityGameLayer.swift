@@ -61,8 +61,11 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putTestEnemy(){
         let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, middleOfTheScreenPoint.y))
+        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, middleOfTheScreenPoint.y), enemyLevel: 5)
         testEnemy.name = "enemy"
+        secEnemy.name = "enemy"
         self.addChild(testEnemy)
+        self.addChild(secEnemy)
     }
     
     func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {

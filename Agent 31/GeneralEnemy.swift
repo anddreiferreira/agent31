@@ -17,7 +17,7 @@ class GeneralEnemy: Character {
     var agentPos: CGPoint?
     var hasBullet: Bool = false
     var hasBulletFrequency: Double = 1.0
-    var enemyLevel: Int = 3
+    var enemyLevel: Int = 1
     
 //    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
 //        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
@@ -28,7 +28,7 @@ class GeneralEnemy: Character {
 //        setGeneralAttributesForGeneralEnemy()
 //    }
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
         
@@ -40,6 +40,7 @@ class GeneralEnemy: Character {
         
         colorizeEnemy(SKColor.redColor())
         self.name = "enemy"
+        self.enemyLevel = enemyLevel
         
         setGeneralAttributesForGeneralEnemy()
     }
@@ -93,25 +94,39 @@ class GeneralEnemy: Character {
 //        let intTime = Int(currentTime)
         
         enemyBehaviourGuarding()
-        
-        if(self.distanceToAgent < 180){
+
+        let enemyDetectDistance : CGFloat = 250
+        if(self.distanceToAgent < enemyDetectDistance) {
             enemyBehaviourAttack()
         }
     }
 
-    func enemyBehaviourAttack() {
+    func turnInAgentDirection() {
+
+        let isAgentOver = abs( self.agentPos!.x - self.position.x ) < 10 && self.agentPos?.y > self.position.y
         
-        if( self.agentPos?.x > self.position.x && self.orientation == TURNED_LEFT ) {
-            self.invertSpriteHorizontally(true)
-        } else if( self.agentPos?.x < self.position.x && self.orientation == TURNED_RIGHT ) {
+        isAgentOver ? (self.lookingUp = true) : (self.lookingUp = false)
+        
+        let isAgentInRight = self.agentPos?.x > self.position.x && self.orientation == TURNED_LEFT
+        let isAgentInLeft = self.agentPos?.x < self.position.x && self.orientation == TURNED_RIGHT
+        
+        if( isAgentInRight || isAgentInLeft ) {
             self.invertSpriteHorizontally(true)
         }
+    }
+    
+    func enemyBehaviourAttack() {
+        
+        turnInAgentDirection()
         
         if hasBullet == true {
             shoot()
             self.hasBullet = false
         }
-        self.run(7)
+        
+        if( self.distanceToAgent > 100 ) {
+            self.run(self.enemyLevel)
+        }
     }
     
     func enemyBehaviourGuarding() {
