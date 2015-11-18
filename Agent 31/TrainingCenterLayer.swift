@@ -24,8 +24,8 @@ class TrainingCenterLayer: SKNode
     
     override init() {
         super.init()
+        loadHeader()
         loadElements()
-        loadAnimationArea()
         loadLabels()
     }
     
@@ -33,13 +33,13 @@ class TrainingCenterLayer: SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadElements() {
-        tableTraining = createSpriteNode("tableTrain", position: CGPoint(x: 20, y: 300), name: "tableTrain")
+    func loadHeader() {
         buttonBack = createSpriteNode("backBtnTrain", position: CGPoint(x: 10, y: 365), scale: 0.6, name: "btnBackTrain")
         trainingTitle = createSpriteNode("trainingTitle", position: CGPoint(x: 100, y: 370), scale: 0.6, name: "trainingTitle")
     }
     
-    func loadAnimationArea() {
+    func loadElements() {
+        tableTraining = createSpriteNode("tableTrain", position: CGPoint(x: 20, y: 300), name: "tableTrain")
         areaAnimation = createSpriteNode("animationArea", position: CGPoint(x: 370, y: 300), name: "animationArea")
     }
     
@@ -52,11 +52,13 @@ class TrainingCenterLayer: SKNode
     }
     
     func loadAttributeForUpgrade(attributeName: String) {
+        /*
         let attributeForUpgrade = createSpriteNode("bgBlur", anchorPoint: CGPoint(x: 0, y: 0), name: "attributeForUpgrade")
         addChild(attributeForUpgrade)
         
         let attributeNameForUpgrade = createLabelNode(attributeName, fontName: "CopperplateBlackCondensedSSi", name: "attributeNameForUpgrade")
         attributeForUpgrade.addChild(attributeNameForUpgrade)
+        */
     }
     
     func putTrainingCenterLayer() {

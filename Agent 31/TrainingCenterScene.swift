@@ -23,36 +23,56 @@ class TrainingCenterScene: SKScene
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
-            let trainScreen = trainingCenterLayer
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
             if node.name == "speed" {
                 debugPrint("Speed")
-                trainScreen.loadAttributeForUpgrade("Speed")
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                let nextScene = UpgradeScene(size: self.scene!.size)
+                nextScene.upgradeName = "Speed"
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.view?.presentScene(nextScene, transition:  transition)
+                self.removeFromParent()
             } else if node.name == "jump" {
                 debugPrint("Jump")
-                trainScreen.loadAttributeForUpgrade("Jump")
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                let nextScene = UpgradeScene(size: self.scene!.size)
+                nextScene.upgradeName = "Jump"
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.view?.presentScene(nextScene, transition:  transition)
+                self.removeFromParent()
             } else if node.name == "shootingPower" {
                 debugPrint("Shooting Power")
-                trainScreen.loadAttributeForUpgrade("Shooting Power")
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                let nextScene = UpgradeScene(size: self.scene!.size)
+                nextScene.upgradeName = "Shooting Power"
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.view?.presentScene(nextScene, transition:  transition)
+                self.removeFromParent()
             } else if node.name == "shootingRange" {
                 debugPrint("Shooting Range")
-                trainScreen.loadAttributeForUpgrade("Shooting Range")
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                let nextScene = UpgradeScene(size: self.scene!.size)
+                nextScene.upgradeName = "Shooting Range"
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.view?.presentScene(nextScene, transition:  transition)
+                self.removeFromParent()
             } else if node.name == "backpack" {
                 debugPrint("Backpack")
-                trainScreen.loadAttributeForUpgrade("Backpack")
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                let nextScene = UpgradeScene(size: self.scene!.size)
+                nextScene.upgradeName = "Backpack"
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.view?.presentScene(nextScene, transition:  transition)
+                self.removeFromParent()
             } else if node.name == "btnBackTrain" {
-                // Modificar para remover e não criar outra scene
                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
                 let nextScene = LaboratoryScene(size: self.scene!.size)
                 nextScene.scaleMode = SKSceneScaleMode.AspectFill
-                self.scene!.view!.presentScene(nextScene, transition: transition)
+                self.view?.presentScene(nextScene, transition:  transition)
+                self.removeFromParent()
             }
         }
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
     }
 }
 

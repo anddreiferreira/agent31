@@ -10,5 +10,24 @@ import SpriteKit
 
 class UpgradeScene: SKScene
 {
-    var upgradeName: String = ""
+    var upgradeName: String?
+    
+    override func didMoveToView(view: SKView) {
+        debugPrint("Entered Training Center scene")
+        putBackgroundLayer()
+        putLabels()
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+    }
+    
+    func putBackgroundLayer() {
+        
+    }
+    
+    func putLabels() {
+        
+    }
+    
 }
