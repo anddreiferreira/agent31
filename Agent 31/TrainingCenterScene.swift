@@ -41,6 +41,12 @@ class TrainingCenterScene: SKScene
             } else if node.name == "backpack" {
                 debugPrint("Backpack")
                 trainScreen.loadAttributeForUpgrade("Backpack")
+            } else if node.name == "btnBackTrain" {
+                // Modificar para remover e não criar outra scene
+                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+                let nextScene = LaboratoryScene(size: self.scene!.size)
+                nextScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.scene!.view!.presentScene(nextScene, transition: transition)
             }
         }
     }

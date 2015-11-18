@@ -155,6 +155,7 @@ extension LaboratoryScene {
             debugPrint("Duel Mode")
             let nextScene = DuelModeScene(size: self.scene!.size)
             nextScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.scene!.view!.presentScene(nextScene, transition: transition)
         }
     }
 }
@@ -230,7 +231,7 @@ extension LaboratoryScene{
             if(self.analogStick?.data.velocity == CGPointZero){
                 self.laboratoryGameLayer.agent31?.changeVelocity(-1)
                 self.laboratoryGameLayer.agent31?.lookUp(0)
-            }else{
+            } else {
                 let leftLimit: CGFloat = -718.0
                 let rightLimit: CGFloat = 718.0
                 if(!(self.laboratoryGameLayer.agent31?.position.x < leftLimit && self.analogStick?.data.velocity.x < 0) &&
