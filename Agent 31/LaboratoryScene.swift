@@ -86,9 +86,8 @@ class LaboratoryScene: SKScene {
     
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-        let nextScene = TestCityScene(size: self.scene!.size)
-        nextScene.scaleMode = SKSceneScaleMode.AspectFill
-        self.scene!.view!.presentScene(nextScene, transition: transition)
+//        let nextScene = TestCityScene(size: self.scene!.size)
+        self.scene!.view!.presentScene(TestCityScene(size: self.scene!.size), transition: transition)
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -99,6 +98,10 @@ class LaboratoryScene: SKScene {
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
         self.laboratoryGameLayer.updateLabGameLayer()
+    }
+    
+    deinit{
+        print("deinit called")
     }
 
 }

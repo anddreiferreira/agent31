@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+@available(iOS 9.0, *)
 class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
@@ -92,6 +93,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 }
 
 // MARK: CONTACT
+@available(iOS 9.0, *)
 extension TestCityGameLayer{
     func didBeginContact(contact: SKPhysicsContact){
         
@@ -105,7 +107,6 @@ extension TestCityGameLayer{
             if(node2.isKindOfClass(Character)){
                 let charac = (node2 as? Character)!
                 charac.gotHit(bullet.damage)
-
             }
         }else if(node2.isKindOfClass(Bullet)){
             let bullet = (node2 as? Bullet)!
@@ -113,7 +114,6 @@ extension TestCityGameLayer{
             if(node1.isKindOfClass(Character)){
                 let charac = (node1 as? Character)!
                 charac.gotHit(bullet.damage)
-                
             }
         }
     }
@@ -123,5 +123,6 @@ extension TestCityGameLayer{
 //        let node1: SKNode = contact.bodyA.node!
 //        let node2: SKNode = contact.bodyB.node!
     }
+    
     
 }

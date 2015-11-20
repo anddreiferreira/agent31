@@ -11,6 +11,8 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
+    var gameOver: Bool = false
+    
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
@@ -60,16 +62,33 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
+    func goToLab(){
+        
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        let nextScene = LaboratoryScene(size: self.scene!.size)
+        nextScene.scaleMode = SKSceneScaleMode.AspectFill
+        self.view?.presentScene(nextScene, transition: transition)
+    }
+    
     override func update(currentTime: NSTimeInterval) {
         self.updateCameraPosition()
     }
     
     func update2(currentTime: NSTimeInterval){
+//        debugPrint(self.gameOver)
         self.timeElapsed += 0.5
         self.conformAgentToAnalogic()
         self.cityGameLayer.updateEnemy(currentTime)
+        
+        if(self.cityGameLayer.agent31?.HP <= 0 && self.gameOver == false){
+            self.gameOver = true
+            goToLab()
+        }
     }
 
+    deinit{
+        print("deinit called")
+    }
 }
 
 // MARK: PUT LAYERS METHODS
