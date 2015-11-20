@@ -68,6 +68,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         let nextScene = LaboratoryScene(size: self.scene!.size)
         nextScene.scaleMode = SKSceneScaleMode.AspectFill
         self.view?.presentScene(nextScene, transition: transition)
+        self.removeAllActions()
+        self.removeAllChildren()
     }
     
     override func update(currentTime: NSTimeInterval) {

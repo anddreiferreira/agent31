@@ -86,8 +86,9 @@ class LaboratoryScene: SKScene {
     
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-//        let nextScene = TestCityScene(size: self.scene!.size)
         self.scene!.view!.presentScene(TestCityScene(size: self.scene!.size), transition: transition)
+        self.removeAllActions()
+        self.removeAllChildren()
     }
     
     override func update(currentTime: CFTimeInterval) {
