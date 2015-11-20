@@ -40,6 +40,7 @@ class GeneralEnemy: Character {
         
         colorizeEnemy(SKColor.redColor())
         self.name = "enemy"
+        self.enemyLevel = enemyLevel
         self.HP = 30
         
         setGeneralAttributesForGeneralEnemy()
