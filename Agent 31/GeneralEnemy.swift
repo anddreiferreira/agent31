@@ -16,8 +16,10 @@ class GeneralEnemy: Character {
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
     var hasBullet: Bool = false
+    var canChangeDirection: Bool = false
     var hasBulletFrequency: Double = 1.0
     var enemyLevel: Int = 1
+    var enemyTimer: NSTimer?
     
 //    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
 //        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
@@ -36,7 +38,7 @@ class GeneralEnemy: Character {
  
         // Frequencia que o inimigo vai atirar de acordo com o nível do inimigo
         hasBulletFrequency = 1 / Double(self.enemyLevel)
-        NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "setHasBulletTrue", userInfo: nil, repeats: true)
+        self.enemyTimer = NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "updateStates", userInfo: nil, repeats: true)
         
         colorizeEnemy(SKColor.redColor())
         self.name = "enemy"
@@ -49,8 +51,13 @@ class GeneralEnemy: Character {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setHasBulletTrue() {
+    deinit {
+        self.enemyTimer?.invalidate()
+    }
+    
+    func updateStates() {
         self.hasBullet = true
+        self.canChangeDirection = true
     }
     
     private func setGeneralAttributesForGeneralEnemy(){
@@ -91,18 +98,25 @@ class GeneralEnemy: Character {
     }
     
     override func update(currentTime: NSTimeInterval) {
-//        let intTime = Int(currentTime)
-        
-        enemyBehaviourGuarding()
+        let intTime = Int(currentTime)
 
+//        enemyBehaviourGuarding(intTime)
         let enemyDetectDistance : CGFloat = 250
         if(self.distanceToAgent < enemyDetectDistance) {
             enemyBehaviourAttack()
+        } else {
+            enemyBehaviourGuarding(intTime)
         }
     }
 
-    func turnInAgentDirection() {
+}
 
+
+// MARK: Artificial Inteligence
+extension GeneralEnemy {
+    
+    func turnInAgentDirection() {
+        
         let isAgentOver = abs( self.agentPos!.x - self.position.x ) < 10 && self.agentPos?.y > self.position.y
         
         isAgentOver ? (self.lookingUp = true) : (self.lookingUp = false)
@@ -129,8 +143,15 @@ class GeneralEnemy: Character {
         }
     }
     
-    func enemyBehaviourGuarding() {
+    func enemyBehaviourGuarding(intTime: Int) {
+        let marchingVelocity = 1
         
+        self.run(marchingVelocity)
+        
+        if canChangeDirection {
+            self.invertSpriteHorizontally(true)
+            self.canChangeDirection = false
+        }
     }
     
     func setDistanceToAgent( agentPosition: CGPoint ) {
