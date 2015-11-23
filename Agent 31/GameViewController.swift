@@ -55,6 +55,9 @@ class GameViewController: UIViewController {
             let scene = LaboratoryScene(size:skView.bounds.size)
 
             skView.ignoresSiblingOrder = true
+            skView.showsFPS = true
+            skView.showsPhysics = true
+            skView.showsNodeCount = true
             scene.scaleMode = .AspectFill
             self.view.multipleTouchEnabled = true
             skView.presentScene(scene)
@@ -85,14 +88,5 @@ class GameViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         
     }
-    
-    func changeScene(){
-        let skView = self.view as! SKView
-        
-        let newScene = LaboratoryScene(size: skView.bounds.size)
-        newScene.scaleMode = .AspectFill
-        let oldScene = skView.scene;
-        oldScene?.removeFromParent()
-        skView.presentScene(newScene)
-    }
+
 }
