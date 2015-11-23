@@ -8,6 +8,26 @@
 
 import SpriteKit
 
-class ComputerLayer: SKNode {
-
+class ComputerLayer: SKNode
+{
+    var computer: SKSpriteNode?
+    
+    override init() {
+        super.init()
+        loadComputer()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadComputer() {
+        //computer = createSpriteNode()
+        debugPrint("Load Computer layer")
+    }
+    
+    func putComputerLayer() {
+        self.addChild(computer!)
+    }
+    
 }

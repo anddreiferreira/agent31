@@ -11,13 +11,13 @@ import SpriteKit
 
 class Character: GameObject {
     
-    var torso: SKSpriteNode?
+    var torso: SKSpriteNode!
     var orientation: Int?
     var lookingUp: Bool = false
     var attacking: Bool = false
     var running: Bool = false
 
-    
+    var HP: Int = 100
     var velocity: CGFloat = 0.0
     
     // Animations...
@@ -34,22 +34,24 @@ class Character: GameObject {
     var stoppedLegs: SKAction?
     var jumpingLegs: SKAction?
     var jumpingTorso: SKAction?
-    var getHitTorso: SKAction?
-    var getHitLegs: SKAction?
-//    
-//    
-//    //...actual animation
-//    var actualTorso: SKAction?
-//    var actualLegs: SKAction?
+    var gotHitTorso: SKAction?
+    var gotHitLegs: SKAction?
     
     init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
-        self.zPosition = 1
         initializeTorso(torsoImage)
         
         setGeneralAttributesForCharacter()
+    }
+    
+    private func initializeTorso(image: String){
+        let torsoTexture: SKTexture = generateTextureWithImage(image)
+        self.torso = SKSpriteNode(texture: torsoTexture)
+        self.torso?.zPosition = 1
+        
+        self.addChild(torso!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,21 +70,13 @@ class Character: GameObject {
         initializeAnimations()
     }
     
-    private func initializeTorso(image: String){
-        let torsoTexture: SKTexture = generateTextureWithImage(image)
-        self.torso = SKSpriteNode(texture: torsoTexture)
-        self.torso?.zPosition = 1
-        debugPrint("POSITION ===== \(self.torso?.position)")
-        self.addChild(torso!)
-    }
-    
     override func generatePhysicsBody() -> SKPhysicsBody {
         let rectangleSize = CGSizeMake(self.size.width*0.35, self.size.height*0.7)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
         physicsBody.affectedByGravity = true
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
-        
+
         return physicsBody
     }
     
@@ -90,83 +84,6 @@ class Character: GameObject {
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.mass = 50.0
         self.physicsBody?.restitution = 0.0
-    }
-    
-    func initializeAnimations(){
-        
-        self.stoppedTorso = nil
-        self.stoppedLegs = nil
-        
-        self.walkingTorso = nil
-        self.walkingLegs = nil
-        
-        self.runningTorso = nil
-        self.runningLegs = nil
-        
-        self.lookingUpTorso = nil
-        self.attackingUpTorso = nil
-        self.attackingTorso = nil
-        
-        self.jumpingLegs = nil
-        self.jumpingTorso = nil
-        
-        self.getHitTorso = nil
-        self.getHitLegs = nil
-        
-//        self.actualTorso = nil
-//        self.actualLegs = nil
-        
-    }
-    
-    func jump(){
-        jumpAnimationOnce()
-        self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
-    }
-    
-    
-    func stoppedAnimationForever(){
-        self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
-        self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
-    }
-    
-    private func jumpAnimationOnce(){
-        if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
-            self.runAction(self.jumpingLegs!)
-            self.torso?.runAction(self.jumpingTorso!)
-        }
-    }
-
-    private func walkingAnimationOnce(){
-        if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
-            self.running = true
-            
-            self.torso?.runAction(self.walkingTorso!)
-            self.runAction(self.walkingLegs!, completion: {
-                    self.running = false
-                })
-        }
-    }
-   
-    private func attackingAnimationOnce(){
-        if(self.attackingTorso != nil){
-            self.torso?.runAction(self.attackingTorso!, completion: {
-                self.attacking = false
-            })
-        }
-    }
-    
-    private func attackingUpAnimationOnce(){
-        if(self.attackingUpTorso != nil){
-            self.torso?.runAction(self.attackingUpTorso!, completion:  {
-                self.attacking = false
-            })
-        }
-    }
-    
-    func lookUpAnimationOnce(){
-        if(self.lookingUpTorso != nil && self.attacking == false){
-            self.torso?.runAction(self.lookingUpTorso!)
-        }
     }
     
     func changeVelocity(xvelocity: CGFloat){
@@ -182,6 +99,26 @@ class Character: GameObject {
         
     }
     
+}
+
+// MARK: Actions
+extension Character{
+    func invertAccordingToVelocity(){
+        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
+            
+            invertSpriteHorizontally(true)
+            self.orientation = TURNED_RIGHT
+            
+        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
+            
+            invertSpriteHorizontally(true)
+            self.orientation = TURNED_LEFT
+            
+        }else{
+            invertSpriteHorizontally(false)
+        }
+    }
+    
     func lookUp(yvelocity: CGFloat){
         if(yvelocity >= 48){
             lookUpAnimationOnce()
@@ -192,30 +129,31 @@ class Character: GameObject {
         }
     }
     
+    func gotHit(damage: Int){
+        debugPrint("Character HP \(self.HP) -> \(self.HP - damage)")
+        self.gotHitAnimationOnce()
+        self.HP = self.HP - damage
+        
+        if(self.HP <= 0){
+            self.die()
+        }
+    }
+    
     func run(){
         invertAccordingToVelocity()
         
         self.walkingAnimationOnce()
-
-        self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
+        
+        //WARNING: verificar isso depois
+        self.position = CGPointMake(self.position.x + (self.velocity * 0.3), self.position.y)
+        //        self.runAction(SKAction.moveTo(CGPointMake(self.position.x + self.velocity*0.3, self.position.y), duration: 0.1))
     }
     
-    func invertAccordingToVelocity(){
-        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
-            
-            invertSpriteHorizontally(true)
-            self.orientation = TURNED_RIGHT
-            
-        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
-
-            invertSpriteHorizontally(true)
-            self.orientation = TURNED_LEFT
-            
-        }else{
-            invertSpriteHorizontally(false)
-        }
+    func jump(){
+        jumpAnimationOnce()
+        self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
     }
-
+    
     func shoot(){
         self.attacking = true
         if(lookingUp == false){
@@ -239,7 +177,114 @@ class Character: GameObject {
         
     }
     
-    func update(currentTime: NSTimeInterval){
-        debugPrint("\(currentTime % 10)")
+    func die(){
+        // Call dying animation here
+        // Change the duration
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            self.removeFromParent()
+        })
     }
+}
+
+// MARK: Animations
+extension Character{
+    
+    func initializeAnimations(){
+        
+        self.stoppedTorso = nil
+        self.stoppedLegs = nil
+        
+        self.walkingTorso = nil
+        self.walkingLegs = nil
+        
+        self.runningTorso = nil
+        self.runningLegs = nil
+        
+        self.lookingUpTorso = nil
+        self.attackingUpTorso = nil
+        self.attackingTorso = nil
+        
+        self.jumpingLegs = nil
+        self.jumpingTorso = nil
+        
+        self.gotHitTorso = nil
+        self.gotHitLegs = nil
+        
+    }
+    
+    func stoppedAnimationForever(){
+        if(self.stoppedTorso != nil && self.stoppedLegs != nil){
+            self.torso?.runAction(SKAction.repeatActionForever(self.stoppedTorso!), withKey: "stopped")
+            self.runAction(SKAction.repeatActionForever(self.stoppedLegs!), withKey: "stopped")
+        }
+    }
+    
+    private func jumpAnimationOnce(){
+        if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
+            self.runAction(self.jumpingLegs!)
+            self.torso?.runAction(self.jumpingTorso!)
+        }
+    }
+    
+    private func walkingAnimationOnce(){
+        if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
+            self.running = true
+            
+            self.torso?.runAction(self.walkingTorso!)
+            self.runAction(self.walkingLegs!, completion: {
+                self.running = false
+            })
+        }
+    }
+    
+    private func attackingAnimationOnce(){
+        if(self.attackingTorso != nil){
+            self.torso?.runAction(self.attackingTorso!, completion: {
+                self.attacking = false
+            })
+        }
+    }
+    
+    private func attackingUpAnimationOnce(){
+        if(self.attackingUpTorso != nil){
+            self.torso?.runAction(self.attackingUpTorso!, completion:  {
+                self.attacking = false
+            })
+        }
+    }
+    
+    func lookUpAnimationOnce(){
+        if(self.lookingUpTorso != nil && self.attacking == false){
+            self.torso?.runAction(self.lookingUpTorso!)
+        }
+    }
+    
+    func gotHitAnimationOnce(){
+        if(self.gotHitLegs != nil && self.gotHitTorso != nil){
+            self.runAction(self.gotHitLegs!)
+            self.torso?.runAction(self.gotHitTorso!)
+        }
+    }
+    
+    override func invertSpriteHorizontally(option: Bool) {
+        super.invertSpriteHorizontally(option)
+        
+        if option == true {
+            self.orientation = self.orientation! * -1
+        }
+    }
+
+    
+    
+    // Sobrescrever para o inimigo que possui velocidade nula
+    func run( enemyLevel: Int ) {
+        self.velocity = CGFloat(enemyLevel)*7.0 * CGFloat(self.orientation!)
+        
+        invertAccordingToVelocity()
+        
+        self.walkingAnimationOnce()
+        
+        self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
+    }
+
 }

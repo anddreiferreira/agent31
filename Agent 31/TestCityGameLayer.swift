@@ -8,7 +8,8 @@
 
 import SpriteKit
 
-class TestCityGameLayer: SKNode {
+@available(iOS 9.0, *)
+class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
     
@@ -60,9 +61,16 @@ class TestCityGameLayer: SKNode {
     }
     
     func putTestEnemy(){
-        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x + 100, middleOfTheScreenPoint.y))
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, middleOfTheScreenPoint.y))
+        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, middleOfTheScreenPoint.y), enemyLevel: 5)
         testEnemy.name = "enemy"
+        secEnemy.name = "enemy"
         self.addChild(testEnemy)
+        self.addChild(secEnemy)
+    }
+    
+    func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {
+        return distanceBetweenPoints( self.agent31!.position, second: enemyPosition )
     }
     
     func updateEnemy(currentTime: NSTimeInterval){
@@ -72,6 +80,7 @@ class TestCityGameLayer: SKNode {
             
             if let foundEnemy = node as? GeneralEnemy{
                 
+                foundEnemy.setDistanceToAgent( (self.agent31?.position)! )
                 foundEnemy.update(currentTime)
                 
             }else{
@@ -81,5 +90,39 @@ class TestCityGameLayer: SKNode {
         })
     }
 
+}
 
+// MARK: CONTACT
+@available(iOS 9.0, *)
+extension TestCityGameLayer{
+    func didBeginContact(contact: SKPhysicsContact){
+        
+        
+        let node1: SKNode = contact.bodyA.node!
+        let node2: SKNode = contact.bodyB.node!
+        
+        if(node1.isKindOfClass(Bullet)){
+            let bullet = (node1 as? Bullet)!
+            bullet.hittedSomething()
+            if(node2.isKindOfClass(Character)){
+                let charac = (node2 as? Character)!
+                charac.gotHit(bullet.damage)
+            }
+        }else if(node2.isKindOfClass(Bullet)){
+            let bullet = (node2 as? Bullet)!
+            bullet.hittedSomething()
+            if(node1.isKindOfClass(Character)){
+                let charac = (node1 as? Character)!
+                charac.gotHit(bullet.damage)
+            }
+        }
+    }
+    
+    func didEndContact(contact: SKPhysicsContact){
+        
+//        let node1: SKNode = contact.bodyA.node!
+//        let node2: SKNode = contact.bodyB.node!
+    }
+    
+    
 }

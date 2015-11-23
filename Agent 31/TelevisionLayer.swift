@@ -8,6 +8,26 @@
 
 import SpriteKit
 
-class TelevisionLayer: SKNode {
-
+class TelevisionLayer: SKNode
+{
+    var television: SKSpriteNode?
+    
+    override init() {
+        super.init()
+        loadTelevision()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadTelevision() {
+        //television = createSpriteNode()
+        debugPrint("Load Television layer")
+    }
+    
+    func putTelevisionLayer() {
+        self.addChild(television!)
+    }
+    
 }

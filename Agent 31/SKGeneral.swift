@@ -11,9 +11,9 @@ import UIKit
 import SpriteKit
 
 // Defines
-let TURNED_LEFT: Int = 1
-let TURNED_UP: Int = 3
-let TURNED_RIGHT: Int = 2
+let TURNED_LEFT: Int = -1
+let TURNED_UP: Int = 0
+let TURNED_RIGHT: Int = 1
 let MAX_CHARACTER_VELOCITY: CGFloat = 40.0
 let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
@@ -34,7 +34,7 @@ func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPo
     return sprite
 }
 
-func createLabelNode(text: String, fontName: String = defaultFontName, position: CGPoint = middleOfTheScreenPoint, fontSize: CGFloat = 32.0, color: SKColor = SKColor.whiteColor(), zPosition: CGFloat = 1.0, alignmentMode: SKLabelHorizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center,name: String) -> SKLabelNode{
+func createLabelNode(text: String, fontName: String = defaultFontName, position: CGPoint = middleOfTheScreenPoint, fontSize: CGFloat = 32.0, color: SKColor = SKColor.whiteColor(), zPosition: CGFloat = 1.0, alignmentMode: SKLabelHorizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center,name: String) -> SKLabelNode {
     var label: SKLabelNode
     
     label = SKLabelNode(text: text)
@@ -133,9 +133,9 @@ func repeatActionForeverWithAnimationName(mainText: String, numberOfImages: Int,
     return repeatForever
 }
 
+
 // MARK: Notification
-func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int)
-{
+func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int){
     let notification:UILocalNotification = UILocalNotification()
     notification.fireDate = NSDate().dateByAddingTimeInterval(launchInterval)
     notification.timeZone = NSTimeZone.defaultTimeZone()
@@ -143,4 +143,8 @@ func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, item
     notification.applicationIconBadgeNumber = badge
     notification.soundName = UILocalNotificationDefaultSoundName
     UIApplication.sharedApplication().scheduleLocalNotification(notification)
+}
+
+func distanceBetweenPoints( first: CGPoint, second: CGPoint ) -> CGFloat {
+    return CGFloat(hypotf(Float(second.x - first.x), Float(second.y - first.y)))
 }

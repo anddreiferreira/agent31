@@ -9,8 +9,11 @@
 import SpriteKit
 
 @available(iOS 9.0, *)
-class TestCityScene: SKScene {
+class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
+    var gameOver: Bool = false
+    
+    var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
     private var cityHudLayer : CityHudLayer!
@@ -24,13 +27,110 @@ class TestCityScene: SKScene {
         
         debugPrint("ENTERED IN TEST CITY")
         
-        self.putBackgroundLayer()
-        self.putBasicHudLayer()
-        self.putGameLayer()
+        
+        self.putLayers()
+        self.setPhysicsWorld()
+        
+        self.fireClock()
         
         self.configureCamera()
         
     }
+    
+    
+    func fireClock(){
+        let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        clock.fire()
+    }
+    
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        for touch in touches {
+            
+            let location = (touch as UITouch).locationInNode(self)
+            let node = self.nodeAtPoint(location)
+            
+            if node.name == "jumpButton" {
+                buttonTapped(node)
+                self.cityGameLayer.agent31!.jump()
+            }else if node.name == "shootButton"{
+                buttonTapped(node)
+                self.cityGameLayer.agent31!.shoot()
+            }
+        }
+        
+    }
+    
+    func goToLab(){
+        
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        let nextScene = LaboratoryScene(size: self.scene!.size)
+        nextScene.scaleMode = SKSceneScaleMode.AspectFill
+        self.view?.presentScene(nextScene, transition: transition)
+        self.removeAllActions()
+        self.removeAllChildren()
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        self.updateCameraPosition()
+    }
+    
+    func update2(currentTime: NSTimeInterval){
+//        debugPrint(self.gameOver)
+        self.timeElapsed += 0.5
+        self.conformAgentToAnalogic()
+        self.cityGameLayer.updateEnemy(currentTime)
+        
+        if(self.cityGameLayer.agent31?.HP <= 0 && self.gameOver == false){
+            self.gameOver = true
+            goToLab()
+        }
+    }
+
+    deinit{
+        print("deinit called")
+    }
+}
+
+// MARK: PUT LAYERS METHODS
+@available(iOS 9.0, *)
+extension TestCityScene{
+    
+    private func putLayers(){
+        self.putBackgroundLayer()
+        self.putBasicHudLayer()
+        self.putGameLayer()
+    }
+    
+    private func putBackgroundLayer(){
+        
+        self.cityBackgroundLayer = CityBackgroundLayer()
+        self.cityBackgroundLayer.putBackground()
+        self.addChild(cityBackgroundLayer)
+        
+    }
+    
+    private func putBasicHudLayer(){
+        
+        self.cityHudLayer = CityHudLayer()
+        self.cityHudLayer.putHudLayerCity()
+        self.addChild(cityHudLayer)
+        
+    }
+    
+    private func putGameLayer(){
+        
+        self.cityGameLayer = TestCityGameLayer()
+        self.cityGameLayer.putGameLayer()
+        self.addChild(cityGameLayer)
+        
+    }
+}
+
+// MARK: CAMERA
+@available(iOS 9.0, *)
+extension TestCityScene{
     
     func configureCamera(){
         cam.position = middleOfTheScreenPoint
@@ -42,15 +142,26 @@ class TestCityScene: SKScene {
         self.camera = cam
     }
     
+    func updateCameraPosition(){
+        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
+        self.cam.position.x = (self.cityGameLayer.agent31?.position.x)!
+        self.cam.position.y = middleOfTheScreenPoint.y + ((self.cityGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
+    }
+    
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 3, name: "jumpButton")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 569, -middleOfTheScreenPoint.y + 169), zPosition: 3, name: "jumpButton")
         cam.addChild(jumpButton!)
         
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 479, -middleOfTheScreenPoint.y + 101), zPosition: 100, name: "shootButton")
         cam.addChild(shootButton!)
         
     }
+}
+
+// MARK: ANALOG METHODS
+@available(iOS 9.0, *)
+extension TestCityScene{
     
     private func configureAnalogStick(){
         // Initialize an analog stick
@@ -71,48 +182,6 @@ class TestCityScene: SKScene {
         cam.addChild(analogStick!)
     }
     
-    func putBackgroundLayer(){
-        
-        self.cityBackgroundLayer = CityBackgroundLayer()
-        self.cityBackgroundLayer.putBackground()
-        self.addChild(cityBackgroundLayer)
-        
-    }
-    
-    func putBasicHudLayer(){
-        
-        self.cityHudLayer = CityHudLayer()
-        self.cityHudLayer.putHudLayerCity()
-        self.addChild(cityHudLayer)
-        
-    }
-    
-    func putGameLayer(){
-        
-        self.cityGameLayer = TestCityGameLayer()
-        self.cityGameLayer.putGameLayer()
-        self.addChild(cityGameLayer)
-        
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        for touch in touches {
-            
-            let location = (touch as UITouch).locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            
-            if node.name == "jumpButton" {
-                buttonTapped(node)
-                self.cityGameLayer.agent31!.jump()
-            }else if node.name == "shootButton"{
-                buttonTapped(node)
-                self.cityGameLayer.agent31!.shoot()
-            }
-        }
-        
-    }
-    
     func conformAgentToAnalogic(){
         if(self.cityGameLayer.agent31?.velocity != 0){
             if(self.analogStick?.data.velocity == CGPointZero){
@@ -124,16 +193,24 @@ class TestCityScene: SKScene {
         }
     }
     
-    func updateCameraPosition(){
-        let yPositionOfAgentInGround: CGFloat = 93.6249923706055
-        self.cam.position.x = (self.cityGameLayer.agent31?.position.x)!
-        self.cam.position.y = middleOfTheScreenPoint.y + ((self.cityGameLayer.agent31?.position.y)! - yPositionOfAgentInGround)
+}
+
+// MARK: PHYSICS
+@available(iOS 9.0, *)
+extension TestCityScene{
+    
+    func setPhysicsWorld(){
+        self.physicsWorld.gravity = CGVectorMake(0.0, -6.0)
+        
+        // Set the physics world delegate
+        self.physicsWorld.contactDelegate = self
     }
     
-    override func update(currentTime: NSTimeInterval) {
-        self.cityGameLayer.updateEnemy(currentTime)
-        self.conformAgentToAnalogic()
-        self.updateCameraPosition()
+    func didBeginContact(contact: SKPhysicsContact) {
+        self.cityGameLayer.didBeginContact(contact)
     }
-
+    
+    func didEndContact(contact: SKPhysicsContact) {
+        self.cityGameLayer.didEndContact(contact)
+    }
 }

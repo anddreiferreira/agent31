@@ -54,19 +54,18 @@ class GameViewController: UIViewController {
 //
 //        }
         
-//        let scene = LaboratoryScene(size: CGSize(width: 667, height: 375))
-        let scene = TestCityScene(size: CGSize(width: 667, height: 375))
         
         let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsPhysics = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-        scene.scaleMode = .AspectFill
         
         self.view.multipleTouchEnabled = true
         
-        skView.presentScene(scene)
+        // The scene should be loaded like this so 
+        // it doesn't creates strong refereces
+        skView.presentScene(LaboratoryScene(size: CGSize(width: 667, height: 375)))
         
     }
 
@@ -89,5 +88,9 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        
     }
 }

@@ -29,11 +29,14 @@ class Agent: Character {
     private func setGeneralAttributesForAgent(){
         stoppedAnimationForever()
         self.setAgentPhysics()
+        
+        self.HP = 100
     }
     
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
+        self.physicsBody?.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
     }
     
     override func initializeAnimations(){
@@ -53,7 +56,14 @@ class Agent: Character {
         self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingTorso = actionWithAnimationName("troncoAtacando", numberOfImages: 3, timePerTexture: 0.08)
         
+        self.gotHitLegs = actionWithAnimationName("pernasGetHit", numberOfImages: 1, timePerTexture: 0.1)
+        self.gotHitTorso = actionWithAnimationName("troncoGetHit", numberOfImages: 1, timePerTexture: 0.1)
         
     }
+    
+    override func update(currentTime: NSTimeInterval) {
+        debugPrint(self.position.x)
+    }
+    
     
 }
