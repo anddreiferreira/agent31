@@ -29,24 +29,38 @@ import SpriteKit
 @available(iOS 9.0, *)
 class GameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        
+//        let skView = self.view as! SKView
+//        skView.showsFPS = true
+//        skView.showsPhysics = true
+//        skView.showsNodeCount = true
+//        skView.ignoresSiblingOrder = true
+//        
+//        self.view.multipleTouchEnabled = true
+//        
+//        // The scene should be loaded like this so 
+//        // it doesn't creates strong refereces
+//        skView.presentScene(LaboratoryScene(size: CGSize(width: 667, height: 375)))
+//        
+//    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsPhysics = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
-        
-        self.view.multipleTouchEnabled = true
-        
-        // The scene should be loaded like this so 
-        // it doesn't creates strong refereces
-        skView.presentScene(LaboratoryScene(size: CGSize(width: 667, height: 375)))
-        
-    }
+        if skView.scene == nil {
+            let scene = LaboratoryScene(size:skView.bounds.size)
 
+            skView.ignoresSiblingOrder = true
+            scene.scaleMode = .AspectFill
+            self.view.multipleTouchEnabled = true
+            skView.presentScene(scene)
+        }
+    }
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
@@ -70,5 +84,15 @@ class GameViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         
+    }
+    
+    func changeScene(){
+        let skView = self.view as! SKView
+        
+        let newScene = LaboratoryScene(size: skView.bounds.size)
+        newScene.scaleMode = .AspectFill
+        let oldScene = skView.scene;
+        oldScene?.removeFromParent()
+        skView.presentScene(newScene)
     }
 }

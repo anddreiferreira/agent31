@@ -12,7 +12,9 @@ import SpriteKit
 @available(iOS 9.0, *)
 class LaboratoryScene: SKScene {
 
+    var clock: NSTimer?
     var timeElapsed: Float = 0.0
+    
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
@@ -48,8 +50,8 @@ class LaboratoryScene: SKScene {
     }
 
     func fireLaboratoryClock() {
-        let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
-        clock.fire()
+        self.clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        self.clock!.fire()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -87,8 +89,7 @@ class LaboratoryScene: SKScene {
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
         self.scene!.view!.presentScene(TestCityScene(size: self.scene!.size), transition: transition)
-        self.removeAllActions()
-        self.removeAllChildren()
+        self.cleanScene()
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -105,6 +106,17 @@ class LaboratoryScene: SKScene {
         print("deinit called")
     }
 
+}
+
+// MARK: SCENE PROCEDURES
+@available(iOS 9.0, *)
+extension LaboratoryScene{
+    func cleanScene(){
+        self.removeFromParent()
+        self.removeAllActions()
+        self.removeAllChildren()
+        self.clock?.invalidate()
+    }
 }
 
 // MARK: PUT LAYERS METHODS
