@@ -111,7 +111,6 @@
 		0951AF5A1BF4FAD9009E570C /* testCityBlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0951AEFA1BF4FAD9009E570C /* testCityBlock.png */; };
 		0951AF5B1BF4FAD9009E570C /* testCityGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 0951AEFB1BF4FAD9009E570C /* testCityGround.png */; };
 		0951AF5D1BF4FE73009E570C /* LabObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951AF5C1BF4FE73009E570C /* LabObject.swift */; };
->>>>>>> master
 		09A6D7C11BE14264007A77EC /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6D7C01BE14264007A77EC /* Bullet.swift */; };
 		09A6D7C31BE14DD0007A77EC /* Gun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6D7C21BE14DD0007A77EC /* Gun.swift */; };
 		09EC63F21BE3E78800ACE362 /* TestCityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC63F11BE3E78800ACE362 /* TestCityScene.swift */; };
@@ -362,7 +361,6 @@
 		0951AEFA1BF4FAD9009E570C /* testCityBlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testCityBlock.png; sourceTree = "<group>"; };
 		0951AEFB1BF4FAD9009E570C /* testCityGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testCityGround.png; sourceTree = "<group>"; };
 		0951AF5C1BF4FE73009E570C /* LabObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabObject.swift; sourceTree = "<group>"; };
->>>>>>> master
 		09A6D7C01BE14264007A77EC /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		09A6D7C21BE14DD0007A77EC /* Gun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gun.swift; sourceTree = "<group>"; };
 		09EC63F11BE3E78800ACE362 /* TestCityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCityScene.swift; sourceTree = "<group>"; };
