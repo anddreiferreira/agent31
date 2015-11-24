@@ -120,13 +120,25 @@ extension TestCityGameLayer{
                 node1.removeFromParent()
                 
                 // Add this property to character coins (singleton)
-                // (node1 as? Coin)?.value
+                // += (node1 as? Coin)?.value
             }
         }else if(node2.isKindOfClass(Coin)){
             if(node1.isKindOfClass(Agent)){
                 node2.removeFromParent()
                 // Add this property to character coins (singleton)
-                // (node2 as? Coin)?.value
+                // += (node2 as? Coin)?.value
+            }
+        }else if(node1.isKindOfClass(Metal)){
+            if(node2.isKindOfClass(Agent)){
+                node1.removeFromParent()
+                // Add this property to character metal (singleton)
+                // += (node2 as? Metal)?.value
+            }
+        }else if(node2.isKindOfClass(Metal)){
+            if(node1.isKindOfClass(Agent)){
+                node2.removeFromParent()
+                // Add this property to character metal (singleton)
+                // += (node2 as? Metal)?.value
             }
         }
     }
