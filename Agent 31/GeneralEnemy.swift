@@ -56,7 +56,7 @@ class GeneralEnemy: Character {
     
     private func setGeneralAttributesForGeneralEnemy(){
         stoppedAnimationForever()
-        self.setGeneralEnemyPhysics()
+        setGeneralEnemyPhysics()
     }
     
     private func setGeneralEnemyPhysics(){
@@ -141,5 +141,17 @@ class GeneralEnemy: Character {
         
         self.agentPos = agentPosition
         self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
+    }
+    
+    func dropResource(){
+        // Method that randomize if enemy will drop a coin, metal or nothing
+        // For now...
+        let coin = Coin(position: self.position)
+        self.parent?.addChild(coin)
+    }
+    
+    override func die() {
+        super.die()
+//        self.dropResource()
     }
 }

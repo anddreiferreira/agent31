@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-// Defines
+// MARK: Defines
 let TURNED_LEFT: Int = -1
 let TURNED_UP: Int = 0
 let TURNED_RIGHT: Int = 1
