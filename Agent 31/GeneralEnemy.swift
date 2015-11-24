@@ -152,6 +152,6 @@ class GeneralEnemy: Character {
     
     override func die() {
         super.die()
-//        self.dropResource()
+        self.dropResource()
     }
 }
