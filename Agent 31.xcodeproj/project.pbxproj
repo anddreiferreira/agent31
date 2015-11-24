@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		597825A71BDE8EF50066183B /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597825A61BDE8EF50066183B /* CloudKitHelper.swift */; };
-		59A6D66E1BE820C800A84A33 /* ResourcesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6D66D1BE820C800A84A33 /* ResourcesData.swift */; };
-		59BED8361BE132B500B734BF /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BED8351BE132B500B734BF /* CharacterData.swift */; };
-		59BED8371BE132B500B734BF /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BED8351BE132B500B734BF /* CharacterData.swift */; };
-		59BED8391BE135DF00B734BF /* CloudKitHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BED8381BE135DF00B734BF /* CloudKitHelperTests.swift */; };
-		59BED83A1BE1367000B734BF /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597825A61BDE8EF50066183B /* CloudKitHelper.swift */; };
-		59EBA42D1BDEA95C00F67D67 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */; };
 		0951AEFC1BF4FAD9009E570C /* analogBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0951AE861BF4FAD8009E570C /* analogBg.png */; };
 		0951AEFD1BF4FAD9009E570C /* analogBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0951AE871BF4FAD8009E570C /* analogBtn.png */; };
 		0951AEFE1BF4FAD9009E570C /* bullet1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0951AE891BF4FAD9009E570C /* bullet1.png */; };
@@ -115,7 +108,13 @@
 		09A6D7C31BE14DD0007A77EC /* Gun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6D7C21BE14DD0007A77EC /* Gun.swift */; };
 		09EC63F21BE3E78800ACE362 /* TestCityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC63F11BE3E78800ACE362 /* TestCityScene.swift */; };
 		09EC63F41BE3E7F500ACE362 /* TestCityGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC63F31BE3E7F500ACE362 /* TestCityGameLayer.swift */; };
+		597825A71BDE8EF50066183B /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597825A61BDE8EF50066183B /* CloudKitHelper.swift */; };
+		598DBCA11C03A38D00114DD8 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598DBCA01C03A38D00114DD8 /* CharacterData.swift */; };
 		598F15EA1BF4F72B001542A5 /* EnemyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F15E91BF4F72B001542A5 /* EnemyDelegate.swift */; };
+		59A6D66E1BE820C800A84A33 /* ResourcesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6D66D1BE820C800A84A33 /* ResourcesData.swift */; };
+		59BED8391BE135DF00B734BF /* CloudKitHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BED8381BE135DF00B734BF /* CloudKitHelperTests.swift */; };
+		59BED83A1BE1367000B734BF /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597825A61BDE8EF50066183B /* CloudKitHelper.swift */; };
+		59EBA42D1BDEA95C00F67D67 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */; };
 		6B2D98BC1BB1C6E7005B342E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BA1BB1C6E7005B342E /* Main.storyboard */; };
 		6B2D98BE1BB1C6E7005B342E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BD1BB1C6E7005B342E /* Images.xcassets */; };
 		6B2D98C11BB1C6E7005B342E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BF1BB1C6E7005B342E /* LaunchScreen.xib */; };
@@ -258,12 +257,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		597825A61BDE8EF50066183B /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
-		597825A81BDE99E40066183B /* Agent 31.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Agent 31.entitlements"; sourceTree = "<group>"; };
-		59A6D66D1BE820C800A84A33 /* ResourcesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesData.swift; sourceTree = "<group>"; };
-		59BED8351BE132B500B734BF /* CharacterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
-		59BED8381BE135DF00B734BF /* CloudKitHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelperTests.swift; sourceTree = "<group>"; };
-		59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0951AE861BF4FAD8009E570C /* analogBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analogBg.png; sourceTree = "<group>"; };
 		0951AE871BF4FAD8009E570C /* analogBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analogBtn.png; sourceTree = "<group>"; };
 		0951AE891BF4FAD9009E570C /* bullet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet1.png; sourceTree = "<group>"; };
@@ -365,7 +358,13 @@
 		09A6D7C21BE14DD0007A77EC /* Gun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gun.swift; sourceTree = "<group>"; };
 		09EC63F11BE3E78800ACE362 /* TestCityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCityScene.swift; sourceTree = "<group>"; };
 		09EC63F31BE3E7F500ACE362 /* TestCityGameLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCityGameLayer.swift; sourceTree = "<group>"; };
+		597825A61BDE8EF50066183B /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		597825A81BDE99E40066183B /* Agent 31.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Agent 31.entitlements"; sourceTree = "<group>"; };
+		598DBCA01C03A38D00114DD8 /* CharacterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
 		598F15E91BF4F72B001542A5 /* EnemyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyDelegate.swift; sourceTree = "<group>"; };
+		59A6D66D1BE820C800A84A33 /* ResourcesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesData.swift; sourceTree = "<group>"; };
+		59BED8381BE135DF00B734BF /* CloudKitHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelperTests.swift; sourceTree = "<group>"; };
+		59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		6B2D98AD1BB1C6E7005B342E /* Agent 31.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D98BB1BB1C6E7005B342E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B2D98BD1BB1C6E7005B342E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -835,8 +834,8 @@
 		59BED8301BE1319700B734BF /* Data Entities */ = {
 			isa = PBXGroup;
 			children = (
-				59BED8351BE132B500B734BF /* CharacterData.swift */,
 				59A6D66D1BE820C800A84A33 /* ResourcesData.swift */,
+				598DBCA01C03A38D00114DD8 /* CharacterData.swift */,
 			);
 			name = "Data Entities";
 			sourceTree = "<group>";
@@ -1037,8 +1036,8 @@
 			isa = PBXGroup;
 			children = (
 				597825A81BDE99E40066183B /* Agent 31.entitlements */,
-				597825A31BDE89E60066183B /* CloudKit */,
 				6B408AB41BD6A1A800D64ABF /* General */,
+				597825A31BDE89E60066183B /* CloudKit */,
 				6B2783241BD6A800009628D8 /* Entities */,
 				6B2783201BD6A792009628D8 /* Scenes */,
 				6B2783431BD6ABF3009628D8 /* Duel Mode */,
@@ -1589,9 +1588,9 @@
 				6B53A7141BDA9FCD002E7808 /* AppDelegate.swift in Sources */,
 				6B53A7201BDA9FCD002E7808 /* GameData.swift in Sources */,
 				597825A71BDE8EF50066183B /* CloudKitHelper.swift in Sources */,
-				6B53A7311BDA9FCD002E7808 /* Television.swift in Sources */,
 				6B53A72A1BDA9FCD002E7808 /* LaboratoryGameLayer.swift in Sources */,
 				6B53A7161BDA9FCD002E7808 /* Buildings.swift in Sources */,
+				598DBCA11C03A38D00114DD8 /* CharacterData.swift in Sources */,
 				6B53A7151BDA9FCD002E7808 /* Backpack.swift in Sources */,
 				6B53A7171BDA9FCD002E7808 /* Character.swift in Sources */,
 				6B53A7231BDA9FCD002E7808 /* GameViewController.swift in Sources */,
@@ -1602,7 +1601,6 @@
 				6B53A72F1BDA9FCD002E7808 /* PhysicsCategories.swift in Sources */,
 				6B53A72E1BDA9FCD002E7808 /* PauseLayer.swift in Sources */,
 				6B53A71D1BDA9FCD002E7808 /* ComputerLayer.swift in Sources */,
-				59BED8361BE132B500B734BF /* CharacterData.swift in Sources */,
 				6B53A7301BDA9FCD002E7808 /* SKGeneral.swift in Sources */,
 				E084641E1BF649F0005FE704 /* TelevisionScene.swift in Sources */,
 				09A6D7C11BE14264007A77EC /* Bullet.swift in Sources */,
@@ -1642,7 +1640,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2D98CD1BB1C6E8005B342E /* Agent_31Tests.swift in Sources */,
-				59BED8371BE132B500B734BF /* CharacterData.swift in Sources */,
 				59BED83A1BE1367000B734BF /* CloudKitHelper.swift in Sources */,
 				59BED8391BE135DF00B734BF /* CloudKitHelperTests.swift in Sources */,
 			);

@@ -2,7 +2,7 @@
 //  CharacterData.swift
 //  Agent 31
 //
-//  Created by carlos alberto teixeira junior on 28/10/15.
+//  Created by carlos alberto teixeira junior on 23/11/15.
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
@@ -27,6 +27,7 @@ class CharacterData : NSObject {
     var shootingRange: Int
     var backPack: Int
     var level: Int
+    
     private var currentTrainingAttribute = ""
     
     class var sharedInstance: CharacterData {
@@ -34,7 +35,7 @@ class CharacterData : NSObject {
     }
     
     private override init() {
-//        super.init()
+        //        super.init()
         self.jump = 0
         self.speed = 0
         self.shootingRange = 0
@@ -86,9 +87,6 @@ extension CharacterData {
             self.shootingPower = value
         } else if ( attribute == Attributes.backPack.rawValue ) {
             self.backPack = value
-//            OBS: THERE'IS NO SET TO LEVEL ATTRIBUTE, IT WILL BE CALCULATED
-//        } else if ( attribute == "level" ) {
-//            self.level = value
         } else {
             // Do nothing
         }
@@ -102,16 +100,14 @@ extension CharacterData {
         self.currentTrainingAttribute = attribute
         
         // recuperar o tempo e o custo necessário para o treinamento
-        let tuple = self.characterLevelUp( attribute, value: currentValue )
-        
+        let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         // iniciar o NSTimer
-        self.initTimer(tuple.time, value: currentValue)
+        self.initTimer(tuple.timeLevelUp, value: currentValue)
     }
     
-    private func initTimer( time: NSTimeInterval, value: Int )
-    {
+    private func initTimer( time: NSTimeInterval, value: Int ) {
         debugPrint("Inicializando o Timer do atributo \(self.currentTrainingAttribute)")
-
+        
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
     }
     
@@ -128,26 +124,5 @@ extension CharacterData {
         ck.saveCharacterProperties( self )
         
         debugPrint("**************** Valor do atributo \(self.currentTrainingAttribute) atualizado com sucesso *************" )
-    }
-}
-
-// MARK: stub functions to test funcionalities
-extension CharacterData {
-    
-    // STUB para a funcao que o Artaxexes esta fazendo
-    func characterLevelUp( attribute: String, value: Int ) -> ( time: NSTimeInterval, cost: Int ) {
-        var ncost = 0
-        let ntime = NSTimeInterval(10)
-        
-        if value < 2 {
-            ncost = 300
-        } else if value < 5 {
-            ncost = 600
-        } else {
-            ncost = 100
-        }
-        
-        return (ntime, ncost)
-
     }
 }
