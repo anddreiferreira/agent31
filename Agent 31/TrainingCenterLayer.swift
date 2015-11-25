@@ -6,7 +6,6 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 
 class TrainingCenterLayer: SKNode

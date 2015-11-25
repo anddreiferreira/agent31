@@ -44,25 +44,25 @@ class UpgradeLayer: SKNode
     
     func loadFirstPlan() {
         
-        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 1000, name: "backgroundTraining")
+        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 10000, name: "backgroundTraining")
         
     }
     
     func loadSecondPlan(attributeName: String) {
         
-        upgradeName = createLabelNode(attributeName, fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 320), fontSize: 40, zPosition: 2000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute")
+        upgradeName = createLabelNode(attributeName, fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 320), fontSize: 40, zPosition: 20000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute")
         
-        upgradeLevel = createLabelNode("Level 5", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 275, y: -middleOfTheScreenPoint.y + 320), fontSize: 15, zPosition: 2000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute level")
+        upgradeLevel = createLabelNode("Level 5", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 275, y: -middleOfTheScreenPoint.y + 320), fontSize: 15, zPosition: 20000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute level")
         
-        goldAvailableIcon = createSpriteNode("coinCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: 2000, name: "goldIcon")
+        goldAvailableIcon = createSpriteNode("coinCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: 20000, name: "goldIcon")
         
-        goldAvailableLabel = createLabelNode("2000", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: 2000, name: "goldAvailableLabel")
+        goldAvailableLabel = createLabelNode("2000", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: 20000, name: "goldAvailableLabel")
         
-        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: 2000, name: "cancelUpgradeButton")
+        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: 20000, name: "cancelUpgradeButton")
         
-        animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: 2000, name: "animationArea")
+        animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: 20000, name: "animationArea")
         
-        upgradeButton = createLabelNode("TRAIN NOW", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: 2000, name: "upgradeButton")
+        upgradeButton = createLabelNode("TRAIN NOW", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: 20000, name: "upgradeButton")
         
     }
     
