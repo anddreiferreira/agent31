@@ -75,33 +75,53 @@ class LaboratoryScene: SKScene {
                 self.goToTestCity()
             } else if node.name == "balloon" {
                 self.showLabObjectLayer((node as? SKSpriteNode)!)
-            } else if node.name == "btnBackTrain" {
-                trainingCenterLayer.removeFromParent()
+            } else if node.name == "backBtn" {
+                removeLayer(node.parent!)
                 configureAnalogStick()
-            } else if node.name!.hasPrefix("upgrade") {
-                trainingCenterLayer.removeFromParent()
-                switch node.name {
-                case let x where x!.hasSuffix("speed"):
-                    loadUpgradeLayer("speed")
-                case let x where x!.hasSuffix("jump"):
-                    loadUpgradeLayer("jump")
-                case let x where x!.hasSuffix("shootingPower"):
-                    loadUpgradeLayer("shootingPower")
-                case let x where x!.hasSuffix("shootingRange"):
-                    loadUpgradeLayer("shootingRange")
-                case let x where x!.hasSuffix("backPack"):
-                    loadUpgradeLayer("backPack")
-                default:
-                    debugPrint("unknown attribute")
-                }
+                loadButtons()
+            }
+            else if node.name!.hasPrefix("upgrade") {
+                loadUpgradeLayer(node.name!)
+            } else if node.name == "cancelUpgradeButton" {
+                upgradeLayer.removeFromParent()
             }
         }
     }
     
     func loadUpgradeLayer(attributeName: String) {
-        upgradeLayer = UpgradeLayer(attributeName: attributeName)
+        
+        switch attributeName {
+        case let x where x.hasSuffix("speed"):
+            upgradeLayer = UpgradeLayer(attributeName: "Speed")
+        case let x where x.hasSuffix("jump"):
+            upgradeLayer = UpgradeLayer(attributeName: "Jump")
+        case let x where x.hasSuffix("shootingPower"):
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power")
+        case let x where x.hasSuffix("shootingRange"):
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range")
+        case let x where x.hasSuffix("backPack"):
+            upgradeLayer = UpgradeLayer(attributeName: "Backpack")
+        case let x where x.hasSuffix("gun1"):
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 1")
+        case let x where x.hasSuffix("gun2"):
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 2")
+        default:
+            debugPrint("unknown attribute")
+        }
+        
         upgradeLayer.putUpgradeLayer()
         cam.addChild(upgradeLayer)
+        
+    }
+    
+    func removeLayer(node: SKNode) {
+        if node.isKindOfClass(TrainingCenterLayer) {
+            debugPrint("TrainingCenter Layer")
+            trainingCenterLayer.removeFromParent()
+        } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
+            debugPrint("GunDevCenter Layer")
+            gunDevelopmentCenterLayer.removeFromParent()
+        }
     }
     
     private func agentGoToCity() {
@@ -167,25 +187,29 @@ extension LaboratoryScene {
     }
     
     func showLabObjectLayer(balloon: SKSpriteNode) {
-        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        
+        removeAnalogStickAndButtons()
+        
         if(balloon.parent?.name == "placeHolderMesaArmas") {
-            removeAnalogStickAndButtons()
+            debugPrint("Gun Dev Center Layer")
+            gunDevelopmentCenterLayer = GunDevelopmentCenterLayer()
+            gunDevelopmentCenterLayer.putGunDevCenterLayer()
+            cam.addChild(gunDevelopmentCenterLayer)
         } else if (balloon.parent?.name == "placeHolderMesa") {
-            
+            debugPrint("Desk Layer")
         } else if(balloon.parent?.name == "placeHolderPC") {
-            
+            debugPrint("PC Layer")
         } else if(balloon.parent?.name == "placeHolderTV") {
-            
+            debugPrint("TV Layer")
         } else if(balloon.parent?.name == "placeHolderTreinamento") {
-            removeAnalogStickAndButtons()
+            debugPrint("Training Center Layer")
             trainingCenterLayer = TrainingCenterLayer()
             trainingCenterLayer.putTrainingCenterLayer()
             cam.addChild(trainingCenterLayer)
         } else if(balloon.parent?.name == "placeHolderDuelMode") {
-            let nextScene = DuelModeScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("Duel Mode Layer")
         }
+        
     }
 }
 

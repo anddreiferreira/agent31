@@ -30,12 +30,13 @@ class Agent: Character {
         stoppedAnimationForever()
         self.setAgentPhysics()
         
-        self.HP = 100
+        self.HP = Int(MAX_INPUT)
+        
     }
     
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue | ColliderType.Coin.rawValue | ColliderType.Metal.rawValue
         self.physicsBody?.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
     }
     

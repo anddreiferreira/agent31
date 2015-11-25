@@ -137,21 +137,27 @@ class GeneralEnemy: Character {
         
     }
     
-    func setDistanceToAgent( agentPosition: CGPoint ) {
+    func setDistanceToAgent(agentPosition: CGPoint) {
         
         self.agentPos = agentPosition
         self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
     }
     
     func dropResource(){
-        // Method that randomize if enemy will drop a coin, metal or nothing
-        // For now...
-        let coin = Coin(position: self.position)
-        self.parent?.addChild(coin)
+        let decision = random() % 100 + 1
+        
+        if(decision <= 50){
+            // Do nothing
+        }else if(decision > 50 && decision <= 75){
+            self.addChild(Coin(position: self.position))
+        }else{
+            self.addChild(Metal(position: self.position))
+        }
+        self.parent?.addChild(Metal(position: self.position))
     }
     
     override func die() {
         super.die()
-//        self.dropResource()
+        self.dropResource()
     }
 }

@@ -77,7 +77,6 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func update2(currentTime: NSTimeInterval){
-        debugPrint(self.gameOver)
         self.timeElapsed += 0.5
         self.conformAgentToAnalogic()
         self.cityGameLayer.updateEnemy(currentTime)
