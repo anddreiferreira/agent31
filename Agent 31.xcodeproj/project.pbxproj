@@ -348,33 +348,6 @@
 		6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenterLayer.swift; sourceTree = "<group>"; };
 		6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
-		E068A2A81BE13AEA00055E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E068A2AA1BE13AEA00055E35 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		E068A2AC1BE13AEA00055E35 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		E068A2AE1BE13AEA00055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E068A2B11BE13AEA00055E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		E068A2B31BE13AEA00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E068A2BC1BE13AEA00055E35 /* Agent_31_OS_XTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent_31_OS_XTests.swift; sourceTree = "<group>"; };
-		E068A2BE1BE13AEA00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E068A2CB1BE13B4A00055E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E068A2CD1BE13B4A00055E35 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		E068A2CF1BE13B4A00055E35 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		E068A2D11BE13B4A00055E35 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		E068A2D31BE13B4A00055E35 /* Game.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Game.xcassets; sourceTree = "<group>"; };
-		E068A2D61BE13B4A00055E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E068A2D81BE13B4A00055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E068A2DA1BE13B4A00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E068A2E31BE13B4A00055E35 /* Agent_31_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent_31_tvOSTests.swift; sourceTree = "<group>"; };
-		E068A2E51BE13B4A00055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E068A2F11BE13BA700055E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		E068A2F31BE13BA700055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E068A2F51BE13BA700055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E068A3001BE13BA700055E35 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		E068A3011BE13BA700055E35 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		E068A3031BE13BA700055E35 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		E068A3051BE13BA800055E35 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		E068A3071BE13BA800055E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E068A3091BE13BA800055E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E073FE751BFB631D00FD11DE /* DuelModeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelModeLayer.swift; sourceTree = "<group>"; };
 		E073FE771BFB647B00FD11DE /* DuelModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelModeScene.swift; sourceTree = "<group>"; };
 		E073FE791BFB656000FD11DE /* DuelModeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelModeSearch.swift; sourceTree = "<group>"; };
@@ -905,11 +878,7 @@
 			children = (
 				59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */,
 				6B2D98AF1BB1C6E7005B342E /* Agent 31 */,
-				E068A3151BE1403600055E35 /* Tests */,
-				E068A2A71BE13AEA00055E35 /* Agent 31 OS X */,
-				E068A2CA1BE13B4A00055E35 /* Agent 31 tvOS */,
-				E068A2EF1BE13BA700055E35 /* Agent 31 watchOS */,
-				E068A2FE1BE13BA700055E35 /* Agent 31 watchOS Extension */,
+				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
 				6B2D98AE1BB1C6E7005B342E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -989,93 +958,6 @@
 				E0467F4B1BED0AA600F6D92A /* Function.swift */,
 			);
 			name = General;
-			sourceTree = "<group>";
-		};
-		E068A2A71BE13AEA00055E35 /* Agent 31 OS X */ = {
-			isa = PBXGroup;
-			children = (
-				E068A2A81BE13AEA00055E35 /* AppDelegate.swift */,
-				E068A2AA1BE13AEA00055E35 /* GameScene.swift */,
-				E068A2AC1BE13AEA00055E35 /* GameScene.sks */,
-				E068A2AE1BE13AEA00055E35 /* Assets.xcassets */,
-				E068A2B01BE13AEA00055E35 /* MainMenu.xib */,
-				E068A2B31BE13AEA00055E35 /* Info.plist */,
-			);
-			path = "Agent 31 OS X";
-			sourceTree = "<group>";
-		};
-		E068A2BB1BE13AEA00055E35 /* Agent 31 OS XTests */ = {
-			isa = PBXGroup;
-			children = (
-				E068A2BC1BE13AEA00055E35 /* Agent_31_OS_XTests.swift */,
-				E068A2BE1BE13AEA00055E35 /* Info.plist */,
-			);
-			path = "Agent 31 OS XTests";
-			sourceTree = "<group>";
-		};
-		E068A2CA1BE13B4A00055E35 /* Agent 31 tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				E068A2CB1BE13B4A00055E35 /* AppDelegate.swift */,
-				E068A2CD1BE13B4A00055E35 /* GameScene.sks */,
-				E068A2CF1BE13B4A00055E35 /* GameScene.swift */,
-				E068A2D11BE13B4A00055E35 /* GameViewController.swift */,
-				E068A2D31BE13B4A00055E35 /* Game.xcassets */,
-				E068A2D51BE13B4A00055E35 /* Main.storyboard */,
-				E068A2D81BE13B4A00055E35 /* Assets.xcassets */,
-				E068A2DA1BE13B4A00055E35 /* Info.plist */,
-			);
-			path = "Agent 31 tvOS";
-			sourceTree = "<group>";
-		};
-		E068A2E21BE13B4A00055E35 /* Agent 31 tvOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				E068A2E31BE13B4A00055E35 /* Agent_31_tvOSTests.swift */,
-				E068A2E51BE13B4A00055E35 /* Info.plist */,
-			);
-			path = "Agent 31 tvOSTests";
-			sourceTree = "<group>";
-		};
-		E068A2EF1BE13BA700055E35 /* Agent 31 watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				E068A2F01BE13BA700055E35 /* Interface.storyboard */,
-				E068A2F31BE13BA700055E35 /* Assets.xcassets */,
-				E068A2F51BE13BA700055E35 /* Info.plist */,
-			);
-			path = "Agent 31 watchOS";
-			sourceTree = "<group>";
-		};
-		E068A2FE1BE13BA700055E35 /* Agent 31 watchOS Extension */ = {
-			isa = PBXGroup;
-			children = (
-				E068A3011BE13BA700055E35 /* InterfaceController.swift */,
-				E068A3031BE13BA700055E35 /* ExtensionDelegate.swift */,
-				E068A3051BE13BA800055E35 /* NotificationController.swift */,
-				E068A3071BE13BA800055E35 /* Assets.xcassets */,
-				E068A3091BE13BA800055E35 /* Info.plist */,
-				E068A2FF1BE13BA700055E35 /* Supporting Files */,
-			);
-			path = "Agent 31 watchOS Extension";
-			sourceTree = "<group>";
-		};
-		E068A2FF1BE13BA700055E35 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E068A3001BE13BA700055E35 /* PushNotificationPayload.apns */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E068A3151BE1403600055E35 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
-				E068A2BB1BE13AEA00055E35 /* Agent 31 OS XTests */,
-				E068A2E21BE13B4A00055E35 /* Agent 31 tvOSTests */,
-			);
-			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1375,30 +1257,6 @@
 				6B2D98C01BB1C6E7005B342E /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		E068A2B01BE13AEA00055E35 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E068A2B11BE13AEA00055E35 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		E068A2D51BE13B4A00055E35 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E068A2D61BE13B4A00055E35 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E068A2F01BE13BA700055E35 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E068A2F11BE13BA700055E35 /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
