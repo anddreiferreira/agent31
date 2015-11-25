@@ -163,6 +163,7 @@
 		E073FE761BFB631D00FD11DE /* DuelModeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073FE751BFB631D00FD11DE /* DuelModeLayer.swift */; };
 		E073FE781BFB647B00FD11DE /* DuelModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073FE771BFB647B00FD11DE /* DuelModeScene.swift */; };
 		E073FE7A1BFB656000FD11DE /* DuelModeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073FE791BFB656000FD11DE /* DuelModeSearch.swift */; };
+		E0ADDCA11C05F27000490DF5 /* exitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E0ADDCA01C05F27000490DF5 /* exitButton.png */; };
 		E0C3D6571BE3E976008D7713 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C3D6561BE3E976008D7713 /* Reach.swift */; };
 		E0EB13121BFBBC1E00AA9D25 /* UpgradeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EB13111BFBBC1D00AA9D25 /* UpgradeLayer.swift */; };
 /* End PBXBuildFile section */
@@ -352,6 +353,7 @@
 		E073FE771BFB647B00FD11DE /* DuelModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelModeScene.swift; sourceTree = "<group>"; };
 		E073FE791BFB656000FD11DE /* DuelModeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelModeSearch.swift; sourceTree = "<group>"; };
 		E0789B521BFB8D9600FA8A6E /* CopperplateBlackCondensedSSi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CopperplateBlackCondensedSSi.ttf; sourceTree = "<group>"; };
+		E0ADDCA01C05F27000490DF5 /* exitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitButton.png; sourceTree = "<group>"; };
 		E0C3D6561BE3E976008D7713 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		E0EB13111BFBBC1D00AA9D25 /* UpgradeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -658,6 +660,7 @@
 		098C1D9E1C04ED2600C7F7A3 /* Placeholders */ = {
 			isa = PBXGroup;
 			children = (
+				E0ADDCA01C05F27000490DF5 /* exitButton.png */,
 				098C1D9F1C04ED2600C7F7A3 /* 1.png */,
 				098C1DA01C04ED2600C7F7A3 /* animationArea.png */,
 				098C1DA11C04ED2600C7F7A3 /* backBtnTrain.png */,
@@ -1129,6 +1132,7 @@
 				098C1DD21C04ED2600C7F7A3 /* troncoAtacando2.png in Resources */,
 				098C1DF21C04ED2600C7F7A3 /* diamondCity.png in Resources */,
 				098C1DC31C04ED2600C7F7A3 /* pernasAndando1.png in Resources */,
+				E0ADDCA11C05F27000490DF5 /* exitButton.png in Resources */,
 				098C1DC11C04ED2600C7F7A3 /* RunningAgent5.png in Resources */,
 				098C1DD11C04ED2600C7F7A3 /* troncoAtacando1.png in Resources */,
 				098C1E1C1C04ED2600C7F7A3 /* tapHereButton.png in Resources */,
