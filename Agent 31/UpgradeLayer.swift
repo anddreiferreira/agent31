@@ -57,7 +57,7 @@ class UpgradeLayer: SKNode
         
         animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: 20000, name: "animationArea")
         
-        upgradeButton = createLabelNode("TRAIN NOW", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: 20000, name: "upgradeButton")
+        upgradeButton = createLabelNode("TRAIN NOW", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: 20000, name: "btnUpgrade")
         
     }
     
