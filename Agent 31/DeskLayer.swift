@@ -10,24 +10,33 @@ import SpriteKit
 
 class DeskLayer: SKNode
 {
-    var desk: SKSpriteNode?
+    
+    var background: SKSpriteNode?
     
     override init() {
+        
         super.init()
-        loadDesk()
+        loadFirstPlan()
+        loadSecondPlan()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadDesk() {
-        //desk = createSpriteNode()
-        debugPrint("Load Desk layer")
+    func loadFirstPlan() {
+        
+        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 1000, name: "backgroundTraining")
+        
+    }
+    
+    func loadSecondPlan() {
+    
     }
     
     func putDeskLayer() {
-        self.addChild(desk!)
+        // First plan
+        self.addChild(background!)
     }
     
 }
