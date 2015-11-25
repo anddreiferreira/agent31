@@ -44,7 +44,7 @@ class GunDevelopmentCenterLayer: SKNode
     
     func loadSecondPlan() {
         
-        buttonBack = createSpriteNode("backBtnTrain", position: CGPoint(x: -middleOfTheScreenPoint.x + 20, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "btnBackTrain")
+        buttonBack = createSpriteNode("backBtn", position: CGPoint(x: -middleOfTheScreenPoint.x + 20, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "backBtn")
         
         trainingTitle = createSpriteNode("trainingTitle", position: CGPoint(x: -middleOfTheScreenPoint.x + 100, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "trainingTitle")
         
