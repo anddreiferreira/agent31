@@ -98,6 +98,8 @@ extension TestCityGameLayer{
     func didBeginContact(contact: SKPhysicsContact){
         
         
+        debugPrint(ResourcesData.sharedInstance.metal)
+        
         let node1: SKNode = contact.bodyA.node!
         let node2: SKNode = contact.bodyB.node!
         
@@ -120,25 +122,25 @@ extension TestCityGameLayer{
                 node1.removeFromParent()
                 
                 // Add this property to character coins (singleton)
-                // += (node1 as? Coin)?.value
+                 ResourcesData.sharedInstance.gold += ((node1 as? Coin)?.value)!
             }
         }else if(node2.isKindOfClass(Coin)){
             if(node1.isKindOfClass(Agent)){
                 node2.removeFromParent()
                 // Add this property to character coins (singleton)
-                // += (node2 as? Coin)?.value
+                 ResourcesData.sharedInstance.gold += ((node2 as? Coin)?.value)!
             }
         }else if(node1.isKindOfClass(Metal)){
             if(node2.isKindOfClass(Agent)){
                 node1.removeFromParent()
                 // Add this property to character metal (singleton)
-                // += (node2 as? Metal)?.value
+                 ResourcesData.sharedInstance.metal += ((node2 as? Metal)?.value)!
             }
         }else if(node2.isKindOfClass(Metal)){
             if(node1.isKindOfClass(Agent)){
                 node2.removeFromParent()
                 // Add this property to character metal (singleton)
-                // += (node2 as? Metal)?.value
+                 ResourcesData.sharedInstance.metal += ((node2 as? Metal)?.value)!
             }
         }
     }

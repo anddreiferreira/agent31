@@ -46,7 +46,7 @@ class LaboratoryHudLayer: SKNode {
         // require from singleton golds avaiable
         let goldSprite = createSpriteNode("Coin", position: CGPointMake(-middleOfTheScreenPoint.x + 350, -middleOfTheScreenPoint.y + 335), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 2, name: "Coin")
         
-        let goldsAvaiable = 2000
+        let goldsAvaiable = ResourcesData.sharedInstance.gold
         let laboratoryGoldLabel = createLabelNode("\(goldsAvaiable)", zPosition: 2,position: CGPointMake(-middleOfTheScreenPoint.x + 380,-middleOfTheScreenPoint.y + 338),alignmentMode:SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         self.addChild(goldSprite)
@@ -58,7 +58,7 @@ class LaboratoryHudLayer: SKNode {
         let metalSprite = createSpriteNode("Metal", position: CGPointMake(-middleOfTheScreenPoint.x + 500, -middleOfTheScreenPoint.y + 332), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 2, name: "Metal")
         
         // require from singleton metals avaiable
-        let metalsAvaiable = 5000
+        let metalsAvaiable = ResourcesData.sharedInstance.metal
         let laboratoryMetalLabel = createLabelNode("\(metalsAvaiable)", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 550, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         self.addChild(metalSprite)
