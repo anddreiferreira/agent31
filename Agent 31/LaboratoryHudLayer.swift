@@ -10,16 +10,10 @@ import SpriteKit
 
 class LaboratoryHudLayer: SKNode {
 
-    private var laboratoryHeaderSprite : SKSpriteNode?
     private var laboratoryHeaderSpriteResources : SKSpriteNode?
 
-    private var laboratoryGoldLabel : SKLabelNode?
-    private var laboratoryDiamondLabel : SKLabelNode?
-    private var laboratoryMetalLabel : SKLabelNode?
     private var laboratoryTimeLabel : SKLabelNode?
     
-    private var laboratoryLifeBar : SKSpriteNode?
-    private var messageRemainingLife : SKLabelNode?
     private var timeRemainingLife : SKLabelNode?
     
     override init(){
@@ -27,9 +21,9 @@ class LaboratoryHudLayer: SKNode {
         super.init()
         
         self.loadheader()
-        self.loadLabels()
         self.loadLifeBar()
-        self.loadMessageLifeBar()
+        self.loadGolds()
+        self.loadMetals()
         
     }
     
@@ -40,63 +34,67 @@ class LaboratoryHudLayer: SKNode {
     func loadheader(){
         
         // header
-        laboratoryHeaderSprite = createSpriteNode("headerBarLab", position: CGPointMake(-middleOfTheScreenPoint.x + 20, -middleOfTheScreenPoint.y + 366), zPosition: 1, name: "headerBarLab")
-        laboratoryHeaderSprite?.alpha = 0.3
+        let headerPosition = CGPointMake(-middleOfTheScreenPoint.x + 20, -middleOfTheScreenPoint.y + 366)
+        let laboratoryHeaderSprite = createSpriteNode("headerBarLab", position: headerPosition, zPosition: 1, name: "headerBarLab")
+        laboratoryHeaderSprite.alpha = 0.3
         
-        // resources images
-        laboratoryHeaderSpriteResources = createSpriteNode("resourcesLabImages", position: CGPointMake(-middleOfTheScreenPoint.x + 339, -middleOfTheScreenPoint.y + 360), zPosition: 2, name: "resourcesLabImages")
-        
-    }
-    
-    func loadLabels(){
-        
-        // label amount gold
-        laboratoryGoldLabel = createLabelNode("330", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 380, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
-        
-        // label amount metal
-        laboratoryMetalLabel = createLabelNode("5000", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 480, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
-        
-        // label amount diamong
-        laboratoryDiamondLabel = createLabelNode("32", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 600, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        self.addChild(laboratoryHeaderSprite)
         
     }
     
-    // bar with 5 lives
+    func loadGolds(){
+        // require from singleton golds avaiable
+        let goldSprite = createSpriteNode("Coin", position: CGPointMake(-middleOfTheScreenPoint.x + 350, -middleOfTheScreenPoint.y + 335), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 2, name: "Coin")
+        
+        let goldsAvaiable = 2000
+        let laboratoryGoldLabel = createLabelNode("\(goldsAvaiable)", zPosition: 2,position: CGPointMake(-middleOfTheScreenPoint.x + 380,-middleOfTheScreenPoint.y + 338),alignmentMode:SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        
+        self.addChild(goldSprite)
+        self.addChild(laboratoryGoldLabel)
+    }
+    
+    func loadMetals(){
+        
+        let metalSprite = createSpriteNode("Metal", position: CGPointMake(-middleOfTheScreenPoint.x + 500, -middleOfTheScreenPoint.y + 332), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 2, name: "Metal")
+        
+        // require from singleton metals avaiable
+        let metalsAvaiable = 5000
+        let laboratoryMetalLabel = createLabelNode("\(metalsAvaiable)", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 550, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        
+        self.addChild(metalSprite)
+        self.addChild(laboratoryMetalLabel)
+    }
+    
+    func loadDiamonds(){
+        // require from singleton diamonds avaiable
+        let laboratoryDiamondLabel = createLabelNode("32", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 600, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        self.addChild(laboratoryDiamondLabel)
+    }
+    
     func loadLifeBar(){
     
+        // Load quantity from SINGLETON
+        // For now...
         let livesNumber : Int = 5;
-        let livesString = String(livesNumber)
+        let livesPosition = CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359)
         
-        let lifeName : NSMutableString = NSMutableString()
-        lifeName.appendString("life")
-        lifeName.appendString(livesString)
+        let laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 2, name: "laboratoryLifeBar")
         
-        laboratoryLifeBar = createSpriteNode(lifeName as String, position: CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359), zPosition: 2, name: "laboratoryLifeBar")
+        self.addChild(laboratoryLifeBar)
+        
+        loadMessageLifeBar()
         
     }
     
-    // puting all nodes necessary
-    func putHudLayer(){
-    
-        self.addChild(laboratoryHeaderSprite!)
-        self.addChild(laboratoryHeaderSpriteResources!)
-    
-        self.addChild(laboratoryGoldLabel!)
-        self.addChild(laboratoryDiamondLabel!)
-        self.addChild(laboratoryMetalLabel!)
-
-        self.addChild(laboratoryLifeBar!)
-        self.addChild(messageRemainingLife!)
-
-    }
-
     func loadMessageLifeBar(){
     
         let number : Int = 5
         
         if number == 5 {
             
-            messageRemainingLife = createLabelNode("All Lives Available", fontName: "Helvetica", position: CGPointMake(-middleOfTheScreenPoint.x + 90, -middleOfTheScreenPoint.y + 323), fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
+            let messagePosition = CGPointMake(-middleOfTheScreenPoint.x + 95, -middleOfTheScreenPoint.y + 323)
+            let messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 2, name: "messageRaminingLife")
+            self.addChild(messageRemainingLife)
         }
 //        else{
 //        

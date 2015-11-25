@@ -175,7 +175,6 @@ extension LaboratoryScene {
     
     func putHudLayer() {
         self.laboratoryHudLayer = LaboratoryHudLayer()
-        self.laboratoryHudLayer.putHudLayer()
         cam.addChild(laboratoryHudLayer)
     }
     
