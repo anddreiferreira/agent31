@@ -8,8 +8,18 @@
 
 import UIKit
 
-class GameData: NSObject {
+private let _sharedInstance = GameData()
 
+class GameData: NSObject {
+    
+    private override init() {
+        
+    }
+    
+    class var sharedInstance: GameData {
+        return _sharedInstance
+    }
+    
     enum LabLayers {
         case DeskNumber
         case ComputerNumber

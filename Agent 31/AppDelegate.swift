@@ -13,7 +13,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let ckhelper = CloudKitHelper()
+    var characterDataOn = false
+    var resourcesDataOn = false
+    var character = CharacterData.sharedInstance
+    var resources = ResourcesData.sharedInstance
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
@@ -42,6 +47,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         
         // Override point for customization after application launch.
+        
+        ckhelper.fetchCharacterProperties(character)
+        ckhelper.fetchResourcesProperties(resources)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
+        while( self.characterDataOn == false || self.resourcesDataOn == false ) {
+//             print("Wait") // -> vai ficar na tela de loading enquanto nao carregar os dados do cloudkit
+        }
+//        self.character.initTraining("BackPack")
+        debugPrint( "Qtd de diamantes = \(ResourcesData.sharedInstance.metal)" )
+
         return true
     }
     
@@ -71,6 +87,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
 
+// MARK: Notifications actions
+extension AppDelegate {
+    
+    func turnOnCharacterData() {
+        CharacterData.sharedInstance.jump = self.character.jump
+        CharacterData.sharedInstance.speed = self.character.speed
+        CharacterData.sharedInstance.shootingPower = self.character.shootingPower
+        CharacterData.sharedInstance.shootingRange = self.character.shootingRange
+        CharacterData.sharedInstance.backPack = self.character.backPack
+        CharacterData.sharedInstance.level = self.character.level
+        
+        self.characterDataOn = true
+    }
+    
+    func turnOnResourcesData() {
+        
+        ResourcesData.sharedInstance.metal = self.resources.metal
+        ResourcesData.sharedInstance.gold = self.resources.gold
+        ResourcesData.sharedInstance.diamond = self.resources.diamond
+        
+        self.resourcesDataOn = true
+    }
 }

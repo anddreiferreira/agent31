@@ -75,25 +75,16 @@ class LaboratoryScene: SKScene {
                 self.goToTestCity()
             } else if node.name == "balloon" {
                 self.showLabObjectLayer((node as? SKSpriteNode)!)
-            } else if node.name == "btnBackTrain" {
-                if node.isKindOfClass(TrainingCenterLayer) {
-                    trainingCenterLayer.removeFromParent()
-                } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
-                    gunDevelopmentCenterLayer.removeFromParent()
-                }
+            } else if node.name == "backBtn" {
+                removeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
-            } else if node.name!.hasPrefix("upgrade") {
+            }
+            else if node.name!.hasPrefix("upgrade") {
                 loadUpgradeLayer(node.name!)
             } else if node.name == "cancelUpgradeButton" {
                 upgradeLayer.removeFromParent()
-                //trainingCenterLayer = TrainingCenterLayer()
-                //trainingCenterLayer.putTrainingCenterLayer()
-                //cam.addChild(trainingCenterLayer)
-                loadButtons()
-                configureAnalogStick()
             }
-            
         }
     }
     
@@ -121,6 +112,16 @@ class LaboratoryScene: SKScene {
         upgradeLayer.putUpgradeLayer()
         cam.addChild(upgradeLayer)
         
+    }
+    
+    func removeLayer(node: SKNode) {
+        if node.isKindOfClass(TrainingCenterLayer) {
+            debugPrint("TrainingCenter Layer")
+            trainingCenterLayer.removeFromParent()
+        } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
+            debugPrint("GunDevCenter Layer")
+            gunDevelopmentCenterLayer.removeFromParent()
+        }
     }
     
     private func agentGoToCity() {
