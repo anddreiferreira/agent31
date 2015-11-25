@@ -10,24 +10,35 @@ import SpriteKit
 
 class TelevisionLayer: SKNode
 {
-    var television: SKSpriteNode?
+    
+    var background: SKSpriteNode?
     
     override init() {
+        
         super.init()
-        loadTelevision()
+        loadFirstPlan()
+        loadSecondPlan()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadTelevision() {
-        //television = createSpriteNode()
-        debugPrint("Load Television layer")
+    func loadFirstPlan() {
+        
+        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 1000, name: "backgroundTraining")
+        
+    }
+    
+    func loadSecondPlan() {
+        
     }
     
     func putTelevisionLayer() {
-        self.addChild(television!)
+        
+        self.addChild(background!)
+    
     }
     
 }

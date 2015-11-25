@@ -26,7 +26,6 @@ class UpgradeLayer: SKNode
     init(attributeName: String) {
         
         super.init()
-        
         loadFirstPlan()
         loadSecondPlan(attributeName)
         
@@ -37,10 +36,6 @@ class UpgradeLayer: SKNode
         fatalError("init(coder:) has not been implemented")
         
     }
-    
-    //func createLabelNode(text: String, fontName: String = defaultFontName, position: CGPoint = middleOfTheScreenPoint, fontSize: CGFloat = 32.0, color: SKColor = SKColor.whiteColor(), zPosition: CGFloat = 1.0, alignmentMode: SKLabelHorizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center,name: String) -> SKLabelNode { }
-    //func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode { }
-    
     
     func loadFirstPlan() {
         
