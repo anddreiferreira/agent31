@@ -110,7 +110,7 @@ enum Tile: Int {
 }
 
 class Building: SKNode {
-        
+    
     let buildingView:SKSpriteNode
 
     let tileSize = (width:20, height:20)
@@ -140,6 +140,8 @@ class Building: SKNode {
         self.colocarAndares()
         self.colocarLateral()
         self.colocarTopo()
+        self.colocarPilastras()
+        self.colocarJanelas()
         
     }
     
@@ -406,6 +408,13 @@ class Building: SKNode {
         
         buildingView.addChild(sprite)
         
+    }
+    
+    func colocarPilastras(){
+    
+    
+        
+    
     }
     
     func colocarJanelas(){

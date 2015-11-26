@@ -165,6 +165,9 @@
 		6BA4F1831C07B2170016B39F /* tijolo5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17C1C07B2170016B39F /* tijolo5.png */; };
 		6BA4F1841C07B2180016B39F /* tijolo6.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17D1C07B2170016B39F /* tijolo6.png */; };
 		6BA4F1851C07B2180016B39F /* tijolo7.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17E1C07B2170016B39F /* tijolo7.png */; };
+		6BA4F1891C07BD900016B39F /* pilastraBase.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1861C07BD900016B39F /* pilastraBase.png */; };
+		6BA4F18A1C07BD900016B39F /* pilastraCorpo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1871C07BD900016B39F /* pilastraCorpo.png */; };
+		6BA4F18B1C07BD900016B39F /* pilastraTopo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1881C07BD900016B39F /* pilastraTopo.png */; };
 		6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7C2081BFCE703000B2B66 /* tijolo.png */; };
 		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
@@ -437,6 +440,9 @@
 		6BA4F17C1C07B2170016B39F /* tijolo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo5.png; path = Images/tijolo5.png; sourceTree = SOURCE_ROOT; };
 		6BA4F17D1C07B2170016B39F /* tijolo6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo6.png; path = Images/tijolo6.png; sourceTree = SOURCE_ROOT; };
 		6BA4F17E1C07B2170016B39F /* tijolo7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo7.png; path = Images/tijolo7.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1861C07BD900016B39F /* pilastraBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraBase.png; path = Images/pilastraBase.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1871C07BD900016B39F /* pilastraCorpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraCorpo.png; path = Images/pilastraCorpo.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1881C07BD900016B39F /* pilastraTopo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraTopo.png; path = Images/pilastraTopo.png; sourceTree = SOURCE_ROOT; };
 		6BA7C2081BFCE703000B2B66 /* tijolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo.png; path = Images/tijolo.png; sourceTree = SOURCE_ROOT; };
 		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
@@ -549,8 +555,7 @@
 		0951AE841BF4FAD8009E570C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6BA7C2081BFCE703000B2B66 /* tijolo.png */,
-				0951AE851BF4FAD8009E570C /* Analog */,
+				6BA4F18F1C07BDB00016B39F /* predio */,
 				0951AE881BF4FAD9009E570C /* Bullets */,
 				0951AE8A1BF4FAD9009E570C /* Character */,
 				0951AECC1BF4FAD9009E570C /* ChargeBar */,
@@ -567,7 +572,8 @@
 				0951AE861BF4FAD8009E570C /* analogBg.png */,
 				0951AE871BF4FAD8009E570C /* analogBtn.png */,
 			);
-			path = Analog;
+			name = Analog;
+			path = Images/Analog;
 			sourceTree = "<group>";
 		};
 		0951AE881BF4FAD9009E570C /* Bullets */ = {
@@ -1091,29 +1097,6 @@
 		6B408AB31BD6A19800D64ABF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6BA4F1741C07B14A0016B39F /* varandaBaixoDireita.png */,
-				6BA4F1751C07B14A0016B39F /* varandaCimaDireita.png */,
-				6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */,
-				6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */,
-				6BA4F1681C07866A0016B39F /* varandaBaixo.png */,
-				6BA4F1691C07866A0016B39F /* varandaCima.png */,
-				6BA4F1661C0783A00016B39F /* parapeito.png */,
-				6BA4F1621C077E420016B39F /* baseLateral.png */,
-				6BA4F1631C077E420016B39F /* lateralChao.png */,
-				6BA4F12E1BFF4FB70016B39F /* baseNormal.png */,
-				6BA4F1601C077BB60016B39F /* tetoBase.png */,
-				6BA4F15A1C0773290016B39F /* tetoChao.png */,
-				6BA4F15B1C0773290016B39F /* tetoDireita.png */,
-				6BA4F15C1C0773290016B39F /* tetoEsquerda.png */,
-				6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */,
-				6BA4F1301BFF51930016B39F /* baseDireita.png */,
-				6BA4F1781C07B2170016B39F /* tijolo1.png */,
-				6BA4F1791C07B2170016B39F /* tijolo2.png */,
-				6BA4F17A1C07B2170016B39F /* tijolo3.png */,
-				6BA4F17B1C07B2170016B39F /* tijolo4.png */,
-				6BA4F17C1C07B2170016B39F /* tijolo5.png */,
-				6BA4F17D1C07B2170016B39F /* tijolo6.png */,
-				6BA4F17E1C07B2170016B39F /* tijolo7.png */,
 				0951AE841BF4FAD8009E570C /* Images */,
 				6B06CD811BD6A0B9009F38F4 /* Fonts */,
 				6B2D98BD1BB1C6E7005B342E /* Images.xcassets */,
@@ -1135,6 +1118,106 @@
 				E0467F4B1BED0AA600F6D92A /* Function.swift */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		6BA4F18C1C07BD960016B39F /* pilastra */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F1861C07BD900016B39F /* pilastraBase.png */,
+				6BA4F1871C07BD900016B39F /* pilastraCorpo.png */,
+				6BA4F1881C07BD900016B39F /* pilastraTopo.png */,
+			);
+			name = pilastra;
+			sourceTree = "<group>";
+		};
+		6BA4F18D1C07BDA50016B39F /* varanda */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F1741C07B14A0016B39F /* varandaBaixoDireita.png */,
+				6BA4F1751C07B14A0016B39F /* varandaCimaDireita.png */,
+				6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */,
+				6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */,
+				6BA4F1681C07866A0016B39F /* varandaBaixo.png */,
+				6BA4F1691C07866A0016B39F /* varandaCima.png */,
+			);
+			name = varanda;
+			sourceTree = "<group>";
+		};
+		6BA4F18E1C07BDAB0016B39F /* tijolo */ = {
+			isa = PBXGroup;
+			children = (
+				6BA7C2081BFCE703000B2B66 /* tijolo.png */,
+				6BA4F1781C07B2170016B39F /* tijolo1.png */,
+				6BA4F1791C07B2170016B39F /* tijolo2.png */,
+				6BA4F17A1C07B2170016B39F /* tijolo3.png */,
+				6BA4F17B1C07B2170016B39F /* tijolo4.png */,
+				6BA4F17C1C07B2170016B39F /* tijolo5.png */,
+				6BA4F17D1C07B2170016B39F /* tijolo6.png */,
+				6BA4F17E1C07B2170016B39F /* tijolo7.png */,
+			);
+			name = tijolo;
+			sourceTree = "<group>";
+		};
+		6BA4F18F1C07BDB00016B39F /* predio */ = {
+			isa = PBXGroup;
+			children = (
+				0951AE851BF4FAD8009E570C /* Analog */,
+				6BA4F1941C07BDDE0016B39F /* base */,
+				6BA4F1931C07BDD90016B39F /* teto */,
+				6BA4F1921C07BDCF0016B39F /* lateral */,
+				6BA4F1911C07BDBA0016B39F /* acessorios */,
+				6BA4F1901C07BDB40016B39F /* outros */,
+				6BA4F18E1C07BDAB0016B39F /* tijolo */,
+				6BA4F18D1C07BDA50016B39F /* varanda */,
+				6BA4F18C1C07BD960016B39F /* pilastra */,
+			);
+			name = predio;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		6BA4F1901C07BDB40016B39F /* outros */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F1661C0783A00016B39F /* parapeito.png */,
+			);
+			name = outros;
+			sourceTree = "<group>";
+		};
+		6BA4F1911C07BDBA0016B39F /* acessorios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = acessorios;
+			sourceTree = "<group>";
+		};
+		6BA4F1921C07BDCF0016B39F /* lateral */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F1621C077E420016B39F /* baseLateral.png */,
+				6BA4F1631C077E420016B39F /* lateralChao.png */,
+			);
+			name = lateral;
+			sourceTree = "<group>";
+		};
+		6BA4F1931C07BDD90016B39F /* teto */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F1601C077BB60016B39F /* tetoBase.png */,
+				6BA4F15A1C0773290016B39F /* tetoChao.png */,
+				6BA4F15B1C0773290016B39F /* tetoDireita.png */,
+				6BA4F15C1C0773290016B39F /* tetoEsquerda.png */,
+			);
+			name = teto;
+			sourceTree = "<group>";
+		};
+		6BA4F1941C07BDDE0016B39F /* base */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */,
+				6BA4F1301BFF51930016B39F /* baseDireita.png */,
+				6BA4F12E1BFF4FB70016B39F /* baseNormal.png */,
+			);
+			name = base;
 			sourceTree = "<group>";
 		};
 		E068A2A71BE13AEA00055E35 /* Agent 31 OS X */ = {
@@ -1483,11 +1566,13 @@
 				0951AF141BF4FAD9009E570C /* troncoAndando4.png in Resources */,
 				6BA4F1611C077BB60016B39F /* tetoBase.png in Resources */,
 				E0DEE4DC1BFA6CDC00B39671 /* animationArea.png in Resources */,
+				6BA4F18A1C07BD900016B39F /* pilastraCorpo.png in Resources */,
 				0951AF1F1BF4FAD9009E570C /* troncoGetHit1.png in Resources */,
 				0951AF101BF4FAD9009E570C /* pernasAndando7.png in Resources */,
 				E0EB130E1BFB9A5900AA9D25 /* backBtnTrain.png in Resources */,
 				0951AF461BF4FAD9009E570C /* life1.png in Resources */,
 				0951AF501BF4FAD9009E570C /* backgroundLabTest.png in Resources */,
+				6BA4F18B1C07BD900016B39F /* pilastraTopo.png in Resources */,
 				0951AF3E1BF4FAD9009E570C /* slot.png in Resources */,
 				0951AF3B1BF4FAD9009E570C /* metalCity.png in Resources */,
 				6BA4F1671C0783A00016B39F /* parapeito.png in Resources */,
@@ -1532,6 +1617,7 @@
 				0951AF071BF4FAD9009E570C /* RunningAgent4.png in Resources */,
 				0951AF241BF4FAD9009E570C /* troncoParado4.png in Resources */,
 				0951AF051BF4FAD9009E570C /* RunningAgent2.png in Resources */,
+				6BA4F1891C07BD900016B39F /* pilastraBase.png in Resources */,
 				0951AF191BF4FAD9009E570C /* troncoAtacando2.png in Resources */,
 				E0DEE4DE1BFA6FC700B39671 /* bgBlur.png in Resources */,
 				0951AF391BF4FAD9009E570C /* diamondCity.png in Resources */,
