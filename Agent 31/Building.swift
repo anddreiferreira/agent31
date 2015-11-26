@@ -19,6 +19,8 @@ enum Tile: Int {
     case VarandaBaixo
     case VarandaCimaEsquerda
     case VarandaCimaDireita
+    case VarandaBaixoEsquerda
+    case VarandaBaixoDireita
     
     var description:String {
         switch self {
@@ -52,6 +54,10 @@ enum Tile: Int {
             return "varandaCimaEsquerda"
         case VarandaCimaDireita :
             return "varandaCimaDireita"
+        case VarandaBaixoEsquerda :
+            return "varandaBaixoEsquerda"
+        case VarandaBaixoDireita :
+            return "varandaBaixoDireita"
         default :
             return "Nada"
             
@@ -91,6 +97,11 @@ enum Tile: Int {
             return "varandaCimaEsquerda"
         case VarandaCimaDireita :
             return "varandaCimaDireita"
+        case VarandaBaixoEsquerda :
+            return "varandaBaixoEsquerda"
+        case VarandaBaixoDireita :
+            return "varandaBaixoDireita"
+
         default :
             return ""
         }
@@ -179,7 +190,7 @@ class Building: SKNode {
             yCoordenada += 20
             
             ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-            colocarUmaTile(lateralBase.image, posicao: ponto, zCoordenada: 20)
+            colocarUmaTile(lateralBase.image, posicao: ponto, zCoordenada: 19)
             
             auxiliar += 20
         }
@@ -191,16 +202,17 @@ class Building: SKNode {
     func colocarBase(){
         
         var xCoordenada = self.startingPosition.x + 20
-        var yCoordenada = self.startingPosition.y + 20
+        let yCoordenada = self.startingPosition.y + 20
         
         var ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-        var tile = Tile(rawValue: 2)!
-        let varandaCima = Tile(rawValue: 13)!
-        let varandaCimaEquerda = Tile(rawValue: 15)!
-        let varandaCimaDireita = Tile(rawValue: 16)!
+        
+        let base = Tile(rawValue: 1)!
+        let baseEsquerda = Tile(rawValue: 2)!
+        let baseDireita = Tile(rawValue: 3)!
+
         
         // colocar base da esquerda
-        colocarUmaTile(tile.image, posicao: ponto, zCoordenada: 21)
+        colocarUmaTile(baseEsquerda.image, posicao: ponto, zCoordenada: 21)
         
         // auxiliar para percorrer lateralmente
         var auxiliar = 40
@@ -210,10 +222,9 @@ class Building: SKNode {
             xCoordenada += 40
             
             ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-            tile = Tile(rawValue: 1)!
             
             // colocar base central
-            colocarUmaTile(tile.image, posicao: ponto, zCoordenada: 21)
+            colocarUmaTile(base.image, posicao: ponto, zCoordenada: 21)
             
             auxiliar += 40
         }
@@ -221,38 +232,47 @@ class Building: SKNode {
         xCoordenada += 40
 
         ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-        tile = Tile(rawValue: 3)!
         
         // colocar base da direita
-        colocarUmaTile(tile.image, posicao: ponto, zCoordenada: 21)
+        colocarUmaTile(baseDireita.image, posicao: ponto, zCoordenada: 21)
         
-        auxiliar = 0
-        xCoordenada = self.startingPosition.x + 20
-        yCoordenada = self.startingPosition.y + 90
-
+       colocarBaseChao()
+        
+    }
+    
+    func colocarBaseChao(){
+    
+        let varandaCima = Tile(rawValue: 13)!
+        let varandaCimaEquerda = Tile(rawValue: 15)!
+        let varandaCimaDireita = Tile(rawValue: 16)!
+        
+        var auxiliar = 0 // serve para navegar pela estrutura de repeticao e parar quando necesario
+        var xCoordenada = self.startingPosition.x + 20
+        let yCoordenada = self.startingPosition.y + 90
+        var ponto = CGPointZero
+        
         while(auxiliar < (larguraPredio * 20) - 80){
-            
-            xCoordenada += 40
-            
-            ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-            colocarUmaTile(varandaCima.image, posicao: ponto, zCoordenada: 22)
-            
-            auxiliar += 40
+    
+                xCoordenada += 40
+    
+                ponto = CGPoint(x: xCoordenada, y: yCoordenada)
+                colocarUmaTile(varandaCima.image, posicao: ponto, zCoordenada: 22)
+    
+                auxiliar += 40
         }
-        
+    
         xCoordenada += 40
-
+    
         // varanda direita
         ponto = CGPoint(x: xCoordenada, y: yCoordenada)
         colocarUmaTile(varandaCimaDireita.image, posicao: ponto, zCoordenada: 23)
-        
+    
         // varanda esquerda
         ponto = CGPoint(x: self.startingPosition.x + 20, y: self.startingPosition.y + 90)
         colocarUmaTile(varandaCimaEquerda.image, posicao: ponto, zCoordenada: 22)
 
-        
-    }
     
+    }
     
     func colocarAndares(){
         
@@ -273,8 +293,10 @@ class Building: SKNode {
     
         let varandaCima = Tile(rawValue: 13)!
         let varandaBaixo = Tile(rawValue: 14)!
-        let varandaEsquerda = Tile(rawValue: 15)!
-        let varandaDireita = Tile(rawValue: 16)!
+        let varandaEsquerdaCima = Tile(rawValue: 15)!
+        let varandaDireitaCima = Tile(rawValue: 16)!
+        let varandaEsquerdaBaixo = Tile(rawValue: 17)!
+        let varandaDireitaBaixo = Tile(rawValue: 18)!
 
         var ponto = CGPointZero
         var pontoCima = CGPointZero
@@ -299,12 +321,22 @@ class Building: SKNode {
         xCoordenada += 40
         
         // varanda direita
+        ponto = CGPoint(x: xCoordenada, y: yCoordenada+40)
+        colocarUmaTile(varandaDireitaCima.image, posicao: ponto, zCoordenada: 24)
+        
         ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-        colocarUmaTile(varandaDireita.image, posicao: ponto, zCoordenada: 23)
+        colocarUmaTile(varandaDireitaBaixo.image, posicao: ponto, zCoordenada: 24)
         
         // varanda esquerda
-        ponto = CGPoint(x: self.startingPosition.x + 20, y: self.startingPosition.y + 90)
-        colocarUmaTile(varandaEsquerda.image, posicao: ponto, zCoordenada: 22)
+        ponto = CGPoint(x: Int(self.startingPosition.x + 20), y: yCoordenada + 40)
+        colocarUmaTile(varandaEsquerdaCima.image, posicao: ponto, zCoordenada: 24)
+        
+        ponto = CGPoint(x: Int(self.startingPosition.x + 20), y: yCoordenada)
+        colocarUmaTile(varandaEsquerdaBaixo.image, posicao: ponto, zCoordenada: 24)
+        
+        
+        
+        
         
 //        auxiliar = 0
 //        xCoordenada = self.startingPosition.x + 20
@@ -379,23 +411,24 @@ class Building: SKNode {
     
     func colocarTodosOsTijolos(){
     
+        var xStart : Int
+        var yStart : Int
+        var ponto : CGPoint = CGPointZero
+        var opcao : Int = 1
+        let stringTijolo = "tijolo"
+        
         for i in 0..<self.alturaPredio {
-            
             for j in 0..<self.larguraPredio - 1{
                 
-                let tile = Tile(rawValue: 0)!
+                xStart = j + 1
+                yStart = i + 1
                 
-                let xStart : Int = j + 1;
-                let yStart : Int = i + 1;
-                
-                let ponto = CGPoint(x: (xStart * tileSize.width), y: (yStart * tileSize.height))
-                
-//                if(j == self.larguraPredio - 1 && i == 0){
-//                    continue
-//                }
-                
-                colocarUmaTile(tile.image, posicao: ponto)
+                ponto = CGPoint(x: (xStart * tileSize.width), y: (yStart * tileSize.height))
+                opcao = Int(arc4random_uniform(7)) + 1
             
+                let tijoloOpcao = stringTijolo + String(opcao)
+                
+                colocarUmaTile(tijoloOpcao, posicao: ponto)
                 
             }
             

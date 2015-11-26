@@ -155,8 +155,16 @@
 		6BA4F16A1C07866A0016B39F /* varandaBaixo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1681C07866A0016B39F /* varandaBaixo.png */; };
 		6BA4F16B1C07866A0016B39F /* varandaCima.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1691C07866A0016B39F /* varandaCima.png */; };
 		6BA4F16D1C0788E70016B39F /* varandaCimaEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */; };
-		6BA4F16F1C078A530016B39F /* varandaCimaDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */; };
 		6BA4F1711C07A67A0016B39F /* varandaBaixoEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */; };
+		6BA4F1761C07B14A0016B39F /* varandaBaixoDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1741C07B14A0016B39F /* varandaBaixoDireita.png */; };
+		6BA4F1771C07B14A0016B39F /* varandaCimaDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1751C07B14A0016B39F /* varandaCimaDireita.png */; };
+		6BA4F17F1C07B2170016B39F /* tijolo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1781C07B2170016B39F /* tijolo1.png */; };
+		6BA4F1801C07B2170016B39F /* tijolo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1791C07B2170016B39F /* tijolo2.png */; };
+		6BA4F1811C07B2170016B39F /* tijolo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17A1C07B2170016B39F /* tijolo3.png */; };
+		6BA4F1821C07B2170016B39F /* tijolo4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17B1C07B2170016B39F /* tijolo4.png */; };
+		6BA4F1831C07B2170016B39F /* tijolo5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17C1C07B2170016B39F /* tijolo5.png */; };
+		6BA4F1841C07B2180016B39F /* tijolo6.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17D1C07B2170016B39F /* tijolo6.png */; };
+		6BA4F1851C07B2180016B39F /* tijolo7.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F17E1C07B2170016B39F /* tijolo7.png */; };
 		6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7C2081BFCE703000B2B66 /* tijolo.png */; };
 		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
@@ -419,8 +427,16 @@
 		6BA4F1681C07866A0016B39F /* varandaBaixo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaBaixo.png; path = Images/varandaBaixo.png; sourceTree = SOURCE_ROOT; };
 		6BA4F1691C07866A0016B39F /* varandaCima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCima.png; path = Images/varandaCima.png; sourceTree = SOURCE_ROOT; };
 		6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaEsquerda.png; path = Images/varandaCimaEsquerda.png; sourceTree = SOURCE_ROOT; };
-		6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaDireita.png; path = Images/varandaCimaDireita.png; sourceTree = SOURCE_ROOT; };
 		6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaBaixoEsquerda.png; path = Images/varandaBaixoEsquerda.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1741C07B14A0016B39F /* varandaBaixoDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaBaixoDireita.png; path = Images/varandaBaixoDireita.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1751C07B14A0016B39F /* varandaCimaDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaDireita.png; path = Images/varandaCimaDireita.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1781C07B2170016B39F /* tijolo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo1.png; path = Images/tijolo1.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1791C07B2170016B39F /* tijolo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo2.png; path = Images/tijolo2.png; sourceTree = SOURCE_ROOT; };
+		6BA4F17A1C07B2170016B39F /* tijolo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo3.png; path = Images/tijolo3.png; sourceTree = SOURCE_ROOT; };
+		6BA4F17B1C07B2170016B39F /* tijolo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo4.png; path = Images/tijolo4.png; sourceTree = SOURCE_ROOT; };
+		6BA4F17C1C07B2170016B39F /* tijolo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo5.png; path = Images/tijolo5.png; sourceTree = SOURCE_ROOT; };
+		6BA4F17D1C07B2170016B39F /* tijolo6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo6.png; path = Images/tijolo6.png; sourceTree = SOURCE_ROOT; };
+		6BA4F17E1C07B2170016B39F /* tijolo7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo7.png; path = Images/tijolo7.png; sourceTree = SOURCE_ROOT; };
 		6BA7C2081BFCE703000B2B66 /* tijolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo.png; path = Images/tijolo.png; sourceTree = SOURCE_ROOT; };
 		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
@@ -1075,7 +1091,8 @@
 		6B408AB31BD6A19800D64ABF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */,
+				6BA4F1741C07B14A0016B39F /* varandaBaixoDireita.png */,
+				6BA4F1751C07B14A0016B39F /* varandaCimaDireita.png */,
 				6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */,
 				6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */,
 				6BA4F1681C07866A0016B39F /* varandaBaixo.png */,
@@ -1090,6 +1107,13 @@
 				6BA4F15C1C0773290016B39F /* tetoEsquerda.png */,
 				6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */,
 				6BA4F1301BFF51930016B39F /* baseDireita.png */,
+				6BA4F1781C07B2170016B39F /* tijolo1.png */,
+				6BA4F1791C07B2170016B39F /* tijolo2.png */,
+				6BA4F17A1C07B2170016B39F /* tijolo3.png */,
+				6BA4F17B1C07B2170016B39F /* tijolo4.png */,
+				6BA4F17C1C07B2170016B39F /* tijolo5.png */,
+				6BA4F17D1C07B2170016B39F /* tijolo6.png */,
+				6BA4F17E1C07B2170016B39F /* tijolo7.png */,
 				0951AE841BF4FAD8009E570C /* Images */,
 				6B06CD811BD6A0B9009F38F4 /* Fonts */,
 				6B2D98BD1BB1C6E7005B342E /* Images.xcassets */,
@@ -1425,11 +1449,14 @@
 				0951AF011BF4FAD9009E570C /* idleAgent2.png in Resources */,
 				0951AF1E1BF4FAD9009E570C /* pernasGetHit1.png in Resources */,
 				0951AF2E1BF4FAD9009E570C /* troncoPulando2.png in Resources */,
+				6BA4F1811C07B2170016B39F /* tijolo3.png in Resources */,
 				6B2D98C11BB1C6E7005B342E /* LaunchScreen.xib in Resources */,
 				0951AF041BF4FAD9009E570C /* RunningAgent1.png in Resources */,
 				0951AF161BF4FAD9009E570C /* troncoAndando6.png in Resources */,
 				0951AF321BF4FAD9009E570C /* troncoPulando6.png in Resources */,
 				0951AF1B1BF4FAD9009E570C /* troncoAtacandoCima1.png in Resources */,
+				6BA4F1841C07B2180016B39F /* tijolo6.png in Resources */,
+				6BA4F1761C07B14A0016B39F /* varandaBaixoDireita.png in Resources */,
 				6BA4F16A1C07866A0016B39F /* varandaBaixo.png in Resources */,
 				6BA4F15E1C0773290016B39F /* tetoDireita.png in Resources */,
 				0951AF121BF4FAD9009E570C /* troncoAndando2.png in Resources */,
@@ -1447,6 +1474,7 @@
 				6BA4F1651C077E420016B39F /* lateralChao.png in Resources */,
 				6BA4F1311BFF51930016B39F /* baseDireita.png in Resources */,
 				0951AF1C1BF4FAD9009E570C /* troncoAtacandoCima2.png in Resources */,
+				6BA4F1771C07B14A0016B39F /* varandaCimaDireita.png in Resources */,
 				0951AF4F1BF4FAD9009E570C /* backgroundLab.png in Resources */,
 				0951AF1A1BF4FAD9009E570C /* troncoAtacando3.png in Resources */,
 				0951AF301BF4FAD9009E570C /* troncoPulando4.png in Resources */,
@@ -1478,7 +1506,9 @@
 				0951AF331BF4FAD9009E570C /* troncoPulando7.png in Resources */,
 				6B2D98BC1BB1C6E7005B342E /* Main.storyboard in Resources */,
 				0951AF341BF4FAD9009E570C /* troncoPulando8.png in Resources */,
+				6BA4F1821C07B2170016B39F /* tijolo4.png in Resources */,
 				0951AF0D1BF4FAD9009E570C /* pernasAndando4.png in Resources */,
+				6BA4F1851C07B2180016B39F /* tijolo7.png in Resources */,
 				0951AF371BF4FAD9009E570C /* chargeBarRect.png in Resources */,
 				0951AF571BF4FAD9009E570C /* tapHereButton.png in Resources */,
 				0951AF411BF4FAD9009E570C /* lifeCity3.png in Resources */,
@@ -1493,7 +1523,6 @@
 				0951AF421BF4FAD9009E570C /* lifeCity4.png in Resources */,
 				0951AF211BF4FAD9009E570C /* troncoParado1.png in Resources */,
 				6BA4F12D1BFF4CF40016B39F /* baseEsquerda.png in Resources */,
-				6BA4F16F1C078A530016B39F /* varandaCimaDireita.png in Resources */,
 				6BA4F15D1C0773290016B39F /* tetoChao.png in Resources */,
 				0951AF291BF4FAD9009E570C /* pernasPulando5.png in Resources */,
 				0951AF0E1BF4FAD9009E570C /* pernasAndando5.png in Resources */,
@@ -1510,6 +1539,7 @@
 				E0EB13101BFB9DC500AA9D25 /* trainingTitle.png in Resources */,
 				0951AF0A1BF4FAD9009E570C /* pernasAndando1.png in Resources */,
 				0951AF471BF4FAD9009E570C /* life2.png in Resources */,
+				6BA4F1801C07B2170016B39F /* tijolo2.png in Resources */,
 				0951AF081BF4FAD9009E570C /* RunningAgent5.png in Resources */,
 				0951AF541BF4FAD9009E570C /* placeHolderPC.png in Resources */,
 				0951AF181BF4FAD9009E570C /* troncoAtacando1.png in Resources */,
@@ -1525,8 +1555,10 @@
 				0951AF401BF4FAD9009E570C /* lifeCity2.png in Resources */,
 				0951AF5B1BF4FAD9009E570C /* testCityGround.png in Resources */,
 				0951AF5A1BF4FAD9009E570C /* testCityBlock.png in Resources */,
+				6BA4F17F1C07B2170016B39F /* tijolo1.png in Resources */,
 				0951AF4C1BF4FAD9009E570C /* shootButton.png in Resources */,
 				0951AF2D1BF4FAD9009E570C /* troncoPulando1.png in Resources */,
+				6BA4F1831C07B2170016B39F /* tijolo5.png in Resources */,
 				0951AF001BF4FAD9009E570C /* idleAgent1.png in Resources */,
 				0951AF2B1BF4FAD9009E570C /* pernasPulando7.png in Resources */,
 				0951AF3A1BF4FAD9009E570C /* jumpButton.png in Resources */,
