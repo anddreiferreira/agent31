@@ -30,9 +30,9 @@ class UpgradeLayer: SKNode
     }
     
     func loadLabels() {
-        upgradeName = createLabelNode()
-        goldAvailableLabel = createLabelNode()
-        upgradeGoldCost = createLabelNode()
-        upgradeDuration = createLabelNode()
+//        upgradeName = createLabelNode()
+//        goldAvailableLabel = createLabelNode()
+//        upgradeGoldCost = createLabelNode()
+//        upgradeDuration = createLabelNode()
     }
 }

@@ -142,6 +142,22 @@
 		6B53A7321BDA9FCD002E7808 /* TelevisionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A70E1BDA9FCD002E7808 /* TelevisionLayer.swift */; };
 		6B53A7341BDA9FCD002E7808 /* TrainingCenterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */; };
 		6B9FBFDE1BDAAE3B00ED08C3 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */; };
+		6BA4F12D1BFF4CF40016B39F /* baseEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */; };
+		6BA4F12F1BFF4FB70016B39F /* baseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F12E1BFF4FB70016B39F /* baseNormal.png */; };
+		6BA4F1311BFF51930016B39F /* baseDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1301BFF51930016B39F /* baseDireita.png */; };
+		6BA4F15D1C0773290016B39F /* tetoChao.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F15A1C0773290016B39F /* tetoChao.png */; };
+		6BA4F15E1C0773290016B39F /* tetoDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F15B1C0773290016B39F /* tetoDireita.png */; };
+		6BA4F15F1C0773290016B39F /* tetoEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F15C1C0773290016B39F /* tetoEsquerda.png */; };
+		6BA4F1611C077BB60016B39F /* tetoBase.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1601C077BB60016B39F /* tetoBase.png */; };
+		6BA4F1641C077E420016B39F /* baseLateral.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1621C077E420016B39F /* baseLateral.png */; };
+		6BA4F1651C077E420016B39F /* lateralChao.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1631C077E420016B39F /* lateralChao.png */; };
+		6BA4F1671C0783A00016B39F /* parapeito.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1661C0783A00016B39F /* parapeito.png */; };
+		6BA4F16A1C07866A0016B39F /* varandaBaixo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1681C07866A0016B39F /* varandaBaixo.png */; };
+		6BA4F16B1C07866A0016B39F /* varandaCima.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1691C07866A0016B39F /* varandaCima.png */; };
+		6BA4F16D1C0788E70016B39F /* varandaCimaEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */; };
+		6BA4F16F1C078A530016B39F /* varandaCimaDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */; };
+		6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7C2081BFCE703000B2B66 /* tijolo.png */; };
+		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
 		E0659E941BFA1BBA00BA9A83 /* tableTrain.png in Resources */ = {isa = PBXBuildFile; fileRef = E0659E931BFA1BBA00BA9A83 /* tableTrain.png */; };
 		E068A2A91BE13AEA00055E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068A2A81BE13AEA00055E35 /* AppDelegate.swift */; };
@@ -389,6 +405,22 @@
 		6B53A70E1BDA9FCD002E7808 /* TelevisionLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelevisionLayer.swift; sourceTree = "<group>"; };
 		6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenterLayer.swift; sourceTree = "<group>"; };
 		6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
+		6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseEsquerda.png; path = Images/baseEsquerda.png; sourceTree = SOURCE_ROOT; };
+		6BA4F12E1BFF4FB70016B39F /* baseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseNormal.png; path = Images/baseNormal.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1301BFF51930016B39F /* baseDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseDireita.png; path = Images/baseDireita.png; sourceTree = SOURCE_ROOT; };
+		6BA4F15A1C0773290016B39F /* tetoChao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetoChao.png; path = Images/tetoChao.png; sourceTree = SOURCE_ROOT; };
+		6BA4F15B1C0773290016B39F /* tetoDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetoDireita.png; path = Images/tetoDireita.png; sourceTree = SOURCE_ROOT; };
+		6BA4F15C1C0773290016B39F /* tetoEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetoEsquerda.png; path = Images/tetoEsquerda.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1601C077BB60016B39F /* tetoBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetoBase.png; path = Images/tetoBase.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1621C077E420016B39F /* baseLateral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseLateral.png; path = Images/baseLateral.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1631C077E420016B39F /* lateralChao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lateralChao.png; path = Images/lateralChao.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1661C0783A00016B39F /* parapeito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = parapeito.png; path = Images/parapeito.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1681C07866A0016B39F /* varandaBaixo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaBaixo.png; path = Images/varandaBaixo.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1691C07866A0016B39F /* varandaCima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCima.png; path = Images/varandaCima.png; sourceTree = SOURCE_ROOT; };
+		6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaEsquerda.png; path = Images/varandaCimaEsquerda.png; sourceTree = SOURCE_ROOT; };
+		6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaDireita.png; path = Images/varandaCimaDireita.png; sourceTree = SOURCE_ROOT; };
+		6BA7C2081BFCE703000B2B66 /* tijolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo.png; path = Images/tijolo.png; sourceTree = SOURCE_ROOT; };
+		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		E0659E931BFA1BBA00BA9A83 /* tableTrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableTrain.png; sourceTree = "<group>"; };
 		E068A2A61BE13AEA00055E35 /* Agent 31 OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31 OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -499,6 +531,7 @@
 		0951AE841BF4FAD8009E570C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6BA7C2081BFCE703000B2B66 /* tijolo.png */,
 				0951AE851BF4FAD8009E570C /* Analog */,
 				0951AE881BF4FAD9009E570C /* Bullets */,
 				0951AE8A1BF4FAD9009E570C /* Character */,
@@ -831,6 +864,7 @@
 				6B53A6F71BDA9FCD002E7808 /* CityScene.swift */,
 				6B2783481BD6ACFA009628D8 /* Objects */,
 				6B27832A1BD6A86A009628D8 /* CityLayers */,
+				6BA7C20A1BFCE77E000B2B66 /* Building.swift */,
 			);
 			name = City;
 			sourceTree = "<group>";
@@ -1039,6 +1073,20 @@
 		6B408AB31BD6A19800D64ABF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */,
+				6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */,
+				6BA4F1681C07866A0016B39F /* varandaBaixo.png */,
+				6BA4F1691C07866A0016B39F /* varandaCima.png */,
+				6BA4F1661C0783A00016B39F /* parapeito.png */,
+				6BA4F1621C077E420016B39F /* baseLateral.png */,
+				6BA4F1631C077E420016B39F /* lateralChao.png */,
+				6BA4F12E1BFF4FB70016B39F /* baseNormal.png */,
+				6BA4F1601C077BB60016B39F /* tetoBase.png */,
+				6BA4F15A1C0773290016B39F /* tetoChao.png */,
+				6BA4F15B1C0773290016B39F /* tetoDireita.png */,
+				6BA4F15C1C0773290016B39F /* tetoEsquerda.png */,
+				6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */,
+				6BA4F1301BFF51930016B39F /* baseDireita.png */,
 				0951AE841BF4FAD8009E570C /* Images */,
 				6B06CD811BD6A0B9009F38F4 /* Fonts */,
 				6B2D98BD1BB1C6E7005B342E /* Images.xcassets */,
@@ -1364,6 +1412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0951AEFC1BF4FAD9009E570C /* analogBg.png in Resources */,
+				6BA4F16B1C07866A0016B39F /* varandaCima.png in Resources */,
+				6BA4F15F1C0773290016B39F /* tetoEsquerda.png in Resources */,
 				0951AF281BF4FAD9009E570C /* pernasPulando4.png in Resources */,
 				0951AF201BF4FAD9009E570C /* pernasParado1.png in Resources */,
 				0951AF521BF4FAD9009E570C /* placeHolderMesa.png in Resources */,
@@ -1377,6 +1427,8 @@
 				0951AF161BF4FAD9009E570C /* troncoAndando6.png in Resources */,
 				0951AF321BF4FAD9009E570C /* troncoPulando6.png in Resources */,
 				0951AF1B1BF4FAD9009E570C /* troncoAtacandoCima1.png in Resources */,
+				6BA4F16A1C07866A0016B39F /* varandaBaixo.png in Resources */,
+				6BA4F15E1C0773290016B39F /* tetoDireita.png in Resources */,
 				0951AF121BF4FAD9009E570C /* troncoAndando2.png in Resources */,
 				0951AF091BF4FAD9009E570C /* RunningAgent6.png in Resources */,
 				0951AEFD1BF4FAD9009E570C /* analogBtn.png in Resources */,
@@ -1385,15 +1437,20 @@
 				6B49F9C81BDE9A8300E7164D /* LaboratoryScene2.sks in Resources */,
 				0951AF171BF4FAD9009E570C /* troncoAndando7.png in Resources */,
 				0951AF0C1BF4FAD9009E570C /* pernasAndando3.png in Resources */,
+				6BA4F16D1C0788E70016B39F /* varandaCimaEsquerda.png in Resources */,
 				0951AF511BF4FAD9009E570C /* Ground.png in Resources */,
 				0951AF1D1BF4FAD9009E570C /* troncoAtacandoCima3.png in Resources */,
 				0951AF2A1BF4FAD9009E570C /* pernasPulando6.png in Resources */,
+				6BA4F1651C077E420016B39F /* lateralChao.png in Resources */,
+				6BA4F1311BFF51930016B39F /* baseDireita.png in Resources */,
 				0951AF1C1BF4FAD9009E570C /* troncoAtacandoCima2.png in Resources */,
 				0951AF4F1BF4FAD9009E570C /* backgroundLab.png in Resources */,
 				0951AF1A1BF4FAD9009E570C /* troncoAtacando3.png in Resources */,
 				0951AF301BF4FAD9009E570C /* troncoPulando4.png in Resources */,
 				0951AF231BF4FAD9009E570C /* troncoParado3.png in Resources */,
+				6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */,
 				0951AF141BF4FAD9009E570C /* troncoAndando4.png in Resources */,
+				6BA4F1611C077BB60016B39F /* tetoBase.png in Resources */,
 				E0DEE4DC1BFA6CDC00B39671 /* animationArea.png in Resources */,
 				0951AF1F1BF4FAD9009E570C /* troncoGetHit1.png in Resources */,
 				0951AF101BF4FAD9009E570C /* pernasAndando7.png in Resources */,
@@ -1402,6 +1459,7 @@
 				0951AF501BF4FAD9009E570C /* backgroundLabTest.png in Resources */,
 				0951AF3E1BF4FAD9009E570C /* slot.png in Resources */,
 				0951AF3B1BF4FAD9009E570C /* metalCity.png in Resources */,
+				6BA4F1671C0783A00016B39F /* parapeito.png in Resources */,
 				0951AF491BF4FAD9009E570C /* life4.png in Resources */,
 				0951AF3D1BF4FAD9009E570C /* shootingButton.png in Resources */,
 				0951AF311BF4FAD9009E570C /* troncoPulando5.png in Resources */,
@@ -1430,6 +1488,9 @@
 				0951AF441BF4FAD9009E570C /* cityButtonPlaceHolder.png in Resources */,
 				0951AF421BF4FAD9009E570C /* lifeCity4.png in Resources */,
 				0951AF211BF4FAD9009E570C /* troncoParado1.png in Resources */,
+				6BA4F12D1BFF4CF40016B39F /* baseEsquerda.png in Resources */,
+				6BA4F16F1C078A530016B39F /* varandaCimaDireita.png in Resources */,
+				6BA4F15D1C0773290016B39F /* tetoChao.png in Resources */,
 				0951AF291BF4FAD9009E570C /* pernasPulando5.png in Resources */,
 				0951AF0E1BF4FAD9009E570C /* pernasAndando5.png in Resources */,
 				0951AF131BF4FAD9009E570C /* troncoAndando3.png in Resources */,
@@ -1452,6 +1513,7 @@
 				E073FE741BFB622400FD11DE /* placeHolderDuelMode.png in Resources */,
 				0951AF451BF4FAD9009E570C /* headerBarLab.png in Resources */,
 				0951AEFE1BF4FAD9009E570C /* bullet1.png in Resources */,
+				6BA4F12F1BFF4FB70016B39F /* baseNormal.png in Resources */,
 				0951AF561BF4FAD9009E570C /* placeHolderTV.png in Resources */,
 				0951AF0B1BF4FAD9009E570C /* pernasAndando2.png in Resources */,
 				0951AF351BF4FAD9009E570C /* chargeBar.png in Resources */,
@@ -1469,6 +1531,7 @@
 				0951AF591BF4FAD9009E570C /* testCityBackground.png in Resources */,
 				0951AF481BF4FAD9009E570C /* life3.png in Resources */,
 				0951AF4B1BF4FAD9009E570C /* resourcesLabImages.png in Resources */,
+				6BA4F1641C077E420016B39F /* baseLateral.png in Resources */,
 				0951AF551BF4FAD9009E570C /* placeHolderTreinamento.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1544,6 +1607,7 @@
 				6B53A7141BDA9FCD002E7808 /* AppDelegate.swift in Sources */,
 				6B53A7201BDA9FCD002E7808 /* GameData.swift in Sources */,
 				6B53A72A1BDA9FCD002E7808 /* LaboratoryGameLayer.swift in Sources */,
+				6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */,
 				6B53A7161BDA9FCD002E7808 /* Buildings.swift in Sources */,
 				6B53A7151BDA9FCD002E7808 /* Backpack.swift in Sources */,
 				6B53A7171BDA9FCD002E7808 /* Character.swift in Sources */,

@@ -33,6 +33,10 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
+        let test : Building = Building()
+        self.addChild(test)
+        test.setScale(1.75)
+        
     }
     
     
@@ -129,7 +133,7 @@ extension TestCityScene{
     
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 569, -middleOfTheScreenPoint.y + 169), zPosition: 3, name: "jumpButton")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 569, -middleOfTheScreenPoint.y + 169), zPosition: 100, name: "jumpButton")
         cam.addChild(jumpButton!)
         
         shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 479, -middleOfTheScreenPoint.y + 101), zPosition: 100, name: "shootButton")
@@ -157,7 +161,7 @@ extension TestCityScene{
             
             
         }
-        
+        analogStick!.zPosition = 100
         cam.addChild(analogStick!)
     }
     

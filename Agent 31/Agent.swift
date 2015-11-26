@@ -13,11 +13,11 @@ class Agent: Character {
     private let initialLegs: String = "pernasParado1"
     private let initialTorso: String = "troncoParado1"
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1000.0){
         
         debugPrint("Initializing Agent")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
+        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1000.0)
         
         setGeneralAttributesForAgent()
     }
