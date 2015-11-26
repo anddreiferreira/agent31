@@ -56,4 +56,11 @@ class Coin: GameObject {
         self.setScale(0.5)
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+        if contactedNode .isKindOfClass(Agent){
+            ResourcesData.sharedInstance.gold += self.value
+            self.removeFromParent()
+        }
+    }
+    
 }

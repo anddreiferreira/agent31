@@ -16,7 +16,8 @@ class Character: GameObject {
     var lookingUp: Bool = false
     var attacking: Bool = false
     var running: Bool = false
-
+    var jumps = 2
+    
     var HP: Int = 100
     var velocity: CGFloat = 0.0
     
@@ -99,6 +100,15 @@ class Character: GameObject {
         
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+        
+        if(contactedNode.isKindOfClass(Bullet)){
+            let projectile = (contactedNode as? Bullet)!
+            projectile.hittedSomething()
+            self.gotHit(projectile.damage)
+        }
+        
+    }
 }
 
 // MARK: Actions

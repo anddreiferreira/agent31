@@ -98,51 +98,27 @@ extension TestCityGameLayer{
     func didBeginContact(contact: SKPhysicsContact){
         
         
-        debugPrint(ResourcesData.sharedInstance.metal)
-        
         let node1: SKNode = contact.bodyA.node!
         let node2: SKNode = contact.bodyB.node!
         
-        if(node1.isKindOfClass(Bullet)){
-            let bullet = (node1 as? Bullet)!
-            bullet.hittedSomething()
-            if(node2.isKindOfClass(Character)){
-                let charac = (node2 as? Character)!
-                charac.gotHit(bullet.damage)
-            }
+        if(node1.isKindOfClass(Character)){
+            self.didBeginContactWithCharacter(node1, nodeB: node2)
+        }else if(node2.isKindOfClass(Character)){
+            self.didBeginContactWithCharacter(node2, nodeB: node1)
+        }else if(node1.isKindOfClass(Bullet)){
+            (node1 as? Bullet)?.didBeginContact(node2)
         }else if(node2.isKindOfClass(Bullet)){
-            let bullet = (node2 as? Bullet)!
-            bullet.hittedSomething()
-            if(node1.isKindOfClass(Character)){
-                let charac = (node1 as? Character)!
-                charac.gotHit(bullet.damage)
-            }
-        }else if(node1.isKindOfClass(Coin)){
-            if(node2.isKindOfClass(Agent)){
-                node1.removeFromParent()
-                
-                // Add this property to character coins (singleton)
-                 ResourcesData.sharedInstance.gold += ((node1 as? Coin)?.value)!
-            }
-        }else if(node2.isKindOfClass(Coin)){
-            if(node1.isKindOfClass(Agent)){
-                node2.removeFromParent()
-                // Add this property to character coins (singleton)
-                 ResourcesData.sharedInstance.gold += ((node2 as? Coin)?.value)!
-            }
+            (node2 as? Bullet)?.didBeginContact(node1)
         }else if(node1.isKindOfClass(Metal)){
-            if(node2.isKindOfClass(Agent)){
-                node1.removeFromParent()
-                // Add this property to character metal (singleton)
-                 ResourcesData.sharedInstance.metal += ((node2 as? Metal)?.value)!
-            }
+            (node1 as? Metal)?.didBeginContact(node2)
         }else if(node2.isKindOfClass(Metal)){
-            if(node1.isKindOfClass(Agent)){
-                node2.removeFromParent()
-                // Add this property to character metal (singleton)
-                 ResourcesData.sharedInstance.metal += ((node2 as? Metal)?.value)!
-            }
+            (node2 as? Metal)?.didBeginContact(node1)
+        }else if(node1.isKindOfClass(Coin)){
+            (node1 as? Coin)?.didBeginContact(node2)
+        }else if(node2.isKindOfClass(Coin)){
+            (node2 as? Coin)?.didBeginContact(node1)
         }
+        
     }
     
     func didEndContact(contact: SKPhysicsContact){
@@ -151,5 +127,13 @@ extension TestCityGameLayer{
 //        let node2: SKNode = contact.bodyB.node!
     }
     
+    func didBeginContactWithCharacter(charac: SKNode, nodeB: SKNode){
+        
+        if charac.isKindOfClass(Agent){
+            (charac as? Agent)?.didBeginContact(nodeB)
+        }else{
+            (charac as? Character)?.didBeginContact(nodeB)
+        }
+    }
     
 }

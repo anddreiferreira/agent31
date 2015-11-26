@@ -112,5 +112,14 @@ class Bullet : GameObject {
         })
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+
+        if contactedNode.isKindOfClass(Character){
+            (contactedNode as? Character)?.didBeginContact(self)
+        }else{
+            self.hittedSomething()
+        }
+    }
+    
     
 }

@@ -66,5 +66,15 @@ class Agent: Character {
         debugPrint(self.position.x)
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+        super.didBeginContact(contactedNode)
+        if contactedNode.isKindOfClass(Coin){
+            contactedNode.removeFromParent()
+            ResourcesData.sharedInstance.gold += ((contactedNode as? Coin)?.value)!
+        }else if contactedNode.isKindOfClass(Metal){
+            contactedNode.removeFromParent()
+            ResourcesData.sharedInstance.metal += ((contactedNode as? Metal)?.value)!
+        }
+    }
     
 }

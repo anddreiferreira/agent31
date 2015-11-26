@@ -52,5 +52,11 @@ class Metal: GameObject {
         self.setScale(0.5)
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+        if contactedNode .isKindOfClass(Agent){
+            ResourcesData.sharedInstance.metal += self.value
+            self.removeFromParent()
+        }
+    }
     
 }
