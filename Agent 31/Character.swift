@@ -68,7 +68,7 @@ class Character: GameObject {
         self.orientation = TURNED_RIGHT
         
         initializeCharacterPhysicsBody()
-        initializeAnimations()
+//        initializeAnimations()
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
@@ -109,6 +109,7 @@ class Character: GameObject {
         }
         
     }
+
 }
 
 // MARK: Actions
