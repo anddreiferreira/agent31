@@ -199,6 +199,15 @@ class Building: SKNode {
         colocarUmaTile(parapeito.image, posicao: ponto, zCoordenada: 22)
     }
     
+    func colocarParapeitoAndar(altura : Int){
+    
+        let parapeito = Tile(rawValue: 12)!
+        let ponto = CGPoint(x: Int(self.startingPosition.x - 20), y: altura+20)
+        
+        colocarUmaTile(parapeito.image, posicao: ponto, zCoordenada: 22)
+
+    }
+    
     func colocarBase(){
         
         var xCoordenada = self.startingPosition.x + 20
@@ -334,34 +343,7 @@ class Building: SKNode {
         ponto = CGPoint(x: Int(self.startingPosition.x + 20), y: yCoordenada)
         colocarUmaTile(varandaEsquerdaBaixo.image, posicao: ponto, zCoordenada: 24)
         
-        
-        
-        
-        
-//        auxiliar = 0
-//        xCoordenada = self.startingPosition.x + 20
-//        yCoordenada = self.startingPosition.y + 90
-//        
-//        while(auxiliar < (larguraPredio * 20) - 80){
-//            
-//            xCoordenada += 40
-//            
-//            ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-//            colocarUmaTile(varandaCima.image, posicao: ponto, zCoordenada: 22)
-//            
-//            auxiliar += 40
-//        }
-//        
-//        xCoordenada += 40
-//        
-//        // varanda direita
-//        ponto = CGPoint(x: xCoordenada, y: yCoordenada)
-//        colocarUmaTile(varandaCimaDireita.image, posicao: ponto, zCoordenada: 23)
-//        
-//        // varanda esquerda
-//        ponto = CGPoint(x: self.startingPosition.x + 20, y: self.startingPosition.y + 90)
-//        colocarUmaTile(varandaCimaEquerda.image, posicao: ponto, zCoordenada: 22)
-        
+        colocarParapeitoAndar(altura)
     }
     
     func colocarTopo(){
