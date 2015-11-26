@@ -137,7 +137,7 @@ class Building: SKNode {
     var qtdJanelas : Int = 0
     var qtdAndares : Int = 0
     
-    init(largura: Int = 40, altura : Int = 60, posicaoInicial : CGPoint = CGPointMake(0, 0)) {
+    init(largura: Int = 40, altura : Int = 38, posicaoInicial : CGPoint = CGPointMake(0, 0)) {
         
         startingPosition = posicaoInicial
         
@@ -255,11 +255,81 @@ class Building: SKNode {
     
     
     func colocarAndares(){
+        
+        qtdAndares = (((self.alturaPredio * 20) - 120) / 160) - 1
+        print(qtdAndares)
     
+        var altura : Int = 40
+        
+        for _ in 0..<qtdAndares {
+            
+            altura += 160
+            colocarAndarSingular(altura)
+            
+        }
     }
     
     func colocarAndarSingular(altura : Int){
     
+        let varandaCima = Tile(rawValue: 13)!
+        let varandaBaixo = Tile(rawValue: 14)!
+        let varandaEsquerda = Tile(rawValue: 15)!
+        let varandaDireita = Tile(rawValue: 16)!
+
+        var ponto = CGPointZero
+        var pontoCima = CGPointZero
+        
+        var auxiliar = 0
+        var xCoordenada = Int(self.startingPosition.x + 20)
+        var yCoordenada = altura
+        
+        while(auxiliar < (larguraPredio * 20) - 80){
+            
+            xCoordenada += 40
+            
+            ponto = CGPoint(x: xCoordenada, y: yCoordenada)
+            pontoCima = CGPoint(x: xCoordenada, y: yCoordenada + 40)
+            
+            colocarUmaTile(varandaBaixo.image, posicao: ponto, zCoordenada: 21)
+            colocarUmaTile(varandaCima.image, posicao: pontoCima, zCoordenada: 21)
+            
+            auxiliar += 40
+        }
+        
+        xCoordenada += 40
+        
+        // varanda direita
+        ponto = CGPoint(x: xCoordenada, y: yCoordenada)
+        colocarUmaTile(varandaDireita.image, posicao: ponto, zCoordenada: 23)
+        
+        // varanda esquerda
+        ponto = CGPoint(x: self.startingPosition.x + 20, y: self.startingPosition.y + 90)
+        colocarUmaTile(varandaEsquerda.image, posicao: ponto, zCoordenada: 22)
+        
+//        auxiliar = 0
+//        xCoordenada = self.startingPosition.x + 20
+//        yCoordenada = self.startingPosition.y + 90
+//        
+//        while(auxiliar < (larguraPredio * 20) - 80){
+//            
+//            xCoordenada += 40
+//            
+//            ponto = CGPoint(x: xCoordenada, y: yCoordenada)
+//            colocarUmaTile(varandaCima.image, posicao: ponto, zCoordenada: 22)
+//            
+//            auxiliar += 40
+//        }
+//        
+//        xCoordenada += 40
+//        
+//        // varanda direita
+//        ponto = CGPoint(x: xCoordenada, y: yCoordenada)
+//        colocarUmaTile(varandaCimaDireita.image, posicao: ponto, zCoordenada: 23)
+//        
+//        // varanda esquerda
+//        ponto = CGPoint(x: self.startingPosition.x + 20, y: self.startingPosition.y + 90)
+//        colocarUmaTile(varandaCimaEquerda.image, posicao: ponto, zCoordenada: 22)
+        
     }
     
     func colocarTopo(){

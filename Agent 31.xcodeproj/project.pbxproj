@@ -156,6 +156,7 @@
 		6BA4F16B1C07866A0016B39F /* varandaCima.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1691C07866A0016B39F /* varandaCima.png */; };
 		6BA4F16D1C0788E70016B39F /* varandaCimaEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */; };
 		6BA4F16F1C078A530016B39F /* varandaCimaDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */; };
+		6BA4F1711C07A67A0016B39F /* varandaBaixoEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */; };
 		6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7C2081BFCE703000B2B66 /* tijolo.png */; };
 		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
@@ -419,6 +420,7 @@
 		6BA4F1691C07866A0016B39F /* varandaCima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCima.png; path = Images/varandaCima.png; sourceTree = SOURCE_ROOT; };
 		6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaEsquerda.png; path = Images/varandaCimaEsquerda.png; sourceTree = SOURCE_ROOT; };
 		6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaCimaDireita.png; path = Images/varandaCimaDireita.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = varandaBaixoEsquerda.png; path = Images/varandaBaixoEsquerda.png; sourceTree = SOURCE_ROOT; };
 		6BA7C2081BFCE703000B2B66 /* tijolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo.png; path = Images/tijolo.png; sourceTree = SOURCE_ROOT; };
 		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
@@ -1074,6 +1076,7 @@
 			isa = PBXGroup;
 			children = (
 				6BA4F16E1C078A530016B39F /* varandaCimaDireita.png */,
+				6BA4F1701C07A67A0016B39F /* varandaBaixoEsquerda.png */,
 				6BA4F16C1C0788E70016B39F /* varandaCimaEsquerda.png */,
 				6BA4F1681C07866A0016B39F /* varandaBaixo.png */,
 				6BA4F1691C07866A0016B39F /* varandaCima.png */,
@@ -1469,6 +1472,7 @@
 				6B2D98BE1BB1C6E7005B342E /* Images.xcassets in Resources */,
 				6B53A7221BDA9FCD002E7808 /* GameScene.sks in Resources */,
 				0951AF361BF4FAD9009E570C /* chargeBarLevelSlot.png in Resources */,
+				6BA4F1711C07A67A0016B39F /* varandaBaixoEsquerda.png in Resources */,
 				0951AF4A1BF4FAD9009E570C /* life5.png in Resources */,
 				0951AF031BF4FAD9009E570C /* jumpAgent2.png in Resources */,
 				0951AF331BF4FAD9009E570C /* troncoPulando7.png in Resources */,
