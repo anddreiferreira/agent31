@@ -21,6 +21,9 @@ enum Tile: Int {
     case VarandaCimaDireita
     case VarandaBaixoEsquerda
     case VarandaBaixoDireita
+    case PilastraCorpo
+    case PilastraTopo
+    case PilastraBase
     
     var description:String {
         switch self {
@@ -58,6 +61,12 @@ enum Tile: Int {
             return "varandaBaixoEsquerda"
         case VarandaBaixoDireita :
             return "varandaBaixoDireita"
+        case PilastraCorpo :
+            return "pilastraCorpo"
+        case PilastraBase :
+            return "pilastraBase"
+        case PilastraTopo :
+            return "pilastraTopo"
         default :
             return "Nada"
             
@@ -101,7 +110,12 @@ enum Tile: Int {
             return "varandaBaixoEsquerda"
         case VarandaBaixoDireita :
             return "varandaBaixoDireita"
-
+        case PilastraCorpo :
+            return "pilastraCorpo"
+        case PilastraBase :
+            return "pilastraBase"
+        case PilastraTopo :
+            return "pilastraTopo"
         default :
             return ""
         }
@@ -122,6 +136,7 @@ class Building: SKNode {
     
     var qtdJanelas : Int = 0
     var qtdAndares : Int = 0
+    var qtdPilastras : Int = 0
     
     init(largura: Int = 40, altura : Int = 38, posicaoInicial : CGPoint = CGPointMake(0, 0)) {
         
@@ -410,17 +425,60 @@ class Building: SKNode {
         
     }
     
+    func colocarPilastraInteiraSingular(largura : Int){
+    
+        let pilastraCorpo = Tile(rawValue: 19)!
+        let pilastraBase = Tile(rawValue: 20)!
+        let pilastraTopo = Tile(rawValue: 21)!
+        
+        var ponto = CGPointZero
+        
+        var auxiliar = 0
+        var xCoordenada = largura
+        var yCoordenada = Int(self.startingPosition.x + 20)
+
+        
+        ponto = CGPoint(x: xCoordenada, y: yCoordenada+40)
+//        colocarUmaTile(pilastraBase.image, posicao: ponto, zCoordenada: 24)
+        
+        while(auxiliar < (larguraPredio * 20) - 80){
+            
+            xCoordenada += 40
+            
+            ponto = CGPoint(x: xCoordenada, y: yCoordenada)
+            
+//            colocarUmaTile(pilastraCorpo.image, posicao: ponto, zCoordenada: 21)
+            
+            auxiliar += 40
+        }
+        
+        xCoordenada += 40
+
+        ponto = CGPoint(x: xCoordenada, y: yCoordenada+40)
+//        colocarUmaTile(pilastraTopo.image, posicao: ponto, zCoordenada: 24)
+        
+        
+    
+    }
+    
     func colocarPilastras(){
     
-    
+        qtdPilastras = (((self.larguraPredio * 20) - 160) / 160) - 1
+        print(qtdPilastras)
+        
+        var largura : Int = 40
+        
+        for _ in 0..<qtdPilastras {
+            
+            largura += 160
+            colocarPilastraInteiraSingular(largura)
+            
+        }
         
     
     }
     
     func colocarJanelas(){
-    
-        
-        
     
     }
     

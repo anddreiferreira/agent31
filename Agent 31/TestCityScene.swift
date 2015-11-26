@@ -25,7 +25,6 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         debugPrint("ENTERED IN TEST CITY")
         
-        
         self.putLayers()
         self.setPhysicsWorld()
         
@@ -33,9 +32,12 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
-        let test : Building = Building()
-        self.addChild(test)
-        test.setScale(1.75)
+        // criacao de informacoes randomicas do novo predio
+        let predioInfo = BuildingInformation()
+        
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura)
+        self.addChild(predioNovo)
+        predioNovo.setScale(1.75)
         
     }
     

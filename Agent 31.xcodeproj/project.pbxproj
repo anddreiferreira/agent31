@@ -168,6 +168,7 @@
 		6BA4F1891C07BD900016B39F /* pilastraBase.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1861C07BD900016B39F /* pilastraBase.png */; };
 		6BA4F18A1C07BD900016B39F /* pilastraCorpo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1871C07BD900016B39F /* pilastraCorpo.png */; };
 		6BA4F18B1C07BD900016B39F /* pilastraTopo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1881C07BD900016B39F /* pilastraTopo.png */; };
+		6BA4F1961C07CA680016B39F /* BuildingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA4F1951C07CA680016B39F /* BuildingInformation.swift */; };
 		6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7C2081BFCE703000B2B66 /* tijolo.png */; };
 		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
@@ -443,6 +444,7 @@
 		6BA4F1861C07BD900016B39F /* pilastraBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraBase.png; path = Images/pilastraBase.png; sourceTree = SOURCE_ROOT; };
 		6BA4F1871C07BD900016B39F /* pilastraCorpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraCorpo.png; path = Images/pilastraCorpo.png; sourceTree = SOURCE_ROOT; };
 		6BA4F1881C07BD900016B39F /* pilastraTopo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraTopo.png; path = Images/pilastraTopo.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1951C07CA680016B39F /* BuildingInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingInformation.swift; sourceTree = "<group>"; };
 		6BA7C2081BFCE703000B2B66 /* tijolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo.png; path = Images/tijolo.png; sourceTree = SOURCE_ROOT; };
 		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
@@ -889,6 +891,7 @@
 				6B2783481BD6ACFA009628D8 /* Objects */,
 				6B27832A1BD6A86A009628D8 /* CityLayers */,
 				6BA7C20A1BFCE77E000B2B66 /* Building.swift */,
+				6BA4F1951C07CA680016B39F /* BuildingInformation.swift */,
 			);
 			name = City;
 			sourceTree = "<group>";
@@ -1760,6 +1763,7 @@
 				0951AF5D1BF4FE73009E570C /* LabObject.swift in Sources */,
 				E084641A1BF649D3005FE704 /* DeskScene.swift in Sources */,
 				6B53A7211BDA9FCD002E7808 /* GameObject.swift in Sources */,
+				6BA4F1961C07CA680016B39F /* BuildingInformation.swift in Sources */,
 				09EC63F41BE3E7F500ACE362 /* TestCityGameLayer.swift in Sources */,
 				6B53A72C1BDA9FCD002E7808 /* LaboratoryScene.swift in Sources */,
 				6B53A71A1BDA9FCD002E7808 /* CityHudLayer.swift in Sources */,
