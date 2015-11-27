@@ -10,7 +10,7 @@ import XCTest
 
 class CloudKitHelperTests: XCTestCase {
 
-    var ckhelper = CloudKitHelper()
+//    var ckhelper = CloudKitHelper()
     
     override func setUp() {
         super.setUp()

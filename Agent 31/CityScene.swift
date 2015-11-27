@@ -18,9 +18,6 @@ class CityScene: SKScene {
         self.putBackgroundLayer()
         self.putBasicHudLayer()
         self.putGameLayer()
-        
-
-        
     }
     
     func putBackgroundLayer(){
@@ -28,7 +25,7 @@ class CityScene: SKScene {
         self.cityBackgroundLayer = CityBackgroundLayer()
         self.cityBackgroundLayer.putBackground()
         self.addChild(cityBackgroundLayer)
-        
+    
     }
     
     func putBasicHudLayer(){
