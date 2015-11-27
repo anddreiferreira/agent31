@@ -11,8 +11,10 @@ import SpriteKit
 
 @available(iOS 9.0, *)
 class LaboratoryScene: SKScene {
-
+    
+    var clock: NSTimer?
     var timeElapsed: Float = 0.0
+    
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
@@ -29,7 +31,8 @@ class LaboratoryScene: SKScene {
     private var televisionLayer: TelevisionLayer!
     private var trainingCenterLayer: TrainingCenterLayer!
     private var duelMode: DuelModeLayer!
-
+    private var upgradeLayer: UpgradeLayer!
+    
     override func didMoveToView(view: SKView) {
         print("Laboratory scene entered")
         
@@ -46,10 +49,10 @@ class LaboratoryScene: SKScene {
         self.setLaboratoryPhysics()
         
     }
-
+    
     func fireLaboratoryClock() {
-        let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
-        clock.fire()
+        self.clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        self.clock!.fire()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -72,9 +75,53 @@ class LaboratoryScene: SKScene {
                 self.goToTestCity()
             } else if node.name == "balloon" {
                 self.showLabObjectLayer((node as? SKSpriteNode)!)
+            } else if node.name == "backBtn" {
+                removeLayer(node.parent!)
+                configureAnalogStick()
+                loadButtons()
+            }
+            else if node.name!.hasPrefix("upgrade") {
+                loadUpgradeLayer(node.name!)
+            } else if node.name == "cancelUpgradeButton" {
+                upgradeLayer.removeFromParent()
             }
         }
+    }
+    
+    func loadUpgradeLayer(attributeName: String) {
         
+        switch attributeName {
+        case let x where x.hasSuffix("speed"):
+            upgradeLayer = UpgradeLayer(attributeName: "Speed")
+        case let x where x.hasSuffix("jump"):
+            upgradeLayer = UpgradeLayer(attributeName: "Jump")
+        case let x where x.hasSuffix("shootingPower"):
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power")
+        case let x where x.hasSuffix("shootingRange"):
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range")
+        case let x where x.hasSuffix("backPack"):
+            upgradeLayer = UpgradeLayer(attributeName: "Backpack")
+        case let x where x.hasSuffix("gun1"):
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 1")
+        case let x where x.hasSuffix("gun2"):
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 2")
+        default:
+            debugPrint("unknown attribute")
+        }
+        
+        upgradeLayer.putUpgradeLayer()
+        cam.addChild(upgradeLayer)
+        
+    }
+    
+    func removeLayer(node: SKNode) {
+        if node.isKindOfClass(TrainingCenterLayer) {
+            debugPrint("TrainingCenter Layer")
+            trainingCenterLayer.removeFromParent()
+        } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
+            debugPrint("GunDevCenter Layer")
+            gunDevelopmentCenterLayer.removeFromParent()
+        }
     }
     
     private func agentGoToCity() {
@@ -86,9 +133,8 @@ class LaboratoryScene: SKScene {
     
     private func goToTestCity(){
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-        let nextScene = TestCityScene(size: self.scene!.size)
-        nextScene.scaleMode = SKSceneScaleMode.AspectFill
-        self.scene!.view!.presentScene(nextScene, transition: transition)
+        self.scene!.view!.presentScene(TestCityScene(size: self.scene!.size), transition: transition)
+        self.cleanScene()
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -100,7 +146,22 @@ class LaboratoryScene: SKScene {
         self.conformAgentToAnalogic()
         self.laboratoryGameLayer.updateLabGameLayer()
     }
+    
+    deinit{
+        print("deinit called")
+    }
+    
+}
 
+// MARK: SCENE PROCEDURES
+@available(iOS 9.0, *)
+extension LaboratoryScene{
+    func cleanScene(){
+        self.removeFromParent()
+        self.removeAllActions()
+        self.removeAllChildren()
+        self.clock?.invalidate()
+    }
 }
 
 // MARK: PUT LAYERS METHODS
@@ -115,7 +176,6 @@ extension LaboratoryScene {
     
     func putHudLayer() {
         self.laboratoryHudLayer = LaboratoryHudLayer()
-        self.laboratoryHudLayer.putHudLayer()
         cam.addChild(laboratoryHudLayer)
     }
     
@@ -126,37 +186,29 @@ extension LaboratoryScene {
     }
     
     func showLabObjectLayer(balloon: SKSpriteNode) {
-        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        
+        removeAnalogStickAndButtons()
+        
         if(balloon.parent?.name == "placeHolderMesaArmas") {
-            let nextScene = GunDevelopmentCenterScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("Gun Dev Center Layer")
+            gunDevelopmentCenterLayer = GunDevelopmentCenterLayer()
+            gunDevelopmentCenterLayer.putGunDevCenterLayer()
+            cam.addChild(gunDevelopmentCenterLayer)
         } else if (balloon.parent?.name == "placeHolderMesa") {
-            debugPrint("Desk")
-            let nextScene = DeskScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("Desk Layer")
         } else if(balloon.parent?.name == "placeHolderPC") {
-            debugPrint("PC")
-            let nextScene = ComputerScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("PC Layer")
         } else if(balloon.parent?.name == "placeHolderTV") {
-            debugPrint("TV")
-            let nextScene = TelevisionScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("TV Layer")
         } else if(balloon.parent?.name == "placeHolderTreinamento") {
-            debugPrint("Training Center")
-            let nextScene = TrainingCenterScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("Training Center Layer")
+            trainingCenterLayer = TrainingCenterLayer()
+            trainingCenterLayer.putTrainingCenterLayer()
+            cam.addChild(trainingCenterLayer)
         } else if(balloon.parent?.name == "placeHolderDuelMode") {
-            debugPrint("Duel Mode")
-            let nextScene = DuelModeScene(size: self.scene!.size)
-            nextScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.scene!.view!.presentScene(nextScene, transition: transition)
+            debugPrint("Duel Mode Layer")
         }
+        
     }
 }
 
@@ -180,7 +232,7 @@ extension LaboratoryScene{
         
         if(!(self.laboratoryGameLayer.agent31?.position.x > 382) &&
             !(self.laboratoryGameLayer.agent31?.position.x < -382)){
-            self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
+                self.cam.position.x = (self.laboratoryGameLayer.agent31?.position.x)!
         }
         
         //        // UPDATE Y POSITION
@@ -206,6 +258,13 @@ extension LaboratoryScene{
 // MARK: ANALOG METHODS
 @available(iOS 9.0, *)
 extension LaboratoryScene{
+    
+    private func removeAnalogStickAndButtons(){
+        analogStick.removeFromParent()
+        jumpButton!.removeFromParent()
+        goToCity!.removeFromParent()
+        shootButton!.removeFromParent()
+    }
     
     private func configureAnalogStick(){
         // Initialize an analog stick

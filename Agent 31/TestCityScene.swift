@@ -11,6 +11,9 @@ import SpriteKit
 @available(iOS 9.0, *)
 class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
+    var gameOver: Bool = false
+    
+    var clock: NSTimer?
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
@@ -45,8 +48,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
     
     func fireClock(){
-        let clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
-        clock.fire()
+        self.clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
+        clock!.fire()
     }
     
     
@@ -68,6 +71,15 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
+    func goToLab(){
+        
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        let nextScene = LaboratoryScene(size: self.scene!.size)
+        nextScene.scaleMode = SKSceneScaleMode.AspectFill
+        self.view?.presentScene(nextScene, transition: transition)
+        self.cleanScene()
+    }
+    
     override func update(currentTime: NSTimeInterval) {
         self.updateCameraPosition()
     }
@@ -76,8 +88,26 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         self.timeElapsed += 0.5
         self.conformAgentToAnalogic()
         self.cityGameLayer.updateEnemy(currentTime)
+        
+        if(self.cityGameLayer.agent31?.HP <= 0 && self.gameOver == false){
+            self.gameOver = true
+            goToLab()
+        }
+        
     }
+    
 
+}
+
+// MARK: SCENE PROCEDURES
+@available(iOS 9.0, *)
+extension TestCityScene{
+    private func cleanScene(){
+        self.removeFromParent()
+        self.removeAllActions()
+        self.removeAllChildren()
+        self.clock?.invalidate()
+    }
 }
 
 // MARK: PUT LAYERS METHODS
@@ -200,4 +230,5 @@ extension TestCityScene{
     func didEndContact(contact: SKPhysicsContact) {
         self.cityGameLayer.didEndContact(contact)
     }
+    
 }

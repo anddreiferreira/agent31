@@ -13,5 +13,7 @@ enum ColliderType: UInt32 {
     case Ground = 2
     case Bullet = 3
     case Enemy = 4
+    case Coin = 5
+    case Metal = 6
     case None = 1000
 }

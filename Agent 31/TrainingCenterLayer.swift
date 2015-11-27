@@ -6,71 +6,85 @@
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 
 class TrainingCenterLayer: SKNode
 {
-    var trainingCenter: SKSpriteNode?
+    
+    var background: SKSpriteNode?
+    var buttonBack: SKSpriteNode?
+    var trainingTitle: SKSpriteNode?
     var tableTraining: SKSpriteNode?
+    var areaAnimation: SKSpriteNode?
     var labelSpeed: SKLabelNode?
     var labelJump: SKLabelNode?
     var labelShootingPower: SKLabelNode?
     var labelShootingRange: SKLabelNode?
     var labelBackpack: SKLabelNode?
-    var areaAnimation: SKSpriteNode?
-    var buttonBack: SKSpriteNode?
-    var trainingTitle: SKSpriteNode?
     
     override init() {
+        
         super.init()
-        loadElements()
-        loadAnimationArea()
-        loadLabels()
+        loadFirstPlan()
+        loadSecondPlan()
+        loadThirdPlan()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func loadElements() {
-        tableTraining = createSpriteNode("tableTrain", position: CGPoint(x: 20, y: 300), name: "tableTrain")
-        buttonBack = createSpriteNode("backBtnTrain", position: CGPoint(x: 10, y: 365), scale: 0.6, name: "btnBackTrain")
-        trainingTitle = createSpriteNode("trainingTitle", position: CGPoint(x: 100, y: 370), scale: 0.6, name: "trainingTitle")
-    }
-    
-    func loadAnimationArea() {
-        areaAnimation = createSpriteNode("animationArea", position: CGPoint(x: 370, y: 300), name: "animationArea")
-    }
-    
-    func loadLabels() {
-        labelSpeed = createLabelNode("Speed", fontName: "CopperplateBlackCondensedSSi", position: CGPointMake(70, 245), fontSize: 30, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "speed")
-        labelJump = createLabelNode("Jump", fontName: "CopperplateBlackCondensedSSi", position: CGPointMake(70, 195), fontSize: 30, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "jump")
-        labelShootingPower = createLabelNode("Shooting Power", fontName: "CopperplateBlackCondensedSSi", position: CGPointMake(70, 145), fontSize: 30, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "shootingPower")
-        labelShootingRange = createLabelNode("Shooting Range", fontName: "CopperplateBlackCondensedSSi", position: CGPointMake(70, 95), fontSize: 30, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "shootingRange")
-        labelBackpack = createLabelNode("Backpack", fontName: "CopperplateBlackCondensedSSi", position: CGPointMake(70, 45), fontSize: 30, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "backpack")
-    }
-    
-    func loadAttributeForUpgrade(attributeName: String) {
-        let attributeForUpgrade = createSpriteNode("bgBlur", anchorPoint: CGPoint(x: 0, y: 0), name: "attributeForUpgrade")
-        addChild(attributeForUpgrade)
         
-        let attributeNameForUpgrade = createLabelNode(attributeName, fontName: "CopperplateBlackCondensedSSi", name: "attributeNameForUpgrade")
-        attributeForUpgrade.addChild(attributeNameForUpgrade)
+        fatalError("init(coder:) has not been implemented")
+        
+    }
+    
+    func loadFirstPlan() {
+        
+        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 1000, name: "backgroundTraining")
+        
+    }
+    
+    func loadSecondPlan() {
+        
+        buttonBack = createSpriteNode("backBtn", position: CGPoint(x: -middleOfTheScreenPoint.x + 20, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "backBtn")
+        
+        trainingTitle = createSpriteNode("trainingTitle", position: CGPoint(x: -middleOfTheScreenPoint.x + 100, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "trainingTitle")
+        
+        tableTraining = createSpriteNode("tableTrain", position: CGPoint(x: -middleOfTheScreenPoint.x + 20.0, y: -middleOfTheScreenPoint.y + 300.0), zPosition: 2000, name: "tableTrain")
+        
+        areaAnimation = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 370, y: -middleOfTheScreenPoint.y + 300), zPosition: 2000, name: "animationArea")
+        
+    }
+    
+    func loadThirdPlan() {
+        
+        labelSpeed = createLabelNode("Speed", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 245), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade speed")
+        
+        labelJump = createLabelNode("Jump", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 195), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade jump")
+        
+        labelShootingPower = createLabelNode("Shooting Power", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 145), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade shootingPower")
+        
+        labelShootingRange = createLabelNode("Shooting Range", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 95), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade shootingRange")
+        
+        labelBackpack = createLabelNode("Backpack", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 45), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade backpack")
+        
     }
     
     func putTrainingCenterLayer() {
-        // Elements
-        addChild(tableTraining!)
-        addChild(areaAnimation!)
-        addChild(buttonBack!)
-        addChild(trainingTitle!)
-        // Labels
-        addChild(labelSpeed!)
-        addChild(labelJump!)
-        addChild(labelShootingPower!)
-        addChild(labelShootingRange!)
-        addChild(labelBackpack!)
+        
+        // First plan
+        self.addChild(background!)
+        // Second plan
+        self.addChild(buttonBack!)
+        self.addChild(trainingTitle!)
+        self.addChild(tableTraining!)
+        self.addChild(areaAnimation!)
+        // Third plan
+        self.addChild(labelSpeed!)
+        self.addChild(labelJump!)
+        self.addChild(labelShootingPower!)
+        self.addChild(labelShootingRange!)
+        self.addChild(labelBackpack!)
+        
     }
     
 }

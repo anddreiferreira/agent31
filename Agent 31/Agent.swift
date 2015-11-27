@@ -30,12 +30,13 @@ class Agent: Character {
         stoppedAnimationForever()
         self.setAgentPhysics()
         
-        self.HP = 100
+        self.HP = Int(MAX_INPUT)
+        
     }
     
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue | ColliderType.Coin.rawValue | ColliderType.Metal.rawValue
         self.physicsBody?.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
     }
     
@@ -65,5 +66,15 @@ class Agent: Character {
         debugPrint(self.position.x)
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+        super.didBeginContact(contactedNode)
+        if contactedNode.isKindOfClass(Coin){
+            contactedNode.removeFromParent()
+            ResourcesData.sharedInstance.gold += ((contactedNode as? Coin)?.value)!
+        }else if contactedNode.isKindOfClass(Metal){
+            contactedNode.removeFromParent()
+            ResourcesData.sharedInstance.metal += ((contactedNode as? Metal)?.value)!
+        }
+    }
     
 }

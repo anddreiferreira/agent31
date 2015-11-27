@@ -16,7 +16,8 @@ class Character: GameObject {
     var lookingUp: Bool = false
     var attacking: Bool = false
     var running: Bool = false
-
+    var jumps = 2
+    
     var HP: Int = 100
     var velocity: CGFloat = 0.0
     
@@ -99,6 +100,15 @@ class Character: GameObject {
         
     }
     
+    override func didBeginContact(contactedNode: SKNode) {
+        
+        if(contactedNode.isKindOfClass(Bullet)){
+            let projectile = (contactedNode as? Bullet)!
+            projectile.hittedSomething()
+            self.gotHit(projectile.damage)
+        }
+        
+    }
 }
 
 // MARK: Actions
@@ -265,4 +275,26 @@ extension Character{
             self.torso?.runAction(self.gotHitTorso!)
         }
     }
+    
+    override func invertSpriteHorizontally(option: Bool) {
+        super.invertSpriteHorizontally(option)
+        
+        if option == true {
+            self.orientation = self.orientation! * -1
+        }
+    }
+
+    
+    
+    // Sobrescrever para o inimigo que possui velocidade nula
+    func run( enemyLevel: Int ) {
+        self.velocity = CGFloat(enemyLevel)*7.0 * CGFloat(self.orientation!)
+        
+        invertAccordingToVelocity()
+        
+        self.walkingAnimationOnce()
+        
+        self.position = CGPointMake(self.position.x + (self.velocity * 0.12), self.position.y)
+    }
+
 }

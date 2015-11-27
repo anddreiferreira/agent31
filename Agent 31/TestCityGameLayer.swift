@@ -8,7 +8,8 @@
 
 import SpriteKit
 
-class TestCityGameLayer: SKNode {
+@available(iOS 9.0, *)
+class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
     
@@ -60,9 +61,16 @@ class TestCityGameLayer: SKNode {
     }
     
     func putTestEnemy(){
-        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x + 100, middleOfTheScreenPoint.y))
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, middleOfTheScreenPoint.y))
+        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, middleOfTheScreenPoint.y), enemyLevel: 5)
         testEnemy.name = "enemy"
+        secEnemy.name = "enemy"
         self.addChild(testEnemy)
+        self.addChild(secEnemy)
+    }
+    
+    func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {
+        return distanceBetweenPoints( self.agent31!.position, second: enemyPosition )
     }
     
     func updateEnemy(currentTime: NSTimeInterval){
@@ -72,6 +80,7 @@ class TestCityGameLayer: SKNode {
             
             if let foundEnemy = node as? GeneralEnemy{
                 
+                foundEnemy.setDistanceToAgent( (self.agent31?.position)! )
                 foundEnemy.update(currentTime)
                 
             }else{
@@ -84,6 +93,7 @@ class TestCityGameLayer: SKNode {
 }
 
 // MARK: CONTACT
+@available(iOS 9.0, *)
 extension TestCityGameLayer{
     func didBeginContact(contact: SKPhysicsContact){
         
@@ -91,29 +101,39 @@ extension TestCityGameLayer{
         let node1: SKNode = contact.bodyA.node!
         let node2: SKNode = contact.bodyB.node!
         
-        if(node1.isKindOfClass(Bullet)){
-            let bullet = (node1 as? Bullet)!
-            bullet.hittedSomething()
-            if(node2.isKindOfClass(Character)){
-                let charac = (node2 as? Character)!
-                charac.gotHit(bullet.damage)
-
-            }
+        if(node1.isKindOfClass(Character)){
+            self.didBeginContactWithCharacter(node1, nodeB: node2)
+        }else if(node2.isKindOfClass(Character)){
+            self.didBeginContactWithCharacter(node2, nodeB: node1)
+        }else if(node1.isKindOfClass(Bullet)){
+            (node1 as? Bullet)?.didBeginContact(node2)
         }else if(node2.isKindOfClass(Bullet)){
-            let bullet = (node2 as? Bullet)!
-            bullet.hittedSomething()
-            if(node1.isKindOfClass(Character)){
-                let charac = (node1 as? Character)!
-                charac.gotHit(bullet.damage)
-                
-            }
+            (node2 as? Bullet)?.didBeginContact(node1)
+        }else if(node1.isKindOfClass(Metal)){
+            (node1 as? Metal)?.didBeginContact(node2)
+        }else if(node2.isKindOfClass(Metal)){
+            (node2 as? Metal)?.didBeginContact(node1)
+        }else if(node1.isKindOfClass(Coin)){
+            (node1 as? Coin)?.didBeginContact(node2)
+        }else if(node2.isKindOfClass(Coin)){
+            (node2 as? Coin)?.didBeginContact(node1)
         }
+        
     }
     
     func didEndContact(contact: SKPhysicsContact){
         
 //        let node1: SKNode = contact.bodyA.node!
 //        let node2: SKNode = contact.bodyB.node!
+    }
+    
+    func didBeginContactWithCharacter(charac: SKNode, nodeB: SKNode){
+        
+        if charac.isKindOfClass(Agent){
+            (charac as? Agent)?.didBeginContact(nodeB)
+        }else{
+            (charac as? Character)?.didBeginContact(nodeB)
+        }
     }
     
 }
