@@ -169,6 +169,15 @@
 		6BA4F18A1C07BD900016B39F /* pilastraCorpo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1871C07BD900016B39F /* pilastraCorpo.png */; };
 		6BA4F18B1C07BD900016B39F /* pilastraTopo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1881C07BD900016B39F /* pilastraTopo.png */; };
 		6BA4F1961C07CA680016B39F /* BuildingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA4F1951C07CA680016B39F /* BuildingInformation.swift */; };
+		6BA4F1A11C07CF350016B39F /* baseTeto1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1981C07CF350016B39F /* baseTeto1.png */; };
+		6BA4F1A21C07CF350016B39F /* baseTeto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1991C07CF350016B39F /* baseTeto2.png */; };
+		6BA4F1A31C07CF350016B39F /* baseTeto3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F19A1C07CF350016B39F /* baseTeto3.png */; };
+		6BA4F1A41C07CF350016B39F /* baseTeto4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F19B1C07CF350016B39F /* baseTeto4.png */; };
+		6BA4F1A51C07CF350016B39F /* baseTeto5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F19C1C07CF350016B39F /* baseTeto5.png */; };
+		6BA4F1A61C07CF350016B39F /* baseTeto6.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F19D1C07CF350016B39F /* baseTeto6.png */; };
+		6BA4F1A71C07CF350016B39F /* baseTeto7.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F19E1C07CF350016B39F /* baseTeto7.png */; };
+		6BA4F1A81C07CF350016B39F /* baseTeto8.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F19F1C07CF350016B39F /* baseTeto8.png */; };
+		6BA4F1A91C07CF350016B39F /* baseTeto9.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F1A01C07CF350016B39F /* baseTeto9.png */; };
 		6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7C2081BFCE703000B2B66 /* tijolo.png */; };
 		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
 		E0467F4C1BED0AA600F6D92A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0467F4B1BED0AA600F6D92A /* Function.swift */; };
@@ -445,6 +454,15 @@
 		6BA4F1871C07BD900016B39F /* pilastraCorpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraCorpo.png; path = Images/pilastraCorpo.png; sourceTree = SOURCE_ROOT; };
 		6BA4F1881C07BD900016B39F /* pilastraTopo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pilastraTopo.png; path = Images/pilastraTopo.png; sourceTree = SOURCE_ROOT; };
 		6BA4F1951C07CA680016B39F /* BuildingInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingInformation.swift; sourceTree = "<group>"; };
+		6BA4F1981C07CF350016B39F /* baseTeto1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto1.png; path = Images/baseTeto1.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1991C07CF350016B39F /* baseTeto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto2.png; path = Images/baseTeto2.png; sourceTree = SOURCE_ROOT; };
+		6BA4F19A1C07CF350016B39F /* baseTeto3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto3.png; path = Images/baseTeto3.png; sourceTree = SOURCE_ROOT; };
+		6BA4F19B1C07CF350016B39F /* baseTeto4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto4.png; path = Images/baseTeto4.png; sourceTree = SOURCE_ROOT; };
+		6BA4F19C1C07CF350016B39F /* baseTeto5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto5.png; path = Images/baseTeto5.png; sourceTree = SOURCE_ROOT; };
+		6BA4F19D1C07CF350016B39F /* baseTeto6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto6.png; path = Images/baseTeto6.png; sourceTree = SOURCE_ROOT; };
+		6BA4F19E1C07CF350016B39F /* baseTeto7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto7.png; path = Images/baseTeto7.png; sourceTree = SOURCE_ROOT; };
+		6BA4F19F1C07CF350016B39F /* baseTeto8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto8.png; path = Images/baseTeto8.png; sourceTree = SOURCE_ROOT; };
+		6BA4F1A01C07CF350016B39F /* baseTeto9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseTeto9.png; path = Images/baseTeto9.png; sourceTree = SOURCE_ROOT; };
 		6BA7C2081BFCE703000B2B66 /* tijolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tijolo.png; path = Images/tijolo.png; sourceTree = SOURCE_ROOT; };
 		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		E0467F4B1BED0AA600F6D92A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
@@ -1205,7 +1223,7 @@
 		6BA4F1931C07BDD90016B39F /* teto */ = {
 			isa = PBXGroup;
 			children = (
-				6BA4F1601C077BB60016B39F /* tetoBase.png */,
+				6BA4F1971C07CF140016B39F /* base */,
 				6BA4F15A1C0773290016B39F /* tetoChao.png */,
 				6BA4F15B1C0773290016B39F /* tetoDireita.png */,
 				6BA4F15C1C0773290016B39F /* tetoEsquerda.png */,
@@ -1219,6 +1237,23 @@
 				6BA4F12C1BFF4CF40016B39F /* baseEsquerda.png */,
 				6BA4F1301BFF51930016B39F /* baseDireita.png */,
 				6BA4F12E1BFF4FB70016B39F /* baseNormal.png */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		6BA4F1971C07CF140016B39F /* base */ = {
+			isa = PBXGroup;
+			children = (
+				6BA4F1981C07CF350016B39F /* baseTeto1.png */,
+				6BA4F1991C07CF350016B39F /* baseTeto2.png */,
+				6BA4F19A1C07CF350016B39F /* baseTeto3.png */,
+				6BA4F19B1C07CF350016B39F /* baseTeto4.png */,
+				6BA4F19C1C07CF350016B39F /* baseTeto5.png */,
+				6BA4F19D1C07CF350016B39F /* baseTeto6.png */,
+				6BA4F19E1C07CF350016B39F /* baseTeto7.png */,
+				6BA4F19F1C07CF350016B39F /* baseTeto8.png */,
+				6BA4F1A01C07CF350016B39F /* baseTeto9.png */,
+				6BA4F1601C077BB60016B39F /* tetoBase.png */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -1527,15 +1562,18 @@
 				0951AEFC1BF4FAD9009E570C /* analogBg.png in Resources */,
 				6BA4F16B1C07866A0016B39F /* varandaCima.png in Resources */,
 				6BA4F15F1C0773290016B39F /* tetoEsquerda.png in Resources */,
+				6BA4F1A81C07CF350016B39F /* baseTeto8.png in Resources */,
 				0951AF281BF4FAD9009E570C /* pernasPulando4.png in Resources */,
 				0951AF201BF4FAD9009E570C /* pernasParado1.png in Resources */,
 				0951AF521BF4FAD9009E570C /* placeHolderMesa.png in Resources */,
 				0951AF0F1BF4FAD9009E570C /* pernasAndando6.png in Resources */,
 				0951AF261BF4FAD9009E570C /* pernasPulando2.png in Resources */,
+				6BA4F1A11C07CF350016B39F /* baseTeto1.png in Resources */,
 				0951AF011BF4FAD9009E570C /* idleAgent2.png in Resources */,
 				0951AF1E1BF4FAD9009E570C /* pernasGetHit1.png in Resources */,
 				0951AF2E1BF4FAD9009E570C /* troncoPulando2.png in Resources */,
 				6BA4F1811C07B2170016B39F /* tijolo3.png in Resources */,
+				6BA4F1A61C07CF350016B39F /* baseTeto6.png in Resources */,
 				6B2D98C11BB1C6E7005B342E /* LaunchScreen.xib in Resources */,
 				0951AF041BF4FAD9009E570C /* RunningAgent1.png in Resources */,
 				0951AF161BF4FAD9009E570C /* troncoAndando6.png in Resources */,
@@ -1563,7 +1601,9 @@
 				6BA4F1771C07B14A0016B39F /* varandaCimaDireita.png in Resources */,
 				0951AF4F1BF4FAD9009E570C /* backgroundLab.png in Resources */,
 				0951AF1A1BF4FAD9009E570C /* troncoAtacando3.png in Resources */,
+				6BA4F1A71C07CF350016B39F /* baseTeto7.png in Resources */,
 				0951AF301BF4FAD9009E570C /* troncoPulando4.png in Resources */,
+				6BA4F1A21C07CF350016B39F /* baseTeto2.png in Resources */,
 				0951AF231BF4FAD9009E570C /* troncoParado3.png in Resources */,
 				6BA7C2091BFCE703000B2B66 /* tijolo.png in Resources */,
 				0951AF141BF4FAD9009E570C /* troncoAndando4.png in Resources */,
@@ -1601,8 +1641,11 @@
 				0951AF571BF4FAD9009E570C /* tapHereButton.png in Resources */,
 				0951AF411BF4FAD9009E570C /* lifeCity3.png in Resources */,
 				0951AF2C1BF4FAD9009E570C /* pernasPulando8.png in Resources */,
+				6BA4F1A51C07CF350016B39F /* baseTeto5.png in Resources */,
+				6BA4F1A91C07CF350016B39F /* baseTeto9.png in Resources */,
 				0951AF021BF4FAD9009E570C /* jumpAgent1.png in Resources */,
 				0951AF4D1BF4FAD9009E570C /* 1.png in Resources */,
+				6BA4F1A31C07CF350016B39F /* baseTeto3.png in Resources */,
 				0951AF4E1BF4FAD9009E570C /* backgroundCityPlaceholder.png in Resources */,
 				0951AF221BF4FAD9009E570C /* troncoParado2.png in Resources */,
 				0951AF581BF4FAD9009E570C /* placeHolderAgent.png in Resources */,
@@ -1610,6 +1653,7 @@
 				0951AF441BF4FAD9009E570C /* cityButtonPlaceHolder.png in Resources */,
 				0951AF421BF4FAD9009E570C /* lifeCity4.png in Resources */,
 				0951AF211BF4FAD9009E570C /* troncoParado1.png in Resources */,
+				6BA4F1A41C07CF350016B39F /* baseTeto4.png in Resources */,
 				6BA4F12D1BFF4CF40016B39F /* baseEsquerda.png in Resources */,
 				6BA4F15D1C0773290016B39F /* tetoChao.png in Resources */,
 				0951AF291BF4FAD9009E570C /* pernasPulando5.png in Resources */,

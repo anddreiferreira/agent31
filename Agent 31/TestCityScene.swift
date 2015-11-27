@@ -37,7 +37,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura)
         self.addChild(predioNovo)
-        predioNovo.setScale(1.75)
+        predioNovo.setScale(1.6)
         
     }
     

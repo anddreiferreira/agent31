@@ -28,7 +28,7 @@ class BuildingInformation: NSObject {
     
     func gerarAltura() -> Int{
         
-        var novaAltura : Int = 38
+        var novaAltura : Int = 30
         
 
         return novaAltura

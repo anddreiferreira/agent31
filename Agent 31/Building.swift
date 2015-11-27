@@ -343,7 +343,11 @@ class Building: SKNode {
         let tetoDireita = Tile(rawValue: 6)!
         let tetoEsquerda = Tile(rawValue: 7)!
         let chao = Tile(rawValue: 8)!
-        let tetoBase = Tile(rawValue: 9)!
+//        let tetoBase = Tile(rawValue: 9)!
+        
+        let stringChaoTeto : String = "baseTeto"
+        
+        var opcao : Int
         
         var ponto = CGPoint(x: Int(self.startingPosition.x - 30), y: (self.alturaPredio * tileSize.width) + 0)
         colocarUmaTile(tetoEsquerda.image, posicao: ponto)
@@ -373,8 +377,11 @@ class Building: SKNode {
             
             xCoordenada += 20
      
-            ponto = CGPoint(x: xCoordenada, y: yCoordenada-20)
-            colocarUmaTile(tetoBase.image, posicao: ponto, zCoordenada: 21)
+            opcao = Int(arc4random_uniform(9)) + 1
+            let tetoOpcao = stringChaoTeto + String(opcao)
+            
+            ponto = CGPoint(x: xCoordenada, y: yCoordenada - 20)
+            colocarUmaTile(tetoOpcao, posicao: ponto, zCoordenada: 21)
             
             auxiliar += 20
         }
