@@ -502,7 +502,7 @@ class Building: SKNode {
         for _ in 0..<qtdPilastras {
             
             largura += 160
-            colocarPilastraInteiraSingular(largura, alturaDoAndar: altura)
+//            colocarPilastraInteiraSingular(largura, alturaDoAndar: altura)
             
         }
     
