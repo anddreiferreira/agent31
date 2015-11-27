@@ -36,7 +36,6 @@ class Character: GameObject {
     var jumpingLegs: SKAction?
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
-    var gotHitLegs: SKAction?
     
     init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
         
@@ -51,6 +50,7 @@ class Character: GameObject {
         let torsoTexture: SKTexture = generateTextureWithImage(image)
         self.torso = SKSpriteNode(texture: torsoTexture)
         self.torso?.zPosition = 1
+        self.torso?.position = CGPointMake(0.0, -6.4)
         
         self.addChild(torso!)
     }
@@ -62,18 +62,18 @@ class Character: GameObject {
     private func setGeneralAttributesForCharacter(){
         
         // Provisory Scale
-        self.setScale(3.0)
+        self.setScale(2.0)
         
         // Initialize orientation as right
         self.orientation = TURNED_RIGHT
         
         initializeCharacterPhysicsBody()
-//        initializeAnimations()
+        initializeAnimations()
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let rectangleSize = CGSizeMake(self.size.width*0.35, self.size.height*0.7)
-        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
+        let rectangleSize = CGSizeMake(self.size.width*0.4, self.size.height*0.6)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(-2, -8))
         physicsBody.affectedByGravity = true
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
@@ -219,7 +219,6 @@ extension Character{
         self.jumpingTorso = nil
         
         self.gotHitTorso = nil
-        self.gotHitLegs = nil
         
     }
     
@@ -271,8 +270,7 @@ extension Character{
     }
     
     func gotHitAnimationOnce(){
-        if(self.gotHitLegs != nil && self.gotHitTorso != nil){
-            self.runAction(self.gotHitLegs!)
+        if(self.gotHitTorso != nil){
             self.torso?.runAction(self.gotHitTorso!)
         }
     }
