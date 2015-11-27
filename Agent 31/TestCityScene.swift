@@ -35,7 +35,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         // criacao de informacoes randomicas do novo predio
         let predioInfo = BuildingInformation()
         
-        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura)
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares)
+        
         self.addChild(predioNovo)
         predioNovo.setScale(1.6)
         

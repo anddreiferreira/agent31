@@ -138,12 +138,13 @@ class Building: SKNode {
     var qtdAndares : Int = 0
     var qtdPilastras : Int = 0
     
-    init(largura: Int = 40, altura : Int = 38, posicaoInicial : CGPoint = CGPointMake(0, 0)) {
+    init(largura: Int = 40, altura : Int = 34, andares : Int = 3, posicaoInicial : CGPoint = CGPointMake(0, 0)) {
         
         startingPosition = posicaoInicial
         
         larguraPredio = largura
         alturaPredio = altura
+        qtdAndares = andares
         
         buildingView = SKSpriteNode()
         
@@ -277,9 +278,6 @@ class Building: SKNode {
     
     func colocarAndares(){
         
-        qtdAndares = (((self.alturaPredio * 20) - 120) / 160) - 1
-        print(qtdAndares)
-    
         var altura : Int = 40
         
         for _ in 0..<qtdAndares {

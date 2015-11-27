@@ -12,6 +12,7 @@ class BuildingInformation: NSObject {
 
     var largura : Int = 0
     var altura : Int = 0
+    var qtdAndares : Int = 0
     var qtdJanelas : Int = 0
     var posicaoInicialX = 0
     
@@ -19,6 +20,7 @@ class BuildingInformation: NSObject {
     
         super.init()
     
+        self.qtdAndares = gerarAndares()
         self.altura = gerarAltura()
         self.largura = gerarLargura()
         self.qtdJanelas = gerarQtdJanelas()
@@ -26,30 +28,34 @@ class BuildingInformation: NSObject {
         
     }
     
+    func gerarAndares () -> Int {
+    
+        let novaQtdAndares : Int = Int(arc4random_uniform(4)) + 2
+
+        return novaQtdAndares
+    }
+    
     func gerarAltura() -> Int{
         
-        var novaAltura : Int = 30
+        // andar completo + base + topo
+        let novaAltura : Int = ((self.qtdAndares * 8) + 6) + 4
+        print(novaAltura)
+        print(qtdAndares)
         
-
         return novaAltura
     }
     
     func gerarLargura() -> Int{
         
-        var novaLagura : Int = 40
-        
-        
+        let operador : Int =  Int(arc4random_uniform(6)) + 1
+        let novaLagura : Int = operador * 20
         
         return novaLagura
-
-        
     }
     
     func gerarQtdJanelas() -> Int{
         
-        var novaQuantidade : Int = 2
-        
-        
+        let novaQuantidade : Int = Int(arc4random_uniform(3)) + 1
         
         return novaQuantidade
 
@@ -57,9 +63,7 @@ class BuildingInformation: NSObject {
     
     func gerarXInicial() -> Int{
     
-        var novoX : Int = 50
-        
-        
+        let novoX : Int = Int(arc4random_uniform(80)) + 20
         
         return novoX
     
