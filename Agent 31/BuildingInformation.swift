@@ -13,6 +13,7 @@ class BuildingInformation: NSObject {
     var largura : Int = 0
     var altura : Int = 0
     var qtdAndares : Int = 0
+    var qtdPilastras : Int = 0
     var qtdJanelas : Int = 0
     var posicaoInicialX = 0
     
@@ -23,6 +24,7 @@ class BuildingInformation: NSObject {
         self.qtdAndares = gerarAndares()
         self.altura = gerarAltura()
         self.largura = gerarLargura()
+        self.qtdPilastras = gerarPilastras()
         self.qtdJanelas = gerarQtdJanelas()
         self.posicaoInicialX = gerarXInicial()
         
@@ -47,7 +49,7 @@ class BuildingInformation: NSObject {
     
     func gerarLargura() -> Int{
         
-        let operador : Int =  Int(arc4random_uniform(3)) + 1
+        let operador : Int =  Int(arc4random_uniform(4)) + 2
         let novaLagura : Int = operador * 20
         
         return novaLagura
@@ -59,6 +61,13 @@ class BuildingInformation: NSObject {
         
         return novaQuantidade
 
+    }
+    
+    func gerarPilastras() -> Int{
+    
+        let novaQuantidadePilastras : Int = Int(arc4random_uniform(3)) + 2
+        
+        return novaQuantidadePilastras
     }
     
     func gerarXInicial() -> Int{

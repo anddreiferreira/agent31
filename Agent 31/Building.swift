@@ -138,8 +138,7 @@ class Building: SKNode {
     var qtdAndares : Int = 0
     var qtdPilastras : Int = 0
     
-    init(largura: Int = 40, altura : Int = 34, andares : Int = 3, posicalIncialX : Int = 0) {
-        
+    init(largura: Int = 40, altura : Int = 34, andares : Int = 3, pilastras : Int = 2, posicalIncialX : Int = 0) {
         
         let  posicaoInicial : CGPoint = CGPointMake(CGFloat(posicalIncialX), 0)
         
@@ -148,6 +147,7 @@ class Building: SKNode {
         larguraPredio = largura
         alturaPredio = altura
         qtdAndares = andares
+        qtdPilastras = pilastras
         
         buildingView = SKSpriteNode()
         
@@ -458,7 +458,7 @@ class Building: SKNode {
         
     }
     
-    func colocarPilastraInteiraSingular(largura : Int){
+    func colocarPilastraInteiraSingular(largura : Int, alturaDoAndar : Int){
     
         let pilastraCorpo = Tile(rawValue: 19)!
         let pilastraBase = Tile(rawValue: 20)!
@@ -472,7 +472,7 @@ class Building: SKNode {
 
         
         ponto = CGPoint(x: xCoordenada, y: yCoordenada+40)
-//        colocarUmaTile(pilastraBase.image, posicao: ponto, zCoordenada: 24)
+        colocarUmaTile(pilastraBase.image, posicao: ponto, zCoordenada: 24)
         
         while(auxiliar < (larguraPredio * 20) - 80){
             
@@ -480,7 +480,7 @@ class Building: SKNode {
             
             ponto = CGPoint(x: xCoordenada, y: yCoordenada)
             
-//            colocarUmaTile(pilastraCorpo.image, posicao: ponto, zCoordenada: 21)
+            colocarUmaTile(pilastraCorpo.image, posicao: ponto, zCoordenada: 21)
             
             auxiliar += 40
         }
@@ -488,7 +488,7 @@ class Building: SKNode {
         xCoordenada += 40
 
         ponto = CGPoint(x: xCoordenada, y: yCoordenada+40)
-//        colocarUmaTile(pilastraTopo.image, posicao: ponto, zCoordenada: 24)
+        colocarUmaTile(pilastraTopo.image, posicao: ponto, zCoordenada: 24)
         
         
     
@@ -496,15 +496,13 @@ class Building: SKNode {
     
     func colocarPilastras(){
     
-        qtdPilastras = (((self.larguraPredio * 20) - 160) / 160) - 1
-        print(qtdPilastras)
-        
         var largura : Int = 40
+        var altura : Int = 40
         
         for _ in 0..<qtdPilastras {
             
             largura += 160
-            colocarPilastraInteiraSingular(largura)
+            colocarPilastraInteiraSingular(largura, alturaDoAndar: altura)
             
         }
     
