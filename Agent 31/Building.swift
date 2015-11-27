@@ -138,7 +138,10 @@ class Building: SKNode {
     var qtdAndares : Int = 0
     var qtdPilastras : Int = 0
     
-    init(largura: Int = 40, altura : Int = 34, andares : Int = 3, posicaoInicial : CGPoint = CGPointMake(0, 0)) {
+    init(largura: Int = 40, altura : Int = 34, andares : Int = 3, posicalIncialX : Int = 0) {
+        
+        
+        let  posicaoInicial : CGPoint = CGPointMake(CGFloat(posicalIncialX), 0)
         
         startingPosition = posicaoInicial
         
@@ -151,6 +154,7 @@ class Building: SKNode {
         super.init()
         
         self.addChild(buildingView)
+        
         self.colocarTodosOsTijolos()
         self.colocarBase()
         self.colocarAndares()
@@ -350,7 +354,7 @@ class Building: SKNode {
         var ponto = CGPoint(x: Int(self.startingPosition.x - 30), y: (self.alturaPredio * tileSize.width) + 0)
         colocarUmaTile(tetoEsquerda.image, posicao: ponto)
 
-        ponto = CGPoint(x: (self.larguraPredio * tileSize.width) - 60, y: (self.alturaPredio * tileSize.width) + 20)
+        ponto = CGPoint(x: (  Int(self.startingPosition.x) + self.larguraPredio * tileSize.width) - 60, y: (self.alturaPredio * tileSize.width) + 20)
         colocarUmaTile(tetoDireita.image, posicao: ponto)
         
         var auxiliar = 0
@@ -395,23 +399,47 @@ class Building: SKNode {
         var ponto : CGPoint = CGPointZero
         var opcao : Int = 1
         let stringTijolo = "tijolo"
+        var larguraAux = self.larguraPredio - 2
+        var alturaAux = 0
         
-        for i in 0..<self.alturaPredio {
-            for j in 0..<self.larguraPredio - 1{
+        
+        while(alturaAux < self.alturaPredio){
+            while(larguraAux >= 0){
+
+                xStart = larguraAux + 1
+                yStart = alturaAux + 1
                 
-                xStart = j + 1
-                yStart = i + 1
-                
-                ponto = CGPoint(x: (xStart * tileSize.width), y: (yStart * tileSize.height))
+                ponto = CGPoint(x: Int(self.startingPosition.x) + (xStart * tileSize.width), y: (yStart * tileSize.height))
                 opcao = Int(arc4random_uniform(7)) + 1
-            
+                
                 let tijoloOpcao = stringTijolo + String(opcao)
                 
                 colocarUmaTile(tijoloOpcao, posicao: ponto)
+
                 
+                larguraAux--
             }
-            
+            alturaAux++
+            larguraAux = self.larguraPredio - 2
+
         }
+        
+//        for i in 0..<self.alturaPredio {
+//            for j in 0..<self.larguraPredio - 1{
+//                
+//                xStart = j + 1
+//                yStart = i + 1
+//                
+//                ponto = CGPoint(x: (xStart * tileSize.width), y: (yStart * tileSize.height))
+//                opcao = Int(arc4random_uniform(7)) + 1
+//            
+//                let tijoloOpcao = stringTijolo + String(opcao)
+//                
+//                colocarUmaTile(tijoloOpcao, posicao: ponto)
+//                
+//            }
+//            
+//        }
     
     }
     
@@ -479,7 +507,6 @@ class Building: SKNode {
             colocarPilastraInteiraSingular(largura)
             
         }
-        
     
     }
     

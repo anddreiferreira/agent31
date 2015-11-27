@@ -47,7 +47,7 @@ class BuildingInformation: NSObject {
     
     func gerarLargura() -> Int{
         
-        let operador : Int =  Int(arc4random_uniform(6)) + 1
+        let operador : Int =  Int(arc4random_uniform(3)) + 1
         let novaLagura : Int = operador * 20
         
         return novaLagura
@@ -63,7 +63,7 @@ class BuildingInformation: NSObject {
     
     func gerarXInicial() -> Int{
     
-        let novoX : Int = Int(arc4random_uniform(80)) + 20
+        let novoX : Int = Int(arc4random_uniform(800)) + 20
         
         return novoX
     
