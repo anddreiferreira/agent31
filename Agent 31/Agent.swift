@@ -30,8 +30,14 @@ class Agent: Character {
         stoppedAnimationForever()
         self.setAgentPhysics()
         
+        self.setGun()
+        
         self.HP = Int(MAX_INPUT)
         
+    }
+    
+    private func setGun(){
+        self.gun.owner = "Agent"
     }
     
     private func setAgentPhysics(){

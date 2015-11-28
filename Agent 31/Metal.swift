@@ -32,6 +32,7 @@ class Metal: GameObject {
         physicsBody.categoryBitMask = ColliderType.Metal.rawValue
         physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue
         physicsBody.contactTestBitMask = physicsBody.collisionBitMask
+        physicsBody.allowsRotation = false
         physicsBody.mass = 0.1
         
         return physicsBody

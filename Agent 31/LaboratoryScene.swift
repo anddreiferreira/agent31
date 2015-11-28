@@ -63,6 +63,9 @@ class LaboratoryScene: SKScene {
         for touch in touches {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
+            
+            debugPrint("NODE TOUCHED \(node) with name = \(node.name)")
+            
             if node.name == "jumpButtonLab" {
                 buttonTapped(node)
                 self.laboratoryGameLayer.agent31?.jump()
@@ -79,11 +82,10 @@ class LaboratoryScene: SKScene {
                 removeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
-            }
-            else if node.name!.hasPrefix("upgrade") {
-                loadUpgradeLayer(node.name!)
             } else if node.name == "cancelUpgradeButton" {
                 upgradeLayer.removeFromParent()
+            }else{
+                // Continue
             }
         }
     }
