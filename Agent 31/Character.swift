@@ -11,6 +11,7 @@ import SpriteKit
 
 class Character: GameObject {
     
+    var gun: Gun!
     var torso: SKSpriteNode!
     var orientation: Int?
     var lookingUp: Bool = false
@@ -42,9 +43,11 @@ class Character: GameObject {
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
         initializeTorso(torsoImage)
+        initializeGun("CA115")
         
         setGeneralAttributesForCharacter()
     }
+    
     
     private func initializeTorso(image: String){
         let torsoTexture: SKTexture = generateTextureWithImage(image)
@@ -53,6 +56,13 @@ class Character: GameObject {
         self.torso?.position = CGPointMake(0.0, -6.4)
         
         self.addChild(torso!)
+    }
+    
+    private func initializeGun(gunName: String){
+        self.gun = Gun(gunName: gunName, damageBase: 1, rangeBase: 1)
+        self.gun.zPosition = 2
+        self.gun.position = CGPointMake(0.0, -10.0)
+        self.addChild(self.gun)
     }
     
     required init?(coder aDecoder: NSCoder) {

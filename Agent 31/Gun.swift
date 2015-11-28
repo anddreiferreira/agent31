@@ -10,6 +10,12 @@ import SpriteKit
 
 class Gun : SKSpriteNode {
     
+    var walking: SKAction?
+    var attacking: SKAction?
+    var stopped: SKAction?
+    var jumping: SKAction?
+    var gotHit: SKAction?
+    
     var level: Int
     var gunName: String
     var owner: String
@@ -25,7 +31,7 @@ class Gun : SKSpriteNode {
         self.damageBase = damageBase
         self.rangeBase = rangeBase
         
-        let texture: SKTexture! = generateTextureWithImage(gunName)
+        let texture: SKTexture! = generateTextureWithImage("\(gunName)Stopped1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         self.zPosition = zPosition
         self.setScale(scale)
@@ -39,6 +45,15 @@ class Gun : SKSpriteNode {
     }
     
     func setBasicGunAttributes(){
+        initializeAnimations()
+    }
+
+    func initializeAnimations(){
+        self.walking = actionWithAnimationName("\(gunName)Walking", numberOfImages: 6, timePerTexture: 0.15)
+        self.attacking = actionWithAnimationName("\(gunName)Shooting", numberOfImages: 3, timePerTexture: 0.08)
+        self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.15)
+        self.jumping = actionWithAnimationName("\(gunName)Jumping", numberOfImages: 6, timePerTexture: 0.1)
+        self.gotHit = actionWithAnimationName("\(gunName)GotHit", numberOfImages: 4, timePerTexture: 0.1)
         
     }
 }
