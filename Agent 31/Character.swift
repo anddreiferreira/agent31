@@ -183,8 +183,7 @@ extension Character{
             self.attackingAnimationOnce()
             self.gun.shootAnimation()
             
-            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y - self.size.height/8)
-            let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
+            let bullet = Bullet(ownerGun: self.gun, orientation: self.orientation!, zPosition: 3)
             self.parent?.addChild(bullet)
             
             bullet.fire()

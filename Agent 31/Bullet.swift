@@ -23,7 +23,7 @@ class Bullet : GameObject {
         
         super.init(imageName: self.imageName!, position: CGPointZero, zPosition: zPosition)
         self.defineDamage()
-        self.position = ownerGun.position
+        self.definePosition()
     }
     
     init(initialPosition: CGPoint, orientation: Int, zPosition: CGFloat){
@@ -38,6 +38,15 @@ class Bullet : GameObject {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func definePosition(){
+        let characterPosition = ownerGun!.parent!.position
+        if(self.orientation == TURNED_RIGHT){
+            self.position = CGPointMake(characterPosition.x + 25, characterPosition.y + ownerGun!.position.y*2.5)
+        }else if(self.orientation == TURNED_LEFT){
+            self.position = CGPointMake(characterPosition.x - 25, characterPosition.y + ownerGun!.position.y*2.5)
+        }
     }
     
     private func defineVelocity(){
