@@ -61,7 +61,7 @@ class Character: GameObject {
     private func initializeGun(gunName: String){
         self.gun = Gun(gunName: gunName, damageBase: 1, rangeBase: 1)
         self.gun.zPosition = 2
-        self.gun.position = CGPointMake(0.0, -10.0)
+        self.gun.position = CGPointMake(0.0, -7.8)
         self.addChild(self.gun)
     }
     
@@ -153,6 +153,7 @@ extension Character{
     func gotHit(damage: Int){
         debugPrint("Character HP \(self.HP) -> \(self.HP - damage)")
         self.gotHitAnimationOnce()
+        self.gun.gotHitAnimation()
         self.HP = self.HP - damage
         
         if(self.HP <= 0){
@@ -172,6 +173,7 @@ extension Character{
     
     func jump(){
         jumpAnimationOnce()
+        self.gun.jumpAnimation()
         self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
     }
     
@@ -179,6 +181,7 @@ extension Character{
         self.attacking = true
         if(lookingUp == false){
             self.attackingAnimationOnce()
+            self.gun.shootAnimation()
             
             let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y - self.size.height/8)
             let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
@@ -249,7 +252,7 @@ extension Character{
     private func walkingAnimationOnce(){
         if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
             self.running = true
-            
+            self.gun.walkingAnimation()
             self.torso?.runAction(self.walkingTorso!)
             self.runAction(self.walkingLegs!, completion: {
                 self.running = false

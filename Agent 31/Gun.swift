@@ -46,8 +46,13 @@ class Gun : SKSpriteNode {
     
     func setBasicGunAttributes(){
         initializeAnimations()
+        stoppedAnimationForever()
     }
 
+}
+
+// MARK: Animations
+extension Gun{
     func initializeAnimations(){
         self.walking = actionWithAnimationName("\(gunName)Walking", numberOfImages: 6, timePerTexture: 0.15)
         self.attacking = actionWithAnimationName("\(gunName)Shooting", numberOfImages: 3, timePerTexture: 0.08)
@@ -55,5 +60,35 @@ class Gun : SKSpriteNode {
         self.jumping = actionWithAnimationName("\(gunName)Jumping", numberOfImages: 6, timePerTexture: 0.1)
         self.gotHit = actionWithAnimationName("\(gunName)GotHit", numberOfImages: 4, timePerTexture: 0.1)
         
+    }
+    
+    func walkingAnimation(){
+        if(self.walking != nil){
+            self.runAction(self.walking!)
+        }
+    }
+    
+    func stoppedAnimationForever(){
+        if(self.stopped != nil){
+            self.runAction(SKAction.repeatActionForever(self.stopped!))
+        }
+    }
+    
+    func shootAnimation(){
+        if(self.attacking != nil){
+            self.runAction(self.attacking!)
+        }
+    }
+    
+    func jumpAnimation(){
+        if(self.jumping != nil){
+            self.runAction(self.jumping!)
+        }
+    }
+    
+    func gotHitAnimation(){
+        if(self.gotHit != nil){
+            self.runAction(self.gotHit!)
+        }
     }
 }
