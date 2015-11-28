@@ -18,18 +18,18 @@ class Gun : SKSpriteNode {
     
     var level: Int
     var gunName: String
-    var owner: String
+    var owner: String?
     var damageBase: Int
     var rangeBase: Int
     
-    init(gunName: String, level: Int = 1, owner: String = "Enemy", damageBase: Int, rangeBase: Int, zPosition: CGFloat = 1.0, scale: CGFloat = 1.0){
+    init(gunName: String, level: Int = 1, damageBase: Int, rangeBase: Int, zPosition: CGFloat = 1.0, scale: CGFloat = 1.0, owner: String){
         debugPrint("Initializing Gun")
         
         self.level = level
         self.gunName = gunName
-        self.owner = owner
         self.damageBase = damageBase
         self.rangeBase = rangeBase
+        self.owner = owner
         
         let texture: SKTexture! = generateTextureWithImage("\(gunName)Stopped1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())

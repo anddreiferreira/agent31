@@ -19,6 +19,8 @@ class Agent: Character {
         
         super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
         
+        self.name = "agent"
+        
         setGeneralAttributesForAgent()
     }
 
@@ -30,15 +32,11 @@ class Agent: Character {
         stoppedAnimationForever()
         self.setAgentPhysics()
         
-        self.setGun()
         
         self.HP = Int(MAX_INPUT)
         
     }
     
-    private func setGun(){
-        self.gun.owner = "Agent"
-    }
     
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue

@@ -19,15 +19,7 @@ class GeneralEnemy: Character {
     var hasBulletFrequency: Double = 1.0
     var enemyLevel: Int = 1
     
-//    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
-//        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
-//        
-//        // While using test sprites
-//        self.color = SKColor.redColor()
-//        
-//        setGeneralAttributesForGeneralEnemy()
-//    }
-    
+
     init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
@@ -49,6 +41,7 @@ class GeneralEnemy: Character {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     func setHasBulletTrue() {
         self.hasBullet = true

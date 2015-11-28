@@ -14,12 +14,14 @@ class Bullet : GameObject {
     var imageName: String?
     var velocity: Int?
     var damage: Int!
-    var ownerGun: Gun?
+    var ownerGun: Gun!
+    var ownerCharacter: String
 
     init(ownerGun: Gun, orientation: Int, zPosition: CGFloat){
         self.ownerGun = ownerGun
         self.imageName = "bullet1"
         self.orientation = orientation
+        self.ownerCharacter = ownerGun.parent!.name!
         
         super.init(imageName: self.imageName!, position: CGPointZero, zPosition: zPosition)
         self.defineDamage()
@@ -29,6 +31,7 @@ class Bullet : GameObject {
     init(initialPosition: CGPoint, orientation: Int, zPosition: CGFloat){
         self.imageName = "bullet1"
         self.orientation = orientation
+        self.ownerCharacter = "enemy"
         
         super.init(imageName: "bullet1", position: CGPointZero, zPosition: zPosition)
         self.defineDamage()
@@ -93,7 +96,13 @@ class Bullet : GameObject {
         physicsBody.restitution = 0
         physicsBody.mass = 1.0
         physicsBody.categoryBitMask = ColliderType.Bullet.rawValue
-        physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+        
+        if(ownerCharacter == "agent"){
+            physicsBody.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+        }else{
+            physicsBody.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Agent.rawValue
+        }
+        
         physicsBody.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
         
         

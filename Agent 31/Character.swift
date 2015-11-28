@@ -42,6 +42,8 @@ class Character: GameObject {
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
+        self.name = "character"
+        
         initializeTorso(torsoImage)
         initializeGun("CA115")
         
@@ -59,7 +61,7 @@ class Character: GameObject {
     }
     
     private func initializeGun(gunName: String){
-        self.gun = Gun(gunName: gunName, damageBase: 1, rangeBase: 1)
+        self.gun = Gun(gunName: gunName, damageBase: 1, rangeBase: 1, owner: self.name!)
         self.gun.zPosition = 2
         self.gun.position = CGPointMake(0.0, -7.8)
         self.addChild(self.gun)
@@ -114,8 +116,12 @@ class Character: GameObject {
         
         if(contactedNode.isKindOfClass(Bullet)){
             let projectile = (contactedNode as? Bullet)!
-            self.gotHit(projectile.damage)
-            projectile.hittedSomething()
+            
+            // If projectile isn't throwed by character with same name...
+            if(projectile.ownerCharacter != self.name){
+                self.gotHit(projectile.damage)
+                projectile.hittedSomething()
+            }
         }
         
     }
