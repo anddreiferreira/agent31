@@ -114,8 +114,8 @@ class Character: GameObject {
         
         if(contactedNode.isKindOfClass(Bullet)){
             let projectile = (contactedNode as? Bullet)!
-            projectile.hittedSomething()
             self.gotHit(projectile.damage)
+            projectile.hittedSomething()
         }
         
     }

@@ -130,8 +130,10 @@ extension TestCityGameLayer{
     func didBeginContactWithCharacter(charac: SKNode, nodeB: SKNode){
         
         if charac.isKindOfClass(Agent){
+            debugPrint("is an agent")
             (charac as? Agent)?.didBeginContact(nodeB)
         }else{
+            debugPrint("is an character")
             (charac as? Character)?.didBeginContact(nodeB)
         }
     }

@@ -113,7 +113,7 @@ class Bullet : GameObject {
         // Remove MOVE action
         self.removeAllActions()
         // Count just one CONTACT per bullet
-        self.physicsBody = nil
+//        self.removeFromParent()
         
         // Wait 0.1 seconds before to disappear
         self.runAction(SKAction.waitForDuration(0.1), completion: {
@@ -122,7 +122,7 @@ class Bullet : GameObject {
     }
     
     override func didBeginContact(contactedNode: SKNode) {
-
+        
         if contactedNode.isKindOfClass(Character){
             (contactedNode as? Character)?.didBeginContact(self)
         }else{
