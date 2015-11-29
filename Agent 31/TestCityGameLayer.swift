@@ -56,15 +56,13 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     }
     
     func putAgent(){
-        agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, middleOfTheScreenPoint.y/3))
+        agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
         self.addChild(agent31!)
     }
     
     func putTestEnemy(){
-        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, middleOfTheScreenPoint.y))
-        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, middleOfTheScreenPoint.y), enemyLevel: 5)
-        testEnemy.name = "enemy"
-        secEnemy.name = "enemy"
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
+        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
         self.addChild(testEnemy)
         self.addChild(secEnemy)
     }

@@ -62,7 +62,7 @@ class Agent: Character {
         self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingTorso = actionWithAnimationName("agentShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
 
-        self.gotHitTorso = actionWithAnimationName("agentGotHitTorso", numberOfImages: 1, timePerTexture: 0.1)
+        self.gotHitTorso = actionWithAnimationName("agentGotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
         
     }
     
