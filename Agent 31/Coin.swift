@@ -13,7 +13,7 @@ class Coin: GameObject {
     var value: Int
     var spinning: SKAction
     
-    init(position: CGPoint, zPosition: CGFloat = 1.0){
+    init(position: CGPoint, zPosition: CGFloat = 5.0){
         
         // Randomize a value between 10 and 1
         self.value = Int(arc4random() % 10 + 1)
@@ -30,10 +30,14 @@ class Coin: GameObject {
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
+        let physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/4)
+
+        debugPrint("Passei aqui")
         physicsBody.categoryBitMask = ColliderType.Coin.rawValue
-        physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue
-        physicsBody.contactTestBitMask = physicsBody.collisionBitMask
+        physicsBody.collisionBitMask = ColliderType.None.rawValue
+        physicsBody.contactTestBitMask = ColliderType.None.rawValue
+
+        physicsBody.allowsRotation = false
         physicsBody.mass = 0.1
         
         return physicsBody

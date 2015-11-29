@@ -12,7 +12,7 @@ class Metal: GameObject {
     
     var value: Int
     
-    init(position: CGPoint, zPosition: CGFloat = 1.0){
+    init(position: CGPoint, zPosition: CGFloat = 5.0){
         
         // Randomize a value between 10 and 1
         self.value = Int(arc4random() % 10 + 1)
@@ -28,10 +28,13 @@ class Metal: GameObject {
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        let physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width/2, self.size.height/2))
+        
         physicsBody.categoryBitMask = ColliderType.Metal.rawValue
-        physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue
-        physicsBody.contactTestBitMask = physicsBody.collisionBitMask
+        physicsBody.collisionBitMask = ColliderType.None.rawValue
+        physicsBody.contactTestBitMask = ColliderType.None.rawValue
+        
+        physicsBody.allowsRotation = false
         physicsBody.mass = 0.1
         
         return physicsBody

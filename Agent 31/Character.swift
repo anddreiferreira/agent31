@@ -11,6 +11,7 @@ import SpriteKit
 
 class Character: GameObject {
     
+    var gun: Gun?
     var torso: SKSpriteNode!
     var orientation: Int?
     var lookingUp: Bool = false
@@ -36,23 +37,37 @@ class Character: GameObject {
     var jumpingLegs: SKAction?
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
-    var gotHitLegs: SKAction?
     
-    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
+    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
+        self.name = "character"
+        
         initializeTorso(torsoImage)
+        
+        if(withGun == true){
+            initializeGun("CA115")
+        }
         
         setGeneralAttributesForCharacter()
     }
+    
     
     private func initializeTorso(image: String){
         let torsoTexture: SKTexture = generateTextureWithImage(image)
         self.torso = SKSpriteNode(texture: torsoTexture)
         self.torso?.zPosition = 1
+        self.torso?.position = CGPointMake(0.0, -6.4)
         
         self.addChild(torso!)
+    }
+    
+    private func initializeGun(gunName: String){
+        self.gun = Gun(gunName: gunName, damageBase: 1, rangeBase: 1, owner: self.name!)
+        self.gun!.zPosition = 2
+        self.gun!.position = CGPointMake(0.0, -7.8)
+        self.addChild(self.gun!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,7 +77,7 @@ class Character: GameObject {
     private func setGeneralAttributesForCharacter(){
         
         // Provisory Scale
-        self.setScale(3.0)
+        self.setScale(2.0)
         
         // Initialize orientation as right
         self.orientation = TURNED_RIGHT
@@ -72,8 +87,8 @@ class Character: GameObject {
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let rectangleSize = CGSizeMake(self.size.width*0.35, self.size.height*0.7)
-        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -4))
+        let rectangleSize = CGSizeMake(self.size.width*0.4, self.size.height*0.6)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(-2, -8))
         physicsBody.affectedByGravity = true
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
@@ -104,11 +119,16 @@ class Character: GameObject {
         
         if(contactedNode.isKindOfClass(Bullet)){
             let projectile = (contactedNode as? Bullet)!
-            projectile.hittedSomething()
-            self.gotHit(projectile.damage)
+            
+            // If projectile isn't throwed by character with same name...
+            if(projectile.ownerCharacter != self.name){
+                self.gotHit(projectile.damage)
+                projectile.hittedSomething()
+            }
         }
         
     }
+
 }
 
 // MARK: Actions
@@ -142,6 +162,7 @@ extension Character{
     func gotHit(damage: Int){
         debugPrint("Character HP \(self.HP) -> \(self.HP - damage)")
         self.gotHitAnimationOnce()
+        self.gun?.gotHitAnimation()
         self.HP = self.HP - damage
         
         if(self.HP <= 0){
@@ -161,28 +182,31 @@ extension Character{
     
     func jump(){
         jumpAnimationOnce()
+        self.gun?.jumpAnimation()
         self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
     }
     
     func shoot(){
-        self.attacking = true
-        if(lookingUp == false){
-            self.attackingAnimationOnce()
-            
-            let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y - self.size.height/8)
-            let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 3)
-            self.parent?.addChild(bullet)
-            
-            bullet.fire()
-            
-        }else if(lookingUp == true){
-            
-            self.attackingUpAnimationOnce()
-            let initialPosition = CGPointMake(self.position.x, self.position.y + (self.size.height/2)*1.08)
-            let bullet = Bullet(initialPosition: initialPosition, orientation: TURNED_UP, zPosition: 3)
-            self.parent?.addChild(bullet)
-            
-            bullet.fire()
+        if(self.gun != nil){
+            self.attacking = true
+            if(lookingUp == false){
+                self.attackingAnimationOnce()
+                self.gun?.shootAnimation()
+                
+                let bullet = Bullet(ownerGun: self.gun!, orientation: self.orientation!, zPosition: 5)
+                self.parent?.addChild(bullet)
+                
+                bullet.fire()
+                
+            }else if(lookingUp == true){
+                
+                self.attackingUpAnimationOnce()
+                let initialPosition = CGPointMake(self.position.x, self.position.y + (self.size.height/2)*1.08)
+                let bullet = Bullet(initialPosition: initialPosition, orientation: TURNED_UP, zPosition: 3)
+                self.parent?.addChild(bullet)
+                
+                bullet.fire()
+            }
         }
         
     }
@@ -218,7 +242,6 @@ extension Character{
         self.jumpingTorso = nil
         
         self.gotHitTorso = nil
-        self.gotHitLegs = nil
         
     }
     
@@ -239,7 +262,7 @@ extension Character{
     private func walkingAnimationOnce(){
         if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
             self.running = true
-            
+            self.gun?.walkingAnimation()
             self.torso?.runAction(self.walkingTorso!)
             self.runAction(self.walkingLegs!, completion: {
                 self.running = false
@@ -270,8 +293,7 @@ extension Character{
     }
     
     func gotHitAnimationOnce(){
-        if(self.gotHitLegs != nil && self.gotHitTorso != nil){
-            self.runAction(self.gotHitLegs!)
+        if(self.gotHitTorso != nil){
             self.torso?.runAction(self.gotHitTorso!)
         }
     }
