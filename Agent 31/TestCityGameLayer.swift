@@ -128,7 +128,13 @@ extension TestCityGameLayer{
     func didBeginContactWithCharacter(charac: SKNode, nodeB: SKNode){
         
         if charac.isKindOfClass(Agent){
+            let passHP = self.agent31?.HP
             (charac as? Agent)?.didBeginContact(nodeB)
+            if(self.agent31?.HP < passHP){
+                let scene = (self.parent as? TestCityScene)!
+                scene.cam.runAction(scene.trembleCameraAction())
+                scene.addGotHitHud()
+            }
         }else{
             (charac as? Character)?.didBeginContact(nodeB)
         }
