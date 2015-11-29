@@ -73,7 +73,7 @@ class LaboratoryGameLayer: SKNode {
     }
     
     func putAgent(){
-        agent31 = Agent()
+        agent31 = Agent(withGun: false)
         self.addChild(agent31!)
     }
     

@@ -11,7 +11,7 @@ import SpriteKit
 
 class Character: GameObject {
     
-    var gun: Gun!
+    var gun: Gun?
     var torso: SKSpriteNode!
     var orientation: Int?
     var lookingUp: Bool = false
@@ -38,14 +38,17 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
     
-    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
+    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
         self.name = "character"
         
         initializeTorso(torsoImage)
-        initializeGun("CA115")
+        
+        if(withGun == true){
+            initializeGun("CA115")
+        }
         
         setGeneralAttributesForCharacter()
     }
@@ -62,9 +65,9 @@ class Character: GameObject {
     
     private func initializeGun(gunName: String){
         self.gun = Gun(gunName: gunName, damageBase: 1, rangeBase: 1, owner: self.name!)
-        self.gun.zPosition = 2
-        self.gun.position = CGPointMake(0.0, -7.8)
-        self.addChild(self.gun)
+        self.gun!.zPosition = 2
+        self.gun!.position = CGPointMake(0.0, -7.8)
+        self.addChild(self.gun!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -159,7 +162,7 @@ extension Character{
     func gotHit(damage: Int){
         debugPrint("Character HP \(self.HP) -> \(self.HP - damage)")
         self.gotHitAnimationOnce()
-        self.gun.gotHitAnimation()
+        self.gun?.gotHitAnimation()
         self.HP = self.HP - damage
         
         if(self.HP <= 0){
@@ -179,29 +182,31 @@ extension Character{
     
     func jump(){
         jumpAnimationOnce()
-        self.gun.jumpAnimation()
+        self.gun?.jumpAnimation()
         self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
     }
     
     func shoot(){
-        self.attacking = true
-        if(lookingUp == false){
-            self.attackingAnimationOnce()
-            self.gun.shootAnimation()
-            
-            let bullet = Bullet(ownerGun: self.gun, orientation: self.orientation!, zPosition: 5)
-            self.parent?.addChild(bullet)
-            
-            bullet.fire()
-            
-        }else if(lookingUp == true){
-            
-            self.attackingUpAnimationOnce()
-            let initialPosition = CGPointMake(self.position.x, self.position.y + (self.size.height/2)*1.08)
-            let bullet = Bullet(initialPosition: initialPosition, orientation: TURNED_UP, zPosition: 3)
-            self.parent?.addChild(bullet)
-            
-            bullet.fire()
+        if(self.gun != nil){
+            self.attacking = true
+            if(lookingUp == false){
+                self.attackingAnimationOnce()
+                self.gun?.shootAnimation()
+                
+                let bullet = Bullet(ownerGun: self.gun!, orientation: self.orientation!, zPosition: 5)
+                self.parent?.addChild(bullet)
+                
+                bullet.fire()
+                
+            }else if(lookingUp == true){
+                
+                self.attackingUpAnimationOnce()
+                let initialPosition = CGPointMake(self.position.x, self.position.y + (self.size.height/2)*1.08)
+                let bullet = Bullet(initialPosition: initialPosition, orientation: TURNED_UP, zPosition: 3)
+                self.parent?.addChild(bullet)
+                
+                bullet.fire()
+            }
         }
         
     }
@@ -257,7 +262,7 @@ extension Character{
     private func walkingAnimationOnce(){
         if(self.walkingLegs != nil && self.walkingTorso != nil && self.running == false){
             self.running = true
-            self.gun.walkingAnimation()
+            self.gun?.walkingAnimation()
             self.torso?.runAction(self.walkingTorso!)
             self.runAction(self.walkingLegs!, completion: {
                 self.running = false

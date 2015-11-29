@@ -13,11 +13,11 @@ class Agent: Character {
     private let initialLegs: String = "agentStoppedLegs1"
     private let initialTorso: String = "agentStoppedTorso2"
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
         
         debugPrint("Initializing Agent")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
+        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun)
         
         self.name = "agent"
         
