@@ -54,7 +54,7 @@ class GeneralEnemy: Character {
     
     private func setGeneralEnemyPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.None.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.None.rawValue
     }
     
@@ -136,16 +136,17 @@ class GeneralEnemy: Character {
     }
     
     func dropResource(){
-        let decision = random() % 100 + 1
+        let decision = random() % 90 + 1
+        debugPrint("decision ==== \(decision)")
         
-        if(decision <= 50){
+        if(decision <= 40){
             // Do nothing
-        }else if(decision > 50 && decision <= 75){
-            self.addChild(Coin(position: self.position))
+        }else if(decision > 50 && decision <= 70){
+            self.parent?.addChild(Metal(position: self.position))
         }else{
-            self.addChild(Metal(position: self.position))
+            self.parent?.addChild(Coin(position: self.position))
         }
-        self.parent?.addChild(Metal(position: self.position))
+
     }
     
     override func die() {

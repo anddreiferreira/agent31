@@ -42,8 +42,7 @@ class Agent: Character {
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.Coin.rawValue | ColliderType.Metal.rawValue
         self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
-//        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue | ColliderType.Coin.rawValue | ColliderType.Metal.rawValue
-//        self.physicsBody?.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
+
     }
     
     override func initializeAnimations(){

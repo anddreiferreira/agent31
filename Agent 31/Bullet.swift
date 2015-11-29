@@ -99,8 +99,6 @@ class Bullet : GameObject {
         physicsBody.mass = 0.0
         physicsBody.categoryBitMask = ColliderType.Bullet.rawValue
         
-        debugPrint("ENTREI NO METODO")
-        
         if(ownerCharacter == "agent"){
             physicsBody.contactTestBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
         }else{
@@ -108,8 +106,6 @@ class Bullet : GameObject {
         }
         
         physicsBody.collisionBitMask = ColliderType.None.rawValue
-        
-        
         
         
         return physicsBody
