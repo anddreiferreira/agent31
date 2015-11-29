@@ -29,8 +29,8 @@ class Metal: GameObject {
     
     override func generatePhysicsBody() -> SKPhysicsBody {
         let physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
-        physicsBody.categoryBitMask = ColliderType.Metal.rawValue
-        physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue
+//        physicsBody.categoryBitMask = ColliderType.Metal.rawValue
+//        physicsBody.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue
         physicsBody.contactTestBitMask = physicsBody.collisionBitMask
         physicsBody.allowsRotation = false
         physicsBody.mass = 0.1

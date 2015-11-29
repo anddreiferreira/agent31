@@ -54,8 +54,8 @@ class GeneralEnemy: Character {
     
     private func setGeneralEnemyPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
-        self.physicsBody?.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
+        self.physicsBody?.collisionBitMask = ColliderType.None.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.None.rawValue
     }
     
     private func colorizeEnemy(color: SKColor){

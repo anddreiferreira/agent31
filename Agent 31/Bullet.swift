@@ -24,8 +24,10 @@ class Bullet : GameObject {
         self.ownerCharacter = ownerGun.parent!.name!
         
         super.init(imageName: self.imageName!, position: CGPointZero, zPosition: zPosition)
+        
         self.defineDamage()
         self.definePosition()
+        self.setBulletAttributes()
     }
     
     init(initialPosition: CGPoint, orientation: Int, zPosition: CGFloat){
@@ -70,7 +72,7 @@ class Bullet : GameObject {
     
     private func setBulletAttributes(){
         self.setScale(0.5)
-        self.physicsBody = self.getPhysicsBody()
+        self.physicsBody = self.setPhysicsBody()
     }
     
     private func defineDirection(orientation: Int)->CGVector{
@@ -88,22 +90,25 @@ class Bullet : GameObject {
         }
     }
     
-    private func getPhysicsBody() -> SKPhysicsBody{
+    private func setPhysicsBody() -> SKPhysicsBody{
         let texture: SKTexture! = generateTextureWithImage(self.imageName!)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
-        physicsBody.mass = 1.0
+        physicsBody.mass = 0.0
         physicsBody.categoryBitMask = ColliderType.Bullet.rawValue
         
+        debugPrint("ENTREI NO METODO")
+        
         if(ownerCharacter == "agent"){
-            physicsBody.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+            physicsBody.contactTestBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
         }else{
-            physicsBody.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Agent.rawValue
+            physicsBody.contactTestBitMask = ColliderType.Ground.rawValue | ColliderType.Agent.rawValue
         }
         
-        physicsBody.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
+        physicsBody.collisionBitMask = ColliderType.None.rawValue
+        
         
         
         

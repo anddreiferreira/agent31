@@ -189,7 +189,7 @@ extension Character{
             self.attackingAnimationOnce()
             self.gun.shootAnimation()
             
-            let bullet = Bullet(ownerGun: self.gun, orientation: self.orientation!, zPosition: 3)
+            let bullet = Bullet(ownerGun: self.gun, orientation: self.orientation!, zPosition: 5)
             self.parent?.addChild(bullet)
             
             bullet.fire()
