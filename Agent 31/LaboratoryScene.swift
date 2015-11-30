@@ -10,7 +10,7 @@
 import SpriteKit
 
 @available(iOS 9.0, *)
-class LaboratoryScene: SKScene {
+class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
     
     var clock: NSTimer?
     var timeElapsed: Float = 0.0
@@ -310,5 +310,12 @@ extension LaboratoryScene {
     func setLaboratoryPhysics() {
         // Gravity
         self.physicsWorld.gravity = CGVectorMake(0, -6.0)
+        
+        // Contact
+        self.physicsWorld.contactDelegate = self
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        self.laboratoryGameLayer.didBeginContact(contact)
     }
 }

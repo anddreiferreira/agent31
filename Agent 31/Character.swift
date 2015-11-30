@@ -11,6 +11,7 @@ import SpriteKit
 
 class Character: GameObject {
     
+    var jumpsRemaining: Int = 2
     var gun: Gun?
     var torso: SKSpriteNode!
     var orientation: Int?
@@ -125,6 +126,8 @@ class Character: GameObject {
                 self.gotHit(projectile.damage)
                 projectile.hittedSomething()
             }
+        }else if(contactedNode.name == "Ground"){
+            jumpsRemaining = 2
         }
         
     }
@@ -181,9 +184,25 @@ extension Character{
     }
     
     func jump(){
-        jumpAnimationOnce()
-        self.gun?.jumpAnimation()
-        self.physicsBody?.applyImpulse(CGVectorMake(0, 20*1000))
+        if(jumpsRemaining > 0){
+            jumpAnimationOnce()
+            self.gun?.jumpAnimation()
+            if(jumpsRemaining == 2){
+                self.physicsBody?.applyImpulse(vectorFirstJump())
+            }else{
+                self.physicsBody?.applyImpulse(vectorSecondJump())
+            }
+            
+            jumpsRemaining--
+        }
+    }
+    
+    func vectorFirstJump() -> CGVector{
+        return CGVectorMake(0, 25*1000)
+    }
+    
+    func vectorSecondJump() ->CGVector{
+        return CGVectorMake(0, 15*1000)
     }
     
     func shoot(){

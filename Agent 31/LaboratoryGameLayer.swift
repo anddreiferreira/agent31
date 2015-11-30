@@ -64,7 +64,9 @@ class LaboratoryGameLayer: SKNode {
     
     func putGround(){
         let ground = GameObject(imageName: "testCityGround", position: CGPointMake(middleOfTheScreenPoint.x, -10), zPosition: 1)
+        ground.name = "Ground"
         ground.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
+        ground.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue
         ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
         ground.alpha = 0.0
@@ -91,6 +93,18 @@ class LaboratoryGameLayer: SKNode {
         self.verifyObjectBalloon(self.trainingCenter!)
         self.verifyObjectBalloon(self.gunDevelopmentCenter!)
         self.verifyObjectBalloon(self.duelMode!)
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        let node1: SKNode = contact.bodyA.node!
+        let node2: SKNode = contact.bodyB.node!
+        
+        if(node1.isKindOfClass(Agent)){
+            agent31?.didBeginContact(node2)
+        }else if(node2.isKindOfClass(Agent)){
+            agent31?.didBeginContact(node1)
+        }
+        
     }
     
 }

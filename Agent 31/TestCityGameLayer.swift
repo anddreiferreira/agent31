@@ -38,8 +38,9 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putGround(){
         let ground = GameObject(imageName: "testCityGround", position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
-//        ground.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
-//        ground.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue
+        ground.name = "Ground"
+        ground.physicsBody?.categoryBitMask = ColliderType.Ground.rawValue
+        ground.physicsBody?.contactTestBitMask = ColliderType.Agent.rawValue | ColliderType.Enemy.rawValue
         ground.physicsBody?.dynamic = false
         ground.physicsBody?.affectedByGravity = false
         self.addChild(ground)
