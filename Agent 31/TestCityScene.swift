@@ -14,6 +14,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var gameOver: Bool = false
     
     var clock: NSTimer?
+    var cityTimer: NSTimer?
+    var secondsToBackToLab: Int = 10
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
@@ -42,8 +44,18 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     func fireClock(){
         self.clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
         clock!.fire()
+        
+        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
+        cityTimer?.fire()
     }
     
+    func reduceTime() {
+        self.secondsToBackToLab = self.secondsToBackToLab - 1
+        
+        if( self.secondsToBackToLab < 0 ) {
+            goToLab()
+        }
+    }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -70,6 +82,9 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         nextScene.scaleMode = SKSceneScaleMode.AspectFill
         self.view?.presentScene(nextScene, transition: transition)
         self.cleanScene()
+        
+        let ckhelper = CloudKitHelper()
+        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance.gold, metal: ResourcesData.sharedInstance.metal, diamond: ResourcesData.sharedInstance.diamond)
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -99,6 +114,7 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
+        self.cityTimer?.invalidate()
     }
 }
 
