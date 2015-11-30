@@ -87,11 +87,10 @@ class GeneralEnemy: Character {
     }
     
     override func update(currentTime: NSTimeInterval) {
-//        let intTime = Int(currentTime)
         
         enemyBehaviourGuarding()
 
-        let enemyDetectDistance : CGFloat = 250
+        let enemyDetectDistance : CGFloat = 330
         if(self.distanceToAgent < enemyDetectDistance) {
             enemyBehaviourAttack()
         }
@@ -115,13 +114,28 @@ class GeneralEnemy: Character {
         
         turnInAgentDirection()
         
+        shootIfHasBullet()
+        
+        if( self.distanceToAgent > 100 ) {
+            if(self.distanceToAgent < 200){
+                
+                if(rand()%2+1 == 1){
+                    shootIfHasBullet()
+                }else{
+                    self.run()
+                }
+                
+            }else{
+               self.run(self.enemyLevel)
+            }
+            
+        }
+    }
+    
+    func shootIfHasBullet(){
         if hasBullet == true {
             shoot()
             self.hasBullet = false
-        }
-        
-        if( self.distanceToAgent > 100 ) {
-            self.run(self.enemyLevel)
         }
     }
     
