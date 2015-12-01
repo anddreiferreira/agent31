@@ -40,49 +40,41 @@ class TrainingCenterLayer: SKNode
     func loadFirstPlan() {
         
         background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 1000, name: "backgroundTraining")
+        self.addChild(background!)
         
     }
     
     func loadSecondPlan() {
         
         buttonBack = createSpriteNode("backBtn", position: CGPoint(x: -middleOfTheScreenPoint.x + 20, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "backBtn")
+        self.addChild(buttonBack!)
         
         trainingTitle = createSpriteNode("trainingTitle", position: CGPoint(x: -middleOfTheScreenPoint.x + 100, y: -middleOfTheScreenPoint.y + 370), scale: 0.6, zPosition: 2000, name: "trainingTitle")
+        self.addChild(trainingTitle!)
         
         tableTraining = createSpriteNode("tableTrain", position: CGPoint(x: -middleOfTheScreenPoint.x + 20.0, y: -middleOfTheScreenPoint.y + 300.0), zPosition: 2000, name: "tableTrain")
+        self.addChild(tableTraining!)
         
         areaAnimation = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 370, y: -middleOfTheScreenPoint.y + 300), zPosition: 2000, name: "animationArea")
+        self.addChild(areaAnimation!)
         
     }
     
     func loadThirdPlan() {
         
-        labelSpeed = createLabelNode("Speed", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 245), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade speed")
-        
-        labelJump = createLabelNode("Jump", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 195), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade jump")
-        
-        labelShootingPower = createLabelNode("Shooting Power", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 145), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade shootingPower")
-        
-        labelShootingRange = createLabelNode("Shooting Range", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 95), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade shootingRange")
-        
-        labelBackpack = createLabelNode("Backpack", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 45), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade backpack")
-        
-    }
-    
-    func putTrainingCenterLayer() {
-        
-        // First plan
-        self.addChild(background!)
-        // Second plan
-        self.addChild(buttonBack!)
-        self.addChild(trainingTitle!)
-        self.addChild(tableTraining!)
-        self.addChild(areaAnimation!)
-        // Third plan
+        labelSpeed = createLabelNode("Speed", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 245), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade speed")
         self.addChild(labelSpeed!)
+        
+        labelJump = createLabelNode("Jump", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 195), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade jump")
         self.addChild(labelJump!)
+        
+        labelShootingPower = createLabelNode("Shooting Power", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 145), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade shootingPower")
         self.addChild(labelShootingPower!)
+        
+        labelShootingRange = createLabelNode("Shooting Range", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 95), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade shootingRange")
         self.addChild(labelShootingRange!)
+        
+        labelBackpack = createLabelNode("Backpack", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 45), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade backpack")
         self.addChild(labelBackpack!)
         
     }

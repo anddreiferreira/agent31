@@ -86,6 +86,12 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
                 upgradeLayer.removeFromParent()
             }else{
                 // Continue
+            } else if node.name!.hasPrefix("upgrade") {
+                loadUpgradeLayer(node.name!)
+            } else if node.name == "cancelUpgradeButton" {
+                upgradeLayer.removeFromParent()
+            } else if node.name == "btnUpgrade" {
+                
             }
         }
     }
@@ -94,24 +100,23 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
         
         switch attributeName {
         case let x where x.hasSuffix("speed"):
-            upgradeLayer = UpgradeLayer(attributeName: "Speed")
+            upgradeLayer = UpgradeLayer(attributeName: "Speed", resourceType: "metal")
         case let x where x.hasSuffix("jump"):
-            upgradeLayer = UpgradeLayer(attributeName: "Jump")
+            upgradeLayer = UpgradeLayer(attributeName: "Jump", resourceType: "metal")
         case let x where x.hasSuffix("shootingPower"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", resourceType: "metal")
         case let x where x.hasSuffix("shootingRange"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", resourceType: "metal")
         case let x where x.hasSuffix("backPack"):
-            upgradeLayer = UpgradeLayer(attributeName: "Backpack")
+            upgradeLayer = UpgradeLayer(attributeName: "Backpack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 1")
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 1", resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 2")
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 2", resourceType: "ouro")
         default:
             debugPrint("unknown attribute")
         }
         
-        upgradeLayer.putUpgradeLayer()
         cam.addChild(upgradeLayer)
         
     }
@@ -194,7 +199,6 @@ extension LaboratoryScene {
         if(balloon.parent?.name == "placeHolderMesaArmas") {
             debugPrint("Gun Dev Center Layer")
             gunDevelopmentCenterLayer = GunDevelopmentCenterLayer()
-            gunDevelopmentCenterLayer.putGunDevCenterLayer()
             cam.addChild(gunDevelopmentCenterLayer)
         } else if (balloon.parent?.name == "placeHolderMesa") {
             debugPrint("Desk Layer")
@@ -205,7 +209,6 @@ extension LaboratoryScene {
         } else if(balloon.parent?.name == "placeHolderTreinamento") {
             debugPrint("Training Center Layer")
             trainingCenterLayer = TrainingCenterLayer()
-            trainingCenterLayer.putTrainingCenterLayer()
             cam.addChild(trainingCenterLayer)
         } else if(balloon.parent?.name == "placeHolderDuelMode") {
             debugPrint("Duel Mode Layer")
