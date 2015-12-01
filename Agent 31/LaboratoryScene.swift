@@ -82,12 +82,6 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
                 removeUpgradeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
-            } else if node.name == "cancelUpgradeButton" {
-                upgradeLayer.removeFromParent()
-            }else{
-                // Continue
-            } else if node.name!.hasPrefix("upgrade") {
-
             } else if node.name!.hasPrefix("lblUpgrade") {
                 loadUpgradeLayer(node.name!)
             } else if node.name == "btnCancelUpgrade" {
