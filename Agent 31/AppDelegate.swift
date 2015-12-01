@@ -15,11 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let ckhelper = CloudKitHelper()
-    var characterDataOn = false
-    var resourcesDataOn = false
-    var hasException = false
+    var characterDataOn: Bool = false
+    var resourcesDataOn: Bool = false
+    var hasException: Bool = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
+//    var exceptionScene = ExceptionScene()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
@@ -33,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionCharacterData", name: "characterDataException", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionResourcesData", name: "resourcesDataException", object: nil)
+        
+        hasException = false
+        characterDataOn = false
+        resourcesDataOn = false
         
         // Check for internet connection availability
         let status = Reach().connectionStatus()

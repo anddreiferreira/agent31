@@ -10,7 +10,7 @@
 import SpriteKit
 
 @available(iOS 9.0, *)
-class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
+class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     var clock: NSTimer?
     var timeElapsed: Float = 0.0
@@ -36,6 +36,10 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
     override func didMoveToView(view: SKView) {
         print("Laboratory scene entered")
         
+        if CloudKitExceptions.sharedInstance.internetException {
+            alert()
+        }
+        
         // Put all necessary layers
         self.putBackgroundLayer()
         self.putHudLayer()
@@ -47,7 +51,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
         
         // Physics
         self.setLaboratoryPhysics()
-        
+
     }
     
     func fireLaboratoryClock() {
@@ -177,8 +181,14 @@ extension LaboratoryScene {
     }
     
     func putHudLayer() {
-        self.laboratoryHudLayer = LaboratoryHudLayer()
-        cam.addChild(laboratoryHudLayer)
+        if self.laboratoryHudLayer == nil {
+            self.laboratoryHudLayer = LaboratoryHudLayer()
+            cam.addChild(laboratoryHudLayer)
+        } else {
+            self.laboratoryHudLayer.removeFromParent()
+            self.laboratoryHudLayer = LaboratoryHudLayer()
+            cam.addChild(self.laboratoryHudLayer)
+        }
     }
     
     func putGameLayer() {
@@ -318,4 +328,39 @@ extension LaboratoryScene {
     func didBeginContact(contact: SKPhysicsContact) {
         self.laboratoryGameLayer.didBeginContact(contact)
     }
+}
+
+// MARK: Exceptions
+@available(iOS 9.0, *)
+extension LaboratoryScene {
+    func alert() {
+        debugPrint("MOSTRA ALERT PARA O USUARIO")
+        
+        let alertView: UIAlertView
+        
+        if( CloudKitExceptions.sharedInstance.internetException == true ) {
+            alertView = UIAlertView(title: "Internet Error", message: "You're not connected to the internet", delegate: self, cancelButtonTitle: "OK" )
+        } else { // Internet exception
+            alertView = UIAlertView(title: "iCloud Error", message: "Cannot connect to iCloud", delegate: self, cancelButtonTitle: "OK")
+        }
+        
+        alertView.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        // If the game cannot connect to the internet or fetch data from cloudkit, it will close.
+        if buttonIndex == 0 {
+            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            appDel.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
+            if appDel.hasException == true {
+                alert()
+            } else {
+                CloudKitExceptions.sharedInstance.internetException = false
+                putHudLayer()
+            }
+        }
+    }
+
 }
