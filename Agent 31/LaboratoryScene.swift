@@ -136,11 +136,14 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
     func doUpgradeWithAttribute(attributeName: String) {
         
         if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
-            debugPrint("init upgrade guns")
-            //GunData.initTrain
+            //GunData.sharedInstance.initUpgrade()
         } else {
-            debugPrint("init upgrade attr")
-            //CharacterData.initTraining()
+            //let a: String = attributeName
+            //let b = String(suffix(a.utf16, a.utf16.count - 1))
+            //let a: String = attributeName.characters.dropLast(12)
+            //debugPrint(a)
+            //debugPrint(attributeName.characters.dropLast(12))
+            //CharacterData.sharedInstance.initTraining("")
         }
     }
     
