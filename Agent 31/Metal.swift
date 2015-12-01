@@ -31,8 +31,8 @@ class Metal: GameObject {
         let physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width/2, self.size.height/2))
         
         physicsBody.categoryBitMask = ColliderType.Metal.rawValue
-        physicsBody.collisionBitMask = ColliderType.None.rawValue
-        physicsBody.contactTestBitMask = ColliderType.None.rawValue
+        physicsBody.contactTestBitMask = ColliderType.Agent.rawValue
+        physicsBody.collisionBitMask = ColliderType.Ground.rawValue
         
         physicsBody.allowsRotation = false
         physicsBody.mass = 0.1
