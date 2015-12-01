@@ -35,7 +35,7 @@ class LaboratoryHudLayer: SKNode {
         
         // header
         let headerPosition = CGPointMake(-middleOfTheScreenPoint.x + 20, -middleOfTheScreenPoint.y + 366)
-        let laboratoryHeaderSprite = createSpriteNode("headerBarLab", position: headerPosition, zPosition: 1, name: "headerBarLab")
+        let laboratoryHeaderSprite = createSpriteNode("headerBarLab", position: headerPosition, zPosition: 3, name: "headerBarLab")
         laboratoryHeaderSprite.alpha = 0.3
         
         self.addChild(laboratoryHeaderSprite)
@@ -44,10 +44,10 @@ class LaboratoryHudLayer: SKNode {
     
     func loadGolds(){
         // require from singleton golds avaiable
-        let goldSprite = createSpriteNode("Coin", position: CGPointMake(-middleOfTheScreenPoint.x + 350, -middleOfTheScreenPoint.y + 335), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 2, name: "Coin")
+        let goldSprite = createSpriteNode("Coin", position: CGPointMake(-middleOfTheScreenPoint.x + 350, -middleOfTheScreenPoint.y + 335), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 4, name: "Coin")
         
         let goldsAvaiable = ResourcesData.sharedInstance.gold
-        let laboratoryGoldLabel = createLabelNode("\(goldsAvaiable)", zPosition: 2,position: CGPointMake(-middleOfTheScreenPoint.x + 380,-middleOfTheScreenPoint.y + 338),alignmentMode:SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        let laboratoryGoldLabel = createLabelNode("\(goldsAvaiable)", zPosition: 4,position: CGPointMake(-middleOfTheScreenPoint.x + 380,-middleOfTheScreenPoint.y + 338),alignmentMode:SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         self.addChild(goldSprite)
         self.addChild(laboratoryGoldLabel)
@@ -55,11 +55,11 @@ class LaboratoryHudLayer: SKNode {
     
     func loadMetals(){
         
-        let metalSprite = createSpriteNode("Metal", position: CGPointMake(-middleOfTheScreenPoint.x + 500, -middleOfTheScreenPoint.y + 332), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 2, name: "Metal")
+        let metalSprite = createSpriteNode("Metal", position: CGPointMake(-middleOfTheScreenPoint.x + 500, -middleOfTheScreenPoint.y + 332), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 4, name: "Metal")
         
         // require from singleton metals avaiable
         let metalsAvaiable = ResourcesData.sharedInstance.metal
-        let laboratoryMetalLabel = createLabelNode("\(metalsAvaiable)", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 550, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        let laboratoryMetalLabel = createLabelNode("\(metalsAvaiable)", zPosition: 4, position: CGPointMake(-middleOfTheScreenPoint.x + 550, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         self.addChild(metalSprite)
         self.addChild(laboratoryMetalLabel)
@@ -67,7 +67,7 @@ class LaboratoryHudLayer: SKNode {
     
     func loadDiamonds(){
         // require from singleton diamonds avaiable
-        let laboratoryDiamondLabel = createLabelNode("32", zPosition: 2, position: CGPointMake(-middleOfTheScreenPoint.x + 600, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        let laboratoryDiamondLabel = createLabelNode("32", zPosition: 4, position: CGPointMake(-middleOfTheScreenPoint.x + 600, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         self.addChild(laboratoryDiamondLabel)
     }
     
@@ -78,7 +78,7 @@ class LaboratoryHudLayer: SKNode {
         let livesNumber : Int = 5;
         let livesPosition = CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359)
         
-        let laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 2, name: "laboratoryLifeBar")
+        let laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 4, name: "laboratoryLifeBar")
         
         self.addChild(laboratoryLifeBar)
         
@@ -93,7 +93,7 @@ class LaboratoryHudLayer: SKNode {
         if number == 5 {
             
             let messagePosition = CGPointMake(-middleOfTheScreenPoint.x + 95, -middleOfTheScreenPoint.y + 323)
-            let messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 2, name: "messageRaminingLife")
+            let messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 4, name: "messageRaminingLife")
             self.addChild(messageRemainingLife)
         }
 //        else{

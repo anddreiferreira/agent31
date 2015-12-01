@@ -10,8 +10,8 @@ import SpriteKit
 
 class GeneralEnemy: Character {
     
-    private let initialLegs: String = "pernasParado1"
-    private let initialTorso: String = "troncoParado1"
+    private let initialLegs: String = "agentStoppedLegs1"
+    private let initialTorso: String = "agentStoppedTorso2"
     
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
@@ -19,15 +19,7 @@ class GeneralEnemy: Character {
     var hasBulletFrequency: Double = 1.0
     var enemyLevel: Int = 1
     
-//    override init(legsImage: String, torsoImage: String, position: CGPoint, zPosition: CGFloat) {
-//        super.init(legsImage: legsImage, torsoImage: torsoImage, position: position, zPosition: zPosition)
-//        
-//        // While using test sprites
-//        self.color = SKColor.redColor()
-//        
-//        setGeneralAttributesForGeneralEnemy()
-//    }
-    
+
     init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
@@ -50,6 +42,7 @@ class GeneralEnemy: Character {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func setHasBulletTrue() {
         self.hasBullet = true
     }
@@ -61,8 +54,8 @@ class GeneralEnemy: Character {
     
     private func setGeneralEnemyPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Agent.rawValue | ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
-        self.physicsBody?.contactTestBitMask = (self.physicsBody?.collisionBitMask)!
+        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue | ColliderType.Ground.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.Ground.rawValue
     }
     
     private func colorizeEnemy(color: SKColor){
@@ -74,32 +67,30 @@ class GeneralEnemy: Character {
     }
     
     override func initializeAnimations(){
-        self.stoppedTorso = actionWithAnimationName("troncoParado", numberOfImages: 4, timePerTexture: 0.25)
-        self.stoppedLegs = actionWithAnimationName("pernasParado", numberOfImages: 1, timePerTexture: 0.3)
+        self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
+        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.3)
         
-        self.jumpingLegs = actionWithAnimationName("pernasPulando", numberOfImages: 8, timePerTexture: 0.1)
-        self.jumpingTorso = actionWithAnimationName("troncoPulando", numberOfImages: 8, timePerTexture: 0.1)
+        self.jumpingLegs = actionWithAnimationName("agentJumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
+        self.jumpingTorso = actionWithAnimationName("agentJumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.walkingTorso = actionWithAnimationName("troncoAndando", numberOfImages: 7, timePerTexture: 0.15)
-        self.walkingLegs = actionWithAnimationName("pernasAndando", numberOfImages: 7, timePerTexture: 0.15)
+        self.walkingTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.15)
+        self.walkingLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.15)
         
-        self.runningTorso = actionWithAnimationName("troncoAndando", numberOfImages: 7, timePerTexture: 0.1)
-        self.runningLegs = actionWithAnimationName("pernasAndando", numberOfImages: 7, timePerTexture: 0.1)
+        self.runningTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.runningLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
         self.lookingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 1, timePerTexture: 0.2)
         self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
-        self.attackingTorso = actionWithAnimationName("troncoAtacando", numberOfImages: 3, timePerTexture: 0.08)
+        self.attackingTorso = actionWithAnimationName("agentShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
         
-        self.gotHitLegs = actionWithAnimationName("pernasGetHit", numberOfImages: 1, timePerTexture: 0.1)
-        self.gotHitTorso = actionWithAnimationName("troncoGetHit", numberOfImages: 1, timePerTexture: 0.1)
+        self.gotHitTorso = actionWithAnimationName("agentGotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
     }
     
     override func update(currentTime: NSTimeInterval) {
-//        let intTime = Int(currentTime)
         
         enemyBehaviourGuarding()
 
-        let enemyDetectDistance : CGFloat = 250
+        let enemyDetectDistance : CGFloat = 330
         if(self.distanceToAgent < enemyDetectDistance) {
             enemyBehaviourAttack()
         }
@@ -123,13 +114,28 @@ class GeneralEnemy: Character {
         
         turnInAgentDirection()
         
+        shootIfHasBullet()
+        
+        if( self.distanceToAgent > 100 ) {
+            if(self.distanceToAgent < 200){
+                
+                if(rand()%2+1 == 1){
+                    shootIfHasBullet()
+                }else{
+                    self.run()
+                }
+                
+            }else{
+               self.run(self.enemyLevel)
+            }
+            
+        }
+    }
+    
+    func shootIfHasBullet(){
         if hasBullet == true {
             shoot()
             self.hasBullet = false
-        }
-        
-        if( self.distanceToAgent > 100 ) {
-            self.run(self.enemyLevel)
         }
     }
     
@@ -144,16 +150,17 @@ class GeneralEnemy: Character {
     }
     
     func dropResource(){
-        let decision = random() % 100 + 1
+        let decision = random() % 90 + 1
+        debugPrint("decision ==== \(decision)")
         
-        if(decision <= 50){
+        if(decision <= 40){
             // Do nothing
-        }else if(decision > 50 && decision <= 75){
-            self.addChild(Coin(position: self.position))
+        }else if(decision > 50 && decision <= 70){
+            self.parent?.addChild(Metal(position: self.position))
         }else{
-            self.addChild(Metal(position: self.position))
+            self.parent?.addChild(Coin(position: self.position))
         }
-        self.parent?.addChild(Metal(position: self.position))
+
     }
     
     override func die() {

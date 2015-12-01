@@ -16,8 +16,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var clock: NSTimer?
     
     // Delete this when the city and the enemy`s generator are finished
-    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
-    var secondsToBackToLab: Int = 10  // The time to play in the city
+//    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
+//    var secondsToBackToLab: Int = 10  // The time to play in the city
     
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
@@ -29,10 +29,11 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var jumpButton : SKSpriteNode?
     var shootButton : SKSpriteNode?
     
+    var gotHitHud = createSpriteNode("gotHitScreen", position: CGPointMake(0, 0), anchorPoint: CGPointMake(0.5, 0.5), scale: 1.0, zPosition: 1000, name: "gotHitHud")
+    
     override func didMoveToView(view: SKView) {
         
         debugPrint("ENTERED IN TEST CITY")
-        
         
         self.putLayers()
         self.setPhysicsWorld()
@@ -40,6 +41,15 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         self.fireClock()
         
         self.configureCamera()
+        
+        // criacao de informacoes randomicas do novo predio
+        let predioInfo = BuildingInformation()
+        
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares,pilastras: predioInfo.qtdPilastras, posicalIncialX: predioInfo.posicaoInicialX)
+        
+//        predioInfo.posicaoInicialX
+        self.addChild(predioNovo)
+        predioNovo.setScale(1.6)
         
     }
     
@@ -50,18 +60,18 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
         // Delete this when the city and the enemy`s generator are finished
         // Timer to decrease the time to stay in the city(secondsToBackToLab variable)
-        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
-        cityTimer?.fire()
+//        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
+//        cityTimer?.fire()
     }
     
     // Delete this when the city and the enemy`s generator are finished
-    func reduceTime() {
-        self.secondsToBackToLab = self.secondsToBackToLab - 1
-        
-        if( self.secondsToBackToLab < 0 ) {
-            goToLab()
-        }
-    }
+//    func reduceTime() {
+//        self.secondsToBackToLab = self.secondsToBackToLab - 1
+//        
+//        if( self.secondsToBackToLab < 0 ) {
+//            goToLab()
+//        }
+//    }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -121,7 +131,7 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
-        self.cityTimer?.invalidate()
+//        self.cityTimer?.invalidate()
     }
 }
 
@@ -182,12 +192,32 @@ extension TestCityScene{
     
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 569, -middleOfTheScreenPoint.y + 169), zPosition: 3, name: "jumpButton")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 569, -middleOfTheScreenPoint.y + 169), zPosition: 100, name: "jumpButton")
         cam.addChild(jumpButton!)
         
         shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 479, -middleOfTheScreenPoint.y + 101), zPosition: 100, name: "shootButton")
         cam.addChild(shootButton!)
         
+    }
+    
+    func trembleCameraAction() -> SKAction{
+        let trembleA = SKAction.rotateByAngle(0.008, duration: 0.1)
+        let trembleA2 = SKAction.reversedAction(trembleA)
+        let trembleB = SKAction.rotateByAngle(-0.008, duration: 0.1)
+        let trembleB2 = SKAction.reversedAction(trembleB)
+        
+        let sequence = SKAction.sequence([trembleA, trembleA2(), trembleB, trembleB2()])
+        
+        return sequence
+    }
+    
+    func addGotHitHud(){
+        if(self.gotHitHud.parent == nil){
+            self.cam.addChild(gotHitHud)
+            self.runAction(SKAction.waitForDuration(0.1), completion: {
+                self.gotHitHud.removeFromParent()
+            })
+        }
     }
 }
 
@@ -210,7 +240,7 @@ extension TestCityScene{
             
             
         }
-        
+        analogStick!.zPosition = 100
         cam.addChild(analogStick!)
     }
     

@@ -10,7 +10,7 @@
 import SpriteKit
 
 @available(iOS 9.0, *)
-class LaboratoryScene: SKScene {
+class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
     
     var clock: NSTimer?
     var timeElapsed: Float = 0.0
@@ -18,7 +18,7 @@ class LaboratoryScene: SKScene {
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
-    var shootButton: SKSpriteNode?
+//    var shootButton: SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -63,6 +63,9 @@ class LaboratoryScene: SKScene {
         for touch in touches {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
+            
+            debugPrint("NODE TOUCHED \(node) with name = \(node.name)")
+            
             if node.name == "jumpButtonLab" {
                 buttonTapped(node)
                 self.laboratoryGameLayer.agent31?.jump()
@@ -79,11 +82,10 @@ class LaboratoryScene: SKScene {
                 removeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
-            }
-            else if node.name!.hasPrefix("upgrade") {
-                loadUpgradeLayer(node.name!)
             } else if node.name == "cancelUpgradeButton" {
                 upgradeLayer.removeFromParent()
+            }else{
+                // Continue
             }
         }
     }
@@ -248,9 +250,9 @@ extension LaboratoryScene{
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
         cam.addChild(goToCity!)
         
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
-        
-        cam.addChild(shootButton!)
+//        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+//        
+//        cam.addChild(shootButton!)
     }
     
 }
@@ -263,7 +265,7 @@ extension LaboratoryScene{
         analogStick.removeFromParent()
         jumpButton!.removeFromParent()
         goToCity!.removeFromParent()
-        shootButton!.removeFromParent()
+//        shootButton!.removeFromParent()
     }
     
     private func configureAnalogStick(){
@@ -308,5 +310,12 @@ extension LaboratoryScene {
     func setLaboratoryPhysics() {
         // Gravity
         self.physicsWorld.gravity = CGVectorMake(0, -6.0)
+        
+        // Contact
+        self.physicsWorld.contactDelegate = self
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        self.laboratoryGameLayer.didBeginContact(contact)
     }
 }
