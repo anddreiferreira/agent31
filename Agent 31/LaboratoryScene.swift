@@ -137,8 +137,10 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
         
         if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
             debugPrint("init upgrade guns")
+            //GunData.initTrain
         } else {
             debugPrint("init upgrade attr")
+            //CharacterData.initTraining()
         }
     }
     
