@@ -61,10 +61,10 @@ class GunDevelopmentCenterLayer: SKNode
     
     func loadThirdPlan() {
         
-        labelGun1 = createLabelNode("Gun 1", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 245), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade gun1")
+        labelGun1 = createLabelNode("Gun 1", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 245), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblUpgrade gun1")
         self.addChild(labelGun1!)
         
-        labelGun2 = createLabelNode("Gun 2", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 195), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade gun2")
+        labelGun2 = createLabelNode("Gun 2", position: CGPoint(x: -middleOfTheScreenPoint.x + 70, y: -middleOfTheScreenPoint.y + 195), fontSize: 30, zPosition: 3000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblUpgrade gun1")
         self.addChild(labelGun2!)
         
     }

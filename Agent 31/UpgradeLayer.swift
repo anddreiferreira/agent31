@@ -22,9 +22,14 @@ class UpgradeLayer: SKNode
     var upgradeResourceCost: SKLabelNode?
     var upgradeDuration: SKLabelNode?
     
-    init(attributeName: String, resourceType: String) {
+    var upgradeItem: String?
+    
+    init(attributeName: String, upgradeItem: String, resourceType: String) {
         
         super.init()
+        
+        self.upgradeItem = upgradeItem
+        
         loadFirstPlan()
         loadSecondPlan()
         loadAttributeName(attributeName)
@@ -48,20 +53,20 @@ class UpgradeLayer: SKNode
     
     func loadSecondPlan() {
         
-        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: zPosition4th, name: "cancelUpgradeButton")
+        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: zPosition4th, name: "btnCancelUpgrade")
         self.addChild(cancelButton!)
         
         animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: zPosition4th, name: "animationArea")
         self.addChild(animationArea!)
         
-        upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnUpgrade")
+        upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
         self.addChild(upgradeButton!)
         
     }
     
     func loadAttributeName(attributeName: String) {
         
-        upgradeName = createLabelNode(attributeName, position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 330), fontSize: 40, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute")
+        upgradeName = createLabelNode(attributeName, position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 330), fontSize: 40, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblDoUpgrade")
         self.addChild(upgradeName!)
         
     }

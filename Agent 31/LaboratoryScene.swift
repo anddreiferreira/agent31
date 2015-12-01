@@ -79,7 +79,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
             } else if node.name == "balloon" {
                 self.showLabObjectLayer((node as? SKSpriteNode)!)
             } else if node.name == "backBtn" {
-                removeLayer(node.parent!)
+                removeUpgradeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
             } else if node.name == "cancelUpgradeButton" {
@@ -87,11 +87,13 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
             }else{
                 // Continue
             } else if node.name!.hasPrefix("upgrade") {
+
+            } else if node.name!.hasPrefix("lblUpgrade") {
                 loadUpgradeLayer(node.name!)
-            } else if node.name == "cancelUpgradeButton" {
+            } else if node.name == "btnCancelUpgrade" {
                 upgradeLayer.removeFromParent()
-            } else if node.name == "btnUpgrade" {
-                
+            } else if node.name!.hasPrefix("btnDoUpgrade") {
+                doUpgradeWithAttribute(node.name!)
             }
         }
     }
@@ -100,19 +102,19 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
         
         switch attributeName {
         case let x where x.hasSuffix("speed"):
-            upgradeLayer = UpgradeLayer(attributeName: "Speed", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Speed", upgradeItem: "Speed", resourceType: "metal")
         case let x where x.hasSuffix("jump"):
-            upgradeLayer = UpgradeLayer(attributeName: "Jump", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Jump", upgradeItem: "Jump", resourceType: "metal")
         case let x where x.hasSuffix("shootingPower"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "metal")
         case let x where x.hasSuffix("shootingRange"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "metal")
         case let x where x.hasSuffix("backPack"):
-            upgradeLayer = UpgradeLayer(attributeName: "Backpack", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 1", resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 2", resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
         default:
             debugPrint("unknown attribute")
         }
@@ -121,13 +123,22 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-    func removeLayer(node: SKNode) {
+    func removeUpgradeLayer(node: SKNode) {
         if node.isKindOfClass(TrainingCenterLayer) {
             debugPrint("TrainingCenter Layer")
             trainingCenterLayer.removeFromParent()
         } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
             debugPrint("GunDevCenter Layer")
             gunDevelopmentCenterLayer.removeFromParent()
+        }
+    }
+    
+    func doUpgradeWithAttribute(attributeName: String) {
+        
+        if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
+            debugPrint("init upgrade guns")
+        } else {
+            debugPrint("init upgrade attr")
         }
     }
     
