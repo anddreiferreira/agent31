@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ckhelper = CloudKitHelper()
     var characterDataOn = false
     var resourcesDataOn = false
+    var hasException = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
 
@@ -52,8 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ckhelper.fetchResourcesProperties(resources)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionCharacterData", name: "characterDataException", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionResourcesData", name: "resourcesDataException", object: nil)
         while( self.characterDataOn == false || self.resourcesDataOn == false ) {
 //             print("Wait") // -> vai ficar na tela de loading enquanto nao carregar os dados do cloudkit
+            if( self.hasException == true ) {
+                break
+            }
         }
 //        self.character.initTraining("BackPack")
         debugPrint( "Qtd de diamantes = \(ResourcesData.sharedInstance.metal)" )
@@ -112,4 +118,15 @@ extension AppDelegate {
         
         self.resourcesDataOn = true
     }
+    
+    func exceptionCharacterData() {
+        self.hasException = true
+        CloudKitExceptions.sharedInstance.characterDataException = true
+    }
+    
+    func exceptionResourcesData() {
+        self.hasException = true
+        CloudKitExceptions.sharedInstance.resourcesDataException = true
+    }
+
 }

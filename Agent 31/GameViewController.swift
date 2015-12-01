@@ -32,6 +32,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
   
+        if (CloudKitExceptions.sharedInstance.characterDataException || CloudKitExceptions.sharedInstance.resourcesDataException){
+            debugPrint("MOSTRA ALERT PARA O USUARIO")
+            // Fecha o app quando o usuario confirmar o alert
+            exit(0)
+        }
         // Testando o cloudkit
         
 //        let ckhelper = CloudKitHelper()
