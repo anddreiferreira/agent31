@@ -54,7 +54,7 @@ class Gun : SKSpriteNode {
 // MARK: Animations
 extension Gun{
     func initializeAnimations(){
-        self.walking = actionWithAnimationName("\(gunName)Walking", numberOfImages: 6, timePerTexture: 0.15)
+        self.walking = actionWithAnimationName("\(gunName)Walking", numberOfImages: 6, timePerTexture: 0.1)
         self.attacking = actionWithAnimationName("\(gunName)Shooting", numberOfImages: 3, timePerTexture: 0.08)
         self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.15)
         self.jumping = actionWithAnimationName("\(gunName)Jumping", numberOfImages: 6, timePerTexture: 0.1)
