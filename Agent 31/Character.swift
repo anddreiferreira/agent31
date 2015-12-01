@@ -59,7 +59,7 @@ class Character: GameObject {
         let torsoTexture: SKTexture = generateTextureWithImage(image)
         self.torso = SKSpriteNode(texture: torsoTexture)
         self.torso?.zPosition = 1
-        self.torso?.position = CGPointMake(0.0, -6.4)
+        self.torso?.position = CGPointMake(0.0, -6.3)
         
         self.addChild(torso!)
     }

@@ -58,8 +58,8 @@ class Agent: Character {
         self.runningTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
         self.runningLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.lookingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 1, timePerTexture: 0.2)
-        self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
+        self.lookingUpTorso = actionWithAnimationName("agentShootingUpTorso", numberOfImages: 1, timePerTexture: 0.3)
+        self.attackingUpTorso = actionWithAnimationName("agentShootingUpTorso", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingTorso = actionWithAnimationName("agentShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
         
         self.gotHitTorso = actionWithAnimationName("agentGotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
