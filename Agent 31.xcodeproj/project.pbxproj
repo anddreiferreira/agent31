@@ -1205,6 +1205,7 @@
 			isa = PBXGroup;
 			children = (
 				6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */,
+				6B53A7011BDA9FCD002E7808 /* Ground.swift */,
 				6B53A6F31BDA9FCD002E7808 /* Character.swift */,
 				09C61A611C039AB9002B1309 /* Resources */,
 				09A6D7C41BE15285007A77EC /* Weapon */,
@@ -1285,7 +1286,6 @@
 		6B2783481BD6ACFA009628D8 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				6B53A7011BDA9FCD002E7808 /* Ground.swift */,
 				6B53A6F21BDA9FCD002E7808 /* Buildings.swift */,
 				6B53A7091BDA9FCD002E7808 /* Obstacles.swift */,
 			);
