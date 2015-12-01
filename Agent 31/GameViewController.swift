@@ -61,14 +61,6 @@ class GameViewController: UIViewController {
                 
         let skView = self.view as! SKView
        
-        // If there is an exception, then the game will not be displayed, instead it will show an exception scene
-        let exceptionLaunched = CloudKitExceptions.sharedInstance.characterDataException || CloudKitExceptions.sharedInstance.resourcesDataException || CloudKitExceptions.sharedInstance.internetException
-        if(exceptionLaunched) {
-            let scene = ExceptionScene()
-            
-            skView.presentScene(scene)
-        }
-
         if skView.scene == nil {
             let scene = LaboratoryScene(size:skView.bounds.size)
 
