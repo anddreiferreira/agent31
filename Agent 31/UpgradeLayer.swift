@@ -10,24 +10,31 @@ import SpriteKit
 
 class UpgradeLayer: SKNode
 {
-    var background: SKSpriteNode?
     
-    var attributeName: String?
+    var background: SKSpriteNode?
     var upgradeName: SKLabelNode?
     var upgradeLevel: SKLabelNode?
-    var goldAvailableIcon: SKSpriteNode?
-    var goldAvailableLabel: SKLabelNode?
+    var resourceAvailableIcon: SKSpriteNode?
+    var resourceAvailableLabel: SKLabelNode?
     var cancelButton: SKSpriteNode?
     var animationArea: SKSpriteNode?
     var upgradeButton: SKLabelNode?
-    var upgradeGoldCost: SKLabelNode?
+    var upgradeResourceCost: SKLabelNode?
     var upgradeDuration: SKLabelNode?
     
-    init(attributeName: String) {
+    var upgradeItem: String?
+    
+    init(attributeName: String, upgradeItem: String, resourceType: String) {
         
         super.init()
+        
+        self.upgradeItem = upgradeItem
+        
         loadFirstPlan()
-        loadSecondPlan(attributeName)
+        loadSecondPlan()
+        loadAttributeName(attributeName)
+        loadAttributeLevel(attributeName)
+        loadResourceType(resourceType)
         
     }
     
@@ -39,26 +46,79 @@ class UpgradeLayer: SKNode
     
     func loadFirstPlan() {
         
-        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 10000, name: "backgroundTraining")
+        background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: zPosition3rd, name: "backgroundTraining")
+        self.addChild(background!)
         
     }
     
-    func loadSecondPlan(attributeName: String) {
+    func loadSecondPlan() {
         
-        upgradeName = createLabelNode(attributeName, fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 320), fontSize: 40, zPosition: 20000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute")
+        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: zPosition4th, name: "btnCancelUpgrade")
+        self.addChild(cancelButton!)
         
-        upgradeLevel = createLabelNode("Level 5", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 275, y: -middleOfTheScreenPoint.y + 320), fontSize: 15, zPosition: 20000, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgrade attribute level")
+        animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: zPosition4th, name: "animationArea")
+        self.addChild(animationArea!)
         
-        goldAvailableIcon = createSpriteNode("coinCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: 20000, name: "goldIcon")
+        upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
+        self.addChild(upgradeButton!)
         
-        goldAvailableLabel = createLabelNode("2000", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: 20000, name: "goldAvailableLabel")
+    }
+    
+    func loadAttributeName(attributeName: String) {
         
-        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: 20000, name: "cancelUpgradeButton")
+        upgradeName = createLabelNode(attributeName, position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 330), fontSize: 40, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblDoUpgrade")
+        self.addChild(upgradeName!)
         
-        animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: 20000, name: "animationArea")
+    }
+    
+    func loadAttributeLevel(attributeName: String) {
         
-        upgradeButton = createLabelNode("TRAIN NOW", fontName: "CopperplateBlackCondensedSSi", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: 20000, name: "btnUpgrade")
+        var attributeLevel: Int
         
+        switch attributeName {
+        case "speed":
+            attributeLevel = CharacterData.sharedInstance.speed
+        case "jump":
+            attributeLevel = CharacterData.sharedInstance.jump
+        case "shootingPower":
+            attributeLevel = CharacterData.sharedInstance.shootingPower
+        case "shootingRange":
+            attributeLevel = CharacterData.sharedInstance.shootingRange
+        case "backPack":
+            attributeLevel = CharacterData.sharedInstance.backPack
+        case "gun1":
+            attributeLevel = 0
+        case "gun2":
+            attributeLevel = 0
+        default:
+            attributeLevel = 0
+            
+        }
+        
+        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgradeLevel")
+        self.addChild(upgradeLevel!)
+        
+    }
+    
+    func loadResourceType(resourceType: String) {
+        
+        if resourceType == "ouro" {
+            
+            resourceAvailableIcon = createSpriteNode("coinCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: zPosition4th, name: "goldIcon")
+            self.addChild(resourceAvailableIcon!)
+            
+            resourceAvailableLabel = createLabelNode(String(ResourcesData.sharedInstance.gold), position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: zPosition4th, name: "goldAvailableLabel")
+            self.addChild(resourceAvailableLabel!)
+            
+        } else if resourceType == "metal" {
+            
+            resourceAvailableIcon = createSpriteNode("metalCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: zPosition4th, name: "goldIcon")
+            self.addChild(resourceAvailableIcon!)
+            
+            resourceAvailableLabel = createLabelNode(String(ResourcesData.sharedInstance.metal), position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: zPosition4th, name: "goldAvailableLabel")
+            self.addChild(resourceAvailableLabel!)
+            
+        }
     }
     
     func loadAnimation() {
@@ -69,16 +129,4 @@ class UpgradeLayer: SKNode
         
     }
     
-    func putUpgradeLayer() {
-        // First plan
-        self.addChild(background!)
-        // Second plan
-        self.addChild(upgradeName!)
-        self.addChild(upgradeLevel!)
-        self.addChild(goldAvailableIcon!)
-        self.addChild(goldAvailableLabel!)
-        self.addChild(cancelButton!)
-        self.addChild(animationArea!)
-        self.addChild(upgradeButton!)
-    }
 }

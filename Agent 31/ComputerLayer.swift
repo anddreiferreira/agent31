@@ -27,17 +27,12 @@ class ComputerLayer: SKNode
     func loadFirstPlan() {
         
         background = createSpriteNode("bgBlur", position: CGPointZero, anchorPoint: CGPointMake(0.5, 0.5), zPosition: 1000, name: "backgroundTraining")
+        self.addChild(background!)
         
     }
     
     func loadSecondPlan() {
         
-    }
-    
-    func putComputerLayer() {
-        
-        self.addChild(background!)
-    
     }
     
 }

@@ -21,6 +21,11 @@ let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
 let yPositionFloor: CGFloat = 93.6249923706055
 
+let zPosition1st: CGFloat = 1000
+let zPosition2nd: CGFloat = 2000
+let zPosition3rd: CGFloat = 3000
+let zPosition4th: CGFloat = 4000
+
 func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
     let spriteTexture = generateTextureWithImage(imageName)
@@ -146,6 +151,20 @@ func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, item
     UIApplication.sharedApplication().scheduleLocalNotification(notification)
 }
 
-func distanceBetweenPoints( first: CGPoint, second: CGPoint ) -> CGFloat {
+func distanceBetweenPoints(first: CGPoint,second: CGPoint ) -> CGFloat {
     return CGFloat(hypotf(Float(second.x - first.x), Float(second.y - first.y)))
+}
+
+func isAbove(point1: CGPoint, point2: CGPoint) -> Bool{
+    var answer = false
+    
+    let yDifference = point1.y - point2.y
+    
+    if(yDifference > 0){
+        answer = true
+    }else{
+        answer = false
+    }
+    
+    return answer
 }

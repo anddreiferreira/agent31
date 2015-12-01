@@ -32,10 +32,9 @@ class Coin: GameObject {
     override func generatePhysicsBody() -> SKPhysicsBody {
         let physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/4)
 
-        debugPrint("Passei aqui")
         physicsBody.categoryBitMask = ColliderType.Coin.rawValue
-        physicsBody.collisionBitMask = ColliderType.None.rawValue
-        physicsBody.contactTestBitMask = ColliderType.None.rawValue
+        physicsBody.contactTestBitMask = ColliderType.Agent.rawValue
+        physicsBody.collisionBitMask = ColliderType.Ground.rawValue
 
         physicsBody.allowsRotation = false
         physicsBody.mass = 0.1
