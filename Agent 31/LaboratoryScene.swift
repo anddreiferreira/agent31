@@ -79,13 +79,15 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
             } else if node.name == "balloon" {
                 self.showLabObjectLayer((node as? SKSpriteNode)!)
             } else if node.name == "backBtn" {
-                removeLayer(node.parent!)
+                removeUpgradeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
-            } else if node.name == "cancelUpgradeButton" {
+            } else if node.name!.hasPrefix("lblUpgrade") {
+                loadUpgradeLayer(node.name!)
+            } else if node.name == "btnCancelUpgrade" {
                 upgradeLayer.removeFromParent()
-            }else{
-                // Continue
+            } else if node.name!.hasPrefix("btnDoUpgrade") {
+                doUpgradeWithAttribute(node.name!)
             }
         }
     }
@@ -94,35 +96,48 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate{
         
         switch attributeName {
         case let x where x.hasSuffix("speed"):
-            upgradeLayer = UpgradeLayer(attributeName: "Speed")
+            upgradeLayer = UpgradeLayer(attributeName: "Speed", upgradeItem: "Speed", resourceType: "metal")
         case let x where x.hasSuffix("jump"):
-            upgradeLayer = UpgradeLayer(attributeName: "Jump")
+            upgradeLayer = UpgradeLayer(attributeName: "Jump", upgradeItem: "Jump", resourceType: "metal")
         case let x where x.hasSuffix("shootingPower"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "metal")
         case let x where x.hasSuffix("shootingRange"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "metal")
         case let x where x.hasSuffix("backPack"):
-            upgradeLayer = UpgradeLayer(attributeName: "Backpack")
+            upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 1")
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 2")
+            upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
         default:
             debugPrint("unknown attribute")
         }
         
-        upgradeLayer.putUpgradeLayer()
         cam.addChild(upgradeLayer)
         
     }
     
-    func removeLayer(node: SKNode) {
+    func removeUpgradeLayer(node: SKNode) {
         if node.isKindOfClass(TrainingCenterLayer) {
             debugPrint("TrainingCenter Layer")
             trainingCenterLayer.removeFromParent()
         } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
             debugPrint("GunDevCenter Layer")
             gunDevelopmentCenterLayer.removeFromParent()
+        }
+    }
+    
+    func doUpgradeWithAttribute(attributeName: String) {
+        
+        if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
+            //GunData.sharedInstance.initUpgrade()
+        } else {
+            //let a: String = attributeName
+            //let b = String(suffix(a.utf16, a.utf16.count - 1))
+            //let a: String = attributeName.characters.dropLast(12)
+            //debugPrint(a)
+            //debugPrint(attributeName.characters.dropLast(12))
+            //CharacterData.sharedInstance.initTraining("")
         }
     }
     
@@ -194,7 +209,6 @@ extension LaboratoryScene {
         if(balloon.parent?.name == "placeHolderMesaArmas") {
             debugPrint("Gun Dev Center Layer")
             gunDevelopmentCenterLayer = GunDevelopmentCenterLayer()
-            gunDevelopmentCenterLayer.putGunDevCenterLayer()
             cam.addChild(gunDevelopmentCenterLayer)
         } else if (balloon.parent?.name == "placeHolderMesa") {
             debugPrint("Desk Layer")
@@ -205,7 +219,6 @@ extension LaboratoryScene {
         } else if(balloon.parent?.name == "placeHolderTreinamento") {
             debugPrint("Training Center Layer")
             trainingCenterLayer = TrainingCenterLayer()
-            trainingCenterLayer.putTrainingCenterLayer()
             cam.addChild(trainingCenterLayer)
         } else if(balloon.parent?.name == "placeHolderDuelMode") {
             debugPrint("Duel Mode Layer")

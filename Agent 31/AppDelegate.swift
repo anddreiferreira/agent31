@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ckhelper = CloudKitHelper()
     var characterDataOn = false
     var resourcesDataOn = false
+    var hasException = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
     
@@ -27,11 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+        // Observers
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionCharacterData", name: "characterDataException", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionResourcesData", name: "resourcesDataException", object: nil)
+        
         // Check for internet connection availability
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
             debugPrint("Offline, do not load the game")
+            CloudKitExceptions.sharedInstance.internetException = true
+            hasException = true
         case .Online:
             debugPrint("Online, load the game")
         }
@@ -48,15 +57,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         
+        // Call assynchronous functions to fetch data from CloudKit - OBS: character and resources are passed by reference
         ckhelper.fetchCharacterProperties(character)
         ckhelper.fetchResourcesProperties(resources)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
+        
+        // Show Loading screen while fetching the data
         while( self.characterDataOn == false || self.resourcesDataOn == false ) {
-            //             print("Wait") // -> vai ficar na tela de loading enquanto nao carregar os dados do cloudkit
+
+            // Implement a Loading screen to show and call here
+            
+            // If an exception with the internet or cloudkit is launched, then breaks the while and GameViewController will call ExceptionScene
+            if( self.hasException == true ) {
+                break
+            }
         }
-        //        self.character.initTraining("BackPack")
-        debugPrint( "Qtd de diamantes = \(ResourcesData.sharedInstance.metal)" )
         
         return true
     }
@@ -112,4 +126,15 @@ extension AppDelegate {
         
         self.resourcesDataOn = true
     }
+    
+    func exceptionCharacterData() {
+        self.hasException = true
+        CloudKitExceptions.sharedInstance.characterDataException = true
+    }
+    
+    func exceptionResourcesData() {
+        self.hasException = true
+        CloudKitExceptions.sharedInstance.resourcesDataException = true
+    }
+
 }

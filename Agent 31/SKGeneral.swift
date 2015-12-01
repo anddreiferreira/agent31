@@ -21,6 +21,11 @@ let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
 let yPositionFloor: CGFloat = 93.6249923706055
 
+let zPosition1st: CGFloat = 1000
+let zPosition2nd: CGFloat = 2000
+let zPosition3rd: CGFloat = 3000
+let zPosition4th: CGFloat = 4000
+
 func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
     let spriteTexture = generateTextureWithImage(imageName)

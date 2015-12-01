@@ -65,6 +65,7 @@ extension CloudKitHelper {
             if let err = error {
                 debugPrint("Error fetching data - method fetchCharacterProperties in CloudKitHelper")
                 debugPrint(err.description)
+                NSNotificationCenter.defaultCenter().postNotificationName("characterDataException", object: nil)
             } else {
                 debugPrint( "Fetching Character Data")
                 character.jump = fetchedRecord?.objectForKey("Jump") as! Int
@@ -198,8 +199,9 @@ extension CloudKitHelper {
             fetchedRecord, error in
             
             if let err = error {
-                debugPrint("Error fetching data - method fetchCharacterProperties in CloudKitHelper")
+                debugPrint("Error fetching data - method fetchResourcesProperties in CloudKitHelper")
                 debugPrint(err.description)
+                NSNotificationCenter.defaultCenter().postNotificationName("resourcesDataException", object: nil)
             } else {
                 debugPrint( "Fetching Resources Data")
                 resources.metal = fetchedRecord?.objectForKey("Metal") as! Int
