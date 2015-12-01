@@ -64,11 +64,10 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         for touch in touches {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
-            
-            debugPrint("NODE TOUCHED \(node) with name = \(node.name)")
             
             if node.name == "jumpButtonLab" {
                 buttonTapped(node)
@@ -123,26 +122,18 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     func removeUpgradeLayer(node: SKNode) {
         if node.isKindOfClass(TrainingCenterLayer) {
-            debugPrint("TrainingCenter Layer")
             trainingCenterLayer.removeFromParent()
         } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
-            debugPrint("GunDevCenter Layer")
             gunDevelopmentCenterLayer.removeFromParent()
         }
     }
     
     func doUpgradeWithAttribute(attributeName: String) {
         
-        if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
-            //GunData.sharedInstance.initUpgrade()
-        } else {
-            //let a: String = attributeName
-            //let b = String(suffix(a.utf16, a.utf16.count - 1))
-            //let a: String = attributeName.characters.dropLast(12)
-            //debugPrint(a)
-            //debugPrint(attributeName.characters.dropLast(12))
-            //CharacterData.sharedInstance.initTraining("")
-        }
+        let startIndex = attributeName.startIndex.advancedBy(12)
+        let rangeSubstring = startIndex ..< attributeName.endIndex
+        
+        attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") ? debugPrint("GunData.initTraining") : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring))
     }
     
     private func agentGoToCity() {
