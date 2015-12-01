@@ -32,11 +32,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
   
-        if (CloudKitExceptions.sharedInstance.characterDataException || CloudKitExceptions.sharedInstance.resourcesDataException){
-            debugPrint("MOSTRA ALERT PARA O USUARIO")
-            // Fecha o app quando o usuario confirmar o alert
-            exit(0)
-        }
         // Testando o cloudkit
         
 //        let ckhelper = CloudKitHelper()
@@ -63,8 +58,17 @@ class GameViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         let skView = self.view as! SKView
+       
+        // If there is an exception, then the game will not be displayed, instead it will show an exception scene
+        let exceptionLaunched = CloudKitExceptions.sharedInstance.characterDataException || CloudKitExceptions.sharedInstance.resourcesDataException || CloudKitExceptions.sharedInstance.internetException
+        if(exceptionLaunched) {
+            let scene = ExceptionScene()
+            
+            skView.presentScene(scene)
+        }
+
         if skView.scene == nil {
             let scene = LaboratoryScene(size:skView.bounds.size)
 
