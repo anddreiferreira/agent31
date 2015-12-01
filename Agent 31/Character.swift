@@ -126,7 +126,7 @@ class Character: GameObject {
                 self.gotHit(projectile.damage)
                 projectile.hittedSomething()
             }
-        }else if(contactedNode.name == "Ground"){
+        }else if(contactedNode.isKindOfClass(Ground) && isAbove(self.position, point2: contactedNode.position)){
             jumpsRemaining = 2
         }
         
