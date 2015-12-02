@@ -69,28 +69,30 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            if node.name == "jumpButtonLab" {
-                buttonTapped(node)
-                self.laboratoryGameLayer.agent31?.jump()
-            } else if node.name == "shootButton" {
-                buttonTapped(node)
-                self.laboratoryGameLayer.agent31?.shoot()
-            } else if node.name == "goToCity" {
-                buttonTapped(node)
-                //self.agentGoToCity()
-                self.goToTestCity()
-            } else if node.name == "balloon" {
-                self.showLabObjectLayer((node as? SKSpriteNode)!)
-            } else if node.name == "backBtn" {
-                removeUpgradeLayer(node.parent!)
-                configureAnalogStick()
-                loadButtons()
-            } else if node.name!.hasPrefix("lblUpgrade") {
-                loadUpgradeLayer(node.name!)
-            } else if node.name == "btnCancelUpgrade" {
-                upgradeLayer.removeFromParent()
-            } else if node.name!.hasPrefix("btnDoUpgrade") {
-                doUpgradeWithAttribute(node.name!)
+            if let nodeName = node.name {
+                if nodeName == "jumpButtonLab" {
+                    buttonTapped(node)
+                    self.laboratoryGameLayer.agent31?.jump()
+                } else if node.name == "shootButton" {
+                    buttonTapped(node)
+                    self.laboratoryGameLayer.agent31?.shoot()
+                } else if node.name == "goToCity" {
+                    buttonTapped(node)
+                    //self.agentGoToCity()
+                    self.goToTestCity()
+                } else if node.name == "balloon" {
+                    self.showLabObjectLayer((node as? SKSpriteNode)!)
+                } else if node.name == "backBtn" {
+                    removeUpgradeLayer(node.parent!)
+                    configureAnalogStick()
+                    loadButtons()
+                } else if node.name!.hasPrefix("lblUpgrade") {
+                    loadUpgradeLayer(node.name!)
+                } else if node.name == "btnCancelUpgrade" {
+                    upgradeLayer.removeFromParent()
+                } else if node.name!.hasPrefix("btnDoUpgrade") {
+                    doUpgradeWithAttribute(node.name!)
+                }
             }
         }
     }
@@ -106,14 +108,13 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "metal")
         case let x where x.hasSuffix("shootingRange"):
             upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "metal")
-        case let x where x.hasSuffix("backPack"):
+        case let x where x.hasSuffix("backpack"):
             upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
             upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
             upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
-        default:
-            debugPrint("unknown attribute")
+        default: ()
         }
         
         cam.addChild(upgradeLayer)
