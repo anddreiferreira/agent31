@@ -2,7 +2,7 @@
 //  GunData.swift
 //  Agent 31
 //
-//  Created by Anddrei Artaxexes on 11/27/15.
+//  Created by Anddrei Artaxexes on 12/1/15.
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
@@ -17,9 +17,9 @@
 //    case level = "Level"
 //}
 //
-//private let _sharedInstance = CharacterData()
+//private let _sharedInstance = GunData()
 //
-//class CharacterData : NSObject {
+//class GunData : NSObject {
 //    
 //    var jump: Int
 //    var speed: Int
@@ -30,7 +30,7 @@
 //    
 //    private var currentTrainingAttribute = ""
 //    
-//    class var sharedInstance: CharacterData {
+//    class var sharedInstance: GunData {
 //        return _sharedInstance
 //    }
 //    

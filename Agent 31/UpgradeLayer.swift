@@ -59,7 +59,11 @@ class UpgradeLayer: SKNode
         animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: zPosition4th, name: "animationArea")
         self.addChild(animationArea!)
         
-        upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
+        if CharacterData.sharedInstance.isTrainingNow == false {
+            upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
+        } else {
+            upgradeButton = createLabelNode("Something is already being upgraded", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 15, zPosition: zPosition4th, name: "btnDoNotUpgrade")
+        }
         self.addChild(upgradeButton!)
         
     }

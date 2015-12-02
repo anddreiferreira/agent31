@@ -64,6 +64,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         for touch in touches {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
@@ -108,14 +109,13 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "metal")
         case let x where x.hasSuffix("shootingRange"):
             upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "metal")
-        case let x where x.hasSuffix("backPack"):
+        case let x where x.hasSuffix("backpack"):
             upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
             upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
             upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
-        default:
-            debugPrint("unknown attribute")
+        default: ()
         }
         
         cam.addChild(upgradeLayer)
@@ -124,26 +124,18 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     func removeUpgradeLayer(node: SKNode) {
         if node.isKindOfClass(TrainingCenterLayer) {
-            debugPrint("TrainingCenter Layer")
             trainingCenterLayer.removeFromParent()
         } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
-            debugPrint("GunDevCenter Layer")
             gunDevelopmentCenterLayer.removeFromParent()
         }
     }
     
     func doUpgradeWithAttribute(attributeName: String) {
         
-        if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
-            //GunData.sharedInstance.initUpgrade()
-        } else {
-            //let a: String = attributeName
-            //let b = String(suffix(a.utf16, a.utf16.count - 1))
-            //let a: String = attributeName.characters.dropLast(12)
-            //debugPrint(a)
-            //debugPrint(attributeName.characters.dropLast(12))
-            //CharacterData.sharedInstance.initTraining("")
-        }
+        let startIndex = attributeName.startIndex.advancedBy(12)
+        let rangeSubstring = startIndex ..< attributeName.endIndex
+        
+        attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") ? debugPrint("GunData.initTraining") : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring))
     }
     
     private func agentGoToCity() {
