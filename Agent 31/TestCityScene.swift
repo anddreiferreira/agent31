@@ -22,7 +22,6 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
-    private var cityHudLayer : CityHudLayer!
     
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
@@ -48,7 +47,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares,pilastras: predioInfo.qtdPilastras, posicalIncialX: predioInfo.posicaoInicialX)
         
 //        predioInfo.posicaoInicialX
-        self.addChild(predioNovo)
+//        self.addChild(predioNovo)
         predioNovo.setScale(1.6)
         
     }
@@ -141,7 +140,6 @@ extension TestCityScene{
     
     private func putLayers(){
         self.putBackgroundLayer()
-        self.putBasicHudLayer()
         self.putGameLayer()
     }
     
@@ -153,13 +151,6 @@ extension TestCityScene{
         
     }
     
-    private func putBasicHudLayer(){
-        
-        self.cityHudLayer = CityHudLayer()
-        self.cityHudLayer.putHudLayerCity()
-        self.addChild(cityHudLayer)
-        
-    }
     
     private func putGameLayer(){
         

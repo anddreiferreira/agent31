@@ -2,16 +2,17 @@
 //  Enemy.swift
 //  Agent 31
 //
-//  Created by Henrique Dutra on 20/10/15.
+//  Created by Julio Xavier on 02/12/15.
 //  Copyright © 2015 Agent31. All rights reserved.
 //
 
 import SpriteKit
 
-class GeneralEnemy: Character {
-    
-    private let initialLegs: String = "enemy1StoppedLegs1"
-    private let initialTorso: String = "enemy1StoppedTorso1"
+class Enemy: Character {
+
+    // NAO MEXA AQUI
+    private let initialLegs: String = "agentStoppedLegs1"
+    private let initialTorso: String = "agentStoppedTorso2"
     
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
@@ -19,54 +20,42 @@ class GeneralEnemy: Character {
     var hasBulletFrequency: Double = 1.0
     var enemyLevel: Int = 1
     
-
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: true, gunName: "enemy1Gun")
+        self.enemyLevel = enemyLevel
         
-        self.torso?.position = CGPointMake(0.0, -3.4)
- 
-        // Frequencia que o inimigo vai atirar de acordo com o nível do inimigo
-        hasBulletFrequency = 1 / Double(self.enemyLevel)
-        NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "setHasBulletTrue", userInfo: nil, repeats: true)
+        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
         
         self.name = "enemy"
-        self.enemyLevel = enemyLevel
-        self.HP = 30
+        self.torso?.position = CGPointMake(0.0, -3.4)
         
-        setGeneralAttributesForGeneralEnemy()
+        setGeneralAttributesForEnemy()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    func setHasBulletTrue() {
-        self.hasBullet = true
-    }
-    
-    private func setGeneralAttributesForGeneralEnemy(){
+    private func setGeneralAttributesForEnemy(){
+        bulletFrequency()
         stoppedAnimationForever()
-        setGeneralEnemyPhysics()
-    }
-    
-    private func setGeneralEnemyPhysics(){
-        self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue | ColliderType.Ground.rawValue
-        self.physicsBody?.contactTestBitMask = ColliderType.Ground.rawValue
-    }
-    
-    private func colorizeEnemy(color: SKColor){
-        self.color = color
-        self.torso?.color = color
+        self.setEnemyPhysics()
         
-        self.colorBlendFactor = 0.5
-        self.torso?.colorBlendFactor = 0.5
+        self.HP = HPAccordingToLevel()
     }
     
+    func HPAccordingToLevel()->Int{
+        return 30;
+    }
+    
+
+    
+}
+
+// MARK: ANIMATIONS
+extension Enemy{
     override func initializeAnimations(){
         self.stoppedTorso = actionWithAnimationName("enemy1StoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
         self.stoppedLegs = actionWithAnimationName("enemy1StoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
@@ -85,20 +74,33 @@ class GeneralEnemy: Character {
         self.attackingTorso = actionWithAnimationName("enemy1ShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
         
         self.gotHitTorso = actionWithAnimationName("enemy1GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
+        
+    }
+}
+
+// MARK: PHYSICS
+extension Enemy{
+    private func setEnemyPhysics(){
+        self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue | ColliderType.Ground.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.Ground.rawValue
+    }
+}
+
+// MARK: ARTIFICAL INTELLIGENCE
+extension Enemy{
+    private func bulletFrequency(){
+        // Frequencia que o inimigo vai atirar de acordo com o nível do inimigo
+        hasBulletFrequency = 1 / Double(self.enemyLevel)
+        NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "setHasBulletTrue", userInfo: nil, repeats: true)
     }
     
-    override func update(currentTime: NSTimeInterval) {
-        
-        enemyBehaviourGuarding()
-
-        let enemyDetectDistance : CGFloat = 330
-        if(self.distanceToAgent < enemyDetectDistance) {
-            enemyBehaviourAttack()
-        }
+    func setHasBulletTrue(){
+        self.hasBullet = true
     }
-
+    
     func turnInAgentDirection() {
-
+        
         let isAgentOver = abs( self.agentPos!.x - self.position.x ) < 10 && self.agentPos?.y > self.position.y
         
         isAgentOver ? (self.lookingUp = true) : (self.lookingUp = false)
@@ -108,6 +110,15 @@ class GeneralEnemy: Character {
         
         if( isAgentInRight || isAgentInLeft ) {
             self.invertSpriteHorizontally(true)
+        }
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        enemyBehaviourGuarding()
+        
+        let enemyDetectDistance : CGFloat = 330
+        if(self.distanceToAgent < enemyDetectDistance) {
+            enemyBehaviourAttack()
         }
     }
     
@@ -127,7 +138,7 @@ class GeneralEnemy: Character {
                 }
                 
             }else{
-               self.run(self.enemyLevel)
+                self.run(self.enemyLevel)
             }
             
         }
@@ -150,6 +161,12 @@ class GeneralEnemy: Character {
         self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
     }
     
+
+}
+
+// MARK: DYING
+extension Enemy{
+    
     func dropResource(){
         let decision = random() % 90 + 1
         debugPrint("decision ==== \(decision)")
@@ -161,11 +178,12 @@ class GeneralEnemy: Character {
         }else{
             self.parent?.addChild(Coin(position: self.position))
         }
-
+        
     }
     
     override func die() {
         super.die()
         self.dropResource()
     }
+    
 }

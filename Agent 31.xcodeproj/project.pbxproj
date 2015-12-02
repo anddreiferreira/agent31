@@ -288,6 +288,7 @@
 		093A85091C0F71FA0096C220 /* varandaCima.png in Resources */ = {isa = PBXBuildFile; fileRef = 093A83F01C0F71FA0096C220 /* varandaCima.png */; };
 		093A850A1C0F71FA0096C220 /* varandaCimaDireita.png in Resources */ = {isa = PBXBuildFile; fileRef = 093A83F11C0F71FA0096C220 /* varandaCimaDireita.png */; };
 		093A850B1C0F71FA0096C220 /* varandaCimaEsquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 093A83F21C0F71FA0096C220 /* varandaCimaEsquerda.png */; };
+		093A850D1C0F8D750096C220 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093A850C1C0F8D750096C220 /* Enemy.swift */; };
 		0951AF5D1BF4FE73009E570C /* LabObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951AF5C1BF4FE73009E570C /* LabObject.swift */; };
 		09A6D7C11BE14264007A77EC /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6D7C01BE14264007A77EC /* Bullet.swift */; };
 		09A6D7C31BE14DD0007A77EC /* Gun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6D7C21BE14DD0007A77EC /* Gun.swift */; };
@@ -321,7 +322,6 @@
 		6B53A7211BDA9FCD002E7808 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */; };
 		6B53A7221BDA9FCD002E7808 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6B53A6FE1BDA9FCD002E7808 /* GameScene.sks */; };
 		6B53A7231BDA9FCD002E7808 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A6FF1BDA9FCD002E7808 /* GameViewController.swift */; };
-		6B53A7241BDA9FCD002E7808 /* GeneralEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7001BDA9FCD002E7808 /* GeneralEnemy.swift */; };
 		6B53A7251BDA9FCD002E7808 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7011BDA9FCD002E7808 /* Ground.swift */; };
 		6B53A7271BDA9FCD002E7808 /* GunDevelopmentCenterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7031BDA9FCD002E7808 /* GunDevelopmentCenterLayer.swift */; };
 		6B53A7291BDA9FCD002E7808 /* LaboratoryBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7051BDA9FCD002E7808 /* LaboratoryBackgroundLayer.swift */; };
@@ -651,6 +651,7 @@
 		093A83F01C0F71FA0096C220 /* varandaCima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = varandaCima.png; sourceTree = "<group>"; };
 		093A83F11C0F71FA0096C220 /* varandaCimaDireita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = varandaCimaDireita.png; sourceTree = "<group>"; };
 		093A83F21C0F71FA0096C220 /* varandaCimaEsquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = varandaCimaEsquerda.png; sourceTree = "<group>"; };
+		093A850C1C0F8D750096C220 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		0951AF5C1BF4FE73009E570C /* LabObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabObject.swift; sourceTree = "<group>"; };
 		09A6D7C01BE14264007A77EC /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		09A6D7C21BE14DD0007A77EC /* Gun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gun.swift; sourceTree = "<group>"; };
@@ -688,7 +689,6 @@
 		6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		6B53A6FE1BDA9FCD002E7808 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		6B53A6FF1BDA9FCD002E7808 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		6B53A7001BDA9FCD002E7808 /* GeneralEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralEnemy.swift; sourceTree = "<group>"; };
 		6B53A7011BDA9FCD002E7808 /* Ground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		6B53A7031BDA9FCD002E7808 /* GunDevelopmentCenterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GunDevelopmentCenterLayer.swift; sourceTree = "<group>"; };
 		6B53A7041BDA9FCD002E7808 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1703,7 +1703,7 @@
 		6B2783451BD6AC58009628D8 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
-				6B53A7001BDA9FCD002E7808 /* GeneralEnemy.swift */,
+				093A850C1C0F8D750096C220 /* Enemy.swift */,
 				598F15E91BF4F72B001542A5 /* EnemyDelegate.swift */,
 			);
 			name = Enemies;
@@ -2225,6 +2225,7 @@
 				6B53A7201BDA9FCD002E7808 /* GameData.swift in Sources */,
 				6B53A72A1BDA9FCD002E7808 /* LaboratoryGameLayer.swift in Sources */,
 				6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */,
+				093A850D1C0F8D750096C220 /* Enemy.swift in Sources */,
 				6B53A7161BDA9FCD002E7808 /* Buildings.swift in Sources */,
 				598DBCA11C03A38D00114DD8 /* CharacterData.swift in Sources */,
 				6B53A7151BDA9FCD002E7808 /* Backpack.swift in Sources */,
@@ -2248,7 +2249,6 @@
 				6B53A7191BDA9FCD002E7808 /* CityGameLayer.swift in Sources */,
 				59A6D66E1BE820C800A84A33 /* ResourcesData.swift in Sources */,
 				6B53A7251BDA9FCD002E7808 /* Ground.swift in Sources */,
-				6B53A7241BDA9FCD002E7808 /* GeneralEnemy.swift in Sources */,
 				E0C3D6571BE3E976008D7713 /* Reach.swift in Sources */,
 				6B53A7341BDA9FCD002E7808 /* TrainingCenterLayer.swift in Sources */,
 				6B9FBFDE1BDAAE3B00ED08C3 /* AnalogStick.swift in Sources */,

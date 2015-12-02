@@ -48,7 +48,7 @@ class Character: GameObject {
         initializeTorso(torsoImage)
         
         if(withGun == true){
-            initializeGun("CA115")
+            initializeGun(gunName)
         }
         
         setGeneralAttributesForCharacter()

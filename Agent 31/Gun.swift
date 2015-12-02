@@ -37,6 +37,7 @@ class Gun : SKSpriteNode {
         self.setScale(scale)
         self.name = gunName
         
+        
         setBasicGunAttributes()
     }
 
