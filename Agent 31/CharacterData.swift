@@ -106,6 +106,8 @@ extension CharacterData {
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         // iniciar o NSTimer
         self.initTimer(tuple.timeLevelUp, value: currentValue)
+        // Agendar notificacao
+        scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
     private func initTimer( time: NSTimeInterval, value: Int ) {
@@ -117,6 +119,8 @@ extension CharacterData {
     func finishTraining(timer: NSTimer) {
         
         timer.invalidate()
+        
+        isTrainingNow = false
         
         // incrementar o valor do atributo
         let attrValue = self.getAttributeValue( self.currentTrainingAttribute )
