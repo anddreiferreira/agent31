@@ -47,10 +47,10 @@ func gunLeveUp(gunName: String, currentGunLevel: Int) -> (timeLevelUp: NSTimeInt
 // MARK: Character
 let balanceCharacterResource = 10.0
 
-func characterLevelUp(attributeName: String, currentAttributeLevel: Int) -> (timeLevelUp: NSTimeInterval, resourceLevelUp: Int)
+func characterLevelUp(attributeName: String, var currentAttributeLevel: Int) -> (timeLevelUp: NSTimeInterval, resourceLevelUp: Int)
 {
-    let nextAttributeLevel = currentAttributeLevel + 1
-    return (Double(nextAttributeLevel) * minutesToSeconds(30), nextAttributeLevel * Int(pow(balanceCharacterResource, 3.0)))
+    ++currentAttributeLevel
+    return (Double(currentAttributeLevel) * minutesToSeconds(30), currentAttributeLevel * Int(pow(balanceCharacterResource, 3.0)))
 }
 
 // MARK: Gems
