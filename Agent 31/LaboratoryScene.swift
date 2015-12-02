@@ -18,7 +18,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
-//    var shootButton: SKSpriteNode?
+    var shootButton: SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -86,13 +86,14 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
                 removeUpgradeLayer(node.parent!)
                 configureAnalogStick()
                 loadButtons()
-            } else if node.name!.hasPrefix("lblUpgrade") {
-                loadUpgradeLayer(node.name!)
-            } else if node.name == "btnCancelUpgrade" {
-                upgradeLayer.removeFromParent()
-            } else if node.name!.hasPrefix("btnDoUpgrade") {
-                doUpgradeWithAttribute(node.name!)
             }
+//                else if node.name!.hasPrefix("lblUpgrade") {
+//                loadUpgradeLayer(node.name!)
+//            } else if node.name == "btnCancelUpgrade" {
+//                upgradeLayer.removeFromParent()
+//            } else if node.name!.hasPrefix("btnDoUpgrade") {
+//                doUpgradeWithAttribute(node.name!)
+//            }
         }
     }
     
@@ -271,11 +272,11 @@ extension LaboratoryScene{
         cam.addChild(jumpButton!)
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
-        cam.addChild(goToCity!)
+//        cam.addChild(goToCity!)
         
-//        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
-//        
-//        cam.addChild(shootButton!)
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        
+        cam.addChild(shootButton!)
     }
     
 }
