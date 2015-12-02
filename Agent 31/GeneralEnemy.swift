@@ -24,7 +24,7 @@ class GeneralEnemy: Character {
         
         debugPrint("Initializing Enemy")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
+        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: true, gunName: "enemy1Gun")
         
         self.torso?.position = CGPointMake(0.0, -3.4)
  

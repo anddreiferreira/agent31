@@ -39,7 +39,7 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
     
-    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
+    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
