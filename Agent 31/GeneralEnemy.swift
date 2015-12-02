@@ -10,8 +10,8 @@ import SpriteKit
 
 class GeneralEnemy: Character {
     
-    private let initialLegs: String = "agentStoppedLegs1"
-    private let initialTorso: String = "agentStoppedTorso2"
+    private let initialLegs: String = "enemy1StoppedLegs1"
+    private let initialTorso: String = "enemy1StoppedTorso1"
     
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
@@ -25,12 +25,13 @@ class GeneralEnemy: Character {
         debugPrint("Initializing Enemy")
         
         super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0)
+        
+        self.torso?.position = CGPointMake(0.0, -3.4)
  
         // Frequencia que o inimigo vai atirar de acordo com o nível do inimigo
         hasBulletFrequency = 1 / Double(self.enemyLevel)
         NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "setHasBulletTrue", userInfo: nil, repeats: true)
         
-        colorizeEnemy(SKColor.redColor())
         self.name = "enemy"
         self.enemyLevel = enemyLevel
         self.HP = 30
@@ -67,23 +68,23 @@ class GeneralEnemy: Character {
     }
     
     override func initializeAnimations(){
-        self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.3)
+        self.stoppedTorso = actionWithAnimationName("enemy1StoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
+        self.stoppedLegs = actionWithAnimationName("enemy1StoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
         
-        self.jumpingLegs = actionWithAnimationName("agentJumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
-        self.jumpingTorso = actionWithAnimationName("agentJumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.jumpingLegs = actionWithAnimationName("enemy1JumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
+        self.jumpingTorso = actionWithAnimationName("enemy1JumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.walkingTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.walkingLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.15)
+        self.walkingTorso = actionWithAnimationName("enemy1WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.walkingLegs = actionWithAnimationName("enemy1WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.runningTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
-        self.runningLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
+        self.runningTorso = actionWithAnimationName("enemy1WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.runningLegs = actionWithAnimationName("enemy1WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.lookingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 1, timePerTexture: 0.2)
-        self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
-        self.attackingTorso = actionWithAnimationName("agentShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
+        self.lookingUpTorso = actionWithAnimationName("enemy1ShootingUpTorso", numberOfImages: 1, timePerTexture: 0.3)
+        self.attackingUpTorso = actionWithAnimationName("enemy1ShootingUpTorso", numberOfImages: 3, timePerTexture: 0.08)
+        self.attackingTorso = actionWithAnimationName("enemy1ShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
         
-        self.gotHitTorso = actionWithAnimationName("agentGotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
+        self.gotHitTorso = actionWithAnimationName("enemy1GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
     }
     
     override func update(currentTime: NSTimeInterval) {
