@@ -12,6 +12,8 @@ class Gun : SKSpriteNode {
     
     var walking: SKAction?
     var attacking: SKAction?
+    var attackingUp: SKAction?
+    var lookingUp: SKAction?
     var stopped: SKAction?
     var jumping: SKAction?
     var gotHit: SKAction?
@@ -37,6 +39,7 @@ class Gun : SKSpriteNode {
         self.setScale(scale)
         self.name = gunName
         
+        
         setBasicGunAttributes()
     }
 
@@ -56,6 +59,8 @@ extension Gun{
     func initializeAnimations(){
         self.walking = actionWithAnimationName("\(gunName)Walking", numberOfImages: 6, timePerTexture: 0.1)
         self.attacking = actionWithAnimationName("\(gunName)Shooting", numberOfImages: 3, timePerTexture: 0.08)
+        self.attackingUp = actionWithAnimationName("\(gunName)ShootingUp", numberOfImages: 3, timePerTexture: 0.08)
+        self.lookingUp = actionWithAnimationName("\(gunName)ShootingUp", numberOfImages: 1, timePerTexture: 0.3)
         self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.15)
         self.jumping = actionWithAnimationName("\(gunName)Jumping", numberOfImages: 6, timePerTexture: 0.1)
         self.gotHit = actionWithAnimationName("\(gunName)GotHit", numberOfImages: 4, timePerTexture: 0.1)
@@ -77,6 +82,18 @@ extension Gun{
     func shootAnimation(){
         if(self.attacking != nil){
             self.runAction(self.attacking!)
+        }
+    }
+    
+    func shootUpAnimation(){
+        if(self.attackingUp != nil){
+            self.runAction(self.attackingUp!)
+        }
+    }
+    
+    func lookUpAnimation(){
+        if(self.attackingUp != nil){
+            self.runAction(self.lookingUp!)
         }
     }
     
