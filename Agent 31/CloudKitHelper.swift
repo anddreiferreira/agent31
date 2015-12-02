@@ -16,6 +16,7 @@ class CloudKitHelper {
     
     let characterRecordId = CKRecordID(recordName: "CharacterRec")
     let resourcesRecordId = CKRecordID(recordName: "ResourcesRec")
+    let gunRecordId = CKRecordID(recordName: "GunsRec")
     
     init() {
         container = CKContainer.defaultContainer()

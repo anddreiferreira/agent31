@@ -17,9 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ckhelper = CloudKitHelper()
     var characterDataOn: Bool = false
     var resourcesDataOn: Bool = false
+    var gunsDataOn: Bool = false
     var hasException: Bool = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
+    var guns = GunData.sharedInstance
 //    var exceptionScene = ExceptionScene()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
@@ -32,12 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Observers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnGunData", name: "gunDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionCharacterData", name: "characterDataException", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionResourcesData", name: "resourcesDataException", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionGunData", name: "gunDataException", object: nil)
         
         hasException = false
         characterDataOn = false
         resourcesDataOn = false
+        gunDataOn = false
         
         // Check for internet connection availability
         let status = Reach().connectionStatus()
@@ -65,9 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Call assynchronous functions to fetch data from CloudKit - OBS: character and resources are passed by reference
         ckhelper.fetchCharacterProperties(character)
         ckhelper.fetchResourcesProperties(resources)
+        ckhelper.fetchGunsProperties(guns)
         
         // Show Loading screen while fetching the data
-        while( self.characterDataOn == false || self.resourcesDataOn == false ) {
+        while( self.characterDataOn == false || self.resourcesDataOn == false || self.gunDataOn == false) {
 
             // Implement a Loading screen to show and call here
             
@@ -82,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
     {
-        debugPrint("Notification in background received")
+        debugPrint("Clean badge icon")
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -132,6 +138,15 @@ extension AppDelegate {
         self.resourcesDataOn = true
     }
     
+    func turnOnGunData() {
+        
+        GunData.sharedInstance.gun1 = self.gun.gun1
+        GunData.sharedInstance.gun2 = self.gun.gun2
+        
+        self.gunDataOn = true
+        
+    }
+    
     func exceptionCharacterData() {
         self.hasException = true
         CloudKitExceptions.sharedInstance.characterDataException = true
@@ -140,6 +155,11 @@ extension AppDelegate {
     func exceptionResourcesData() {
         self.hasException = true
         CloudKitExceptions.sharedInstance.resourcesDataException = true
+    }
+    
+    func exceptionGunData() {
+        self.hasException = true
+        CloudKitExceptions.sharedInstance.gunDataException = true
     }
 
 }
