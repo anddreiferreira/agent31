@@ -44,12 +44,13 @@ class LaboratoryGameLayer: SKNode {
         self.duelMode = LabObject(imageNamed: "placeHolderDuelMode", groundPosition: CGPointMake(-600, 100))
         
 
-        self.addChild(desk!)
-        self.addChild(computer!)
-        self.addChild(television!)
-        self.addChild(gunDevelopmentCenter!)
-        self.addChild(trainingCenter!)
-        self.addChild(duelMode!)
+        //self.addChild(desk!)
+        //self.addChild(computer!)
+        //self.addChild(television!)
+        //self.addChild(gunDevelopmentCenter!)
+        //self.addChild(trainingCenter!)
+        //self.addChild(duelMode!)
+        
     }
     
     func putGameLayer(){
@@ -57,7 +58,7 @@ class LaboratoryGameLayer: SKNode {
         self.putGround()
         self.putAgent()
         self.putObjectPlaceHolder()
-        
+        self.putTestEnemy()
     }
     
     
@@ -70,10 +71,8 @@ class LaboratoryGameLayer: SKNode {
     }
     
     func putAgent(){
-        
-        agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor),withGun: false)
+        agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor),withGun: true)
         self.addChild(agent31!)
-        
     }
     
     func verifyObjectBalloon(obj: LabObject){
@@ -82,6 +81,13 @@ class LaboratoryGameLayer: SKNode {
         }else{
             obj.removeBalloon()
         }
+    }
+    
+    func putTestEnemy(){
+        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
+        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
+        self.addChild(testEnemy)
+        self.addChild(secEnemy)
     }
     
     func updateLabGameLayer(){
