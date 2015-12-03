@@ -18,7 +18,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
-//    var shootButton: SKSpriteNode?
+    var shootButton: SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -64,34 +64,35 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         for touch in touches {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            debugPrint("NODE TOUCHED \(node) with name = \(node.name)")
-            
-            if node.name == "jumpButtonLab" {
-                buttonTapped(node)
-                self.laboratoryGameLayer.agent31?.jump()
-            } else if node.name == "shootButton" {
-                buttonTapped(node)
-                self.laboratoryGameLayer.agent31?.shoot()
-            } else if node.name == "goToCity" {
-                buttonTapped(node)
-                //self.agentGoToCity()
-                self.goToTestCity()
-            } else if node.name == "balloon" {
-                self.showLabObjectLayer((node as? SKSpriteNode)!)
-            } else if node.name == "backBtn" {
-                removeUpgradeLayer(node.parent!)
-                configureAnalogStick()
-                loadButtons()
-            } else if node.name!.hasPrefix("lblUpgrade") {
-                loadUpgradeLayer(node.name!)
-            } else if node.name == "btnCancelUpgrade" {
-                upgradeLayer.removeFromParent()
-            } else if node.name!.hasPrefix("btnDoUpgrade") {
-                doUpgradeWithAttribute(node.name!)
+            if let nodeName = node.name {
+                if nodeName == "jumpButtonLab" {
+                    buttonTapped(node)
+                    self.laboratoryGameLayer.agent31?.jump()
+                } else if node.name == "shootButton" {
+                    buttonTapped(node)
+                    self.laboratoryGameLayer.agent31?.shoot()
+                } else if node.name == "goToCity" {
+                    buttonTapped(node)
+                    //self.agentGoToCity()
+                    self.goToTestCity()
+                } else if node.name == "balloon" {
+                    self.showLabObjectLayer((node as? SKSpriteNode)!)
+                } else if node.name == "backBtn" {
+                    removeUpgradeLayer(node.parent!)
+                    configureAnalogStick()
+                    loadButtons()
+                } else if node.name!.hasPrefix("lblUpgrade") {
+                    loadUpgradeLayer(node.name!)
+                } else if node.name == "btnCancelUpgrade" {
+                    upgradeLayer.removeFromParent()
+                } else if node.name!.hasPrefix("btnDoUpgrade") {
+                    doUpgradeWithAttribute(node.name!)
+                }
             }
         }
     }
@@ -107,14 +108,13 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "metal")
         case let x where x.hasSuffix("shootingRange"):
             upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "metal")
-        case let x where x.hasSuffix("backPack"):
+        case let x where x.hasSuffix("backpack"):
             upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
             upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
             upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
-        default:
-            debugPrint("unknown attribute")
+        default: ()
         }
         
         cam.addChild(upgradeLayer)
@@ -123,26 +123,18 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     func removeUpgradeLayer(node: SKNode) {
         if node.isKindOfClass(TrainingCenterLayer) {
-            debugPrint("TrainingCenter Layer")
             trainingCenterLayer.removeFromParent()
         } else if node.isKindOfClass(GunDevelopmentCenterLayer) {
-            debugPrint("GunDevCenter Layer")
             gunDevelopmentCenterLayer.removeFromParent()
         }
     }
     
     func doUpgradeWithAttribute(attributeName: String) {
         
-        if attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") {
-            //GunData.sharedInstance.initUpgrade()
-        } else {
-            //let a: String = attributeName
-            //let b = String(suffix(a.utf16, a.utf16.count - 1))
-            //let a: String = attributeName.characters.dropLast(12)
-            //debugPrint(a)
-            //debugPrint(attributeName.characters.dropLast(12))
-            //CharacterData.sharedInstance.initTraining("")
-        }
+        let startIndex = attributeName.startIndex.advancedBy(12)
+        let rangeSubstring = startIndex ..< attributeName.endIndex
+        
+        attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") ? debugPrint("GunData.initTraining") : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring))
     }
     
     private func agentGoToCity() {
@@ -267,15 +259,16 @@ extension LaboratoryScene{
     
     private func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 100, name: "jumpButtonLab")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: 100, name: "jumpButton")
         cam.addChild(jumpButton!)
+        
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
+        cam.addChild(shootButton!)
+        
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
         cam.addChild(goToCity!)
         
-//        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
-//        
-//        cam.addChild(shootButton!)
     }
     
 }

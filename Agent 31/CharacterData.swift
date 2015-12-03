@@ -28,6 +28,8 @@ class CharacterData : NSObject {
     var backPack: Int
     var level: Int
     
+    var isTrainingNow = false
+    
     private var currentTrainingAttribute = ""
     
     class var sharedInstance: CharacterData {
@@ -98,6 +100,7 @@ extension CharacterData {
         let currentValue = self.getAttributeValue( attribute )
         
         self.currentTrainingAttribute = attribute
+        isTrainingNow = true
         
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
