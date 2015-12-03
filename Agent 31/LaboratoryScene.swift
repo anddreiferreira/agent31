@@ -18,7 +18,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
-//    var shootButton: SKSpriteNode?
+    var shootButton: SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -259,15 +259,16 @@ extension LaboratoryScene{
     
     private func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 100, name: "jumpButtonLab")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: 100, name: "jumpButton")
         cam.addChild(jumpButton!)
+        
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
+        cam.addChild(shootButton!)
+        
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
         cam.addChild(goToCity!)
         
-//        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
-//        
-//        cam.addChild(shootButton!)
     }
     
 }
