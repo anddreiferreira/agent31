@@ -8,18 +8,31 @@
 
 import Foundation
 
-class CharacterLivesManager {
+class CharacterLivesManager: NSObject {
     
     var lostLifeDate: NSDate?
     
-    init() {
+    override init() {
+        super.init()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "verifyLives", name: "AgentLostOneLifeNotification", object: nil)
     }
     
     func verifyLives() {
         
+        saveLifesInCloudKit()
+        
         if lostLifeDate == nil {
             lostLifeDate = NSDate()
         }
+    }
+    
+    func saveLifesInCloudKit() {
+        
+        let ckhelper = CloudKitHelper()
+        
+        let character = CharacterData.sharedInstance
+        
+        ckhelper.saveCharacterProperties(character)
     }
 }

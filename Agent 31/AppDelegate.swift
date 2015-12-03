@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var hasException: Bool = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
-//    var exceptionScene = ExceptionScene()
+    var characterLivesManager = CharacterLivesManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
