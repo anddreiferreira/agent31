@@ -41,6 +41,7 @@ extension CloudKitHelper {
                 fetchedRecord?.setValue( character.shootingPower, forKey: "ShootingPower" )
                 fetchedRecord?.setValue( character.backPack, forKey: "BackPack" )
                 fetchedRecord?.setValue( character.level, forKey: "Level" )
+                fetchedRecord?.setValue( character.lives, forKey: "Lives" )
                 
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRecord, sError in
@@ -74,6 +75,7 @@ extension CloudKitHelper {
                 character.shootingPower = fetchedRecord?.objectForKey("ShootingPower") as! Int
                 character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
                 character.speed = fetchedRecord?.objectForKey("Speed") as! Int
+                character.lives = fetchedRecord?.objectForKey("Lives") as! Int
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))
@@ -88,6 +90,7 @@ extension CloudKitHelper {
         newRecord.setValue( character.shootingPower, forKey: "ShootingPower" )
         newRecord.setValue( character.backPack, forKey: "BackPack" )
         newRecord.setValue( character.level, forKey: "Level" )
+        newRecord.setValue( character.lives, forKey: "Lives" )
         
         self.privateDataBase.saveRecord( newRecord, completionHandler: ({
             savedRecord, error in

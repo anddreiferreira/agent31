@@ -75,7 +75,7 @@ class LaboratoryHudLayer: SKNode {
     
         // Load quantity from SINGLETON
         // For now...
-        let livesNumber : Int = 5;
+        let livesNumber : Int = CharacterData.sharedInstance.lives
         let livesPosition = CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359)
         
         let laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 4, name: "laboratoryLifeBar")
@@ -88,7 +88,7 @@ class LaboratoryHudLayer: SKNode {
     
     func loadMessageLifeBar(){
     
-        let number : Int = 5
+        let number : Int = CharacterData.sharedInstance.lives
         
         if number == 5 {
             

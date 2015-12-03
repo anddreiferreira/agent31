@@ -15,6 +15,7 @@ enum Attributes: String {
     case shootingPower = "ShootingPower"
     case backPack = "BackPack"
     case level = "Level"
+    case lives = "Lives"
 }
 
 private let _sharedInstance = CharacterData()
@@ -27,6 +28,7 @@ class CharacterData : NSObject {
     var shootingRange: Int
     var backPack: Int
     var level: Int
+    var lives: Int
     
     private var currentTrainingAttribute = ""
     
@@ -42,6 +44,7 @@ class CharacterData : NSObject {
         self.shootingPower = 0
         self.backPack = 0
         self.level = 0
+        self.lives = 0
     }
     
     class func printCharacter( character: CharacterData ) {
@@ -51,6 +54,7 @@ class CharacterData : NSObject {
         print( "Shooting power = \(character.shootingPower)" )
         print( "Back pack = \(character.backPack)" )
         print( "Level = \(character.level)" )
+        print( "Lives = \(character.lives)" )
     }
 }
 

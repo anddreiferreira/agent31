@@ -119,8 +119,11 @@ extension AppDelegate {
         CharacterData.sharedInstance.shootingRange = self.character.shootingRange
         CharacterData.sharedInstance.backPack = self.character.backPack
         CharacterData.sharedInstance.level = self.character.level
+        CharacterData.sharedInstance.lives = self.character.lives
         
         self.characterDataOn = true
+        
+        CharacterData.printCharacter(self.character)
     }
     
     func turnOnResourcesData() {
