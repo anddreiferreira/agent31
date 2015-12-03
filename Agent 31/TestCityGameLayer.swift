@@ -59,7 +59,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 //        self.addChild(testEnemy)
 //        self.addChild(secEnemy)
         
-        let enemytest = Enemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
+        let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
         self.addChild(enemytest)
     }
     
