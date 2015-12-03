@@ -9,10 +9,6 @@
 import SpriteKit
 
 class Enemy: Character {
-
-    // NAO MEXA AQUI
-    private let initialLegs: String = "agentStoppedLegs1"
-    private let initialTorso: String = "agentStoppedTorso2"
     
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
