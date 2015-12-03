@@ -25,6 +25,7 @@ class LaboratoryHudLayer: SKNode {
         self.loadGolds()
         self.loadMetals()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLifeBarAndMessage", name: "ReloadLifeBarNotification", object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -102,6 +103,11 @@ class LaboratoryHudLayer: SKNode {
 //        
 //        }
     
+    }
+    
+    func reloadLifeBarAndMessage() {
+        loadLifeBar()
+        loadMessageLifeBar()
     }
     
     

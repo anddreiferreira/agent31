@@ -135,11 +135,17 @@ extension CharacterData {
 extension CharacterData {
     
     func restoreLife() {
-        self.lives = self.lives + 1
+        
+        if self.lives < 5 {
+            self.lives = self.lives + 1
+        }
     }
     
     func decreaseLife() {
-        self.lives = self.lives - 1
+        
+        if self.lives > 0 {
+            self.lives = self.lives - 1
+        }
         
         NSNotificationCenter.defaultCenter().postNotificationName("AgentLostOneLifeNotification", object: nil)
     }
