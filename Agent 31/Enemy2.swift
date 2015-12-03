@@ -1,5 +1,5 @@
 //
-//  Enemy1.swift
+//  Enemy2.swift
 //  Agent 31
 //
 //  Created by Julio Xavier on 03/12/15.
@@ -8,34 +8,22 @@
 
 import SpriteKit
 
-class Enemy1: Enemy {
-    
-    override init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
+class Enemy2: Enemy {
+
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
         
         
-        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName, enemyLevel: enemyLevel)
+        super.init(position: position, zPosition: 1.0, withGun: false, gunName: "sword", enemyLevel: enemyLevel)
         
         self.torso?.position = CGPointMake(0.0, -3.4)
         
-        setGeneralAttributesForEnemy()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setGeneralAttributesForEnemy(){
-        bulletFrequency()
-        stoppedAnimationForever()
-        self.setEnemyPhysics()
-        
-        self.HP = HPAccordingToLevel()
-    }
-    
-    
-    
 }
 
 // MARK: ANIMATIONS
@@ -60,51 +48,4 @@ extension Enemy1{
         self.gotHitTorso = actionWithAnimationName("enemy1GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
         
     }
-}
-
-// MARK: PHYSICS
-extension Enemy1{
-    private func setEnemyPhysics(){
-        self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue | ColliderType.Ground.rawValue
-        self.physicsBody?.contactTestBitMask = ColliderType.Ground.rawValue
-    }
-}
-
-// MARK: ARTIFICAL INTELLIGENCE
-extension Enemy1{
-    
-    override func enemyBehaviourAttack() {
-        
-        turnInAgentDirection()
-        
-        shootIfHasBullet()
-        
-        if( self.distanceToAgent > 100 ) {
-            if(self.distanceToAgent < 200){
-                
-                if(rand()%2+1 == 1){
-                    shootIfHasBullet()
-                }else{
-                    self.run()
-                }
-                
-            }else{
-                self.run(self.enemyLevel)
-            }
-            
-        }
-    }
-    
-    override func enemyBehaviourGuarding() {
-        
-    }
-    
-    override func setDistanceToAgent(agentPosition: CGPoint) {
-        
-        self.agentPos = agentPosition
-        self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
-    }
-    
-    
 }
