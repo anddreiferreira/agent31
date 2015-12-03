@@ -26,7 +26,7 @@ class Enemy: Character {
         
         self.enemyLevel = enemyLevel
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
         
         self.name = "enemy"
         self.torso?.position = CGPointMake(0.0, -3.4)

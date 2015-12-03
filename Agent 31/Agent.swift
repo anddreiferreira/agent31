@@ -10,14 +10,11 @@ import SpriteKit
 
 class Agent: Character {
     
-    private let initialLegs: String = "agentStoppedLegs1"
-    private let initialTorso: String = "agentStoppedTorso2"
-    
     init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
         
         debugPrint("Initializing Agent")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
         
         self.name = "agent"
         
