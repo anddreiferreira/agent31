@@ -33,7 +33,7 @@ class Agent: Character {
         self.setAgentPhysics()
         
         
-        self.HP = Int(MAX_INPUT)
+        self.HP = 200
         
     }
     
@@ -79,6 +79,12 @@ class Agent: Character {
             contactedNode.removeFromParent()
             ResourcesData.sharedInstance.metal += ((contactedNode as? Metal)?.value)!
         }
+    }
+    
+    override func die() {
+        super.die()
+        
+        CharacterData.sharedInstance.decreaseLife()
     }
     
 }

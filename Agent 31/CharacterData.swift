@@ -130,3 +130,17 @@ extension CharacterData {
         debugPrint("**************** Valor do atributo \(self.currentTrainingAttribute) atualizado com sucesso *************" )
     }
 }
+
+// MARK: Character lives methods
+extension CharacterData {
+    
+    func restoreLife() {
+        self.lives = self.lives + 1
+    }
+    
+    func decreaseLife() {
+        self.lives = self.lives - 1
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("AgentLostOneLifeNotification", object: nil)
+    }
+}

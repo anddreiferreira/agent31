@@ -16,8 +16,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var clock: NSTimer?
     
     // Delete this when the city and the enemy`s generator are finished
-    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
-    var secondsToBackToLab: Int = 10  // The time to play in the city
+//    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
+//    var secondsToBackToLab: Int = 10  // The time to play in the city
     
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
@@ -60,17 +60,17 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
         // Delete this when the city and the enemy`s generator are finished
 //         Timer to decrease the time to stay in the city(secondsToBackToLab variable)
-        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
-        cityTimer?.fire()
+//        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
+//        cityTimer?.fire()
     }
     
     // Delete this when the city and the enemy`s generator are finished
     func reduceTime() {
-        self.secondsToBackToLab = self.secondsToBackToLab - 1
-        
-        if( self.secondsToBackToLab < 0 ) {
-            goToLab()
-        }
+//        self.secondsToBackToLab = self.secondsToBackToLab - 1
+//        
+//        if( self.secondsToBackToLab < 0 ) {
+//            goToLab()
+//        }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -131,7 +131,7 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
-        self.cityTimer?.invalidate()
+//          self.cityTimer?.invalidate()
     }
 }
 
