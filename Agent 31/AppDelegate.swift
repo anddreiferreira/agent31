@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var hasException: Bool = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
-    var guns = GunData.sharedInstance
+    var guns = GunsData.sharedInstance
 //    var exceptionScene = ExceptionScene()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
@@ -34,15 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Observers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnGunData", name: "gunDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnGunsData", name: "gunsDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionCharacterData", name: "characterDataException", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionResourcesData", name: "resourcesDataException", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionGunData", name: "gunDataException", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionGunsData", name: "gunsDataException", object: nil)
         
         hasException = false
         characterDataOn = false
         resourcesDataOn = false
-        gunDataOn = false
+        gunsDataOn = false
         
         // Check for internet connection availability
         let status = Reach().connectionStatus()
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ckhelper.fetchGunsProperties(guns)
         
         // Show Loading screen while fetching the data
-        while( self.characterDataOn == false || self.resourcesDataOn == false || self.gunDataOn == false) {
+        while( self.characterDataOn == false || self.resourcesDataOn == false || self.gunsDataOn == false) {
 
             // Implement a Loading screen to show and call here
             
@@ -138,12 +138,12 @@ extension AppDelegate {
         self.resourcesDataOn = true
     }
     
-    func turnOnGunData() {
+    func turnOnGunsData() {
         
-        GunData.sharedInstance.gun1 = self.gun.gun1
-        GunData.sharedInstance.gun2 = self.gun.gun2
+        GunsData.sharedInstance.gun1 = self.guns.gun1
+        GunsData.sharedInstance.gun2 = self.guns.gun2
         
-        self.gunDataOn = true
+        self.gunsDataOn = true
         
     }
     
@@ -157,9 +157,9 @@ extension AppDelegate {
         CloudKitExceptions.sharedInstance.resourcesDataException = true
     }
     
-    func exceptionGunData() {
+    func exceptionGunsData() {
         self.hasException = true
-        CloudKitExceptions.sharedInstance.gunDataException = true
+        CloudKitExceptions.sharedInstance.gunsDataException = true
     }
 
 }
