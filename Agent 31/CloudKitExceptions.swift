@@ -13,13 +13,13 @@ private let _sharedInstance = CloudKitExceptions()
 class CloudKitExceptions : NSObject {
     var characterDataException: Bool
     var resourcesDataException: Bool
-    var gunDataException: Bool
+    var gunsDataException: Bool
     var internetException: Bool
     
     private override init() {
         characterDataException = false
         resourcesDataException = false
-        gunDataException = false
+        gunsDataException = false
         internetException = false
     }
     
