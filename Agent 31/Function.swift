@@ -17,28 +17,29 @@ func minutesToSeconds(min: Int) -> Double
 // MARK: Gun
 let balanceGunResource = 5.0
 
-func gunLeveUp(gunName: String, currentGunLevel: Int) -> (timeLevelUp: NSTimeInterval, resourceLevelUp: Int)
+func gunLeveUp(gunName: String, var currentGunLevel: Int) -> (timeLevelUp: NSTimeInterval, resourceLevelUp: Int)
 {
-    let nextGunLevel = currentGunLevel + 1
+    ++currentGunLevel
     switch gunName {
-        case "gun1":
-            return (Double(nextGunLevel) * minutesToSeconds(5), nextGunLevel * Int(pow(balanceGunResource, 1.0)))
-        case "gun2":
-            return (Double(nextGunLevel) * minutesToSeconds(10), nextGunLevel * Int(pow(balanceGunResource, 2.0)))
+        case GunsData.sharedInstance.gun1Name:
+            return (minutesToSeconds(1), currentGunLevel * Int(pow(balanceGunResource, 1.0))) /* Retorno de teste */
+            //return (Double(currentGunLevel) * minutesToSeconds(5), currentGunLevel * Int(pow(balanceGunResource, 1.0)))
+        case GunsData.sharedInstance.gun2Name:
+            return (Double(currentGunLevel) * minutesToSeconds(10), currentGunLevel * Int(pow(balanceGunResource, 2.0)))
         case "gun3":
-            return (Double(nextGunLevel) * minutesToSeconds(20), nextGunLevel * Int(pow(balanceGunResource, 3.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(20), currentGunLevel * Int(pow(balanceGunResource, 3.0)))
         case "gun4", "gun5":
-            return (Double(nextGunLevel) * minutesToSeconds(30), nextGunLevel * Int(pow(balanceGunResource, 4.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(30), currentGunLevel * Int(pow(balanceGunResource, 4.0)))
         case "gun6", "gun7":
-            return (Double(nextGunLevel) * minutesToSeconds(40), nextGunLevel * Int(pow(balanceGunResource, 5.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(40), currentGunLevel * Int(pow(balanceGunResource, 5.0)))
         case "gun8", "gun9", "gun10":
-            return (Double(nextGunLevel) * minutesToSeconds(50), nextGunLevel * Int(pow(balanceGunResource, 6.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(50), currentGunLevel * Int(pow(balanceGunResource, 6.0)))
         case "gun11", "gun12":
-            return (Double(nextGunLevel) * minutesToSeconds(60), nextGunLevel * Int(pow(balanceGunResource, 7.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(60), currentGunLevel * Int(pow(balanceGunResource, 7.0)))
         case "gun13", "gun14":
-            return (Double(nextGunLevel) * minutesToSeconds(70), nextGunLevel * Int(pow(balanceGunResource, 8.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(70), currentGunLevel * Int(pow(balanceGunResource, 8.0)))
         case "gun15":
-            return (Double(nextGunLevel) * minutesToSeconds(80), nextGunLevel * Int(pow(balanceGunResource, 9.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(80), currentGunLevel * Int(pow(balanceGunResource, 9.0)))
         default:
             return (0.00, 0)
     }
