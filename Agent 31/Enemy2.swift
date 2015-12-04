@@ -26,8 +26,8 @@ class Enemy2: Enemy {
     }
     
     override func generatePhysicsBody() -> SKPhysicsBody {
-        let rectangleSize = CGSizeMake(self.size.width*0.4, self.size.height*0.55)
-        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -10))
+        let rectangleSize = CGSizeMake(self.size.width*0.5, self.size.height*0.55)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(4, -10))
         physicsBody.affectedByGravity = true
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0
@@ -52,7 +52,7 @@ extension Enemy2{
         self.runningTorso = actionWithAnimationName("enemy2WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
         self.runningLegs = actionWithAnimationName("enemy2WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.attackingTorso = actionWithAnimationName("enemy2ShootingTorso", numberOfImages: 3, timePerTexture: 1.0)
+        self.attackingTorso = actionWithAnimationName("enemy2ShootingTorso", numberOfImages: 3, timePerTexture: 0.1)
         
         self.gotHitTorso = actionWithAnimationName("enemy2GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
         
@@ -62,8 +62,21 @@ extension Enemy2{
 //MARK: ARTIFICIAL INTELLIGENCE
 extension Enemy2{
     override func shoot(){
+            debugPrint("SHOOT !!! Distance = \(self.distanceToAgent)")
             self.attacking = true
             self.attackingAnimationOnce()
+    }
+    
+    override func enemyBehaviourAttack() {
         
+        turnInAgentDirection()
+        
+        if(self.distanceToAgent < 55) {
+            if(arc4random()%20 + 1 == 1){
+                self.shootIfHasBullet()
+            }
+        }else{
+            self.run(self.enemyLevel)
+        }
     }
 }

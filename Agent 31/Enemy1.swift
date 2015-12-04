@@ -86,7 +86,7 @@ extension Enemy1{
                 if(rand()%2+1 == 1){
                     shootIfHasBullet()
                 }else{
-                    self.run()
+                    // Do nothing
                 }
                 
             }else{
