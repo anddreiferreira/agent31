@@ -39,7 +39,7 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
     
-    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
+    init(legsImage: String = "agentStoppedLegs1", torsoImage: String = "agentStoppedTorso2", position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
@@ -287,7 +287,7 @@ extension Character{
         }
     }
     
-    private func attackingAnimationOnce(){
+    func attackingAnimationOnce(){
         if(self.attackingTorso != nil){
             self.torso?.runAction(self.attackingTorso!, completion: {
                 self.attacking = false
