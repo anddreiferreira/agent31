@@ -8,117 +8,101 @@
 
 import Foundation
 
-/*
-enum Attributes: String {
-case jump = "Jump"
-case speed = "Speed"
-case shootingRange = "ShootingRange"
-case shootingPower = "ShootingPower"
-case backPack = "BackPack"
-case level = "Level"
+enum Guns: String {
+    case gun1Name = "Gun1"
+    case gun2Name = "Gun2"
 }
-*/
 
-private let _sharedInstance = GunData()
+private let _sharedInstance = GunsData()
 
-class GunData: NSObject
-{
+class GunsData: NSObject {
     
     var gun1: String
+    var gun1Level: Int
+    var gun1Name: String
+    var gun1Blocked: Int
+    
     var gun2: String
+    var gun2Level: Int
+    var gun2Name: String
+    var gun2Blocked: Int
     
-    var isTrainingNow = false
-    
+    var isUpgradingNow = false
     private var currentUpgradingGun = ""
     
     private override init() {
         self.gun1 = ""
+        self.gun1Level = 0
+        self.gun1Name = ""
+        self.gun1Blocked = 0
         self.gun2 = ""
+        self.gun2Level = 0
+        self.gun2Name = ""
+        self.gun2Blocked = 0
     }
     
-    class func printCharacter(character: GunData) {
-        //print( "Level = \(character.level)" )
-    }
-    
-    class var sharedInstance: GunData {
+    class var sharedInstance: GunsData {
         return _sharedInstance
     }
 }
 
-
-// MARK: Gun upgrading methods
-extension GunData {
+extension GunsData {
     
-    func getGunValue(attribute: String) -> Int {
-        //        if(attribute == Attributes.jump.rawValue ) {
-        //            return self.jump
-        //        } else if ( attribute == Attributes.speed.rawValue ) {
-        //            return self.speed
-        //        } else if ( attribute == Attributes.shootingRange.rawValue ) {
-        //            return self.shootingRange
-        //        } else if ( attribute == Attributes.shootingPower.rawValue ) {
-        //            return self.shootingPower
-        //        } else if ( attribute == Attributes.backPack.rawValue ) {
-        //            return self.backPack
-        //        } else if ( attribute == Attributes.level.rawValue ) {
-        //            return self.level
-        //        } else {
-        //            return 0
-        //        }
+    func getGunLevel(gunName: String) -> Int {
+        if(gunName == Guns.gun1Name.rawValue) {
+            return self.gun1Level
+        } else if (gunName == Guns.gun2Name.rawValue) {
+            return self.gun2Level
+        } else {
+            return 0
+        }
     }
     
-    func setGunValue(attribute: String, value: Int) {
-        //        if( attribute == Attributes.jump.rawValue ) {
-        //            self.jump = value
-        //        } else if ( attribute == Attributes.speed.rawValue ) {
-        //            self.speed = value
-        //        } else if ( attribute == Attributes.shootingRange.rawValue ) {
-        //            self.shootingRange = value
-        //        } else if ( attribute == Attributes.shootingPower.rawValue ) {
-        //            self.shootingPower = value
-        //        } else if ( attribute == Attributes.backPack.rawValue ) {
-        //            self.backPack = value
-        //        } else {
-        //            // Do nothing
-        //        }
+    func setGunLevel(gunName: String, value: Int) {
+        if(gunName == Guns.gun1Name.rawValue) {
+            self.gun1Level = value
+        } else if (gunName == Guns.gun2Name.rawValue) {
+            self.gun2Level = value
+        } else {
+            // Do nothing
+        }
     }
     
-    func initTraining(gun: String) {
+    func initUpgrading(gunName: String) {
         
-        debugPrint("Inicializando o upgrade da arma \(gun)" )
-        //let currentValue = self.getAttributeValue(gun)
+        debugPrint( "Inicializando o upgrade da arma \(gunName)")
+        let currentValue = self.getGunLevel(gunName)
         
-        self.currentUpgradingGun = gun
-        isTrainingNow = true
+        self.currentUpgradingGun = gunName
+        isUpgradingNow = true
         
-        // recuperar o tempo e o custo necessário para o treinamento
-        let tuple = characterLevelUp(gun, currentGunLevel: currentValue)
-        // iniciar o NSTimer
+        // Time and cost for upgrade
+        let tuple = gunLeveUp(gunName, currentGunLevel: currentValue)
+        // Init timer
         self.initTimer(tuple.timeLevelUp, value: currentValue)
-        // Agendar notificacao
-        scheduleNotification(tuple.timeLevelUp, itemName: gun, itemLevel: self.getGunValue(gun), badge: 1)
+        // Schedule notification
+        scheduleNotification(tuple.timeLevelUp, itemName: gunName, itemLevel: self.getGunLevel(gunName))
     }
     
-    private func initTimer( time: NSTimeInterval, value: Int ) {
-        debugPrint("Inicializando o Timer do atributo \(self.currentUpgradingGun)")
+    private func initTimer(time: NSTimeInterval, value: Int) {
+        debugPrint("Inicializando o Timer da arma \(self.currentUpgradingGun)")
         
-        NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishUpgrading:", userInfo: self, repeats: false)
     }
     
-    func finishTraining(timer: NSTimer) {
+    func finishUpgrading(timer: NSTimer) {
         
         timer.invalidate()
         
-        isTrainingNow = false
+        isUpgradingNow = false
         
-        // incrementar o valor do atributo
-        let attrValue = self.getGunValue( self.currentUpgradingGun)
-        self.setGunValue(self.currentUpgradingGun, value: attrValue + 1 )
+        // Increment attribute/level
+        let attrValue = self.getGunLevel(self.currentUpgradingGun)
+        self.setGunLevel(self.currentUpgradingGun, value: attrValue + 1)
         
-        // salvar o novo valor no cloudkit
+        // Saves the new level
         let ck = CloudKitHelper()
-        ck.saveGunProperties(self)
-        
-        debugPrint("**************** Valor do atributo \(self.currentUpgradingGun) atualizado com sucesso *************" )
+        ck.saveGunsProperties(self)
     }
+ 
 }
