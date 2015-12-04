@@ -111,9 +111,9 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         case let x where x.hasSuffix("backpack"):
             upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun1Name, upgradeItem: GunsData.sharedInstance.gun1Name, resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun2Name, upgradeItem: GunsData.sharedInstance.gun2Name, resourceType: "ouro")
         default: ()
         }
         
@@ -134,7 +134,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         let startIndex = attributeName.startIndex.advancedBy(12)
         let rangeSubstring = startIndex ..< attributeName.endIndex
         
-        attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") ? debugPrint("GunData.initTraining") : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring))
+        attributeName.hasSuffix(GunsData.sharedInstance.gun1Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun1Name) : (attributeName.hasSuffix(GunsData.sharedInstance.gun2Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun2Name) : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring)))
     }
     
     private func agentGoToCity() {
