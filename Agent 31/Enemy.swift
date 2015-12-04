@@ -75,6 +75,7 @@ extension Enemy{
     
     func turnInAgentDirection() {
         
+        
         let isAgentOver = abs( self.agentPos!.x - self.position.x ) < 10 && self.agentPos?.y > self.position.y
         
         isAgentOver ? (self.lookingUp = true) : (self.lookingUp = false)
@@ -133,6 +134,7 @@ extension Enemy{
         self.agentPos = agentPosition
         self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
     }
+    
     
 
 }

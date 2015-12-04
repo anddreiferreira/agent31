@@ -12,40 +12,58 @@ class Enemy2: Enemy {
 
     init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
         
-        debugPrint("Initializing Enemy")
-        
+        debugPrint("Initializing Enemy 2")
         
         super.init(position: position, zPosition: 1.0, withGun: false, gunName: "sword", enemyLevel: enemyLevel)
         
-        self.torso?.position = CGPointMake(0.0, -3.4)
+        self.anchorPoint = CGPointMake(0.5, 0.65)
+        self.torso?.position = CGPointMake(0.0, -10.0)
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func generatePhysicsBody() -> SKPhysicsBody {
+        let rectangleSize = CGSizeMake(self.size.width*0.4, self.size.height*0.55)
+        let physicsBody: SKPhysicsBody = SKPhysicsBody(rectangleOfSize: rectangleSize, center: CGPointMake(0, -10))
+        physicsBody.affectedByGravity = true
+        physicsBody.allowsRotation = false
+        physicsBody.restitution = 0
+        
+        return physicsBody
+    }
 }
 
 // MARK: ANIMATIONS
-extension Enemy1{
+extension Enemy2{
     override func initializeAnimations(){
-        self.stoppedTorso = actionWithAnimationName("enemy1StoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.stoppedLegs = actionWithAnimationName("enemy1StoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
         
-        self.jumpingLegs = actionWithAnimationName("enemy1JumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
-        self.jumpingTorso = actionWithAnimationName("enemy1JumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.stoppedTorso = actionWithAnimationName("enemy2StoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
+        self.stoppedLegs = actionWithAnimationName("enemy2StoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
         
-        self.walkingTorso = actionWithAnimationName("enemy1WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
-        self.walkingLegs = actionWithAnimationName("enemy1WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
+        self.jumpingLegs = actionWithAnimationName("enemy2JumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
+        self.jumpingTorso = actionWithAnimationName("enemy2JumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.runningTorso = actionWithAnimationName("enemy1WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
-        self.runningLegs = actionWithAnimationName("enemy1WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
+        self.walkingTorso = actionWithAnimationName("enemy2WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.walkingLegs = actionWithAnimationName("enemy2WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.lookingUpTorso = actionWithAnimationName("enemy1ShootingUpTorso", numberOfImages: 1, timePerTexture: 0.3)
-        self.attackingUpTorso = actionWithAnimationName("enemy1ShootingUpTorso", numberOfImages: 3, timePerTexture: 0.08)
-        self.attackingTorso = actionWithAnimationName("enemy1ShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
+        self.runningTorso = actionWithAnimationName("enemy2WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.runningLegs = actionWithAnimationName("enemy2WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.gotHitTorso = actionWithAnimationName("enemy1GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
+        self.attackingTorso = actionWithAnimationName("enemy2ShootingTorso", numberOfImages: 3, timePerTexture: 1.0)
+        
+        self.gotHitTorso = actionWithAnimationName("enemy2GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
+        
+    }
+}
+
+//MARK: ARTIFICIAL INTELLIGENCE
+extension Enemy2{
+    override func shoot(){
+            self.attacking = true
+            self.attackingAnimationOnce()
         
     }
 }

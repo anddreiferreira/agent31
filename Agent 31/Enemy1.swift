@@ -12,7 +12,7 @@ class Enemy1: Enemy {
     
     override init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
         
-        debugPrint("Initializing Enemy")
+        debugPrint("Initializing Enemy 1")
         
         
         super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName, enemyLevel: enemyLevel)

@@ -287,7 +287,7 @@ extension Character{
         }
     }
     
-    private func attackingAnimationOnce(){
+    func attackingAnimationOnce(){
         if(self.attackingTorso != nil){
             self.torso?.runAction(self.attackingTorso!, completion: {
                 self.attacking = false
