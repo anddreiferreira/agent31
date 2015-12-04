@@ -22,7 +22,6 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
     private var cityBackgroundLayer : CityBackgroundLayer!
-    private var cityHudLayer : CityHudLayer!
     
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
@@ -48,7 +47,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares,pilastras: predioInfo.qtdPilastras, posicalIncialX: predioInfo.posicaoInicialX)
         
 //        predioInfo.posicaoInicialX
-        self.addChild(predioNovo)
+//        self.addChild(predioNovo)
         predioNovo.setScale(1.6)
         
     }
@@ -64,14 +63,14 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
 //        cityTimer?.fire()
     }
     
-    // Delete this when the city and the enemy`s generator are finished
-    func reduceTime() {
+//    // Delete this when the city and the enemy`s generator are finished
+//    func reduceTime() {
 //        self.secondsToBackToLab = self.secondsToBackToLab - 1
 //        
 //        if( self.secondsToBackToLab < 0 ) {
 //            goToLab()
 //        }
-    }
+//    }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -141,7 +140,6 @@ extension TestCityScene{
     
     private func putLayers(){
         self.putBackgroundLayer()
-        self.putBasicHudLayer()
         self.putGameLayer()
     }
     
@@ -153,13 +151,6 @@ extension TestCityScene{
         
     }
     
-    private func putBasicHudLayer(){
-        
-        self.cityHudLayer = CityHudLayer()
-        self.cityHudLayer.putHudLayerCity()
-        self.addChild(cityHudLayer)
-        
-    }
     
     private func putGameLayer(){
         
@@ -192,10 +183,10 @@ extension TestCityScene{
     
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 569, -middleOfTheScreenPoint.y + 169), zPosition: 100, name: "jumpButton")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: 100, name: "jumpButton")
         cam.addChild(jumpButton!)
         
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 479, -middleOfTheScreenPoint.y + 101), zPosition: 100, name: "shootButton")
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
         cam.addChild(shootButton!)
         
     }

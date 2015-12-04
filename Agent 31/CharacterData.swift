@@ -30,6 +30,8 @@ class CharacterData : NSObject {
     var level: Int
     var lives: Int
     
+    var isTrainingNow = false
+    
     private var currentTrainingAttribute = ""
     
     class var sharedInstance: CharacterData {
@@ -102,11 +104,14 @@ extension CharacterData {
         let currentValue = self.getAttributeValue( attribute )
         
         self.currentTrainingAttribute = attribute
+        isTrainingNow = true
         
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         // iniciar o NSTimer
         self.initTimer(tuple.timeLevelUp, value: currentValue)
+        // Agendar notificacao
+        scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
     private func initTimer( time: NSTimeInterval, value: Int ) {
@@ -118,6 +123,8 @@ extension CharacterData {
     func finishTraining(timer: NSTimer) {
         
         timer.invalidate()
+        
+        isTrainingNow = false
         
         // incrementar o valor do atributo
         let attrValue = self.getAttributeValue( self.currentTrainingAttribute )

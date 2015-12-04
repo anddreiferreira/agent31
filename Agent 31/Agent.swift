@@ -13,11 +13,11 @@ class Agent: Character {
     private let initialLegs: String = "agentStoppedLegs1"
     private let initialTorso: String = "agentStoppedTorso2"
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
         
         debugPrint("Initializing Agent")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun)
+        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
         
         self.name = "agent"
         
@@ -47,19 +47,19 @@ class Agent: Character {
     
     override func initializeAnimations(){
         self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.3)
+        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
         
         self.jumpingLegs = actionWithAnimationName("agentJumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
         self.jumpingTorso = actionWithAnimationName("agentJumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.walkingTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.walkingLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.15)
+        self.walkingTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.walkingLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
         self.runningTorso = actionWithAnimationName("agentWalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
         self.runningLegs = actionWithAnimationName("agentWalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
         
-        self.lookingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 1, timePerTexture: 0.2)
-        self.attackingUpTorso = actionWithAnimationName("troncoAtacandoCima", numberOfImages: 3, timePerTexture: 0.08)
+        self.lookingUpTorso = actionWithAnimationName("agentShootingUpTorso", numberOfImages: 1, timePerTexture: 0.3)
+        self.attackingUpTorso = actionWithAnimationName("agentShootingUpTorso", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingTorso = actionWithAnimationName("agentShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
         
         self.gotHitTorso = actionWithAnimationName("agentGotHitTorso", numberOfImages: 4, timePerTexture: 0.1)

@@ -141,8 +141,8 @@ func repeatActionForeverWithAnimationName(mainText: String, numberOfImages: Int,
 
 
 // MARK: Notification
-func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int){
-    let notification:UILocalNotification = UILocalNotification()
+func scheduleNotification(launchInterval: NSTimeInterval, itemName: String, itemLevel: Int, badge: Int = 1){
+    let notification: UILocalNotification = UILocalNotification()
     notification.fireDate = NSDate().dateByAddingTimeInterval(launchInterval)
     notification.timeZone = NSTimeZone.defaultTimeZone()
     notification.alertBody = "\(itemName) upgrade to \(itemLevel) finished"
