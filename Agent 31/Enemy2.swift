@@ -62,16 +62,21 @@ extension Enemy2{
 //MARK: ARTIFICIAL INTELLIGENCE
 extension Enemy2{
     override func shoot(){
-            debugPrint("SHOOT !!! Distance = \(self.distanceToAgent)")
             self.attacking = true
             self.attackingAnimationOnce()
+        
+            let bullet = Bullet(initialPosition: CGPointMake(self.position.x + self.frame.size.width/2, self.position.y - self.frame.height/2), orientation: self.orientation!, zPosition: 5)
+            bullet.alpha = 0.0
+            self.parent?.addChild(bullet)
+        
+            bullet.fire()
     }
     
     override func enemyBehaviourAttack() {
         
         turnInAgentDirection()
         
-        if(self.distanceToAgent < 55) {
+        if(self.distanceToAgent < 70) {
             if(arc4random()%20 + 1 == 1){
                 self.shootIfHasBullet()
             }

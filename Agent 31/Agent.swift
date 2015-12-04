@@ -69,6 +69,8 @@ class Agent: Character {
     
     override func didBeginContact(contactedNode: SKNode) {
         super.didBeginContact(contactedNode)
+        
+        
         if contactedNode.isKindOfClass(Coin){
             contactedNode.removeFromParent()
             ResourcesData.sharedInstance.gold += ((contactedNode as? Coin)?.value)!
