@@ -9,8 +9,8 @@
 import Foundation
 
 enum Guns: String {
-    case gun1Name = "Gun1"
-    case gun2Name = "Gun2"
+    case gun1Name = "AK47"
+    case gun2Name = "AK48"
 }
 
 private let _sharedInstance = GunsData()
@@ -31,14 +31,14 @@ class GunsData: NSObject {
     private var currentUpgradingGun = ""
     
     private override init() {
-        self.gun1 = ""
         self.gun1Level = 0
         self.gun1Name = ""
         self.gun1Blocked = 0
-        self.gun2 = ""
+        self.gun1 = ""
         self.gun2Level = 0
         self.gun2Name = ""
         self.gun2Blocked = 0
+        self.gun2 = ""
     }
     
     class var sharedInstance: GunsData {
@@ -70,7 +70,7 @@ extension GunsData {
     
     func initUpgrading(gunName: String) {
         
-        debugPrint( "Inicializando o upgrade da arma \(gunName)")
+        debugPrint("Inicializando o upgrade da arma \(gunName)")
         let currentValue = self.getGunLevel(gunName)
         
         self.currentUpgradingGun = gunName
@@ -85,8 +85,7 @@ extension GunsData {
     }
     
     private func initTimer(time: NSTimeInterval, value: Int) {
-        debugPrint("Inicializando o Timer da arma \(self.currentUpgradingGun)")
-        
+        debugPrint("Inicializando o timer da arma \(self.currentUpgradingGun)")
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishUpgrading:", userInfo: self, repeats: false)
     }
     
@@ -99,10 +98,10 @@ extension GunsData {
         // Increment attribute/level
         let attrValue = self.getGunLevel(self.currentUpgradingGun)
         self.setGunLevel(self.currentUpgradingGun, value: attrValue + 1)
-        
+        debugPrint("Upgrade de \(self.currentUpgradingGun) para o nível \(self.getGunLevel(self.currentUpgradingGun)) concluído")
         // Saves the new level
-        let ck = CloudKitHelper()
-        ck.saveGunsProperties(self)
+        //let ck = CloudKitHelper()
+        //ck.saveGunsProperties(self)
     }
  
 }

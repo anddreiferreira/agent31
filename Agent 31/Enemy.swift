@@ -9,10 +9,8 @@
 import SpriteKit
 
 class Enemy: Character {
-
-    // NAO MEXA AQUI
-    private let initialLegs: String = "agentStoppedLegs1"
-    private let initialTorso: String = "agentStoppedTorso2"
+    
+    var detectDistance: CGFloat = 330.0
     
     var distanceToAgent: CGFloat?
     var agentPos: CGPoint?
@@ -26,7 +24,7 @@ class Enemy: Character {
         
         self.enemyLevel = enemyLevel
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
         
         self.name = "enemy"
         self.torso?.position = CGPointMake(0.0, -3.4)
@@ -54,30 +52,6 @@ class Enemy: Character {
     
 }
 
-// MARK: ANIMATIONS
-extension Enemy{
-    override func initializeAnimations(){
-        self.stoppedTorso = actionWithAnimationName("enemy1StoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.stoppedLegs = actionWithAnimationName("enemy1StoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
-        
-        self.jumpingLegs = actionWithAnimationName("enemy1JumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
-        self.jumpingTorso = actionWithAnimationName("enemy1JumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
-        
-        self.walkingTorso = actionWithAnimationName("enemy1WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
-        self.walkingLegs = actionWithAnimationName("enemy1WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
-        
-        self.runningTorso = actionWithAnimationName("enemy1WalkingTorso", numberOfImages: 6, timePerTexture: 0.1)
-        self.runningLegs = actionWithAnimationName("enemy1WalkingLegs", numberOfImages: 6, timePerTexture: 0.1)
-        
-        self.lookingUpTorso = actionWithAnimationName("enemy1ShootingUpTorso", numberOfImages: 1, timePerTexture: 0.3)
-        self.attackingUpTorso = actionWithAnimationName("enemy1ShootingUpTorso", numberOfImages: 3, timePerTexture: 0.08)
-        self.attackingTorso = actionWithAnimationName("enemy1ShootingTorso", numberOfImages: 3, timePerTexture: 0.08)
-        
-        self.gotHitTorso = actionWithAnimationName("enemy1GotHitTorso", numberOfImages: 4, timePerTexture: 0.1)
-        
-    }
-}
-
 // MARK: PHYSICS
 extension Enemy{
     private func setEnemyPhysics(){
@@ -89,7 +63,7 @@ extension Enemy{
 
 // MARK: ARTIFICAL INTELLIGENCE
 extension Enemy{
-    private func bulletFrequency(){
+    func bulletFrequency(){
         // Frequencia que o inimigo vai atirar de acordo com o nível do inimigo
         hasBulletFrequency = 1 / Double(self.enemyLevel)
         NSTimer.scheduledTimerWithTimeInterval(hasBulletFrequency, target: self, selector: "setHasBulletTrue", userInfo: nil, repeats: true)
@@ -100,6 +74,7 @@ extension Enemy{
     }
     
     func turnInAgentDirection() {
+        
         
         let isAgentOver = abs( self.agentPos!.x - self.position.x ) < 10 && self.agentPos?.y > self.position.y
         
@@ -116,8 +91,7 @@ extension Enemy{
     override func update(currentTime: NSTimeInterval) {
         enemyBehaviourGuarding()
         
-        let enemyDetectDistance : CGFloat = 330
-        if(self.distanceToAgent < enemyDetectDistance) {
+        if(self.distanceToAgent < detectDistance) {
             enemyBehaviourAttack()
         }
     }
@@ -160,6 +134,7 @@ extension Enemy{
         self.agentPos = agentPosition
         self.distanceToAgent = distanceBetweenPoints( self.position, second: agentPosition )
     }
+    
     
 
 }

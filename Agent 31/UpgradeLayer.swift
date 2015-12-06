@@ -62,7 +62,6 @@ class UpgradeLayer: SKNode
         if CharacterData.sharedInstance.isTrainingNow == false {
             upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
         } else {
-            
             upgradeButton = createLabelNode("Can train in", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 15, zPosition: zPosition4th, name: "btnDoNotUpgrade")
         }
         self.addChild(upgradeButton!)
@@ -91,15 +90,15 @@ class UpgradeLayer: SKNode
             attributeLevel = CharacterData.sharedInstance.shootingRange
         case "Backpack":
             attributeLevel = CharacterData.sharedInstance.backPack
-        case "Gun 1":
-            attributeLevel = 0
-        case "Gun 2":
-            attributeLevel = 0
+        case GunsData.sharedInstance.gun1Name:
+            attributeLevel = GunsData.sharedInstance.gun1Level
+        case GunsData.sharedInstance.gun2Name:
+            attributeLevel = GunsData.sharedInstance.gun2Level
         default: ()
             
         }
         
-        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblUpgradeLevel")
+        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblLevel")
         self.addChild(upgradeLevel!)
         
     }
