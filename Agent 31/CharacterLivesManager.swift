@@ -11,7 +11,10 @@ import Foundation
 class CharacterLivesManager: NSObject {
     
     var lostLifeDate: NSDate?
+    var restoreLifeDate: NSDate?
     var livesTimer: NSTimer?
+    
+    let timeToRestoreALife = 45.0
     
     override init() {
         super.init()
@@ -23,10 +26,13 @@ class CharacterLivesManager: NSObject {
     
     func verifyLostLifeDate() {
         
+        // This updates the lives in the cloudkit - this will save the new number of lives
         saveLivesInCloudKit()
         
+        // This will get the datetime to begin regenerate lives, if all lives are available, then lostLifeDate and restoreLifeDate should be nil
         if lostLifeDate == nil {
             lostLifeDate = NSDate()
+            restoreLifeDate = lostLifeDate?.dateByAddingTimeInterval(self.timeToRestoreALife)
         }
     }
     
@@ -42,11 +48,11 @@ class CharacterLivesManager: NSObject {
     // This function verifies if the time to restore a life is reached
     func verifyLivesTimer() {
         
-        if lostLifeDate != nil {
-            let interval = NSDate().timeIntervalSinceDate(self.lostLifeDate!)
-            let timeToRestoreALife = 15.0
+        if restoreLifeDate != nil {
+            let now = NSDate()
+            let remainingTime = restoreLifeDate?.timeIntervalSinceDate(now)
             
-            if interval >= timeToRestoreALife {
+            if remainingTime <= 0 {
                 agentWonALife()
             }
         }
@@ -54,9 +60,19 @@ class CharacterLivesManager: NSObject {
     
     func agentWonALife() {
         
-        self.lostLifeDate = NSDate()
-        print("HEY, YOU WON A LIFE")
+        // Update the datetimes to restore a life
+        self.lostLifeDate = self.restoreLifeDate
+        self.restoreLifeDate = self.restoreLifeDate?.dateByAddingTimeInterval(self.timeToRestoreALife)
+        
         CharacterData.sharedInstance.restoreLife()
+        
+        // if there is no life to regenerate, there is no need to have a lostLifeDate and a restoreLifeDate
+        if( CharacterData.sharedInstance.lives == 5 ) {
+            self.lostLifeDate = nil
+            self.restoreLifeDate = nil
+            
+            // Update these values in the database
+        }
         
         let ckhelper = CloudKitHelper()
         ckhelper.saveCharacterProperties(CharacterData.sharedInstance)

@@ -145,6 +145,7 @@ extension CharacterData {
         
         if self.lives < 5 {
             self.lives = self.lives + 1
+            debugPrint("YOU WON A LIFE")
         }
     }
     

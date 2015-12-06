@@ -16,6 +16,10 @@ class LaboratoryHudLayer: SKNode {
     
     private var timeRemainingLife : SKLabelNode?
     
+    // SpriteNodes to Life bar. As it should be reloaded, they should be removed from parent and then added again. See method reloadLifeBarAndMessage()
+    var laboratoryLifeBar: SKSpriteNode?
+    var messageRemainingLife: SKLabelNode?
+    
     override init(){
         
         super.init()
@@ -79,9 +83,9 @@ class LaboratoryHudLayer: SKNode {
         let livesNumber : Int = CharacterData.sharedInstance.lives
         let livesPosition = CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359)
         
-        let laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 4, name: "laboratoryLifeBar")
+        laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 4, name: "laboratoryLifeBar")
         
-        self.addChild(laboratoryLifeBar)
+        self.addChild(laboratoryLifeBar!)
         
         loadMessageLifeBar()
         
@@ -90,24 +94,27 @@ class LaboratoryHudLayer: SKNode {
     func loadMessageLifeBar(){
     
         let number : Int = CharacterData.sharedInstance.lives
+        let messagePosition = CGPointMake(-middleOfTheScreenPoint.x + 95, -middleOfTheScreenPoint.y + 323)
         
         if number == 5 {
             
-            let messagePosition = CGPointMake(-middleOfTheScreenPoint.x + 95, -middleOfTheScreenPoint.y + 323)
-            let messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 4, name: "messageRaminingLife")
-            self.addChild(messageRemainingLife)
+            messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 4, name: "messageRaminingLife")
+            self.addChild(messageRemainingLife!)
         }
-//        else{
-//        
-//            messageRaminingLife = createLabelNode("Time remaining for next life", position: CGPointMake(20, 300), fontName: "Helvetica",fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
-//        
-//        }
+        else{
+        
+            messageRemainingLife = createLabelNode("Time remaining for next life", position: messagePosition, fontName: "Helvetica",fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
+            self.addChild(messageRemainingLife!)
+        }
     
     }
     
     func reloadLifeBarAndMessage() {
+        
+        self.messageRemainingLife?.removeFromParent()
+        self.laboratoryLifeBar?.removeFromParent()
+        
         loadLifeBar()
-        loadMessageLifeBar()
     }
     
     
