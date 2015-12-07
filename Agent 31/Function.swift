@@ -8,6 +8,20 @@
 
 import Foundation
 
+//let date = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")
+//let nilDateValue : NSDate = (date == nil) ? NSDate() : date!
+//let nilDateValue: NSDate = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")!
+
+func nilDateValue() -> NSDate {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "MM-dd-yyyy"
+    dateFormatter.timeZone = NSTimeZone.localTimeZone()
+    let stringDate = "01-01-1990"
+    
+    let nilDate = dateFormatter.dateFromString(stringDate) as NSDate!
+    
+    return nilDate
+}
 
 func minutesToSeconds(min: Int) -> Double
 {
@@ -51,7 +65,8 @@ let balanceCharacterResource = 10.0
 func characterLevelUp(attributeName: String, var currentAttributeLevel: Int) -> (timeLevelUp: NSTimeInterval, resourceLevelUp: Int)
 {
     ++currentAttributeLevel
-    return (Double(currentAttributeLevel) * minutesToSeconds(30), currentAttributeLevel * Int(pow(balanceCharacterResource, 3.0)))
+//    return (Double(currentAttributeLevel) * minutesToSeconds(30), currentAttributeLevel * Int(pow(balanceCharacterResource, 3.0)))
+    return (70, 20)  // para teste, descomentar acima e retirar essa linha quando terminar a funcionalidade
 }
 
 // MARK: Gems

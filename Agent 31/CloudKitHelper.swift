@@ -43,6 +43,9 @@ extension CloudKitHelper {
                 fetchedRecord?.setValue( character.backPack, forKey: "BackPack" )
                 fetchedRecord?.setValue( character.level, forKey: "Level" )
                 fetchedRecord?.setValue( character.lives, forKey: "Lives" )
+                fetchedRecord?.setValue( character.isTrainingNow, forKey: "IsTrainingNow")
+                fetchedRecord?.setValue( character.currentTrainingAttribute, forKey: "CurrentTrainingAttribute")
+                fetchedRecord?.setValue( character.finishTrainingDate, forKey: "FinishTrainingDate")
                 
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRecord, sError in
@@ -77,6 +80,9 @@ extension CloudKitHelper {
                 character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
                 character.speed = fetchedRecord?.objectForKey("Speed") as! Int
                 character.lives = fetchedRecord?.objectForKey("Lives") as! Int
+                character.isTrainingNow = (fetchedRecord?.objectForKey("IsTrainingNow") as! Int) == 0 ? false : true
+                character.currentTrainingAttribute = fetchedRecord?.objectForKey("CurrentTrainingAttribute") as! String
+                character.finishTrainingDate = fetchedRecord?.objectForKey("FinishTrainingDate") as! NSDate
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))
@@ -92,6 +98,9 @@ extension CloudKitHelper {
         newRecord.setValue( character.backPack, forKey: "BackPack" )
         newRecord.setValue( character.level, forKey: "Level" )
         newRecord.setValue( character.lives, forKey: "Lives" )
+        newRecord.setValue( character.isTrainingNow, forKey: "IsTrainingNow")
+        newRecord.setValue( character.currentTrainingAttribute, forKey: "CurrentTrainingAttribute")
+        newRecord.setValue( character.finishTrainingDate, forKey: "FinishTrainingDate")
         
         self.privateDataBase.saveRecord( newRecord, completionHandler: ({
             savedRecord, error in

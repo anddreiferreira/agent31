@@ -29,10 +29,11 @@ class CharacterData : NSObject {
     var backPack: Int
     var level: Int
     var lives: Int
-    
-    var isTrainingNow = false
-    
-    private var currentTrainingAttribute = ""
+  
+    // Atributos do treinamento do Character
+    var isTrainingNow: Bool
+    var currentTrainingAttribute: String
+    var finishTrainingDate: NSDate
     
     class var sharedInstance: CharacterData {
         return _sharedInstance
@@ -47,6 +48,10 @@ class CharacterData : NSObject {
         self.backPack = 0
         self.level = 0
         self.lives = 0
+        
+        self.isTrainingNow = false
+        self.currentTrainingAttribute = "nil"
+        self.finishTrainingDate = nilDateValue()
     }
     
     class func printCharacter( character: CharacterData ) {
@@ -57,6 +62,9 @@ class CharacterData : NSObject {
         print( "Back pack = \(character.backPack)" )
         print( "Level = \(character.level)" )
         print( "Lives = \(character.lives)" )
+        print( "IsTrainingNow = \(character.isTrainingNow)" )
+        print( "CurrentTrainingAttribute = \(character.currentTrainingAttribute)" )
+        print( "FinishTrainingDate = \(character.finishTrainingDate)" )
     }
 }
 
@@ -82,17 +90,18 @@ extension CharacterData {
         }
     }
     
-    func setAttributeValue( attribute: String, value: Int ) {
+    func upgradeAttributeValue( attribute: String ) {
+        
         if( attribute == Attributes.jump.rawValue ) {
-            self.jump = value
+            self.jump = self.jump + 1
         } else if ( attribute == Attributes.speed.rawValue ) {
-            self.speed = value
+            self.speed = self.speed + 1
         } else if ( attribute == Attributes.shootingRange.rawValue ) {
-            self.shootingRange = value
+            self.shootingRange = self.shootingRange + 1
         } else if ( attribute == Attributes.shootingPower.rawValue ) {
-            self.shootingPower = value
+            self.shootingPower = self.shootingPower + 1
         } else if ( attribute == Attributes.backPack.rawValue ) {
-            self.backPack = value
+            self.backPack = self.backPack + 1
         } else {
             // Do nothing
         }
@@ -101,6 +110,7 @@ extension CharacterData {
     func initTraining( attribute: String ) {
         
         debugPrint( "Inicializando o treino do atributo \(attribute)" )
+        // O valor atual do atributo é necessário para saber quanto tempo vai durar o treinamento
         let currentValue = self.getAttributeValue( attribute )
         
         self.currentTrainingAttribute = attribute
@@ -108,13 +118,20 @@ extension CharacterData {
         
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
+        self.finishTrainingDate = NSDate().dateByAddingTimeInterval(tuple.timeLevelUp)
+        
         // iniciar o NSTimer
-        self.initTimer(tuple.timeLevelUp, value: currentValue)
-        // Agendar notificacao
+        self.initTimer(tuple.timeLevelUp, currentAttributeValue: currentValue)
+        
+        // Salvar o finishTrainingDate, currentAttributeLevel e o isTrainingNow do Cloudkit
+        let ckhelper = CloudKitHelper()
+        ckhelper.saveCharacterProperties(self)
+        
+        // Agendar notificacao (OBS: Tem que ser de acordo com o finishTrainingDate)
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
-    private func initTimer( time: NSTimeInterval, value: Int ) {
+    private func initTimer( time: NSTimeInterval, currentAttributeValue: Int ) {
         debugPrint("Inicializando o Timer do atributo \(self.currentTrainingAttribute)")
         
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
@@ -125,10 +142,11 @@ extension CharacterData {
         timer.invalidate()
         
         isTrainingNow = false
+        self.finishTrainingDate = nilDateValue()
         
         // incrementar o valor do atributo
-        let attrValue = self.getAttributeValue( self.currentTrainingAttribute )
-        self.setAttributeValue( self.currentTrainingAttribute, value: attrValue + 1 )
+        self.upgradeAttributeValue( self.currentTrainingAttribute )
+        self.currentTrainingAttribute = "nil"
         
         // salvar o novo valor no cloudkit
         let ck = CloudKitHelper()
