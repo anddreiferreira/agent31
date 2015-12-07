@@ -29,9 +29,8 @@ class CharacterData : NSObject {
     var backPack: Int
     var level: Int
     var lives: Int
-    
+    var timeLevelUp = NSTimeInterval()
     var isTrainingNow = false
-    
     private var currentTrainingAttribute = ""
     
     class var sharedInstance: CharacterData {
@@ -109,31 +108,26 @@ extension CharacterData {
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         // iniciar o NSTimer
-        self.initTimer(tuple.timeLevelUp, value: currentValue)
+        timeLevelUp = tuple.timeLevelUp
+        initTimer(timeLevelUp, value: currentValue)
         // Agendar notificacao
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
-    private func initTimer( time: NSTimeInterval, value: Int ) {
-        debugPrint("Inicializando o Timer do atributo \(self.currentTrainingAttribute)")
-        
+    private func initTimer(time: NSTimeInterval, value: Int) {
+        debugPrint("Inicializando o timer do atributo \(self.currentTrainingAttribute)")
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
     }
     
     func finishTraining(timer: NSTimer) {
-        
         timer.invalidate()
-        
         isTrainingNow = false
-        
         // incrementar o valor do atributo
-        let attrValue = self.getAttributeValue( self.currentTrainingAttribute )
-        self.setAttributeValue( self.currentTrainingAttribute, value: attrValue + 1 )
-        
+        let attrValue = self.getAttributeValue(self.currentTrainingAttribute)
+        self.setAttributeValue( self.currentTrainingAttribute, value: attrValue + 1)
         // salvar o novo valor no cloudkit
         let ck = CloudKitHelper()
         ck.saveCharacterProperties( self )
-        
         debugPrint("**************** Valor do atributo \(self.currentTrainingAttribute) atualizado com sucesso *************" )
     }
 }
