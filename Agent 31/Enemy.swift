@@ -56,7 +56,7 @@ class Enemy: Character {
 extension Enemy{
     private func setEnemyPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue | ColliderType.Ground.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.Ground.rawValue
     }
 }
