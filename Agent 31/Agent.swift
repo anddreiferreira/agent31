@@ -38,7 +38,7 @@ class Agent: Character {
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.Coin.rawValue | ColliderType.Metal.rawValue | ColliderType.Ground.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
         
     }
     

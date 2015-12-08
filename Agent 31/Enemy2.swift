@@ -72,6 +72,11 @@ extension Enemy2{
         self.parent?.addChild(bullet)
     
         bullet.fire()
+        
+        
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            bullet.removeFromParent()
+        })
     }
     
     override func enemyBehaviourAttack() {
@@ -79,7 +84,7 @@ extension Enemy2{
         turnInAgentDirection()
         
         if(self.distanceToAgent < 70) {
-            if(arc4random()%20 + 1 == 1){
+            if(arc4random()%15 + 1 == 1){
                 self.shootIfHasBullet()
             }
         }else{
