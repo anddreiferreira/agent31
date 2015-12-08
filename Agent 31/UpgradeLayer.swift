@@ -62,9 +62,12 @@ class UpgradeLayer: SKNode
         if CharacterData.sharedInstance.isTrainingNow == false {
             upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
         } else {
-            upgradeButton = createLabelNode("Can train in", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 15, zPosition: zPosition4th, name: "btnDoNotUpgrade")
+            upgradeButton = createLabelNode("Upgrading", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoNotUpgrade")
         }
         self.addChild(upgradeButton!)
+        
+        upgradeDuration = createLabelNode("", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 180), fontSize: 15, zPosition: zPosition4th, name: "lblUpgradeDuration")
+        self.addChild(upgradeDuration!)
         
     }
     
@@ -122,14 +125,6 @@ class UpgradeLayer: SKNode
             self.addChild(resourceAvailableLabel!)
             
         }
-    }
-    
-    func loadAnimation() {
-        
-    }
-    
-    func loadTrain() {
-        
     }
     
 }
