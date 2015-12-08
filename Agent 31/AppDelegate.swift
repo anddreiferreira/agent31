@@ -17,10 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ckhelper = CloudKitHelper()
     var characterDataOn: Bool = false
     var resourcesDataOn: Bool = false
+    var gunsDataOn: Bool = false
     var hasException: Bool = false
     var character = CharacterData.sharedInstance
     var resources = ResourcesData.sharedInstance
-//    var exceptionScene = ExceptionScene()
+    var guns = GunsData.sharedInstance
+    var characterLivesManager = CharacterLivesManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
@@ -32,12 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Observers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnCharacterData", name: "characterDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnResourcesData", name: "resourcesDataNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "turnOnGunsData", name: "gunsDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionCharacterData", name: "characterDataException", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionResourcesData", name: "resourcesDataException", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "exceptionGunsData", name: "gunsDataException", object: nil)
         
         hasException = false
         characterDataOn = false
         resourcesDataOn = false
+        gunsDataOn = false
         
         // Check for internet connection availability
         let status = Reach().connectionStatus()
@@ -65,9 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Call assynchronous functions to fetch data from CloudKit - OBS: character and resources are passed by reference
         ckhelper.fetchCharacterProperties(character)
         ckhelper.fetchResourcesProperties(resources)
+        ckhelper.fetchGunsProperties(guns)
         
         // Show Loading screen while fetching the data
-        while( self.characterDataOn == false || self.resourcesDataOn == false ) {
+        while( self.characterDataOn == false || self.resourcesDataOn == false || self.gunsDataOn == false) {
 
             // Implement a Loading screen to show and call here
             
@@ -82,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
     {
-        debugPrint("Notification in background received")
+        debugPrint("Clean badge icon")
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -119,8 +125,11 @@ extension AppDelegate {
         CharacterData.sharedInstance.shootingRange = self.character.shootingRange
         CharacterData.sharedInstance.backPack = self.character.backPack
         CharacterData.sharedInstance.level = self.character.level
+        CharacterData.sharedInstance.lives = self.character.lives
         
         self.characterDataOn = true
+        
+        CharacterData.printCharacter(self.character)
     }
     
     func turnOnResourcesData() {
@@ -132,6 +141,15 @@ extension AppDelegate {
         self.resourcesDataOn = true
     }
     
+    func turnOnGunsData() {
+        
+        GunsData.sharedInstance.gun1 = self.guns.gun1
+        GunsData.sharedInstance.gun2 = self.guns.gun2
+        
+        self.gunsDataOn = true
+        
+    }
+    
     func exceptionCharacterData() {
         self.hasException = true
         CloudKitExceptions.sharedInstance.characterDataException = true
@@ -140,6 +158,11 @@ extension AppDelegate {
     func exceptionResourcesData() {
         self.hasException = true
         CloudKitExceptions.sharedInstance.resourcesDataException = true
+    }
+    
+    func exceptionGunsData() {
+        self.hasException = true
+        CloudKitExceptions.sharedInstance.gunsDataException = true
     }
 
 }

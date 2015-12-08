@@ -16,6 +16,7 @@ class CloudKitHelper {
     
     let characterRecordId = CKRecordID(recordName: "CharacterRec")
     let resourcesRecordId = CKRecordID(recordName: "ResourcesRec")
+    let gunsRecordId = CKRecordID(recordName: "GunsRec")
     
     init() {
         container = CKContainer.defaultContainer()
@@ -41,6 +42,7 @@ extension CloudKitHelper {
                 fetchedRecord?.setValue( character.shootingPower, forKey: "ShootingPower" )
                 fetchedRecord?.setValue( character.backPack, forKey: "BackPack" )
                 fetchedRecord?.setValue( character.level, forKey: "Level" )
+                fetchedRecord?.setValue( character.lives, forKey: "Lives" )
                 
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRecord, sError in
@@ -74,6 +76,7 @@ extension CloudKitHelper {
                 character.shootingPower = fetchedRecord?.objectForKey("ShootingPower") as! Int
                 character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
                 character.speed = fetchedRecord?.objectForKey("Speed") as! Int
+                character.lives = fetchedRecord?.objectForKey("Lives") as! Int
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))
@@ -88,6 +91,7 @@ extension CloudKitHelper {
         newRecord.setValue( character.shootingPower, forKey: "ShootingPower" )
         newRecord.setValue( character.backPack, forKey: "BackPack" )
         newRecord.setValue( character.level, forKey: "Level" )
+        newRecord.setValue( character.lives, forKey: "Lives" )
         
         self.privateDataBase.saveRecord( newRecord, completionHandler: ({
             savedRecord, error in
@@ -104,65 +108,74 @@ extension CloudKitHelper {
 // MARK: CRUD to Guns' attributes
 extension CloudKitHelper {
     
-    func saveGunProperties( type: String, level: Int, price: Int, blocked: Bool, secret: Bool, time: NSTimeInterval ) {
+    func saveGunsProperties(guns: GunsData) {
         
-        let gunId = CKRecordID(recordName: type)
-        
-        self.privateDataBase.fetchRecordWithID( gunId, completionHandler: ({
+        self.privateDataBase.fetchRecordWithID(self.gunsRecordId) {
             fetchedRecord, error in
-            
             if let _ = error {
-                self.createGunRecord( type, level: level, price: price, blocked: blocked, secret: secret, time: time )
+                self.createGunsRecord(guns.gun1, gun2: guns.gun2)
             } else {
-                let blockedInt = blocked == true ? 1 : 0
-                let secretInt = secret == true ? 1 : 0
+                fetchedRecord?.setValue(guns.gun1, forKey: "Gun1")
+                fetchedRecord?.setValue(guns.gun2, forKey: "Gun2")
                 
-                fetchedRecord!.setValue( level, forKey: "Level" )
-                fetchedRecord!.setValue( price, forKey: "Price" )
-                fetchedRecord!.setValue( blockedInt, forKey: "Blocked" )
-                fetchedRecord!.setValue( secretInt, forKey: "Secret" )
-                fetchedRecord!.setValue( time, forKey: "Time" )
-                
-                self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
-                    savedRec, sError in
-                    if let sErr = sError {
-                        debugPrint( "Error trying to update gun" ) // Fazer tratamento adequado
-                        debugPrint( sErr.description )
+                self.privateDataBase.saveRecord(fetchedRecord!) {
+                    savedRec, error in
+                    if let err = error {
+                        debugPrint("Save error - method saveGunsProperties in CloudKitHelper")
+                        debugPrint(err.description)
                     } else {
-                        debugPrint( "Gun update successful")
+                        debugPrint("Guns updated successful")
                     }
-                }))
-                
+                }
             }
-        }))
+        }
     }
     
-    private func createGunRecord ( type: String, level: Int, price: Int, blocked: Bool, secret: Bool, time: NSTimeInterval ) {
-        
-        // OBS: Fazer a verificacao do nome numa lista com o nome das armas validas
-        
-        let gunId = CKRecordID( recordName: type )
-        let gunRec = CKRecord(recordType: "Gun", recordID: gunId)
-        
-        let blockedValue = blocked == true ? 1 : 0
-        let secretValue = secret == true ? 1 : 0
-        
-        gunRec.setValue( type, forKey: "Type")
-        gunRec.setValue( level, forKey: "Level")
-        gunRec.setValue( price, forKey: "Price")
-        gunRec.setValue( blockedValue, forKey: "Blocked")
-        gunRec.setValue( secretValue, forKey: "Secret")
-        gunRec.setValue( time, forKey: "Time")
-        
-        self.privateDataBase.saveRecord( gunRec, completionHandler: ({
-            savedRec, error in
+    func fetchGunsProperties(guns: GunsData)
+    {
+        self.privateDataBase.fetchRecordWithID(self.gunsRecordId) {
+            fetchedRecord, error in
+            
             if let err = error {
-                debugPrint( "Error creating gun record" ) // Fazer tratamento adequado
-                debugPrint( err.description )
+                debugPrint("Error fetching data - method fetchGunsProperties in CloudKitHelper")
+                debugPrint(err.description)
+                NSNotificationCenter.defaultCenter().postNotificationName("gunsDataException", object: nil)
             } else {
-                debugPrint( "New gun saved with success")
+                debugPrint("Fetching Guns Data")
+                
+                guns.gun1 = fetchedRecord?.objectForKey("Gun1") as! String
+                let gun1 = guns.gun1
+                guns.gun1Name = gun1.substringWithRange(gun1.startIndex ... gun1.endIndex.advancedBy(-7))
+                guns.gun1Level = Int(gun1.substringWithRange(gun1.startIndex.advancedBy(6) ... gun1.endIndex.advancedBy(-4)))!
+                guns.gun1Blocked = Int(gun1.substringWithRange(gun1.startIndex.advancedBy(9) ..< gun1.endIndex))!
+                
+                guns.gun2 = fetchedRecord?.objectForKey("Gun2") as! String
+                let gun2 = guns.gun2
+                guns.gun2Name = gun2.substringWithRange(gun2.startIndex ... gun2.endIndex.advancedBy(-7))
+                guns.gun2Level = Int(gun2.substringWithRange(gun2.startIndex.advancedBy(6) ... gun2.endIndex.advancedBy(-4)))!
+                guns.gun2Blocked = Int(gun2.substringWithRange(gun2.startIndex.advancedBy(9) ..< gun2.endIndex))!
+                
+                NSNotificationCenter.defaultCenter().postNotificationName("gunsDataNotification", object: nil)
             }
-        }))
+        }
+    }
+    
+    private func createGunsRecord(gun1: String, gun2: String) {
+        let gunsRec = CKRecord(recordType: "Guns", recordID: self.gunsRecordId)
+        
+        gunsRec.setValue(gun1, forKey: "Gun1")
+        gunsRec.setValue(gun2, forKey: "Gun2")
+        
+        self.privateDataBase.saveRecord(gunsRec) {
+            savedRecord, error in
+            
+            if let err = error {
+                debugPrint("Save error - method createGunsRecord in CloudKitHelper") // Fazer o tratamento adequado
+                debugPrint(err.description)
+            } else {
+                debugPrint("Save guns record successful")
+            }
+        }
     }
 }
 

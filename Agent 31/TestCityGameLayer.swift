@@ -13,6 +13,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
     
+    
     override init(){
         
         super.init()
@@ -53,10 +54,18 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     }
     
     func putTestEnemy(){
-        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
-        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
-        self.addChild(testEnemy)
-        self.addChild(secEnemy)
+//        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
+//        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
+//        self.addChild(testEnemy)
+//        self.addChild(secEnemy)
+        
+        let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
+        let enemysec = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), enemyLevel: 10)
+        let enemy3 = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 300, yPositionFloor), enemyLevel: 3)
+        
+        self.addChild(enemysec)
+        self.addChild(enemytest)
+        self.addChild(enemy3)
     }
     
     func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {
@@ -68,7 +77,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             node, stop in
             // Block below is executed if a enemy is found
             
-            if let foundEnemy = node as? GeneralEnemy{
+            if let foundEnemy = node as? Enemy{
                 
                 foundEnemy.setDistanceToAgent( (self.agent31?.position)! )
                 foundEnemy.update(currentTime)

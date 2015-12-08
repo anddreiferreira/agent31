@@ -10,14 +10,11 @@ import SpriteKit
 
 class Agent: Character {
     
-    private let initialLegs: String = "agentStoppedLegs1"
-    private let initialTorso: String = "agentStoppedTorso2"
-    
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
         
         debugPrint("Initializing Agent")
         
-        super.init(legsImage: initialLegs, torsoImage: initialTorso, position: position, zPosition: 1.0, withGun: withGun)
+        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
         
         self.name = "agent"
         
@@ -33,7 +30,7 @@ class Agent: Character {
         self.setAgentPhysics()
         
         
-        self.HP = Int(MAX_INPUT)
+        self.HP = 200
         
     }
     
@@ -41,7 +38,7 @@ class Agent: Character {
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.Coin.rawValue | ColliderType.Metal.rawValue | ColliderType.Ground.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
         
     }
     
@@ -72,6 +69,8 @@ class Agent: Character {
     
     override func didBeginContact(contactedNode: SKNode) {
         super.didBeginContact(contactedNode)
+        
+        
         if contactedNode.isKindOfClass(Coin){
             contactedNode.removeFromParent()
             ResourcesData.sharedInstance.gold += ((contactedNode as? Coin)?.value)!
@@ -79,6 +78,12 @@ class Agent: Character {
             contactedNode.removeFromParent()
             ResourcesData.sharedInstance.metal += ((contactedNode as? Metal)?.value)!
         }
+    }
+    
+    override func die() {
+        super.die()
+        
+        CharacterData.sharedInstance.decreaseLife()
     }
     
 }

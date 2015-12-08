@@ -39,7 +39,7 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
     
-    init(legsImage: String, torsoImage: String, position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true){
+    init(legsImage: String = "agentStoppedLegs1", torsoImage: String = "agentStoppedTorso2", position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
@@ -48,7 +48,7 @@ class Character: GameObject {
         initializeTorso(torsoImage)
         
         if(withGun == true){
-            initializeGun("CA115")
+            initializeGun(gunName)
         }
         
         setGeneralAttributesForCharacter()
@@ -165,7 +165,6 @@ extension Character{
     func gotHit(damage: Int){
         debugPrint("Character HP \(self.HP) -> \(self.HP - damage)")
         self.gotHitAnimationOnce()
-        self.gun?.gotHitAnimation()
         self.HP = self.HP - damage
         
         if(self.HP <= 0){
@@ -186,7 +185,6 @@ extension Character{
     func jump(){
         if(jumpsRemaining > 0){
             jumpAnimationOnce()
-            self.gun?.jumpAnimation()
             if(jumpsRemaining == 2){
                 self.physicsBody?.applyImpulse(vectorFirstJump())
             }else{
@@ -210,7 +208,6 @@ extension Character{
             self.attacking = true
             if(lookingUp == false){
                 self.attackingAnimationOnce()
-                self.gun?.shootAnimation()
                 
                 let bullet = Bullet(ownerGun: self.gun!, orientation: self.orientation!, zPosition: 5)
                 self.parent?.addChild(bullet)
@@ -275,6 +272,7 @@ extension Character{
         if(self.jumpingTorso != nil && self.jumpingLegs != nil && self.lookingUp == false){
             self.runAction(self.jumpingLegs!)
             self.torso?.runAction(self.jumpingTorso!)
+            self.gun?.jumpAnimation()
         }
     }
     
@@ -289,11 +287,12 @@ extension Character{
         }
     }
     
-    private func attackingAnimationOnce(){
+    func attackingAnimationOnce(){
         if(self.attackingTorso != nil){
             self.torso?.runAction(self.attackingTorso!, completion: {
                 self.attacking = false
             })
+            self.gun?.shootAnimation()
         }
     }
     
@@ -302,18 +301,21 @@ extension Character{
             self.torso?.runAction(self.attackingUpTorso!, completion:  {
                 self.attacking = false
             })
+            self.gun?.shootUpAnimation()
         }
     }
     
     func lookUpAnimationOnce(){
         if(self.lookingUpTorso != nil && self.attacking == false){
             self.torso?.runAction(self.lookingUpTorso!)
+            self.gun?.lookUpAnimation()
         }
     }
     
     func gotHitAnimationOnce(){
         if(self.gotHitTorso != nil){
             self.torso?.runAction(self.gotHitTorso!)
+            self.gun?.gotHitAnimation()
         }
     }
     

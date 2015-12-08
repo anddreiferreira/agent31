@@ -15,6 +15,7 @@ enum Attributes: String {
     case shootingPower = "ShootingPower"
     case backPack = "BackPack"
     case level = "Level"
+    case lives = "Lives"
 }
 
 private let _sharedInstance = CharacterData()
@@ -27,9 +28,9 @@ class CharacterData : NSObject {
     var shootingRange: Int
     var backPack: Int
     var level: Int
-    
+    var lives: Int
+    var timeLevelUp = NSTimeInterval()
     var isTrainingNow = false
-    
     private var currentTrainingAttribute = ""
     
     class var sharedInstance: CharacterData {
@@ -44,6 +45,7 @@ class CharacterData : NSObject {
         self.shootingPower = 0
         self.backPack = 0
         self.level = 0
+        self.lives = 0
     }
     
     class func printCharacter( character: CharacterData ) {
@@ -53,6 +55,7 @@ class CharacterData : NSObject {
         print( "Shooting power = \(character.shootingPower)" )
         print( "Back pack = \(character.backPack)" )
         print( "Level = \(character.level)" )
+        print( "Lives = \(character.lives)" )
     }
 }
 
@@ -105,27 +108,47 @@ extension CharacterData {
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         // iniciar o NSTimer
-        self.initTimer(tuple.timeLevelUp, value: currentValue)
+        timeLevelUp = tuple.timeLevelUp
+        initTimer(timeLevelUp, value: currentValue)
+        // Agendar notificacao
+        scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
-    private func initTimer( time: NSTimeInterval, value: Int ) {
-        debugPrint("Inicializando o Timer do atributo \(self.currentTrainingAttribute)")
-        
+    private func initTimer(time: NSTimeInterval, value: Int) {
+        debugPrint("Inicializando o timer do atributo \(self.currentTrainingAttribute)")
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
     }
     
     func finishTraining(timer: NSTimer) {
-        
         timer.invalidate()
-        
+        isTrainingNow = false
         // incrementar o valor do atributo
-        let attrValue = self.getAttributeValue( self.currentTrainingAttribute )
-        self.setAttributeValue( self.currentTrainingAttribute, value: attrValue + 1 )
-        
+        let attrValue = self.getAttributeValue(self.currentTrainingAttribute)
+        self.setAttributeValue( self.currentTrainingAttribute, value: attrValue + 1)
         // salvar o novo valor no cloudkit
         let ck = CloudKitHelper()
         ck.saveCharacterProperties( self )
-        
         debugPrint("**************** Valor do atributo \(self.currentTrainingAttribute) atualizado com sucesso *************" )
+    }
+}
+
+// MARK: Character lives methods
+extension CharacterData {
+    
+    func restoreLife() {
+        
+        if self.lives < 5 {
+            self.lives = self.lives + 1
+            debugPrint("YOU WON A LIFE")
+        }
+    }
+    
+    func decreaseLife() {
+        
+        if self.lives > 0 {
+            self.lives = self.lives - 1
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("AgentLostOneLifeNotification", object: nil)
     }
 }

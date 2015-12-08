@@ -62,9 +62,12 @@ class UpgradeLayer: SKNode
         if CharacterData.sharedInstance.isTrainingNow == false {
             upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
         } else {
-            upgradeButton = createLabelNode("Something is already being upgraded", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 15, zPosition: zPosition4th, name: "btnDoNotUpgrade")
+            upgradeButton = createLabelNode("Upgrading", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoNotUpgrade")
         }
         self.addChild(upgradeButton!)
+        
+        upgradeDuration = createLabelNode("", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 180), fontSize: 15, zPosition: zPosition4th, name: "lblUpgradeDuration")
+        self.addChild(upgradeDuration!)
         
     }
     
@@ -77,29 +80,28 @@ class UpgradeLayer: SKNode
     
     func loadAttributeLevel(attributeName: String) {
         
-        var attributeLevel: Int
+        var attributeLevel = 0
         
         switch attributeName {
-        case "speed":
+        case "Speed":
             attributeLevel = CharacterData.sharedInstance.speed
-        case "jump":
+        case "Jump":
             attributeLevel = CharacterData.sharedInstance.jump
-        case "shootingPower":
+        case "Shoot. Power":
             attributeLevel = CharacterData.sharedInstance.shootingPower
-        case "shootingRange":
+        case "Shoot. Range":
             attributeLevel = CharacterData.sharedInstance.shootingRange
-        case "backPack":
+        case "Backpack":
             attributeLevel = CharacterData.sharedInstance.backPack
-        case "gun1":
-            attributeLevel = 0
-        case "gun2":
-            attributeLevel = 0
-        default:
-            attributeLevel = 0
+        case GunsData.sharedInstance.gun1Name:
+            attributeLevel = GunsData.sharedInstance.gun1Level
+        case GunsData.sharedInstance.gun2Name:
+            attributeLevel = GunsData.sharedInstance.gun2Level
+        default: ()
             
         }
         
-        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "upgradeLevel")
+        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblLevel")
         self.addChild(upgradeLevel!)
         
     }
@@ -111,7 +113,7 @@ class UpgradeLayer: SKNode
             resourceAvailableIcon = createSpriteNode("coinCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: zPosition4th, name: "goldIcon")
             self.addChild(resourceAvailableIcon!)
             
-            resourceAvailableLabel = createLabelNode(String(ResourcesData.sharedInstance.gold), position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: zPosition4th, name: "goldAvailableLabel")
+            resourceAvailableLabel = createLabelNode(String(ResourcesData.sharedInstance.gold), position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: zPosition4th, name: "lblGoldAvailable")
             self.addChild(resourceAvailableLabel!)
             
         } else if resourceType == "metal" {
@@ -119,18 +121,10 @@ class UpgradeLayer: SKNode
             resourceAvailableIcon = createSpriteNode("metalCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: zPosition4th, name: "goldIcon")
             self.addChild(resourceAvailableIcon!)
             
-            resourceAvailableLabel = createLabelNode(String(ResourcesData.sharedInstance.metal), position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: zPosition4th, name: "goldAvailableLabel")
+            resourceAvailableLabel = createLabelNode(String(ResourcesData.sharedInstance.metal), position: CGPoint(x: -middleOfTheScreenPoint.x + 480, y: -middleOfTheScreenPoint.y + 332), fontSize: 20, zPosition: zPosition4th, name: "lblGoldAvailable")
             self.addChild(resourceAvailableLabel!)
             
         }
-    }
-    
-    func loadAnimation() {
-        
-    }
-    
-    func loadTrain() {
-        
     }
     
 }

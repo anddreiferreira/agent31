@@ -112,9 +112,9 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         case let x where x.hasSuffix("backpack"):
             upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
         case let x where x.hasSuffix("gun1"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 1", upgradeItem: "Gun1", resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun1Name, upgradeItem: GunsData.sharedInstance.gun1Name, resourceType: "ouro")
         case let x where x.hasSuffix("gun2"):
-            upgradeLayer = UpgradeLayer(attributeName: "Gun 2", upgradeItem: "Gun2", resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun2Name, upgradeItem: GunsData.sharedInstance.gun2Name, resourceType: "ouro")
         default: ()
         }
         
@@ -132,10 +132,24 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     func doUpgradeWithAttribute(attributeName: String) {
         
-        let startIndex = attributeName.startIndex.advancedBy(12)
-        let rangeSubstring = startIndex ..< attributeName.endIndex
-        
-        attributeName.hasSuffix("Gun1") || attributeName.hasSuffix("Gun2") ? debugPrint("GunData.initTraining") : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring))
+        if CharacterData.sharedInstance.isTrainingNow == false && GunsData.sharedInstance.isUpgradingNow == false {
+            let startIndex = attributeName.startIndex.advancedBy(12)
+            let rangeSubstring = startIndex ..< attributeName.endIndex
+            
+            attributeName.hasSuffix(GunsData.sharedInstance.gun1Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun1Name) : (attributeName.hasSuffix(GunsData.sharedInstance.gun2Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun2Name) : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring)))
+            
+            var time: NSTimeInterval
+            CharacterData.sharedInstance.isTrainingNow == true ? (time = CharacterData.sharedInstance.timeLevelUp) : (time = GunsData.sharedInstance.timeLevelUp)
+            
+            let hours = UInt32(time/3600)
+            time -= (NSTimeInterval(hours)*3600)
+            let minutes = UInt32(time/60.0)
+            let strHours = String(format: "%02d", hours)
+            let strMinutes = String(format: "%02d", minutes)
+            upgradeLayer.upgradeDuration?.text = "Finish in \(strHours)h\(strMinutes)m"
+            upgradeLayer.upgradeButton?.text = "Upgrading"
+            
+        }
     }
     
     private func agentGoToCity() {
@@ -260,8 +274,12 @@ extension LaboratoryScene{
     
     private func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-self.size.width/2 + 569, -self.size.height/2 + 169), zPosition: 100, name: "jumpButtonLab")
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: 100, name: "jumpButtonLab")
         cam.addChild(jumpButton!)
+        
+//        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
+//        cam.addChild(shootButton!)
+        
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
 //        cam.addChild(goToCity!)
