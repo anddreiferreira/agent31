@@ -41,13 +41,15 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
+        self.backgroundColor = UIColor.yellowColor()
+        
         // criacao de informacoes randomicas do novo predio
         let predioInfo = BuildingInformation()
         
-        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares,pilastras: predioInfo.qtdPilastras, posicalIncialX: predioInfo.posicaoInicialX)
-        
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: 0)
+        predioNovo.zPosition = 0;
 //        predioInfo.posicaoInicialX
-//        self.addChild(predioNovo)
+        self.addChild(predioNovo)
         predioNovo.setScale(1.6)
         
     }
@@ -119,6 +121,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
+  
 
 }
 
@@ -189,6 +192,10 @@ extension TestCityScene{
         shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
         cam.addChild(shootButton!)
         
+        let status : SKSpriteNode = createSpriteNode("statusBar", position: CGPointMake(10, 375-10), zPosition: 1000000, name: "statusBar")
+        
+        cam.addChild(status)
+        
     }
     
     func trembleCameraAction() -> SKAction{
@@ -231,7 +238,7 @@ extension TestCityScene{
             
             
         }
-        analogStick!.zPosition = 100
+        analogStick!.zPosition = 1000000000
         cam.addChild(analogStick!)
     }
     

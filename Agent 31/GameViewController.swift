@@ -64,10 +64,10 @@ class GameViewController: UIViewController {
         if skView.scene == nil {
             let scene = LaboratoryScene(size:skView.bounds.size)
 
-            skView.ignoresSiblingOrder = true
-            skView.showsFPS = true
-            skView.showsPhysics = true
-            skView.showsNodeCount = true
+            skView.ignoresSiblingOrder = false
+            skView.showsFPS = false
+            skView.showsPhysics = false
+            skView.showsNodeCount = false
             scene.scaleMode = .AspectFill
             self.view.multipleTouchEnabled = true
             skView.presentScene(scene)

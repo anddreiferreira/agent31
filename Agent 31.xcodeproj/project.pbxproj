@@ -346,6 +346,18 @@
 		6B53A7301BDA9FCD002E7808 /* SKGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A70C1BDA9FCD002E7808 /* SKGeneral.swift */; };
 		6B53A7321BDA9FCD002E7808 /* TelevisionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A70E1BDA9FCD002E7808 /* TelevisionLayer.swift */; };
 		6B53A7341BDA9FCD002E7808 /* TrainingCenterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */; };
+		6B53BFE51C1738DB000B82F1 /* telaInicial.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B53BFE41C1738DB000B82F1 /* telaInicial.png */; };
+		6B73AC9F1C17115F0073A323 /* telagun1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73AC971C17115F0073A323 /* telagun1.png */; };
+		6B73ACA01C17115F0073A323 /* telatreino2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73AC981C17115F0073A323 /* telatreino2.png */; };
+		6B73ACA11C17115F0073A323 /* telatreino1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73AC991C17115F0073A323 /* telatreino1.png */; };
+		6B73ACAC1C1712300073A323 /* mesaPlaceholder2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACA71C1712300073A323 /* mesaPlaceholder2.png */; };
+		6B73ACAD1C1712300073A323 /* pcPlaceholder2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACA81C1712300073A323 /* pcPlaceholder2.png */; };
+		6B73ACAE1C1712300073A323 /* statusBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACA91C1712300073A323 /* statusBar.png */; };
+		6B73ACB01C1712300073A323 /* tvPlaceholder2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACAB1C1712300073A323 /* tvPlaceholder2.png */; };
+		6B73ACB21C1712D70073A323 /* armaPlaceholder2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACB11C1712D70073A323 /* armaPlaceholder2.png */; };
+		6B73ACB41C17132E0073A323 /* treinoPlaceholder2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACB31C17132E0073A323 /* treinoPlaceholder2.png */; };
+		6B73ACB61C171B150073A323 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACB51C171B150073A323 /* Background1.png */; };
+		6B73ACB81C171B4B0073A323 /* backgroundGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B73ACB71C171B4B0073A323 /* backgroundGame.png */; };
 		6B9FBFDE1BDAAE3B00ED08C3 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */; };
 		6BA4F1961C07CA680016B39F /* BuildingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA4F1951C07CA680016B39F /* BuildingInformation.swift */; };
 		6BA7C20B1BFCE77E000B2B66 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7C20A1BFCE77E000B2B66 /* Building.swift */; };
@@ -727,6 +739,18 @@
 		6B53A70C1BDA9FCD002E7808 /* SKGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKGeneral.swift; sourceTree = "<group>"; };
 		6B53A70E1BDA9FCD002E7808 /* TelevisionLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelevisionLayer.swift; sourceTree = "<group>"; };
 		6B53A7101BDA9FCD002E7808 /* TrainingCenterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingCenterLayer.swift; sourceTree = "<group>"; };
+		6B53BFE41C1738DB000B82F1 /* telaInicial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telaInicial.png; sourceTree = "<group>"; };
+		6B73AC971C17115F0073A323 /* telagun1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telagun1.png; sourceTree = "<group>"; };
+		6B73AC981C17115F0073A323 /* telatreino2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telatreino2.png; sourceTree = "<group>"; };
+		6B73AC991C17115F0073A323 /* telatreino1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telatreino1.png; sourceTree = "<group>"; };
+		6B73ACA71C1712300073A323 /* mesaPlaceholder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesaPlaceholder2.png; sourceTree = "<group>"; };
+		6B73ACA81C1712300073A323 /* pcPlaceholder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pcPlaceholder2.png; sourceTree = "<group>"; };
+		6B73ACA91C1712300073A323 /* statusBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusBar.png; sourceTree = "<group>"; };
+		6B73ACAB1C1712300073A323 /* tvPlaceholder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvPlaceholder2.png; sourceTree = "<group>"; };
+		6B73ACB11C1712D70073A323 /* armaPlaceholder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armaPlaceholder2.png; sourceTree = "<group>"; };
+		6B73ACB31C17132E0073A323 /* treinoPlaceholder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treinoPlaceholder2.png; sourceTree = "<group>"; };
+		6B73ACB51C171B150073A323 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background1.png; sourceTree = "<group>"; };
+		6B73ACB71C171B4B0073A323 /* backgroundGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundGame.png; sourceTree = "<group>"; };
 		6B9FBFDD1BDAAE3B00ED08C3 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
 		6BA4F1951C07CA680016B39F /* BuildingInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingInformation.swift; sourceTree = "<group>"; };
 		6BA7C20A1BFCE77E000B2B66 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
@@ -1617,6 +1641,7 @@
 		094CD0FE1C1672010075719B /* Predio */ = {
 			isa = PBXGroup;
 			children = (
+				6B53BFE41C1738DB000B82F1 /* telaInicial.png */,
 				094CD0FF1C1672010075719B /* baseDireita.png */,
 				094CD1001C1672010075719B /* baseEsquerda.png */,
 				094CD1011C1672010075719B /* baseLateral.png */,
@@ -1755,7 +1780,6 @@
 		6B2783241BD6A800009628D8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */,
 				6B53A7011BDA9FCD002E7808 /* Ground.swift */,
 				6B53A6F31BDA9FCD002E7808 /* Character.swift */,
 				09C61A611C039AB9002B1309 /* Resources */,
@@ -1922,6 +1946,7 @@
 		6B408AB31BD6A19800D64ABF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B73AC961C17115F0073A323 /* New */,
 				094CCFB51C1672010075719B /* Images */,
 				6B06CD811BD6A0B9009F38F4 /* Fonts */,
 				6B2D98BD1BB1C6E7005B342E /* Images.xcassets */,
@@ -1941,8 +1966,28 @@
 				6B53A6FE1BDA9FCD002E7808 /* GameScene.sks */,
 				E0C3D6561BE3E976008D7713 /* Reach.swift */,
 				E0467F4B1BED0AA600F6D92A /* Function.swift */,
+				6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		6B73AC961C17115F0073A323 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				6B73ACB71C171B4B0073A323 /* backgroundGame.png */,
+				6B73ACB51C171B150073A323 /* Background1.png */,
+				6B73AC971C17115F0073A323 /* telagun1.png */,
+				6B73ACB31C17132E0073A323 /* treinoPlaceholder2.png */,
+				6B73AC981C17115F0073A323 /* telatreino2.png */,
+				6B73AC991C17115F0073A323 /* telatreino1.png */,
+				6B73ACA71C1712300073A323 /* mesaPlaceholder2.png */,
+				6B73ACA81C1712300073A323 /* pcPlaceholder2.png */,
+				6B73ACA91C1712300073A323 /* statusBar.png */,
+				6B73ACB11C1712D70073A323 /* armaPlaceholder2.png */,
+				6B73ACAB1C1712300073A323 /* tvPlaceholder2.png */,
+			);
+			name = New;
+			path = Images/New;
 			sourceTree = "<group>";
 		};
 		6BC87F2F1C081C9F0013BA68 /* Building */ = {
@@ -2006,6 +2051,7 @@
 				TargetAttributes = {
 					6B2D98AC1BB1C6E7005B342E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5ZSN4629J8;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -2063,6 +2109,7 @@
 				094CD1F11C1672010075719B /* coinCity.png in Resources */,
 				094CD1CC1C1672010075719B /* enemy2JumpingTorso3.png in Resources */,
 				094CD1EB1C1672010075719B /* enemy2WalkingTorso4.png in Resources */,
+				6B73ACAE1C1712300073A323 /* statusBar.png in Resources */,
 				094CD2221C1672010075719B /* baseEsquerda.png in Resources */,
 				094CD1F61C1672010075719B /* lifeCity2.png in Resources */,
 				094CD1B31C1672010075719B /* enemy1WalkingLegs4.png in Resources */,
@@ -2077,6 +2124,7 @@
 				094CD1C41C1672010075719B /* enemy2JumpingLegs1.png in Resources */,
 				094CD1541C1672010075719B /* agentStoppedLegs1.png in Resources */,
 				094CD2271C1672010075719B /* baseTeto3.png in Resources */,
+				6B73ACB01C1712300073A323 /* tvPlaceholder2.png in Resources */,
 				094CD1F31C1672010075719B /* metalCity.png in Resources */,
 				094CD16C1C1672010075719B /* agentWalkingTorso1.png in Resources */,
 				094CD23C1C1672010075719B /* tijolo5.png in Resources */,
@@ -2087,12 +2135,15 @@
 				094CD1AF1C1672010075719B /* enemy1GunWalking6.png in Resources */,
 				094CD1841C1672010075719B /* enemy1JumpingLegs5.png in Resources */,
 				094CD1FB1C1672010075719B /* Coin2.png in Resources */,
+				6B73ACB41C17132E0073A323 /* treinoPlaceholder2.png in Resources */,
 				094CD2031C1672010075719B /* headerBarLab.png in Resources */,
+				6B73ACB61C171B150073A323 /* Background1.png in Resources */,
 				094CD1D61C1672010075719B /* enemy2StoppedLegs1.png in Resources */,
 				094CD1581C1672010075719B /* agentStoppedLegs5.png in Resources */,
 				094CD1A01C1672010075719B /* enemy1StoppedLegs3.png in Resources */,
 				094CD1791C1672010075719B /* enemy1GotHitTorso4.png in Resources */,
 				094CD2111C1672010075719B /* exitButton.png in Resources */,
+				6B73ACA11C17115F0073A323 /* telatreino1.png in Resources */,
 				094CD22D1C1672010075719B /* baseTeto9.png in Resources */,
 				094CD17D1C1672010075719B /* enemy1GunJumping4.png in Resources */,
 				094CD14F1C1672010075719B /* CA115Stopped2.png in Resources */,
@@ -2125,6 +2176,7 @@
 				094CD1601C1672010075719B /* CA115Walking1.png in Resources */,
 				094CD15C1C1672010075719B /* agentStoppedTorso3.png in Resources */,
 				094CD1871C1672010075719B /* enemy1JumpingTorso2.png in Resources */,
+				6B73AC9F1C17115F0073A323 /* telagun1.png in Resources */,
 				094CD1591C1672010075719B /* agentStoppedLegs6.png in Resources */,
 				094CD12C1C1672010075719B /* agentGotHitTorso1.png in Resources */,
 				094CD1E21C1672010075719B /* enemy2WalkingLegs1.png in Resources */,
@@ -2149,6 +2201,7 @@
 				094CD1C21C1672010075719B /* enemy2GotHitTorso3.png in Resources */,
 				094CD1A81C1672010075719B /* enemy1StoppedTorso5.png in Resources */,
 				094CD1FA1C1672010075719B /* Coin1.png in Resources */,
+				6B73ACB81C171B4B0073A323 /* backgroundGame.png in Resources */,
 				094CD2071C1672010075719B /* life3.png in Resources */,
 				094CD1CD1C1672010075719B /* enemy2JumpingTorso4.png in Resources */,
 				094CD2061C1672010075719B /* life2.png in Resources */,
@@ -2181,6 +2234,7 @@
 				094CD1B71C1672010075719B /* enemy1WalkingTorso2.png in Resources */,
 				094CD1AD1C1672010075719B /* enemy1GunWalking4.png in Resources */,
 				094CD1AE1C1672010075719B /* enemy1GunWalking5.png in Resources */,
+				6B73ACAC1C1712300073A323 /* mesaPlaceholder2.png in Resources */,
 				094CD2241C1672010075719B /* baseNormal.png in Resources */,
 				6B49F9C81BDE9A8300E7164D /* LaboratoryScene2.sks in Resources */,
 				094CD1DE1C1672010075719B /* enemy2StoppedTorso3.png in Resources */,
@@ -2198,6 +2252,7 @@
 				094CD18F1C1672010075719B /* enemy1ShootingTorso1.png in Resources */,
 				094CD14D1C1672010075719B /* agentShootingUpTorso3.png in Resources */,
 				094CD12E1C1672010075719B /* agentGotHitTorso3.png in Resources */,
+				6B73ACB21C1712D70073A323 /* armaPlaceholder2.png in Resources */,
 				094CD1731C1672010075719B /* enemy1GunGotHit2.png in Resources */,
 				094CD15E1C1672010075719B /* agentStoppedTorso5.png in Resources */,
 				094CD12B1C1672010075719B /* CA115GotHit4.png in Resources */,
@@ -2236,6 +2291,7 @@
 				094CD1D11C1672010075719B /* enemy2ShootingLegs2.png in Resources */,
 				094CD1FE1C1672010075719B /* Coin5.png in Resources */,
 				094CD1C81C1672010075719B /* enemy2JumpingLegs5.png in Resources */,
+				6B73ACA01C17115F0073A323 /* telatreino2.png in Resources */,
 				094CD1C71C1672010075719B /* enemy2JumpingLegs4.png in Resources */,
 				094CD23F1C1672010075719B /* varandaBaixo.png in Resources */,
 				094CD15B1C1672010075719B /* agentStoppedTorso2.png in Resources */,
@@ -2259,6 +2315,7 @@
 				094CD1301C1672010075719B /* CA115Jumping1.png in Resources */,
 				094CD1761C1672010075719B /* enemy1GotHitTorso1.png in Resources */,
 				094CD1A41C1672010075719B /* enemy1StoppedTorso1.png in Resources */,
+				6B73ACAD1C1712300073A323 /* pcPlaceholder2.png in Resources */,
 				094CD14A1C1672010075719B /* CA115ShootingUp3.png in Resources */,
 				094CD2001C1672010075719B /* Coin.png in Resources */,
 				094CD1881C1672010075719B /* enemy1JumpingTorso3.png in Resources */,
@@ -2304,6 +2361,7 @@
 				094CD21D1C1672010075719B /* testCityBackground.png in Resources */,
 				094CD13D1C1672010075719B /* agentJumpingTorso2.png in Resources */,
 				094CD17B1C1672010075719B /* enemy1GunJumping2.png in Resources */,
+				6B53BFE51C1738DB000B82F1 /* telaInicial.png in Resources */,
 				094CD17E1C1672010075719B /* enemy1GunJumping5.png in Resources */,
 				094CD1C61C1672010075719B /* enemy2JumpingLegs3.png in Resources */,
 				094CD2421C1672010075719B /* varandaCima.png in Resources */,
@@ -2540,7 +2598,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "Henrique.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2557,7 +2615,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "Henrique.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
