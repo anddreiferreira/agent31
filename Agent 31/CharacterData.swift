@@ -132,13 +132,12 @@ extension CharacterData {
         self.finishTrainingDate = NSDate().dateByAddingTimeInterval(tuple.timeLevelUp)
         
         // iniciar o NSTimer
-        self.initTimer(tuple.timeLevelUp, currentAttributeValue: currentValue)
+        self.initTimer(tuple.timeLevelUp)
         
         // Salvar o finishTrainingDate, currentAttributeLevel e o isTrainingNow do Cloudkit
         let ckhelper = CloudKitHelper()
         ckhelper.saveCharacterProperties(self)
         ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
-        
         
         // Agendar notificacao
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
@@ -149,13 +148,26 @@ extension CharacterData {
         return ResourcesData.sharedInstance.gold >= neededResources ? true : false
     }
     
-    private func initTimer( time: NSTimeInterval, currentAttributeValue: Int ) {
+    private func initTimer( time: NSTimeInterval ) {
+        
+        debugPrint("TEMPO RESTANTE DE TREINAMENTO: \(time)")
         debugPrint("Inicializando o Timer do atributo \(self.currentTrainingAttribute)")
         
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishTraining:", userInfo: self, repeats: false)
     }
     
+    func reloadTrainingTimer() {
+        let remainingTime = NSDate().timeIntervalSinceDate(self.finishTrainingDate)
+        
+        initTimer(remainingTime)
+
+    }
+    
     func finishTraining(timer: NSTimer) {
+//        if Double(time) > 0 {
+//            --time
+//        } else {
+    
         
         timer.invalidate()
         
