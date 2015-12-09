@@ -14,7 +14,8 @@ class CityBackgroundLayer: SKNode {
     
     func putBackground(){
         
-        backgroundCity = createSpriteNode("testCityBackground", anchorPoint: CGPointMake(0,0), zPosition: 0, position: CGPointMake(0, 0),name: "backgroundCity")
+        backgroundCity = createSpriteNode("backgroundGame",anchorPoint: CGPointMake(0,0), zPosition: -3, position: CGPointMake(0, 0),name: "backgroundCity")
+        backgroundCity?.position = CGPointMake(-600,0)
         self.addChild(backgroundCity!)
         
     }

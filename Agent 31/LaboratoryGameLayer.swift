@@ -13,16 +13,18 @@ class LaboratoryGameLayer: SKNode {
     var agent31 : Agent?
     var placeHolder : SKSpriteNode?
     
-    var desk : LabObject?
-    var computer : LabObject?
-    var gunDevelopmentCenter : LabObject?
-    var television : LabObject?
-    var trainingCenter : LabObject?
-    var duelMode: LabObject?
+    var desk : SKSpriteNode?
+    var computer : SKSpriteNode?
+    var gunDevelopmentCenter : SKSpriteNode?
+    var television : SKSpriteNode?
+    var trainingCenter : SKSpriteNode?
+    var duelMode: SKSpriteNode?
     
     var tapObjectButton : SKSpriteNode?
     
-
+    var cityPlaceholder : SKSpriteNode?
+    
+    
     override init(){
         
         super.init()
@@ -33,23 +35,45 @@ class LaboratoryGameLayer: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     
     private func putObjectPlaceHolder(){
         
-        self.desk = LabObject(imageNamed: "placeHolderMesa" , groundPosition: CGPointMake(100,100))
-        self.computer = LabObject(imageNamed: "placeHolderPC", groundPosition: CGPointMake(-150, 100))
-        self.television = LabObject(imageNamed: "placeHolderTV", groundPosition: CGPointMake(-300, 100))
-        self.trainingCenter = LabObject(imageNamed: "placeHolderTreinamento", groundPosition: CGPointMake(-450, 100))
-        self.gunDevelopmentCenter = LabObject(imageNamed: "placeHolderMesaArmas", groundPosition: CGPointMake(250, 100))
-        self.duelMode = LabObject(imageNamed: "placeHolderDuelMode", groundPosition: CGPointMake(-600, 100))
+//        self.desk = createSpriteNode("mesaPlaceholder2" , position: CGPointMake(600,375-128), name: "")
+//        self.computer = createSpriteNode("pcPlaceholder2", position: CGPointMake(300, 375-127))
+//        self.television = createSpriteNode( "tvPlaceholder2", groundPosition: CGPointMake(0, 375-154))
+//        self.trainingCenter = createSpriteNode(imageNamed: "treinoPlaceholder2", groundPosition: CGPointMake(-300, 375-137))
+//        self.gunDevelopmentCenter = createSpriteNode(imageNamed: "armaPlaceholder2", groundPosition: CGPointMake(-500, 375-119))
+////        self.duelMode = LabObject(imageNamed: "placeHolderDuelMode", groundPosition: CGPointMake(-800, 375-100))
         
+        
+        self.desk = createSpriteNode("mesaPlaceholder2", position: CGPointMake(600,375-128), name: "desk")
+        
+        self.self.television = createSpriteNode("tvPlaceholder2", position: CGPointMake(0, 375-154), name: "computer")
+        
+        self.self.trainingCenter = createSpriteNode("treinoPlaceholder2", position:CGPointMake(-300, 375-137), name: "placeholderTreino1")
+        
+        self.gunDevelopmentCenter = createSpriteNode("armaPlaceholder2", position: CGPointMake(-500, 375-119), name: "placeholderGun")
+        
+        self.computer = createSpriteNode("pcPlaceholder2", position: CGPointMake(300, 375-127), name: "computer")
 
-        //self.addChild(desk!)
-        //self.addChild(computer!)
-        //self.addChild(television!)
-        //self.addChild(gunDevelopmentCenter!)
-        //self.addChild(trainingCenter!)
-        //self.addChild(duelMode!)
+        
+        self.cityPlaceholder = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(570, 375-70), zPosition: 1000, name: "goCity")
+        
+      
+        
+        self.television?.setScale(0.3)
+        self.desk?.setScale(0.3)
+        self.computer?.setScale(0.3)
+        self.gunDevelopmentCenter?.setScale(0.3)
+        self.trainingCenter?.setScale(0.3)
+        
+        self.addChild(desk!)
+        self.addChild(computer!)
+        self.addChild(television!)
+        self.addChild(gunDevelopmentCenter!)
+        self.addChild(trainingCenter!)
+        self.addChild(cityPlaceholder!)
         
     }
     
@@ -84,19 +108,19 @@ class LaboratoryGameLayer: SKNode {
     }
     
     func putTestEnemy(){
-        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
-        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
-        self.addChild(testEnemy)
-        self.addChild(secEnemy)
+        let testEnemy = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
+//        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
+//        self.addChild(testEnemy)
+//        self.addChild(secEnemy)
     }
     
     func updateLabGameLayer(){
-        self.verifyObjectBalloon(self.desk!)
-        self.verifyObjectBalloon(self.computer!)
-        self.verifyObjectBalloon(self.television!)
-        self.verifyObjectBalloon(self.trainingCenter!)
-        self.verifyObjectBalloon(self.gunDevelopmentCenter!)
-        self.verifyObjectBalloon(self.duelMode!)
+//        self.verifyObjectBalloon(self.desk!)
+//        self.verifyObjectBalloon(self.computer!)
+//        self.verifyObjectBalloon(self.television!)
+//        self.verifyObjectBalloon(self.trainingCenter!)
+//        self.verifyObjectBalloon(self.gunDevelopmentCenter!)
+//        self.verifyObjectBalloon(self.duelMode!)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {

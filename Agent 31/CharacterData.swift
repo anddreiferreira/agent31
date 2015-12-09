@@ -45,7 +45,7 @@ class CharacterData : NSObject {
         self.shootingPower = 0
         self.backPack = 0
         self.level = 0
-        self.lives = 0
+        self.lives = 5
     }
     
     class func printCharacter( character: CharacterData ) {

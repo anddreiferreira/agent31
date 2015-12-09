@@ -76,7 +76,7 @@ extension CloudKitHelper {
                 character.shootingPower = fetchedRecord?.objectForKey("ShootingPower") as! Int
                 character.shootingRange = fetchedRecord?.objectForKey("ShootingRange") as! Int
                 character.speed = fetchedRecord?.objectForKey("Speed") as! Int
-                character.lives = fetchedRecord?.objectForKey("Lives") as! Int
+//                character.lives = fetchedRecord?.objectForKey("Lives") as! Int
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))

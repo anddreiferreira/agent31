@@ -18,6 +18,8 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
         super.init()
         
+        self.fireClock()
+
 
     }
     
@@ -25,32 +27,44 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-
+    func fireClock(){
+        
+        let timer : NSTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "createRandomEnemy", userInfo: nil, repeats: true)
+        
+        timer.fire()
+        
+    }
+    
     
     func putGameLayer(){
         self.putGround()
         self.putAgent()
         self.putTestEnemy()
         
-        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
-        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
+//        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
+//        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
     }
     
     func putGround(){
         let ground = Ground(imageName: "testCityGround", position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
         self.addChild(ground)
+        ground.zPosition = -10000
     }
+    
     
     func createBlock(position: CGPoint){
         let block = Ground(imageName: "testCityBlock", position: position, zPosition: 1)
         block.yScale = (block.yScale)/2
         self.addChild(block)
+        block.zPosition = -10000
     }
     
     func putAgent(){
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
+        agent31?.zPosition = 1000000
         self.addChild(agent31!)
+//        print("ZZZZZZZZZZ")
+//        print(self.agent31?.zPosition)
     }
     
     func putTestEnemy(){
@@ -62,6 +76,10 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
         let enemysec = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), enemyLevel: 10)
         let enemy3 = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 300, yPositionFloor), enemyLevel: 3)
+        
+        enemytest.zPosition = 100000
+        enemysec.zPosition = 100000
+        enemy3.zPosition = 100000
         
         self.addChild(enemysec)
         self.addChild(enemytest)
@@ -140,5 +158,18 @@ extension TestCityGameLayer{
             (charac as? Character)?.didBeginContact(nodeB)
         }
     }
+    
+    func createRandomEnemy(){
+        
+        let numRandom : Int = Int(arc4random_uniform(800)) - 300
+        
+        let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - CGFloat(numRandom), yPositionFloor), withGun: true)
+        
+        enemytest.zPosition = 100000
+
+        self.addChild(enemytest)
+        
+    }
+    
     
 }
