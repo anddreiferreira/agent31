@@ -121,6 +121,10 @@ extension CloudKitHelper {
         
         self.privateDataBase.fetchRecordWithID(self.gunsRecordId) {
             fetchedRecord, error in
+            
+            guns.gun1 = guns.gun1Name + "." + String(format: "%02d", guns.gun1Level) + "." + String(format: "%02d", guns.gun1Blocked)
+            guns.gun2 = guns.gun2Name + "." + String(format: "%02d", guns.gun2Level) + "." + String(format: "%02d", guns.gun2Blocked)
+            
             if let _ = error {
                 self.createGunsRecord(guns.gun1, gun2: guns.gun2)
             } else {
