@@ -34,6 +34,7 @@ class CharacterData : NSObject {
     var isTrainingNow: Bool
     var currentTrainingAttribute: String
     var finishTrainingDate: NSDate
+    var timeLevelUp = NSTimeInterval()
     
     class var sharedInstance: CharacterData {
         return _sharedInstance
@@ -139,6 +140,8 @@ extension CharacterData {
         ckhelper.saveCharacterProperties(self)
         ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         
+//        timeLevelUp = tuple.timeLevelUp
+//        initTimer(timeLevelUp, value: currentValue)
         // Agendar notificacao
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
@@ -164,13 +167,7 @@ extension CharacterData {
     }
     
     func finishTraining(timer: NSTimer) {
-//        if Double(time) > 0 {
-//            --time
-//        } else {
-    
-        
         timer.invalidate()
-        
         isTrainingNow = false
         self.finishTrainingDate = nilDateValue()
         
@@ -181,7 +178,6 @@ extension CharacterData {
         // salvar o novo valor no cloudkit
         let ck = CloudKitHelper()
         ck.saveCharacterProperties( self )
-        
         debugPrint("**************** Valor do atributo \(self.currentTrainingAttribute) atualizado com sucesso *************" )
     }
 }

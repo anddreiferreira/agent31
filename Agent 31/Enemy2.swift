@@ -62,14 +62,21 @@ extension Enemy2{
 //MARK: ARTIFICIAL INTELLIGENCE
 extension Enemy2{
     override func shoot(){
-            self.attacking = true
-            self.attackingAnimationOnce()
+        self.attacking = true
+        self.attackingAnimationOnce()
+    
+        let initialPosition = CGPointMake(self.position.x + self.size.width/2, self.position.y - self.size.height/8)
         
-            let bullet = Bullet(initialPosition: CGPointMake(self.position.x + self.frame.size.width/2, self.position.y - self.frame.height/2), orientation: self.orientation!, zPosition: 5)
-            bullet.alpha = 0.0
-            self.parent?.addChild(bullet)
+        let bullet = Bullet(initialPosition: initialPosition, orientation: self.orientation!, zPosition: 5)
+        bullet.alpha = 0.0
+        self.parent?.addChild(bullet)
+    
+        bullet.fire()
         
-            bullet.fire()
+        
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            bullet.removeFromParent()
+        })
     }
     
     override func enemyBehaviourAttack() {
@@ -77,7 +84,7 @@ extension Enemy2{
         turnInAgentDirection()
         
         if(self.distanceToAgent < 70) {
-            if(arc4random()%20 + 1 == 1){
+            if(arc4random()%15 + 1 == 1){
                 self.shootIfHasBullet()
             }
         }else{

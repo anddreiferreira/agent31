@@ -56,7 +56,7 @@ class Enemy: Character {
 extension Enemy{
     private func setEnemyPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Enemy.rawValue | ColliderType.Ground.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.Ground.rawValue
     }
 }
@@ -91,8 +91,26 @@ extension Enemy{
     override func update(currentTime: NSTimeInterval) {
         enemyBehaviourGuarding()
         
+        let yDiff = ((self.agentPos?.y)! - self.position.y)
+        
         if(self.distanceToAgent < detectDistance) {
-            enemyBehaviourAttack()
+            
+            if(yDiff < 10){
+                enemyBehaviourAttack()
+            }
+            
+            jumpPursuingAgent(yDiff)
+            
+        }
+        
+    }
+    
+    func jumpPursuingAgent(yDifference: CGFloat){
+        
+        if(yDifference > 100 && self.velocity > 10){
+            if(rand()%2 + 1 == 1){
+                self.jump();
+            }
         }
     }
     
@@ -108,7 +126,7 @@ extension Enemy{
                 if(rand()%2+1 == 1){
                     shootIfHasBullet()
                 }else{
-                    self.run()
+//                    self.run(self.enemyLevel)
                 }
                 
             }else{

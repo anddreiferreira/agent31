@@ -30,15 +30,15 @@ class Agent: Character {
         self.setAgentPhysics()
         
         
-        self.HP = 200
+        self.HP = 10000000
         
     }
     
     
     private func setAgentPhysics(){
         self.physicsBody?.categoryBitMask = ColliderType.Agent.rawValue
-        self.physicsBody?.contactTestBitMask = ColliderType.Coin.rawValue | ColliderType.Metal.rawValue | ColliderType.Ground.rawValue
-        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Enemy.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.Coin.rawValue | ColliderType.Metal.rawValue | ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.Ground.rawValue | ColliderType.Bullet.rawValue
         
     }
     

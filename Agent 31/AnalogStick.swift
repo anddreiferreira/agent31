@@ -20,7 +20,7 @@ public struct AnalogStickData: CustomStringConvertible {
     }
 }
 
-let kStickOfSubstrateWidthPercent: CGFloat = 0.5 // [0..1]
+let kStickOfSubstrateWidthPercent: CGFloat = 0.65 // [0..1]
 
 public class AnalogStick: SKNode {
     

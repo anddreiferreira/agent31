@@ -37,6 +37,7 @@ class Bullet : GameObject {
         
         super.init(imageName: "bullet1", position: CGPointZero, zPosition: zPosition)
         self.defineDamage()
+        self.setBulletAttributes()
         self.position = initialPosition
         
     }
@@ -70,27 +71,7 @@ class Bullet : GameObject {
         return "bullet1"
     }
     
-    private func setBulletAttributes(){
-        self.setScale(0.5)
-        self.physicsBody = self.setPhysicsBody()
-    }
-    
-    private func defineDirection(orientation: Int)->CGVector{
-        if(orientation == TURNED_RIGHT){
-            return CGVectorMake(1000.0, 0.0)
-        }else if(orientation == TURNED_LEFT){
-            self.invertSpriteHorizontally(true)
-            return CGVectorMake(-1000.0, 0.0)
-        }else if(orientation == TURNED_UP){
-            self.zRotation = CGFloat(M_PI/2)
-            return CGVectorMake(0, 1000.0)
-        }else{
-            debugPrint("Error defining Bullet direction")
-            return CGVectorMake(0, 0)
-        }
-    }
-    
-    private func setPhysicsBody() -> SKPhysicsBody{
+    override func generatePhysicsBody() -> SKPhysicsBody {
         let texture: SKTexture! = generateTextureWithImage(self.imageName!)
         let physicsBody: SKPhysicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody.affectedByGravity = false
@@ -110,6 +91,28 @@ class Bullet : GameObject {
         
         return physicsBody
     }
+    
+    private func setBulletAttributes(){
+        self.setScale(0.5)
+        
+        debugPrint("BULLET | CATEGORY = \(self.physicsBody?.categoryBitMask) CONTACT = \(self.physicsBody?.contactTestBitMask) COLLISION = \(self.physicsBody?.contactTestBitMask)")
+    }
+    
+    private func defineDirection(orientation: Int)->CGVector{
+        if(orientation == TURNED_RIGHT){
+            return CGVectorMake(1000.0, 0.0)
+        }else if(orientation == TURNED_LEFT){
+            self.invertSpriteHorizontally(true)
+            return CGVectorMake(-1000.0, 0.0)
+        }else if(orientation == TURNED_UP){
+            self.zRotation = CGFloat(M_PI/2)
+            return CGVectorMake(0, 1000.0)
+        }else{
+            debugPrint("Error defining Bullet direction")
+            return CGVectorMake(0, 0)
+        }
+    }
+    
     
     func fire(){
         let move = SKAction.moveBy(defineDirection(self.orientation), duration: 2.0)

@@ -21,12 +21,11 @@ class GunsData: NSObject {
     var gun1Level: Int
     var gun1Name: String
     var gun1Blocked: Int
-    
     var gun2: String
     var gun2Level: Int
     var gun2Name: String
     var gun2Blocked: Int
-    
+    var timeLevelUp = NSTimeInterval()
     var isUpgradingNow = false
     private var currentUpgradingGun = ""
     
