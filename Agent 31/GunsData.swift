@@ -99,8 +99,8 @@ extension GunsData {
         self.setGunLevel(self.currentUpgradingGun, value: attrValue + 1)
         debugPrint("Upgrade de \(self.currentUpgradingGun) para o nível \(self.getGunLevel(self.currentUpgradingGun)) concluído")
         // Saves the new level
-        //let ck = CloudKitHelper()
-        //ck.saveGunsProperties(self)
+        let ck = CloudKitHelper()
+        ck.saveGunsProperties(self)
     }
  
 }
