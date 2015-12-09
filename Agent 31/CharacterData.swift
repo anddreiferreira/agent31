@@ -108,16 +108,27 @@ extension CharacterData {
     }
     
     func initTraining( attribute: String ) {
-        
-        debugPrint( "Inicializando o treino do atributo \(attribute)" )
+
         // O valor atual do atributo é necessário para saber quanto tempo vai durar o treinamento
         let currentValue = self.getAttributeValue( attribute )
+
+        // recuperar o tempo e o custo necessário para o treinamento
+        let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
+        
+        // Se nao tiver gold suficiente para treinar, vai sair da funcao sem inicializar o treino
+        let verify = verifyResources(tuple.resourceLevelUp)
+        if verify == false {
+            return
+        }
+        
+        debugPrint( "Inicializando o treino do atributo \(attribute)" )
+        
+        // Descontar a quantidade necessaria para treinar
+        ResourcesData.sharedInstance.gold -= tuple.resourceLevelUp
+        NSNotificationCenter.defaultCenter().postNotificationName("ReloadGoldNotification", object: nil)
         
         self.currentTrainingAttribute = attribute
         isTrainingNow = true
-        
-        // recuperar o tempo e o custo necessário para o treinamento
-        let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         self.finishTrainingDate = NSDate().dateByAddingTimeInterval(tuple.timeLevelUp)
         
         // iniciar o NSTimer
@@ -126,9 +137,16 @@ extension CharacterData {
         // Salvar o finishTrainingDate, currentAttributeLevel e o isTrainingNow do Cloudkit
         let ckhelper = CloudKitHelper()
         ckhelper.saveCharacterProperties(self)
+        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         
-        // Agendar notificacao (OBS: Tem que ser de acordo com o finishTrainingDate)
+        
+        // Agendar notificacao
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
+    }
+    
+    private func verifyResources( neededResources: Int ) -> Bool {
+    
+        return ResourcesData.sharedInstance.gold >= neededResources ? true : false
     }
     
     private func initTimer( time: NSTimeInterval, currentAttributeValue: Int ) {

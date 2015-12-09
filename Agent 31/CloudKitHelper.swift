@@ -191,16 +191,16 @@ extension CloudKitHelper {
 // MARK: CRUD to Resources' attributes
 extension CloudKitHelper {
     
-    func saveResourcesProperties ( gold: Int, metal: Int, diamond: Int ) {
+    func saveResourcesProperties ( resources: ResourcesData ) {
         
         self.privateDataBase.fetchRecordWithID( self.resourcesRecordId, completionHandler: ({
             fetchedRecord, error in
             if let _ = error {
-                self.createResourcesRecord( gold, metal: metal, diamond: diamond )
+                self.createResourcesRecord( resources )
             } else {
-                fetchedRecord?.setValue(metal, forKey: "Metal")
-                fetchedRecord?.setValue(gold, forKey: "Gold")
-                fetchedRecord?.setValue(diamond, forKey: "Diamond")
+                fetchedRecord?.setValue(resources.metal, forKey: "Metal")
+                fetchedRecord?.setValue(resources.gold, forKey: "Gold")
+                fetchedRecord?.setValue(resources.diamond, forKey: "Diamond")
                 
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRec, error in
@@ -234,12 +234,12 @@ extension CloudKitHelper {
         }))
     }
     
-    private func createResourcesRecord( gold: Int, metal: Int, diamond: Int ) {
+    private func createResourcesRecord( resources: ResourcesData ) {
         let resourcesRec = CKRecord( recordType: "Resources", recordID: self.resourcesRecordId )
         
-        resourcesRec.setValue(metal, forKey: "Metal")
-        resourcesRec.setValue(gold, forKey: "Gold")
-        resourcesRec.setValue(diamond, forKey: "Diamond")
+        resourcesRec.setValue(resources.metal, forKey: "Metal")
+        resourcesRec.setValue(resources.gold, forKey: "Gold")
+        resourcesRec.setValue(resources.diamond, forKey: "Diamond")
         
         self.privateDataBase.saveRecord( resourcesRec, completionHandler: ({
             savedRecord, error in
