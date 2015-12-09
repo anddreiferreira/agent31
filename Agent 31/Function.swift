@@ -36,8 +36,7 @@ func gunLeveUp(gunName: String, var currentGunLevel: Int) -> (timeLevelUp: NSTim
     ++currentGunLevel
     switch gunName {
         case GunsData.sharedInstance.gun1Name:
-            return (minutesToSeconds(1), currentGunLevel * Int(pow(balanceGunResource, 1.0))) /* Retorno de teste */
-            //return (Double(currentGunLevel) * minutesToSeconds(5), currentGunLevel * Int(pow(balanceGunResource, 1.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(5), currentGunLevel * Int(pow(balanceGunResource, 1.0)))
         case GunsData.sharedInstance.gun2Name:
             return (Double(currentGunLevel) * minutesToSeconds(10), currentGunLevel * Int(pow(balanceGunResource, 2.0)))
         case "gun3":
