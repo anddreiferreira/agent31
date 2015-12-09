@@ -108,7 +108,7 @@ class UpgradeLayer: SKNode
     
     func loadResourceType(resourceType: String) {
         
-        if resourceType == "ouro" {
+        if resourceType == "gold" {
             
             resourceAvailableIcon = createSpriteNode("coinCity", position: CGPoint(x: -middleOfTheScreenPoint.x + 410, y: -middleOfTheScreenPoint.y + 350), zPosition: zPosition4th, name: "goldIcon")
             self.addChild(resourceAvailableIcon!)
