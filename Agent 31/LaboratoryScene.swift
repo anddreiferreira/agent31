@@ -101,19 +101,19 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         
         switch attributeName {
         case let x where x.hasSuffix("speed"):
-            upgradeLayer = UpgradeLayer(attributeName: "Speed", upgradeItem: "Speed", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Speed", upgradeItem: "Speed", resourceType: "gold")
         case let x where x.hasSuffix("jump"):
-            upgradeLayer = UpgradeLayer(attributeName: "Jump", upgradeItem: "Jump", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Jump", upgradeItem: "Jump", resourceType: "gold")
         case let x where x.hasSuffix("shootingPower"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Power", upgradeItem: "ShootingPower", resourceType: "gold")
         case let x where x.hasSuffix("shootingRange"):
-            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Shoot. Range", upgradeItem: "ShootingRange", resourceType: "gold")
         case let x where x.hasSuffix("backpack"):
-            upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "metal")
+            upgradeLayer = UpgradeLayer(attributeName: "Backpack", upgradeItem: "BackPack", resourceType: "gold")
         case let x where x.hasSuffix("gun1"):
-            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun1Name, upgradeItem: GunsData.sharedInstance.gun1Name, resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun1Name, upgradeItem: GunsData.sharedInstance.gun1Name, resourceType: "metal")
         case let x where x.hasSuffix("gun2"):
-            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun2Name, upgradeItem: GunsData.sharedInstance.gun2Name, resourceType: "ouro")
+            upgradeLayer = UpgradeLayer(attributeName: GunsData.sharedInstance.gun2Name, upgradeItem: GunsData.sharedInstance.gun2Name, resourceType: "metal")
         default: ()
         }
         
