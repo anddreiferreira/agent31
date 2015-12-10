@@ -47,16 +47,16 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     }
     
     func putGround(){
-        let ground = Ground(size: CGSizeMake(5340, 100), position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
-        self.addChild(ground)
-        ground.zPosition = -10000
-/*        
-        var positionOfGround = CGPointMake(-6240, 20)
+        //let ground = Ground(size: CGSizeMake(5340, 100), position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
+        //self.addChild(ground)
+        //ground.zPosition = -10000
+        //var positionOfGround = CGPointMake(-6240, 20)
         
-        for _ in 0..<5 {
+        var positionOfScene = CGPointMake(-936, 20)
+        
+        for _ in 0..<7 {
             
-            let base1 = BaseScene(position: positionOfGround)
-            self.addChild(base1)
+            let base1 = BaseScene(position: positionOfScene, lar : 468)
             base1.zPosition = 99
         
             let ground = Ground(imageName: "placeholderChao", position: CGPointMake(CGFloat(Int(base1.position.x) + 156+(base1.largura/2)), 20),    zPosition: 1)
@@ -64,16 +64,14 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             self.addChild(ground)
             ground.zPosition = -1
             
-            let x = positionOfGround.x + 3120
-            let y = positionOfGround.y
+            self.addChild(base1)
             
-            positionOfGround = CGPointMake(x, y)
+            positionOfScene.x += 468/2
         }
-        
+    
     }
     
     func putNewGround(){
-    */
     
     }
     
@@ -131,6 +129,16 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             }
             
         })
+    }
+    
+    func update2(currentTime: NSTimeInterval){
+        
+//        debugPrint("CURRENT TIME \(currentTime)")
+        
+        self.updateEnemy(currentTime)
+        
+        
+        
     }
 
 }

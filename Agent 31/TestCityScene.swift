@@ -114,9 +114,10 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func update2(currentTime: NSTimeInterval){
+        
         self.timeElapsed += 0.5
         self.conformAgentToAnalogic()
-        self.cityGameLayer.updateEnemy(currentTime)
+        self.cityGameLayer.update2(currentTime)
         
         if(self.cityGameLayer.agent31?.HP <= 0 && self.gameOver == false){
             self.gameOver = true
