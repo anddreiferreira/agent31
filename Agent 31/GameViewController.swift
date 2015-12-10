@@ -66,7 +66,7 @@ class GameViewController: UIViewController {
 
             skView.ignoresSiblingOrder = false
             skView.showsFPS = false
-            skView.showsPhysics = false
+            skView.showsPhysics = true
             skView.showsNodeCount = false
             scene.scaleMode = .AspectFill
             self.view.multipleTouchEnabled = true
