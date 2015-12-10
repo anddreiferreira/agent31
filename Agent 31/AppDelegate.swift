@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Show Loading screen while fetching the data
         while( self.characterDataOn == false || self.resourcesDataOn == false || self.gunsDataOn == false) {
-
+            
             // Implement a Loading screen to show and call here
             
             // If an exception with the internet or cloudkit is launched, then breaks the while and GameViewController will call ExceptionScene
@@ -103,13 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        CharacterData.sharedInstance.reloadTrainingTimer()
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -167,5 +164,5 @@ extension AppDelegate {
         self.hasException = true
         CloudKitExceptions.sharedInstance.gunsDataException = true
     }
-
+    
 }
