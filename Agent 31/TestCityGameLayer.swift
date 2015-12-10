@@ -48,25 +48,18 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putGround(){
         
-        var positionOfGround = CGPointMake(-6240, 20)
+        var positionOfScene = CGPointMake(-936, 20)
         
-        for _ in 0..<5 {
+        for _ in 0..<7 {
             
-            let base1 = BaseScene(position: positionOfGround)
-            self.addChild(base1)
+            let base1 = BaseScene(position: positionOfScene, lar : 468)
             base1.zPosition = 99
-
-            let ground = Ground(size: CGSizeMake(6240, 100), position: CGPointMake(CGFloat(Int(base1.position.x) + 156+(base1.largura/2)), 20), zPosition: 1)
-        
-            self.addChild(ground)
-            ground.zPosition = -1
             
-            let x = positionOfGround.x + 3120
-            let y = positionOfGround.y
+            self.addChild(base1)
             
-            positionOfGround = CGPointMake(x, y)
+            positionOfScene.x += 468/2
         }
-        
+    
     }
     
     
@@ -123,6 +116,16 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             }
             
         })
+    }
+    
+    func update2(currentTime: NSTimeInterval){
+        
+//        debugPrint("CURRENT TIME \(currentTime)")
+        
+        self.updateEnemy(currentTime)
+        
+        
+        
     }
 
 }

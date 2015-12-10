@@ -1850,6 +1850,7 @@
 		6B2783241BD6A800009628D8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */,
 				6B53A7011BDA9FCD002E7808 /* Ground.swift */,
 				6B53A6F31BDA9FCD002E7808 /* Character.swift */,
 				09C61A611C039AB9002B1309 /* Resources */,
@@ -2036,7 +2037,6 @@
 				6B53A6FE1BDA9FCD002E7808 /* GameScene.sks */,
 				E0C3D6561BE3E976008D7713 /* Reach.swift */,
 				E0467F4B1BED0AA600F6D92A /* Function.swift */,
-				6B53A6FD1BDA9FCD002E7808 /* GameObject.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -2121,6 +2121,7 @@
 				TargetAttributes = {
 					6B2D98AC1BB1C6E7005B342E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5ZSN4629J8;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -2685,7 +2686,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "Henrique.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2702,7 +2703,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "Henrique.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
