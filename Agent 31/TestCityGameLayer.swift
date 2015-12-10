@@ -79,10 +79,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     }
     
     func putTestEnemy(){
-//        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
-//        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
-//        self.addChild(testEnemy)
-//        self.addChild(secEnemy)
+
         
         let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
         let enemysec = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), enemyLevel: 10)
@@ -101,7 +98,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         return distanceBetweenPoints( self.agent31!.position, second: enemyPosition )
     }
     
-    func updateEnemy(currentTime: NSTimeInterval){
+    func updateEnemy(currentTime: Float){
         self.enumerateChildNodesWithName("enemy", usingBlock: {
             node, stop in
             // Block below is executed if a enemy is found
@@ -118,12 +115,21 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         })
     }
     
-    func update2(currentTime: NSTimeInterval){
-        
+    func update2(currentTime: Float){
 //        debugPrint("CURRENT TIME \(currentTime)")
-        
         self.updateEnemy(currentTime)
         
+        
+        // ESTE IF ESTÁ ERRADO
+        // VERIFICAR A CADA X SEGUNDOS
+        // CHAMAR UPDATE SCENES
+        if(Int(currentTime)%10 == 1){
+            updateScenes(currentTime)
+        }
+        
+    }
+    
+    func updateScenes(currentTime: Float){
         
         
     }

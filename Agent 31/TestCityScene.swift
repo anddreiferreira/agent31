@@ -113,11 +113,11 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         self.updateCameraPosition()
     }
     
-    func update2(currentTime: NSTimeInterval){
+    func update2(currentTime: Float){
         
-        self.timeElapsed += 0.5
+        self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
-        self.cityGameLayer.update2(currentTime)
+        self.cityGameLayer.update2(timeElapsed)
         
         if(self.cityGameLayer.agent31?.HP <= 0 && self.gameOver == false){
             self.gameOver = true

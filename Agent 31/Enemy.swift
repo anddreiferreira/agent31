@@ -88,7 +88,7 @@ extension Enemy{
         }
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(currentTime: Float) {
         enemyBehaviourGuarding()
         
         let yDiff = ((self.agentPos?.y)! - self.position.y)
