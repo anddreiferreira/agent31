@@ -38,12 +38,12 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     }
     
     func putGround(){
-        let ground = Ground(imageName: "testCityGround", position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
+        let ground = Ground(size: CGSizeMake(5340, 100), position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
         self.addChild(ground)
     }
     
     func createBlock(position: CGPoint){
-        let block = Ground(imageName: "testCityBlock", position: position, zPosition: 1)
+        let block = Ground(size: CGSizeMake(500, 100), position: position, zPosition: 1)
         block.yScale = (block.yScale)/2
         self.addChild(block)
     }
