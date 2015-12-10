@@ -13,13 +13,14 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
     
+    var positionLeft : Int = -936
+    var positionRight : Int = 2430
     
     override init(){
         
         super.init()
         
         self.fireClock()
-
 
     }
     
@@ -44,6 +45,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
 //        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
 //        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
+        
     }
     
     func putGround(){
@@ -62,6 +64,36 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     }
     
+    func putNewGround(directionOption : Int){
+    
+        // -1 left
+        // 1 right
+        
+        if(directionOption == -1){
+        
+            positionLeft -= 468
+
+            let positionOfScene = CGPointMake(CGFloat(positionLeft), 20)
+
+            let base = BaseScene(position: positionOfScene, lar : 468)
+            base.zPosition = 99
+            
+            self.addChild(base)
+            
+        }
+        else if(directionOption == 1){
+            
+            let positionOfScene = CGPointMake(CGFloat(positionRight), 20)
+            
+            let base = BaseScene(position: positionOfScene, lar : 468)
+            base.zPosition = 99
+        
+            self.addChild(base)
+
+            positionRight += 468
+        }
+        
+    }
     
     func createBlock(position: CGPoint){
         let block = Ground(size: CGSizeMake(500, 100), position: position, zPosition: 1)
