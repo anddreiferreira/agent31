@@ -47,10 +47,14 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         let predioInfo = BuildingInformation()
         
         let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: 0)
+        
+        
         predioNovo.zPosition = 0;
 //        predioInfo.posicaoInicialX
-        self.addChild(predioNovo)
+//        self.addChild(predioNovo)
         predioNovo.setScale(1.6)
+        
+    
         
     }
     
@@ -150,7 +154,7 @@ extension TestCityScene{
         
         self.cityBackgroundLayer = CityBackgroundLayer()
         self.cityBackgroundLayer.putBackground()
-        self.addChild(cityBackgroundLayer)
+//        self.addChild(cityBackgroundLayer)
         
     }
     

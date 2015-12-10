@@ -39,7 +39,8 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     func putGameLayer(){
         self.putGround()
         self.putAgent()
-        self.putTestEnemy()
+        
+//        self.putTestEnemy()
         
 //        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
 //        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
@@ -49,19 +50,44 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         let ground = Ground(size: CGSizeMake(5340, 100), position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
         self.addChild(ground)
         ground.zPosition = -10000
+/*        
+        var positionOfGround = CGPointMake(-6240, 20)
+        
+        for _ in 0..<5 {
+            
+            let base1 = BaseScene(position: positionOfGround)
+            self.addChild(base1)
+            base1.zPosition = 99
+        
+            let ground = Ground(imageName: "placeholderChao", position: CGPointMake(CGFloat(Int(base1.position.x) + 156+(base1.largura/2)), 20),    zPosition: 1)
+        
+            self.addChild(ground)
+            ground.zPosition = -1
+            
+            let x = positionOfGround.x + 3120
+            let y = positionOfGround.y
+            
+            positionOfGround = CGPointMake(x, y)
+        }
+        
+    }
+    
+    func putNewGround(){
+    */
+    
     }
     
     
     func createBlock(position: CGPoint){
         let block = Ground(size: CGSizeMake(500, 100), position: position, zPosition: 1)
         block.yScale = (block.yScale)/2
-        self.addChild(block)
+//        self.addChild(block)
         block.zPosition = -10000
     }
     
     func putAgent(){
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
-        agent31?.zPosition = 1000000
+        agent31?.zPosition = 100
         self.addChild(agent31!)
 //        print("ZZZZZZZZZZ")
 //        print(self.agent31?.zPosition)
@@ -167,7 +193,7 @@ extension TestCityGameLayer{
         
         enemytest.zPosition = 100000
 
-        self.addChild(enemytest)
+//        self.addChild(enemytest)
         
     }
     
