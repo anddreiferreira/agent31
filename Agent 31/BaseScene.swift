@@ -12,16 +12,22 @@ class BaseScene: SKNode {
 
     var largura : Int
     var tileNumber : Int
+    var baseBegin : Int
+    var baseEnd : Int
     
     init(position: CGPoint, lar : Int){
         
         largura = lar
         tileNumber = largura / 156
-
+        
+        self.baseBegin = Int(position.x)
+        self.baseEnd = Int(position.x) + lar
+        
         print("Criando BaseScene \(position)")
         
         super.init()
         
+        self.name = "BASE"
         self.position = position
         self.putGround()
         self.putAllFloorSprites()

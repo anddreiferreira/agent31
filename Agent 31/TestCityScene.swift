@@ -55,7 +55,6 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         predioNovo.setScale(1.6)
         
         
-        
     }
     
     
