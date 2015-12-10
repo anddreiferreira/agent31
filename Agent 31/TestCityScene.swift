@@ -16,8 +16,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var clock: NSTimer?
     
     // Delete this when the city and the enemy`s generator are finished
-//    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
-//    var secondsToBackToLab: Int = 10  // The time to play in the city
+    //    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
+    //    var secondsToBackToLab: Int = 10  // The time to play in the city
     
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
@@ -50,11 +50,11 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         
         predioNovo.zPosition = 0;
-//        predioInfo.posicaoInicialX
-//        self.addChild(predioNovo)
+        //        predioInfo.posicaoInicialX
+        //        self.addChild(predioNovo)
         predioNovo.setScale(1.6)
         
-    
+        
         
     }
     
@@ -62,21 +62,21 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     func fireClock(){
         self.clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
         clock!.fire()
-    
+        
         // Delete this when the city and the enemy`s generator are finished
-//         Timer to decrease the time to stay in the city(secondsToBackToLab variable)
-//        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
-//        cityTimer?.fire()
+        //         Timer to decrease the time to stay in the city(secondsToBackToLab variable)
+        //        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
+        //        cityTimer?.fire()
     }
     
-//    // Delete this when the city and the enemy`s generator are finished
-//    func reduceTime() {
-//        self.secondsToBackToLab = self.secondsToBackToLab - 1
-//        
-//        if( self.secondsToBackToLab < 0 ) {
-//            goToLab()
-//        }
-//    }
+    //    // Delete this when the city and the enemy`s generator are finished
+    //    func reduceTime() {
+    //        self.secondsToBackToLab = self.secondsToBackToLab - 1
+    //
+    //        if( self.secondsToBackToLab < 0 ) {
+    //            goToLab()
+    //        }
+    //    }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -106,7 +106,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         // Saving resources collected into cloudkit
         let ckhelper = CloudKitHelper()
-        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
+        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance.gold, metal: ResourcesData.sharedInstance.metal, diamond: ResourcesData.sharedInstance.diamond)
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -125,8 +125,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-  
-
+    
+    
 }
 
 // MARK: SCENE PROCEDURES
@@ -137,7 +137,7 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
-//          self.cityTimer?.invalidate()
+        //          self.cityTimer?.invalidate()
     }
 }
 
@@ -154,7 +154,7 @@ extension TestCityScene{
         
         self.cityBackgroundLayer = CityBackgroundLayer()
         self.cityBackgroundLayer.putBackground()
-//        self.addChild(cityBackgroundLayer)
+        //        self.addChild(cityBackgroundLayer)
         
     }
     
