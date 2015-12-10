@@ -63,7 +63,7 @@ class Agent: Character {
         
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(currentTime: Float) {
 
     }
     
