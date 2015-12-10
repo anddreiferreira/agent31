@@ -34,6 +34,7 @@ class CharacterData : NSObject {
     var isTrainingNow: Bool
     var currentTrainingAttribute: String
     var finishTrainingDate: NSDate
+    var restoreLifeDate: NSDate
     var timeLevelUp = NSTimeInterval()
     
     class var sharedInstance: CharacterData {
@@ -53,6 +54,7 @@ class CharacterData : NSObject {
         self.isTrainingNow = false
         self.currentTrainingAttribute = "nil"
         self.finishTrainingDate = nilDateValue()
+        self.restoreLifeDate = nilDateValue()
     }
     
     class func printCharacter( character: CharacterData ) {
@@ -66,6 +68,7 @@ class CharacterData : NSObject {
         print( "IsTrainingNow = \(character.isTrainingNow)" )
         print( "CurrentTrainingAttribute = \(character.currentTrainingAttribute)" )
         print( "FinishTrainingDate = \(character.finishTrainingDate)" )
+        print( "RestoreLifeDate = \(character.restoreLifeDate)" )
     }
 }
 

@@ -19,21 +19,25 @@ class CharacterLivesManager: NSObject {
     override init() {
         super.init()
         
-        self.livesTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "verifyLivesTimer", userInfo: nil, repeats: true)
-        
+//        initLivesTimer(<#T##time: NSTimeInterval##NSTimeInterval#>)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "verifyLostLifeDate", name: "AgentLostOneLifeNotification", object: nil)
     }
     
     func verifyLostLifeDate() {
         
-        // This updates the lives in the cloudkit - this will save the new number of lives
-        saveLivesInCloudKit()
-        
         // This will get the datetime to begin regenerate lives, if all lives are available, then lostLifeDate and restoreLifeDate should be nil
         if lostLifeDate == nil {
             lostLifeDate = NSDate()
             restoreLifeDate = lostLifeDate?.dateByAddingTimeInterval(self.timeToRestoreALife)
+            CharacterData.sharedInstance.restoreLifeDate = restoreLifeDate!
         }
+        
+        // init LivesTimer
+        let remainingTime = restoreLifeDate!.timeIntervalSinceDate(NSDate())
+        initLivesTimer(remainingTime)
+        
+        // This updates the lives in the cloudkit - this will save the new number of lives
+        saveLivesInCloudKit()
     }
     
     func saveLivesInCloudKit() {
@@ -58,11 +62,26 @@ class CharacterLivesManager: NSObject {
         }
     }
     
+    func reloadLivesTimer() {
+        
+        if CharacterData.sharedInstance.restoreLifeDate != nilDateValue() {
+            let nextLifeTime = NSDate().timeIntervalSinceDate(CharacterData.sharedInstance.restoreLifeDate)
+            
+            initLivesTimer(nextLifeTime)
+        }
+    }
+
+    func initLivesTimer(time: NSTimeInterval) {
+        
+        self.livesTimer = NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "verifyLivesTimer", userInfo: nil, repeats: false)
+    }
+    
     func agentWonALife() {
         
         // Update the datetimes to restore a life
         self.lostLifeDate = self.restoreLifeDate
         self.restoreLifeDate = self.restoreLifeDate?.dateByAddingTimeInterval(self.timeToRestoreALife)
+        CharacterData.sharedInstance.restoreLifeDate = restoreLifeDate!
         
         CharacterData.sharedInstance.restoreLife()
         
@@ -70,8 +89,11 @@ class CharacterLivesManager: NSObject {
         if( CharacterData.sharedInstance.lives == 5 ) {
             self.lostLifeDate = nil
             self.restoreLifeDate = nil
+            CharacterData.sharedInstance.restoreLifeDate = nilDateValue()
+        } else {    // if lives is less than five, reinit timer to another life
             
-            // Update these values in the database
+            let remainingTime = self.restoreLifeDate?.timeIntervalSinceDate(NSDate())
+            initLivesTimer(remainingTime!)
         }
         
         let ckhelper = CloudKitHelper()

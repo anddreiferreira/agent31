@@ -30,7 +30,7 @@ class Agent: Character {
         self.setAgentPhysics()
         
         
-        self.HP = 10000000
+        self.HP = 300
         
     }
     

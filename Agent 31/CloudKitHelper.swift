@@ -46,6 +46,7 @@ extension CloudKitHelper {
                 fetchedRecord?.setValue( character.isTrainingNow, forKey: "IsTrainingNow")
                 fetchedRecord?.setValue( character.currentTrainingAttribute, forKey: "CurrentTrainingAttribute")
                 fetchedRecord?.setValue( character.finishTrainingDate, forKey: "FinishTrainingDate")
+                fetchedRecord?.setValue( character.restoreLifeDate, forKey: "RestoreLifeDate" )
                 
                 self.privateDataBase.saveRecord( fetchedRecord!, completionHandler: ({
                     savedRecord, sError in
@@ -83,6 +84,7 @@ extension CloudKitHelper {
                 character.isTrainingNow = (fetchedRecord?.objectForKey("IsTrainingNow") as! Int) == 0 ? false : true
                 character.currentTrainingAttribute = fetchedRecord?.objectForKey("CurrentTrainingAttribute") as! String
                 character.finishTrainingDate = fetchedRecord?.objectForKey("FinishTrainingDate") as! NSDate
+                character.restoreLifeDate = fetchedRecord?.objectForKey("RestoreLifeDate") as! NSDate
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))
@@ -101,6 +103,7 @@ extension CloudKitHelper {
         newRecord.setValue( character.isTrainingNow, forKey: "IsTrainingNow")
         newRecord.setValue( character.currentTrainingAttribute, forKey: "CurrentTrainingAttribute")
         newRecord.setValue( character.finishTrainingDate, forKey: "FinishTrainingDate")
+        newRecord.setValue( character.restoreLifeDate, forKey: "RestoreLifeDate" )
         
         self.privateDataBase.saveRecord( newRecord, completionHandler: ({
             savedRecord, error in
