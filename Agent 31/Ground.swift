@@ -44,6 +44,7 @@ class Ground: SKSpriteNode {
         physicsBody.contactTestBitMask = ColliderType.Agent.rawValue | ColliderType.Coin.rawValue | ColliderType.Metal.rawValue
         physicsBody.dynamic = false
         physicsBody.affectedByGravity = false
+        physicsBody.restitution = 0.0
         
         return physicsBody
     }
