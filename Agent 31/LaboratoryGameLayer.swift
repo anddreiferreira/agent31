@@ -88,13 +88,16 @@ class LaboratoryGameLayer: SKNode {
     
     
     func putGround(){
-        let ground = Ground(imageName: "testCityGround", position: CGPointMake(middleOfTheScreenPoint.x, -10), zPosition: 1)
-        ground.alpha = 0.0
+
+        let ground = Ground(size: CGSizeMake(5340, 100), position: CGPointMake(middleOfTheScreenPoint.x, -10), zPosition: 1)
+
         self.addChild(ground)
     }
     
     func putAgent(){
+
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor),withGun: true)
+        
         self.addChild(agent31!)
         
     }

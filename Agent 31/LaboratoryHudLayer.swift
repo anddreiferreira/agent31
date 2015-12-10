@@ -19,6 +19,7 @@ class LaboratoryHudLayer: SKNode {
     // SpriteNodes to Life bar. As it should be reloaded, they should be removed from parent and then added again. See method reloadLifeBarAndMessage()
     var laboratoryLifeBar: SKSpriteNode?
     var messageRemainingLife: SKLabelNode?
+    var laboratoryGoldLabel: SKLabelNode?
     
     override init(){
         
@@ -30,6 +31,7 @@ class LaboratoryHudLayer: SKNode {
         self.loadMetals()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLifeBarAndMessage", name: "ReloadLifeBarNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLaboratoryGoldLabel", name: "ReloadGoldNotification", object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,10 +54,10 @@ class LaboratoryHudLayer: SKNode {
         let goldSprite = createSpriteNode("Coin", position: CGPointMake(-middleOfTheScreenPoint.x + 350, -middleOfTheScreenPoint.y + 335), anchorPoint: CGPointMake(0, 0), scale: 0.5, zPosition: 4, name: "Coin")
         
         let goldsAvaiable = ResourcesData.sharedInstance.gold
-        let laboratoryGoldLabel = createLabelNode("\(goldsAvaiable)", zPosition: 4,position: CGPointMake(-middleOfTheScreenPoint.x + 380,-middleOfTheScreenPoint.y + 338),alignmentMode:SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        laboratoryGoldLabel = createLabelNode("\(goldsAvaiable)", zPosition: 4,position: CGPointMake(-middleOfTheScreenPoint.x + 380,-middleOfTheScreenPoint.y + 338),alignmentMode:SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
         
         self.addChild(goldSprite)
-        self.addChild(laboratoryGoldLabel)
+        self.addChild(laboratoryGoldLabel!)
     }
     
     func loadMetals(){
@@ -117,5 +119,9 @@ class LaboratoryHudLayer: SKNode {
         loadLifeBar()
     }
     
+    func reloadLaboratoryGoldLabel() {
+        
+        self.laboratoryGoldLabel?.text = String(ResourcesData.sharedInstance.gold)
+    }
     
 }

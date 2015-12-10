@@ -55,8 +55,8 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             let base1 = BaseScene(position: positionOfGround)
             self.addChild(base1)
             base1.zPosition = 99
-        
-            let ground = Ground(imageName: "placeholderChao", position: CGPointMake(CGFloat(Int(base1.position.x) + 156+(base1.largura/2)), 20),    zPosition: 1)
+
+            let ground = Ground(size: CGSizeMake(6240, 100), position: CGPointMake(CGFloat(Int(base1.position.x) + 156+(base1.largura/2)), 20), zPosition: 1)
         
             self.addChild(ground)
             ground.zPosition = -1
@@ -69,14 +69,9 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
     }
     
-    func putNewGround(){
-    
-    
-    }
-    
     
     func createBlock(position: CGPoint){
-        let block = Ground(imageName: "testCityBlock", position: position, zPosition: 1)
+        let block = Ground(size: CGSizeMake(500, 100), position: position, zPosition: 1)
         block.yScale = (block.yScale)/2
 //        self.addChild(block)
         block.zPosition = -10000
