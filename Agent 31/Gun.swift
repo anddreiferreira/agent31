@@ -61,7 +61,7 @@ extension Gun{
         self.attacking = actionWithAnimationName("\(gunName)Shooting", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingUp = actionWithAnimationName("\(gunName)ShootingUp", numberOfImages: 3, timePerTexture: 0.08)
         self.lookingUp = actionWithAnimationName("\(gunName)ShootingUp", numberOfImages: 1, timePerTexture: 0.3)
-        self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.15)
+        self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.1)
         self.jumping = actionWithAnimationName("\(gunName)Jumping", numberOfImages: 6, timePerTexture: 0.1)
         self.gotHit = actionWithAnimationName("\(gunName)GotHit", numberOfImages: 4, timePerTexture: 0.1)
         
