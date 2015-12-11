@@ -14,7 +14,8 @@ class BaseScene: SKNode {
     var tileNumber : Int
     var begin : CGFloat
     var end : CGFloat
-    
+    let randomHeight : CGFloat = CGFloat(arc4random_uniform(100)) - 80.0
+
     var backgroundNumber : Int = 0
     
     var backgroundLayer : CityBackgroundLayer = CityBackgroundLayer()
@@ -89,7 +90,7 @@ class BaseScene: SKNode {
     
         let predioInfo = BuildingInformation()
         
-        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: 0)
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: predioInfo.posicaoInicialX)
         
         predioNovo.zPosition = zPositionsCity.BUILDING.zPos
 //        predioNovo.zPosition = 1000000000
@@ -108,7 +109,6 @@ class BaseScene: SKNode {
         }
         
         backgroundNumber = ( mod / 459) + 1
-
         print("number \(backgroundNumber)")
         
         var point : CGPoint = CGPointZero
@@ -125,14 +125,18 @@ class BaseScene: SKNode {
             xStart = i + 1
         }
         
-        let larguraRandom = Int(arc4random_uniform(uint(mod))) + 1
-        let randomX : CGFloat = begin + CGFloat(larguraRandom)
+        let numberOfBackgroundBuildings : Int = 3
         
-        let randomHeight : CGFloat = CGFloat(arc4random_uniform(100)) - 80.0
+        for _ in 0..<numberOfBackgroundBuildings {
         
-        let randomPos : CGPoint = CGPointMake(randomX, randomHeight)
-    
-        self.backgroundLayer.putBackgroundBuilding(randomPos)
+            let larguraRandom = Int(arc4random_uniform(uint(mod))) + 1
+            let randomX : CGFloat = begin + CGFloat(larguraRandom)
+            
+            let randomPos : CGPoint = CGPointMake(randomX, randomHeight)
+            
+            self.backgroundLayer.putBackgroundBuilding(randomPos)
+            
+         }
         
     }
     
