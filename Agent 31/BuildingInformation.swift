@@ -32,7 +32,7 @@ class BuildingInformation: NSObject {
     
     func gerarAndares () -> Int {
     
-        let novaQtdAndares : Int = Int(arc4random_uniform(4)) + 2
+        let novaQtdAndares : Int = Int(arc4random_uniform(2)) + 2
 
         return novaQtdAndares
     }
@@ -41,8 +41,8 @@ class BuildingInformation: NSObject {
         
         // andar completo + base + topo
         let novaAltura : Int = ((self.qtdAndares * 8) + 6) + 4
-        print(novaAltura)
-        print(qtdAndares)
+//        print(novaAltura)
+//        print(qtdAndares)
         
         return novaAltura
     }
@@ -50,7 +50,7 @@ class BuildingInformation: NSObject {
     func gerarLargura() -> Int{
         
         let operador : Int =  Int(arc4random_uniform(4)) + 2
-        let novaLagura : Int = operador * 20
+        let novaLagura : Int = operador * 3
         
         return novaLagura
     }

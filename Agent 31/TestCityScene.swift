@@ -41,7 +41,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
-        self.backgroundColor = UIColor.yellowColor()
+        self.backgroundColor = UIColor(red: 255/255.0, green: 239/255.0, blue: 130/255.0, alpha: 1)
         
         // criacao de informacoes randomicas do novo predio
         let predioInfo = BuildingInformation()

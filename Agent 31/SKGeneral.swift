@@ -35,6 +35,8 @@ enum zPositionsCity {
     case POST
     case AGENT
     case HUD
+    case ENEMY
+    case BULLET
     
     var zPos:CGFloat {
         switch self {
@@ -52,8 +54,8 @@ enum zPositionsCity {
             return 100
         case HUD :
             return 100
-//        default :
-//            return 0
+        default :
+            return 0
         }
     }
 
