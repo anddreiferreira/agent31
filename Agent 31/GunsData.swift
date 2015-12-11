@@ -9,8 +9,8 @@
 import Foundation
 
 enum Guns: String {
-    case gun1Name = "AK47"
-    case gun2Name = "AK48"
+    case gun1Name = "CA115"
+    case gun2Name = "XX103"
 }
 
 private let _sharedInstance = GunsData()
@@ -25,19 +25,25 @@ class GunsData: NSObject {
     var gun2Level: Int
     var gun2Name: String
     var gun2Blocked: Int
-    var timeLevelUp = NSTimeInterval()
-    var isUpgradingNow = false
-    private var currentUpgradingGun = ""
+    
+    var isUpgradingNow: Bool
+    var currentUpgradingGun: String
+    var finishTrainingDate: NSDate
+    var timeLevelUp: NSTimeInterval
     
     private override init() {
-        self.gun1Level = 0
-        self.gun1Name = ""
-        self.gun1Blocked = 0
-        self.gun1 = ""
-        self.gun2Level = 0
-        self.gun2Name = ""
-        self.gun2Blocked = 0
-        self.gun2 = ""
+        gun1Level = 0
+        gun1Name = ""
+        gun1Blocked = 0
+        gun1 = ""
+        gun2Level = 0
+        gun2Name = ""
+        gun2Blocked = 0
+        gun2 = ""
+        isUpgradingNow = false
+        currentUpgradingGun = ""
+        finishTrainingDate = nilDateValue()
+        timeLevelUp = 0
     }
     
     class var sharedInstance: GunsData {
@@ -49,58 +55,76 @@ extension GunsData {
     
     func getGunLevel(gunName: String) -> Int {
         if(gunName == Guns.gun1Name.rawValue) {
-            return self.gun1Level
+            return gun1Level
         } else if (gunName == Guns.gun2Name.rawValue) {
-            return self.gun2Level
-        } else {
-            return 0
+            return gun2Level
         }
+        return 0
     }
     
     func setGunLevel(gunName: String, value: Int) {
         if(gunName == Guns.gun1Name.rawValue) {
-            self.gun1Level = value
+            gun1Level = value
         } else if (gunName == Guns.gun2Name.rawValue) {
-            self.gun2Level = value
-        } else {
-            // Do nothing
+            gun2Level = value
         }
     }
     
     func initUpgrading(gunName: String) {
-        
-        debugPrint("Inicializando o upgrade da arma \(gunName)")
-        let currentValue = self.getGunLevel(gunName)
-        
-        self.currentUpgradingGun = gunName
-        isUpgradingNow = true
-        
+        // Current gun level
+        let currentValue = getGunLevel(gunName)
         // Time and cost for upgrade
         let tuple = gunLeveUp(gunName, currentGunLevel: currentValue)
+        // Verify resources for upgrade
+        let verify = verifyResources(tuple.resourceLevelUp)
+        if verify == false {
+            return
+        }
+        // Discount the value of the upgrade
+        ResourcesData.sharedInstance.metal -= tuple.resourceLevelUp
+        // Inform to reload the amount of metal
+        NSNotificationCenter.defaultCenter().postNotificationName("ReloadMetalNotification", object: nil)
+        // Upgrade the gun level
+        currentUpgradingGun = gunName
+        isUpgradingNow = true
+        finishTrainingDate = NSDate().dateByAddingTimeInterval(tuple.timeLevelUp)
         // Init timer
-        self.initTimer(tuple.timeLevelUp, value: currentValue)
+        initTimer(tuple.timeLevelUp)
+        timeLevelUp = tuple.timeLevelUp
+        // Save the current upgrade
+        let ckhelper = CloudKitHelper()
+        ckhelper.saveGunsProperties(self)
+        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         // Schedule notification
-        scheduleNotification(tuple.timeLevelUp, itemName: gunName, itemLevel: self.getGunLevel(gunName))
+        scheduleNotification(tuple.timeLevelUp, itemName: gunName, itemLevel: getGunLevel(gunName))
     }
     
-    private func initTimer(time: NSTimeInterval, value: Int) {
-        debugPrint("Inicializando o timer da arma \(self.currentUpgradingGun)")
+    private func verifyResources(neededResources: Int) -> Bool {
+        return ResourcesData.sharedInstance.metal >= neededResources ? true : false
+    }
+    
+    private func initTimer(time: NSTimeInterval) {
+        debugPrint("TEMPO RESTANTE DE UPGRADE \(time)")
+        debugPrint("Inicializando o Timer do atributo \(currentUpgradingGun)")
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishUpgrading:", userInfo: self, repeats: false)
     }
     
+    func reloadUpgradingTimer() {
+        let remainingTime = NSDate().timeIntervalSinceDate(finishTrainingDate)
+        initTimer(remainingTime)
+    }
+    
     func finishUpgrading(timer: NSTimer) {
-        
         timer.invalidate()
-        
         isUpgradingNow = false
-        
+        finishTrainingDate = nilDateValue()
         // Increment attribute/level
-        let attrValue = self.getGunLevel(self.currentUpgradingGun)
-        self.setGunLevel(self.currentUpgradingGun, value: attrValue + 1)
-        debugPrint("Upgrade de \(self.currentUpgradingGun) para o nível \(self.getGunLevel(self.currentUpgradingGun)) concluído")
+        setGunLevel(currentUpgradingGun, value: getGunLevel(currentUpgradingGun) + 1)
+        currentUpgradingGun = "nil"
         // Saves the new level
         let ck = CloudKitHelper()
         ck.saveGunsProperties(self)
+        debugPrint("Upgrade de \(currentUpgradingGun) para o nível \(getGunLevel(currentUpgradingGun)) concluído")
     }
  
 }
