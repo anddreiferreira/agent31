@@ -11,9 +11,9 @@ import UIKit
 import SpriteKit
 
 // MARK: Defines
-let TURNED_LEFT: Int = -1
-let TURNED_UP: Int = 0
-let TURNED_RIGHT: Int = 1
+let LEFT: Int = -1
+let UP: Int = 0
+let RIGHT: Int = 1
 let MAX_CHARACTER_VELOCITY: CGFloat = 40.0
 let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)

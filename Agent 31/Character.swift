@@ -81,7 +81,7 @@ class Character: GameObject {
         self.setScale(2.0)
         
         // Initialize orientation as right
-        self.orientation = TURNED_RIGHT
+        self.orientation = RIGHT
         
         initializeCharacterPhysicsBody()
         initializeAnimations()
@@ -137,15 +137,15 @@ class Character: GameObject {
 // MARK: Actions
 extension Character{
     func invertAccordingToVelocity(){
-        if(self.velocity > 0.0 && self.orientation != TURNED_RIGHT){
+        if(self.velocity > 0.0 && self.orientation != RIGHT){
             
             invertSpriteHorizontally(true)
-            self.orientation = TURNED_RIGHT
+            self.orientation = RIGHT
             
-        }else if(self.velocity < 0.0 && self.orientation != TURNED_LEFT){
+        }else if(self.velocity < 0.0 && self.orientation != LEFT){
             
             invertSpriteHorizontally(true)
-            self.orientation = TURNED_LEFT
+            self.orientation = LEFT
             
         }else{
             invertSpriteHorizontally(false)
@@ -218,7 +218,7 @@ extension Character{
                 
                 self.attackingUpAnimationOnce()
                 let initialPosition = CGPointMake(self.position.x, self.position.y + (self.size.height/2)*1.08)
-                let bullet = Bullet(initialPosition: initialPosition, orientation: TURNED_UP, zPosition: 3)
+                let bullet = Bullet(initialPosition: initialPosition, orientation: UP, zPosition: 3)
                 self.parent?.addChild(bullet)
                 
                 bullet.fire()
