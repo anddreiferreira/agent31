@@ -12,18 +12,19 @@ class BaseScene: SKNode {
 
     var largura : Int
     var tileNumber : Int
-    var baseBegin : Int
-    var baseEnd : Int
+    var begin : CGFloat
+    var end : CGFloat
     
     init(position: CGPoint, lar : Int){
         
         largura = lar
         tileNumber = largura / 156
         
-        self.baseBegin = Int(position.x)
-        self.baseEnd = Int(position.x) + lar
+        self.begin = position.x
+        self.end = position.x + CGFloat(lar)
         
-        print("Criando BaseScene \(position)")
+        print("Criando BaseScene com posição inicial \(self.begin) e posição final \(self.end)")
+        
         
         super.init()
         
@@ -41,7 +42,7 @@ class BaseScene: SKNode {
     func putGround(){
         let anchorPointCorrection : CGFloat = CGFloat(self.largura) / 2.0
         
-        let groundPosition = CGPointMake(156.0 + self.position.x + anchorPointCorrection, 0)
+        let groundPosition = CGPointMake(anchorPointCorrection, 0)
         
         let ground = Ground(size: CGSizeMake(CGFloat(largura), 100), position: groundPosition, zPosition: 1)
         
@@ -50,19 +51,20 @@ class BaseScene: SKNode {
     
     func putAllFloorSprites(){
     
-        var point : CGPoint = self.position
-        var xStart : Int
+        var point : CGPoint = CGPointZero
+        var xStart : Int = 0
         
         for i in 0..<tileNumber {
         
-            xStart = i + 1
             
-            point = CGPoint(x: self.position.x + CGFloat(xStart) * 156, y: 0)
+            point = CGPoint(x: CGFloat(xStart) * 156, y: 0)
             
             let tileIndex : Int = Int(arc4random_uniform(3)) + 1
             let tileName : String = "ground\(tileIndex)"
             
             putSingleGround(tileName, pos: point)
+            
+            xStart = i + 1
             
         }
         

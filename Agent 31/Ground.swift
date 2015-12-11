@@ -24,6 +24,7 @@ class Ground: SKSpriteNode {
         self.zPosition = zPosition
         self.alpha = 0.0
         self.setScale(1.0)
+//        self.anchorPoint = CGPointMake(1, 1)
         
         setBasicAttributes()
     }
