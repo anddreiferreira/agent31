@@ -8,21 +8,6 @@
 
 import Foundation
 
-//let date = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")
-//let nilDateValue : NSDate = (date == nil) ? NSDate() : date!
-//let nilDateValue: NSDate = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")!
-
-func nilDateValue() -> NSDate {
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "MM-dd-yyyy"
-    dateFormatter.timeZone = NSTimeZone.localTimeZone()
-    let stringDate = "01-01-1990"
-    
-    let nilDate = dateFormatter.dateFromString(stringDate) as NSDate!
-    
-    return nilDate
-}
-
 func minutesToSeconds(min: Int) -> Double
 {
     return Double(min) * 60.0
