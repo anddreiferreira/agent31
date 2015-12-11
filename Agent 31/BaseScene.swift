@@ -12,8 +12,8 @@ class BaseScene: SKNode {
 
     var largura : Int
     var tileNumber : Int
-    var begin : CGPoint
-    var end : CGPoint
+    var begin : CGFloat
+    var end : CGFloat
     
     var backgroundNumber : Int = 0
     
@@ -22,8 +22,8 @@ class BaseScene: SKNode {
         largura = lar
         tileNumber = largura / 156
         
-        self.begin = CGPointMake(position.x, position.y)
-        self.end = CGPointMake(position.x + CGFloat(lar), position.y)
+        self.begin = position.x
+        self.end = position.x + CGFloat(lar)
         
         print("Criando BaseScene com posição inicial \(self.begin) e posição final \(self.end)")
         
