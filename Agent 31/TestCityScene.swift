@@ -41,7 +41,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
-        self.backgroundColor = UIColor.yellowColor()
+        self.backgroundColor = UIColor(red: 255/255.0, green: 239/255.0, blue: 130/255.0, alpha: 1)
         
         // criacao de informacoes randomicas do novo predio
         let predioInfo = BuildingInformation()
@@ -190,15 +190,17 @@ extension TestCityScene{
     
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: 100, name: "jumpButton")
+        let zValue = zPositionsCity.HUD.zPos
+        
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: zValue, name: "jumpButton")
         cam.addChild(jumpButton!)
         
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: zValue, name: "shootButton")
         cam.addChild(shootButton!)
         
-        let status : SKSpriteNode = createSpriteNode("statusBar", position: CGPointMake(10, 375-10), zPosition: 1000000, name: "statusBar")
+//        let status : SKSpriteNode = createSpriteNode("statusBar", position: CGPointMake(10, 375-10), zPosition: 1000000, name: "statusBar")
         
-        cam.addChild(status)
+//        cam.addChild(status)
         
     }
     
