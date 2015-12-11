@@ -17,6 +17,8 @@ class BaseScene: SKNode {
     
     var backgroundNumber : Int = 0
     
+    var backgroundLayer : CityBackgroundLayer = CityBackgroundLayer()
+    
     init(position: CGPoint, lar : Int){
         
         largura = lar
@@ -36,6 +38,8 @@ class BaseScene: SKNode {
 
         self.manageBackground()
         self.manageBuilding()
+    
+        self.addChild(self.backgroundLayer)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -116,8 +120,7 @@ class BaseScene: SKNode {
             
             let tileName : String = "backgroundCity"
             
-            putSingleBackground(tileName, pos: point)
-            
+            self.backgroundLayer.putSingleBackground(tileName, pos: point)
             
             xStart = i + 1
         }
@@ -129,32 +132,10 @@ class BaseScene: SKNode {
         
         let randomPos : CGPoint = CGPointMake(randomX, randomHeight)
     
-        putBackgroundBuilding(randomPos)
+        self.backgroundLayer.putBackgroundBuilding(randomPos)
         
     }
     
-    func putSingleBackground(backName: String, pos : CGPoint){
-    
-        print("Criando background com nome \(backName) e \(pos)")
-        
-        let sprite = createSpriteNode(backName, position: pos, anchorPoint:  CGPointZero ,name: backName)
-        
-        sprite.zPosition = zPositionsCity.BACKGROUND.zPos
+      
 
-        self.addChild(sprite)
-    }
-    
-    func putBackgroundBuilding(pos : CGPoint,backBuildingName : String = "backBuilding"){
-    
-        print("Criando background building na posicao \(pos)")
-        
-        let sprite = createSpriteNode(backBuildingName, position: pos, anchorPoint:  CGPointZero ,name: backBuildingName);
-        
-        sprite.zPosition = zPositionsCity.BACKGROUND_BUILDING.zPos
-        
-        self.addChild(sprite)
-        
-    }
-    
-    
 }

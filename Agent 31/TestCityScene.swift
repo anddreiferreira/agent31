@@ -146,16 +146,7 @@ extension TestCityScene{
 extension TestCityScene{
     
     private func putLayers(){
-        self.putBackgroundLayer()
         self.putGameLayer()
-    }
-    
-    private func putBackgroundLayer(){
-        
-        self.cityBackgroundLayer = CityBackgroundLayer()
-        self.cityBackgroundLayer.putBackground()
-        //        self.addChild(cityBackgroundLayer)
-        
     }
     
     
