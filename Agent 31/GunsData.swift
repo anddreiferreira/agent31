@@ -105,7 +105,7 @@ extension GunsData {
     
     private func initTimer(time: NSTimeInterval) {
         debugPrint("TEMPO RESTANTE DE UPGRADE \(time)")
-        debugPrint("Inicializando o Timer do atributo \(currentUpgradingGun)")
+        debugPrint("Inicializando o timer da arma \(currentUpgradingGun)")
         NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "finishUpgrading:", userInfo: self, repeats: false)
     }
     
