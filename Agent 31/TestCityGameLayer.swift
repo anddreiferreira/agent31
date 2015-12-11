@@ -129,7 +129,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putAgent(){
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
-        agent31?.zPosition = 100
+        agent31?.zPosition = zPositionsCity.AGENT.zPos
         self.addChild(agent31!)
 
     }

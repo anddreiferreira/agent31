@@ -26,6 +26,39 @@ let zPosition2nd: CGFloat = 2000
 let zPosition3rd: CGFloat = 3000
 let zPosition4th: CGFloat = 4000
 
+enum zPositionsCity {
+    
+    case BACKGROUND
+    case BACKGROUND_BUILDING
+    case GROUND
+    case BUILDING
+    case POST
+    case AGENT
+    case HUD
+    
+    var zPos:CGFloat {
+        switch self {
+        case BACKGROUND :
+            return -2
+        case BACKGROUND_BUILDING :
+            return -1
+        case GROUND :
+            return 0
+        case BUILDING :
+            return 1
+        case POST :
+            return 1
+        case AGENT :
+            return 100
+        case HUD :
+            return 100
+//        default :
+//            return 0
+        }
+    }
+
+}
+    
 func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
     let spriteTexture = generateTextureWithImage(imageName)
