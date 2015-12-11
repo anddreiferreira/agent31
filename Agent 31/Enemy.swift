@@ -80,8 +80,8 @@ extension Enemy{
         
         isAgentOver ? (self.lookingUp = true) : (self.lookingUp = false)
         
-        let isAgentInRight = self.agentPos?.x > self.position.x && self.orientation == TURNED_LEFT
-        let isAgentInLeft = self.agentPos?.x < self.position.x && self.orientation == TURNED_RIGHT
+        let isAgentInRight = self.agentPos?.x > self.position.x && self.orientation == LEFT
+        let isAgentInLeft = self.agentPos?.x < self.position.x && self.orientation == RIGHT
         
         if( isAgentInRight || isAgentInLeft ) {
             self.invertSpriteHorizontally(true)
