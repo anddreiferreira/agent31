@@ -12,23 +12,23 @@ class BaseScene: SKNode {
 
     var largura : Int
     var tileNumber : Int
-    var begin : CGFloat
-    var end : CGFloat
+    var begin : CGPoint
+    var end : CGPoint
     
     init(position: CGPoint, lar : Int){
         
         largura = lar
         tileNumber = largura / 156
         
-        self.begin = position.x
-        self.end = position.x + CGFloat(lar)
+        self.begin = CGPointMake(position.x, position.y)
+        self.end = CGPointMake(position.x + CGFloat(lar), position.y)
         
         print("Criando BaseScene com posição inicial \(self.begin) e posição final \(self.end)")
         
         
         super.init()
         
-        self.name = "BASE"
+        self.name = "cena"
         self.position = position
         self.putGround()
         self.putAllFloorSprites()

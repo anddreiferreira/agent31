@@ -176,17 +176,31 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         self.updateEnemy(currentTime)
         
         
-        // VERIFICAR A CADA 5 SEGUNDOS
+        // VERIFICAR A CADA 2 SEGUNDOS
         // CHAMAR UPDATE SCENES
         // CONSERTAR PARA CHAMAR APENAS 1 VEZ
-        if(Int(currentTime)%5 == 0){
-            updateScenes(currentTime)
+        if(Int(currentTime)%2 == 0){
+            manageScenes(currentTime)
         }
         
     }
     
-    func updateScenes(currentTime: Float){
+    func manageScenes(currentTime: Float){
         
+        self.enumerateChildNodesWithName("cena", usingBlock: {
+            node, stop in
+            // Block below is executed if a enemy is found
+            
+            if let scene = node as? BaseScene{
+                
+                
+                
+                
+            }else{
+                debugPrint("None node named 'cena' founded")
+            }
+            
+        })
         
         
     }
