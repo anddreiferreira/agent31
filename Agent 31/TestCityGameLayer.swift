@@ -59,7 +59,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             
             self.addChild(base1)
             
-            positionOfScene.x += 468/2
+            positionOfScene.x += 468
         }
     
     }
@@ -95,6 +95,30 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 //        
 //    }
     
+    func putNewScene(actualXPosition: CGFloat, direction: Int){
+        // In future this will be randomized
+        let sceneWidth: CGFloat = 468.0
+        
+        
+        // Calculate begining position of the new scene
+        var scenePosition: CGPoint? = nil
+        
+        if(direction == RIGHT){
+            scenePosition = CGPointMake(actualXPosition, 20)
+        }else if(direction == LEFT){
+            scenePosition = CGPointMake(actualXPosition - sceneWidth, 20)
+        }
+        
+        
+        // If the position was created...
+        if(scenePosition != nil){
+            let newScene = BaseScene(position: scenePosition!, lar: 468)
+            newScene.zPosition = 10
+            self.addChild(newScene)
+        }
+        
+        
+    }
     
     func createBlock(position: CGPoint){
         let block = Ground(size: CGSizeMake(500, 100), position: position, zPosition: 1)

@@ -95,7 +95,7 @@ func loadAnimationTexturesArray(mainText: String, numberOfImages: Int) -> Array<
     for(var i = initialIndex; i<=numberOfImages; i++){
         
         let imageName = String(format: "%@%i", arguments: [mainText, i])
-        debugPrint("loadAnimation: Using texture named \(imageName)")
+//        debugPrint("loadAnimation: Using texture named \(imageName)")
         let texture: SKTexture = generateTextureWithImage(imageName)
         
         texturesArray.append(texture)
