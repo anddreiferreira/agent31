@@ -98,7 +98,7 @@ class BaseScene: SKNode {
 
     func manageBackground(){
     
-        var mod = Int(begin.x - end.x)
+        var mod = Int(begin - end)
         if(mod < 0){
             mod *= -1
         }
@@ -123,7 +123,7 @@ class BaseScene: SKNode {
         }
         
         let larguraRandom = Int(arc4random_uniform(uint(mod))) + 1
-        let randomX : CGFloat = begin.x + CGFloat(larguraRandom)
+        let randomX : CGFloat = begin + CGFloat(larguraRandom)
         
         let randomHeight : CGFloat = CGFloat(arc4random_uniform(100)) - 80.0
         
