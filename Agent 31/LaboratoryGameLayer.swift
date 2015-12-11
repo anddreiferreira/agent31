@@ -95,7 +95,9 @@ class LaboratoryGameLayer: SKNode {
     }
     
     func putAgent(){
+
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor),withGun: true)
+        
         self.addChild(agent31!)
     }
     

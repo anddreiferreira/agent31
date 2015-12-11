@@ -72,30 +72,24 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            if let nodeName = node.name {
-                if nodeName == "jumpButtonLab" {
-                    buttonTapped(node)
-                    self.laboratoryGameLayer.agent31?.jump()
-                } else if node.name == "shootButton" {
-                    buttonTapped(node)
-                    self.laboratoryGameLayer.agent31?.shoot()
-                } else if node.name == "goToCity" {
-                    buttonTapped(node)
-                    //self.agentGoToCity()
-                    self.goToTestCity()
-                } else if node.name == "balloon" {
-                    self.showLabObjectLayer((node as? SKSpriteNode)!)
-                } else if node.name == "backBtn" {
-                    removeUpgradeLayer(node.parent!)
-                    configureAnalogStick()
-                    loadButtons()
-                } else if node.name!.hasPrefix("lblUpgrade") {
-                    loadUpgradeLayer(node.name!)
-                } else if node.name == "btnCancelUpgrade" {
-                    upgradeLayer.removeFromParent()
-                } else if node.name!.hasPrefix("btnDoUpgrade") {
-                    doUpgradeWithAttribute(node.name!)
-                }
+            debugPrint("NODE TOUCHED \(node) with name = \(node.name)")
+            
+            if node.name == "jumpButtonLab" {
+                buttonTapped(node)
+                self.laboratoryGameLayer.agent31?.jump()
+            } else if node.name == "shootButton" {
+                buttonTapped(node)
+                self.laboratoryGameLayer.agent31?.shoot()
+            } else if node.name == "goCity" {
+                buttonTapped(node)
+//                self.agentGoToCity()
+                self.goToTestCity()
+            } else if node.name == "balloon" {
+                self.showLabObjectLayer((node as? SKSpriteNode)!)
+            } else if node.name == "backBtn" {
+                removeUpgradeLayer(node.parent!)
+                configureAnalogStick()
+                loadButtons()
             }
             else if node.name == "placeholderGun" {
                 self.trocarGun1()
@@ -346,6 +340,9 @@ extension LaboratoryScene{
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
 //        cam.addChild(goToCity!)
         
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        
+        cam.addChild(shootButton!)
     }
     
 }

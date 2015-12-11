@@ -83,7 +83,6 @@ extension CloudKitHelper {
                 character.isTrainingNow = (fetchedRecord?.objectForKey("IsTrainingNow") as! Int) == 0 ? false : true
                 character.currentTrainingAttribute = fetchedRecord?.objectForKey("CurrentTrainingAttribute") as! String
                 character.finishTrainingDate = fetchedRecord?.objectForKey("FinishTrainingDate") as! NSDate
-//                character.lives = fetchedRecord?.objectForKey("Lives") as! Int
                 NSNotificationCenter.defaultCenter().postNotificationName("characterDataNotification", object: nil)
             }
         }))

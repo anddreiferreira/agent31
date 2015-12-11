@@ -105,7 +105,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         // Saving resources collected into cloudkit
         let ckhelper = CloudKitHelper()
-        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance.gold, metal: ResourcesData.sharedInstance.metal, diamond: ResourcesData.sharedInstance.diamond)
+        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
+        //ckhelper.saveResourcesProperties(ResourcesData.sharedInstance.gold, metal: ResourcesData.sharedInstance.metal, diamond: ResourcesData.sharedInstance.diamond)
     }
     
     override func update(currentTime: NSTimeInterval) {
