@@ -38,7 +38,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     
     func putGameLayer(){
-        self.putGround()
+        self.putInitialScenes()
         self.putAgent()
         
 //        self.putTestEnemy()
@@ -48,14 +48,14 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
     }
     
-    func putGround(){
+    func putInitialScenes(){
         
-        var positionOfScene = CGPointMake(-936, 20)
+        var positionOfScene = CGPointMake(-468, 20)
         
-        for _ in 0..<7 {
+        for _ in 0..<5 {
             
             let base1 = BaseScene(position: positionOfScene, lar : 468)
-            base1.zPosition = 99
+            base1.zPosition = 10
             
             self.addChild(base1)
             
@@ -80,8 +80,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             
             self.addChild(base)
             
-        }
-        else if(directionOption == 1){
+        }else if(directionOption == 1){
             
             let positionOfScene = CGPointMake(CGFloat(positionRight), 20)
             
@@ -106,8 +105,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
         agent31?.zPosition = 100
         self.addChild(agent31!)
-//        print("ZZZZZZZZZZ")
-//        print(self.agent31?.zPosition)
+
     }
     
     func putTestEnemy(){
@@ -162,6 +160,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     }
     
     func updateScenes(currentTime: Float){
+        
         
         
     }
