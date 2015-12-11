@@ -85,7 +85,7 @@ class BaseScene: SKNode {
     
         let predioInfo = BuildingInformation()
         
-        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: 1)
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: 0)
         
         predioNovo.zPosition = zPositionsCity.BUILDING.zPos
 //        predioNovo.zPosition = 1000000000

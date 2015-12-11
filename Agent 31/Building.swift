@@ -140,7 +140,7 @@ class Building: SKNode {
     
     init(largura: Int = 40, altura : Int = 34, andares : Int = 3, pilastras : Int = 2, posicalIncialX : Int = 0) {
         
-        let  posicaoInicial : CGPoint = CGPointMake(CGFloat(posicalIncialX), 30)
+        let  posicaoInicial : CGPoint = CGPointMake(CGFloat(posicalIncialX), 0)
         
         startingPosition = posicaoInicial
         
