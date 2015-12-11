@@ -10,15 +10,46 @@ import SpriteKit
 
 class CityBackgroundLayer: SKNode {
 
-    var backgroundCity : SKSpriteNode?
+    var background : SKNode
+    var backgroundBuilding : SKNode
     
-    func putBackground(){
+    override init() {
+    
+        background = SKNode()
+        backgroundBuilding = SKNode()
         
-        backgroundCity = createSpriteNode("backgroundGame",anchorPoint: CGPointMake(0,0), zPosition: -3, position: CGPointMake(0, 0),name: "backgroundCity")
-        backgroundCity?.position = CGPointMake(-600,0)
-        self.addChild(backgroundCity!)
-        
+        super.init()
+    
+        self.addChild(background)
+        self.addChild(backgroundBuilding)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
+    func putSingleBackground(backName: String, pos : CGPoint){
+        
+        print("Criando background com nome \(backName) e \(pos)")
+        
+        let sprite = createSpriteNode(backName, position: pos, anchorPoint:  CGPointZero ,name: backName)
+        
+        sprite.zPosition = zPositionsCity.BACKGROUND.zPos
+        
+        self.background.addChild(sprite)
+    }
+    
+    func putBackgroundBuilding(pos : CGPoint,backBuildingName : String = "backBuilding"){
+        
+        print("Criando background building na posicao \(pos)")
+        
+        let sprite = createSpriteNode(backBuildingName, position: pos, anchorPoint:  CGPointZero ,name: backBuildingName);
+        
+        sprite.zPosition = zPositionsCity.BACKGROUND_BUILDING.zPos
+        
+        self.addChild(sprite)
+        
+    }
+
     
 }
