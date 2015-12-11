@@ -165,10 +165,10 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         self.updateEnemy(currentTime)
         
         
-        // ESTE IF ESTÁ ERRADO
-        // VERIFICAR A CADA X SEGUNDOS
+        // VERIFICAR A CADA 5 SEGUNDOS
         // CHAMAR UPDATE SCENES
-        if(Int(currentTime)%10 == 1){
+        // CONSERTAR PARA CHAMAR APENAS 1 VEZ
+        if(Int(currentTime)%5 == 0){
             updateScenes(currentTime)
         }
         
