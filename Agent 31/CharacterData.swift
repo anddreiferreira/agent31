@@ -34,7 +34,7 @@ class CharacterData : NSObject {
     var isTrainingNow: Bool
     var currentTrainingAttribute: String
     var finishTrainingDate: NSDate
-    var timeLevelUp = NSTimeInterval()
+    var timeLevelUp: NSTimeInterval
     
     class var sharedInstance: CharacterData {
         return _sharedInstance
@@ -53,6 +53,7 @@ class CharacterData : NSObject {
         self.isTrainingNow = false
         self.currentTrainingAttribute = "nil"
         self.finishTrainingDate = nilDateValue()
+        timeLevelUp = 0
     }
     
     class func printCharacter( character: CharacterData ) {
@@ -140,9 +141,8 @@ extension CharacterData {
         ckhelper.saveCharacterProperties(self)
         ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         
-//        timeLevelUp = tuple.timeLevelUp
-//        initTimer(timeLevelUp, value: currentValue)
-        // Agendar notificacao
+        timeLevelUp = tuple.timeLevelUp
+        // Schedule notification
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
