@@ -20,6 +20,7 @@ class LaboratoryHudLayer: SKNode {
     var laboratoryLifeBar: SKSpriteNode?
     var messageRemainingLife: SKLabelNode?
     var laboratoryGoldLabel: SKLabelNode?
+    var laboratoryMetalLabel: SKLabelNode?
     
     override init(){
         
@@ -32,6 +33,7 @@ class LaboratoryHudLayer: SKNode {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLifeBarAndMessage", name: "ReloadLifeBarNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLaboratoryGoldLabel", name: "ReloadGoldNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLaboratoryMetalLabel", name: "ReloadMetalNotification", object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,10 +68,10 @@ class LaboratoryHudLayer: SKNode {
         
         // require from singleton metals avaiable
         let metalsAvaiable = ResourcesData.sharedInstance.metal
-        let laboratoryMetalLabel = createLabelNode("\(metalsAvaiable)", zPosition: 4, position: CGPointMake(-middleOfTheScreenPoint.x + 550, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28,name: "laboratoryGoldLabel")
+        laboratoryMetalLabel = createLabelNode("\(metalsAvaiable)", zPosition: 4, position: CGPointMake(-middleOfTheScreenPoint.x + 550, -middleOfTheScreenPoint.y + 338),alignmentMode: SKLabelHorizontalAlignmentMode.Left, fontSize: 28, name: "laboratoryMetalLabel")
         
         self.addChild(metalSprite)
-        self.addChild(laboratoryMetalLabel)
+        self.addChild(laboratoryMetalLabel!)
     }
     
     func loadDiamonds(){
@@ -124,4 +126,7 @@ class LaboratoryHudLayer: SKNode {
         self.laboratoryGoldLabel?.text = String(ResourcesData.sharedInstance.gold)
     }
     
+    func reloadLaboratoryMetalLabel() {
+        laboratoryMetalLabel?.text = String(ResourcesData.sharedInstance.metal)
+    }
 }
