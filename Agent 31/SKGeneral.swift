@@ -21,6 +21,10 @@ let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
 let yPositionFloor: CGFloat = 93.6249923706055
 
+let baseSceneOperator: Int = 468
+let minimumWidthScene: Int = 3
+let maxWidthScene: Int = 8
+
 let zPosition1st: CGFloat = 1000
 let zPosition2nd: CGFloat = 2000
 let zPosition3rd: CGFloat = 3000
@@ -53,7 +57,7 @@ enum zPositionsCity {
         case AGENT :
             return 100
         case HUD :
-            return 100
+            return 110
         default :
             return 0
         }
