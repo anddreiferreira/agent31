@@ -324,6 +324,4 @@ extension TestCityGameLayer{
 //        self.addChild(enemytest)
         
     }
-    
-    
 }
