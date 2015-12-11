@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import CloudKit
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,22 +48,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let status = Reach().connectionStatus()
         switch status {
         case .Unknown, .Offline:
-            debugPrint("Offline, do not load the game")
             CloudKitExceptions.sharedInstance.internetException = true
             hasException = true
         case .Online:
-            debugPrint("Online, load the game")
+            CloudKitExceptions.sharedInstance.internetException = false
+            hasException = false
         }
         
         // CloudKit account status
-        /*
         CKContainer.defaultContainer().accountStatusWithCompletionHandler({
-        accountStatus, error in
-        if accountStatus == CKAccountStatus.NoAccount {
-        //Present alert
-        }
+            accountStatus, error in
+            if accountStatus == CKAccountStatus.NoAccount {
+                debugPrint("THERE IS NO ACCOUNT LOGGED")
+            }
         })
-        */
         
         // Override point for customization after application launch.
         
@@ -88,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
     {
-        debugPrint("Clean badge icon")
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -110,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         CharacterData.sharedInstance.reloadTrainingTimer()
+        GunsData.sharedInstance.reloadUpgradingTimer()
     }
     
     func applicationWillTerminate(application: UIApplication) {
