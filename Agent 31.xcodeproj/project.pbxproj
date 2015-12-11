@@ -2127,7 +2127,6 @@
 				TargetAttributes = {
 					6B2D98AC1BB1C6E7005B342E = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 5ZSN4629J8;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -2694,7 +2693,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Henrique.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2711,7 +2710,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Henrique.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

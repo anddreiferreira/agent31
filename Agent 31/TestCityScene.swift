@@ -223,9 +223,13 @@ extension TestCityScene{
     private func configureAnalogStick(){
         // Initialize an analog stick
         analogStick = AnalogStick()
-        
+        analogStick.alpha = 0.3
+
         analogStick.position = CGPointMake(-self.size.width/2.5, -self.size.height/3)
+        
         analogStick!.trackingHandler = { analogStick in
+            
+            analogStick.alpha = 1.0
             
             let xvelocity = analogStick.data.velocity.x
             self.cityGameLayer.agent31!.changeVelocity(xvelocity)
