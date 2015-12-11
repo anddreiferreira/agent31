@@ -65,7 +65,7 @@ class GameViewController: UIViewController {
             let scene = TestCityScene(size:skView.bounds.size)
 
             skView.ignoresSiblingOrder = false
-            skView.showsFPS = false
+            skView.showsFPS = true
             skView.showsPhysics = true
             skView.showsNodeCount = true
             scene.scaleMode = .AspectFill

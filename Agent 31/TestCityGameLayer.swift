@@ -14,7 +14,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     var agent31 : Agent?
     
     var cityEnd: CGFloat = 0
-    var cityBegin: CGFloat = -468
+    var cityBegin: CGFloat = -CGFloat(minimumWidthScene*baseSceneOperator)
     
     override init(){
         
@@ -50,16 +50,16 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putInitialScenes(){
         
-        var positionOfScene = CGPointMake(-468, 20)
+        var positionOfScene = CGPointMake(-CGFloat(minimumWidthScene*baseSceneOperator), 20)
         
         for _ in 0..<5 {
             
-            let base1 = BaseScene(position: positionOfScene, lar : 468)
+            let base1 = BaseScene(position: positionOfScene, lar : minimumWidthScene*baseSceneOperator)
             base1.zPosition = 10
             
             self.addChild(base1)
             
-            positionOfScene.x += 468
+            positionOfScene.x += CGFloat(minimumWidthScene*baseSceneOperator)
             cityEnd = positionOfScene.x
         }
     
@@ -98,7 +98,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putNewScene(actualXPosition: CGFloat, direction: Int){
         // In future this will be randomized
-        let sceneWidth: Int = 468
+        let sceneWidth: Int = (Int(rand()%6)+3)*baseSceneOperator
         
         
         // Calculate begining position of the new scene
@@ -112,6 +112,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             self.cityEnd += CGFloat(sceneWidth)
             
         }else if(direction == LEFT){
+            debugPrint("GERA PRA ESQUERDA")
             scenePosition = CGPointMake(actualXPosition - CGFloat(sceneWidth), 20)
             
             addScene(scenePosition!, width: sceneWidth)
@@ -214,17 +215,17 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                     
                     
                     if(xDiff < 0){
-                        debugPrint("Agent behind the city end")
                         
-                        let range = -(scene.largura + 50)
+                        let range = -(scene.largura + 500)
                         
                         // If the player passed the range...
                         if(xDiff > CGFloat(range)){
                             self.putNewScene(scene.end, direction: RIGHT)
                         }
                         
-                    }else{
-                        debugPrint("Agent in front the CITY END. UNEXPECTED BEHAVIOUR!")
+                    }else if(xDiff < -3000){
+                        scene.removeFromParent()
+                        self.cityEnd -= CGFloat(scene.largura)
                     }
                     
                 }else if(scene.begin == self.cityBegin){
@@ -235,12 +236,14 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                     let xDiff = (self.agent31?.position.x)! - scene.end
                     
                     if(xDiff > 0){
-                        debugPrint("Agent in front of the city begin.")
                         
-                        let range = scene.largura + 50
+                        let range = scene.largura + 500
                         
                         if(xDiff < CGFloat(range)){
                             self.putNewScene(scene.begin, direction: LEFT)
+                        }else if(xDiff > 3000){
+                            scene.removeFromParent()
+                            self.cityBegin += CGFloat(scene.largura)
                         }
                     }
                     
