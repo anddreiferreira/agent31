@@ -21,6 +21,7 @@ class CharacterLivesManager: NSObject {
         
 //        initLivesTimer(<#T##time: NSTimeInterval##NSTimeInterval#>)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "verifyLostLifeDate", name: "AgentLostOneLifeNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "verifyLivesTimer", name: "characterDataNotification", object: nil)
     }
     
     func verifyLostLifeDate() {
@@ -52,22 +53,31 @@ class CharacterLivesManager: NSObject {
     // This function verifies if the time to restore a life is reached
     func verifyLivesTimer() {
         
-        if restoreLifeDate != nil {
+        restoreLifeDate = CharacterData.sharedInstance.restoreLifeDate
+        
+        if restoreLifeDate != nilDateValue() {
             let now = NSDate()
             let remainingTime = restoreLifeDate?.timeIntervalSinceDate(now)
+            debugPrint("REMAINING TIME TO NEXT LIFE: \(remainingTime)")
             
             if remainingTime <= 0 {
                 agentWonALife()
+            } else {
+                initLivesTimer(remainingTime!)
             }
         }
     }
     
     func reloadLivesTimer() {
         
+        debugPrint("RELOAD LIVES TIMER")
         if CharacterData.sharedInstance.restoreLifeDate != nilDateValue() {
             let nextLifeTime = NSDate().timeIntervalSinceDate(CharacterData.sharedInstance.restoreLifeDate)
             
             initLivesTimer(nextLifeTime)
+            
+            debugPrint("RELOAD LIVES TIMER")
+            debugPrint("NEXT TIME LIFE: \(nextLifeTime)")
         }
     }
 
@@ -92,8 +102,7 @@ class CharacterLivesManager: NSObject {
             CharacterData.sharedInstance.restoreLifeDate = nilDateValue()
         } else {    // if lives is less than five, reinit timer to another life
             
-            let remainingTime = self.restoreLifeDate?.timeIntervalSinceDate(NSDate())
-            initLivesTimer(remainingTime!)
+            verifyLivesTimer()
         }
         
         let ckhelper = CloudKitHelper()
