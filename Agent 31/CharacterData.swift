@@ -29,13 +29,13 @@ class CharacterData : NSObject {
     var backPack: Int
     var level: Int
     var lives: Int
-  
+    
     // Atributos do treinamento do Character
     var isTrainingNow: Bool
     var currentTrainingAttribute: String
     var finishTrainingDate: NSDate
     var restoreLifeDate: NSDate
-    var timeLevelUp = NSTimeInterval()
+    var timeLevelUp: NSTimeInterval
     
     class var sharedInstance: CharacterData {
         return _sharedInstance
@@ -55,6 +55,7 @@ class CharacterData : NSObject {
         self.currentTrainingAttribute = "nil"
         self.finishTrainingDate = nilDateValue()
         self.restoreLifeDate = nilDateValue()
+        timeLevelUp = 0
     }
     
     class func printCharacter( character: CharacterData ) {
@@ -112,10 +113,10 @@ extension CharacterData {
     }
     
     func initTraining( attribute: String ) {
-
+        
         // O valor atual do atributo é necessário para saber quanto tempo vai durar o treinamento
         let currentValue = self.getAttributeValue( attribute )
-
+        
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         
@@ -143,14 +144,13 @@ extension CharacterData {
         ckhelper.saveCharacterProperties(self)
         ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         
-//        timeLevelUp = tuple.timeLevelUp
-//        initTimer(timeLevelUp, value: currentValue)
-        // Agendar notificacao
+        timeLevelUp = tuple.timeLevelUp
+        // Schedule notification
         scheduleNotification(tuple.timeLevelUp, itemName: attribute, itemLevel: self.getAttributeValue(attribute))
     }
     
     private func verifyResources( neededResources: Int ) -> Bool {
-    
+        
         return ResourcesData.sharedInstance.gold >= neededResources ? true : false
     }
     
@@ -166,7 +166,7 @@ extension CharacterData {
         let remainingTime = NSDate().timeIntervalSinceDate(self.finishTrainingDate)
         
         initTimer(remainingTime)
-
+        
     }
     
     func finishTraining(timer: NSTimer) {

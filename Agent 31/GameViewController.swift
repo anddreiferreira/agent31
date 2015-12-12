@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
         if skView.scene == nil {
             let scene = LaboratoryScene(size:skView.bounds.size)
 
-            skView.ignoresSiblingOrder = true
+            skView.ignoresSiblingOrder = false
             skView.showsFPS = true
             skView.showsPhysics = true
             skView.showsNodeCount = true

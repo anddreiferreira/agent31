@@ -11,9 +11,9 @@ import UIKit
 import SpriteKit
 
 // MARK: Defines
-let TURNED_LEFT: Int = -1
-let TURNED_UP: Int = 0
-let TURNED_RIGHT: Int = 1
+let LEFT: Int = -1
+let UP: Int = 0
+let RIGHT: Int = 1
 let MAX_CHARACTER_VELOCITY: CGFloat = 40.0
 let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
@@ -21,11 +21,50 @@ let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
 let yPositionFloor: CGFloat = 93.6249923706055
 
+let baseSceneOperator: Int = 468
+let minimumWidthScene: Int = 3
+let maxWidthScene: Int = 8
+
 let zPosition1st: CGFloat = 1000
 let zPosition2nd: CGFloat = 2000
 let zPosition3rd: CGFloat = 3000
 let zPosition4th: CGFloat = 4000
 
+enum zPositionsCity {
+    
+    case BACKGROUND
+    case BACKGROUND_BUILDING
+    case GROUND
+    case BUILDING
+    case POST
+    case AGENT
+    case HUD
+    case ENEMY
+    case BULLET
+    
+    var zPos:CGFloat {
+        switch self {
+        case BACKGROUND :
+            return -2
+        case BACKGROUND_BUILDING :
+            return -1
+        case GROUND :
+            return 0
+        case BUILDING :
+            return 1
+        case POST :
+            return 1
+        case AGENT :
+            return 100
+        case HUD :
+            return 110
+        default :
+            return 0
+        }
+    }
+
+}
+    
 func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
     let spriteTexture = generateTextureWithImage(imageName)
@@ -95,7 +134,7 @@ func loadAnimationTexturesArray(mainText: String, numberOfImages: Int) -> Array<
     for(var i = initialIndex; i<=numberOfImages; i++){
         
         let imageName = String(format: "%@%i", arguments: [mainText, i])
-        debugPrint("loadAnimation: Using texture named \(imageName)")
+//        debugPrint("loadAnimation: Using texture named \(imageName)")
         let texture: SKTexture = generateTextureWithImage(imageName)
         
         texturesArray.append(texture)
@@ -167,4 +206,19 @@ func isAbove(point1: CGPoint, point2: CGPoint) -> Bool{
     }
     
     return answer
+}
+
+// MARK: Nil date
+//let date = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")
+//let nilDateValue : NSDate = (date == nil) ? NSDate() : date!
+//let nilDateValue: NSDate = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")!
+func nilDateValue() -> NSDate {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "MM-dd-yyyy"
+    dateFormatter.timeZone = NSTimeZone.localTimeZone()
+    let stringDate = "01-01-1990"
+    
+    let nilDate = dateFormatter.dateFromString(stringDate) as NSDate!
+    
+    return nilDate
 }

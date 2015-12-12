@@ -48,9 +48,9 @@ class Bullet : GameObject {
     
     private func definePosition(){
         let characterPosition = ownerGun!.parent!.position
-        if(self.orientation == TURNED_RIGHT){
+        if(self.orientation == RIGHT){
             self.position = CGPointMake(characterPosition.x + 25, characterPosition.y + ownerGun!.position.y*2.5)
-        }else if(self.orientation == TURNED_LEFT){
+        }else if(self.orientation == LEFT){
             self.position = CGPointMake(characterPosition.x - 25, characterPosition.y + ownerGun!.position.y*2.5)
         }
     }
@@ -99,12 +99,12 @@ class Bullet : GameObject {
     }
     
     private func defineDirection(orientation: Int)->CGVector{
-        if(orientation == TURNED_RIGHT){
+        if(orientation == RIGHT){
             return CGVectorMake(1000.0, 0.0)
-        }else if(orientation == TURNED_LEFT){
+        }else if(orientation == LEFT){
             self.invertSpriteHorizontally(true)
             return CGVectorMake(-1000.0, 0.0)
-        }else if(orientation == TURNED_UP){
+        }else if(orientation == UP){
             self.zRotation = CGFloat(M_PI/2)
             return CGVectorMake(0, 1000.0)
         }else{

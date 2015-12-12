@@ -243,7 +243,6 @@ class Building: SKNode {
         colocarUmaTile(baseDireita.image, posicao: ponto, zCoordenada: 21)
         
        colocarBaseChao()
-        
     }
     
     func colocarBaseChao(){

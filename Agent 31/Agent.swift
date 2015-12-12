@@ -43,8 +43,8 @@ class Agent: Character {
     }
     
     override func initializeAnimations(){
-        self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
+        self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.1)
         
         self.jumpingLegs = actionWithAnimationName("agentJumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
         self.jumpingTorso = actionWithAnimationName("agentJumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
@@ -63,7 +63,7 @@ class Agent: Character {
         
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(currentTime: Float) {
 
     }
     

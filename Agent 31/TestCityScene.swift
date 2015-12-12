@@ -16,8 +16,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var clock: NSTimer?
     
     // Delete this when the city and the enemy`s generator are finished
-//    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
-//    var secondsToBackToLab: Int = 10  // The time to play in the city
+    //    var cityTimer: NSTimer?  // This timer will decrease the secondsToBackToLab variable
+    //    var secondsToBackToLab: Int = 10  // The time to play in the city
     
     var timeElapsed: Float = 0.0
     private var cityGameLayer : TestCityGameLayer!
@@ -41,14 +41,19 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
+        self.backgroundColor = UIColor(red: 255/255.0, green: 239/255.0, blue: 130/255.0, alpha: 1)
+        
         // criacao de informacoes randomicas do novo predio
         let predioInfo = BuildingInformation()
         
-        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares,pilastras: predioInfo.qtdPilastras, posicalIncialX: predioInfo.posicaoInicialX)
+        let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: 0)
         
-//        predioInfo.posicaoInicialX
-//        self.addChild(predioNovo)
+        
+        predioNovo.zPosition = 0;
+        //        predioInfo.posicaoInicialX
+        //        self.addChild(predioNovo)
         predioNovo.setScale(1.6)
+        
         
     }
     
@@ -56,21 +61,21 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     func fireClock(){
         self.clock = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "update2:", userInfo: timeElapsed, repeats: true)
         clock!.fire()
-    
+        
         // Delete this when the city and the enemy`s generator are finished
-//         Timer to decrease the time to stay in the city(secondsToBackToLab variable)
-//        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
-//        cityTimer?.fire()
+        //         Timer to decrease the time to stay in the city(secondsToBackToLab variable)
+        //        self.cityTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "reduceTime", userInfo: secondsToBackToLab, repeats: true)
+        //        cityTimer?.fire()
     }
     
-//    // Delete this when the city and the enemy`s generator are finished
-//    func reduceTime() {
-//        self.secondsToBackToLab = self.secondsToBackToLab - 1
-//        
-//        if( self.secondsToBackToLab < 0 ) {
-//            goToLab()
-//        }
-//    }
+    //    // Delete this when the city and the enemy`s generator are finished
+    //    func reduceTime() {
+    //        self.secondsToBackToLab = self.secondsToBackToLab - 1
+    //
+    //        if( self.secondsToBackToLab < 0 ) {
+    //            goToLab()
+    //        }
+    //    }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -101,16 +106,18 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         // Saving resources collected into cloudkit
         let ckhelper = CloudKitHelper()
         ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
+        //ckhelper.saveResourcesProperties(ResourcesData.sharedInstance.gold, metal: ResourcesData.sharedInstance.metal, diamond: ResourcesData.sharedInstance.diamond)
     }
     
     override func update(currentTime: NSTimeInterval) {
         self.updateCameraPosition()
     }
     
-    func update2(currentTime: NSTimeInterval){
-        self.timeElapsed += 0.5
+    func update2(currentTime: Float){
+        
+        self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
-        self.cityGameLayer.updateEnemy(currentTime)
+        self.cityGameLayer.update2(timeElapsed)
         
         if(self.cityGameLayer.agent31?.HP <= 0 && self.gameOver == false){
             self.gameOver = true
@@ -119,7 +126,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-
+    
+    
 }
 
 // MARK: SCENE PROCEDURES
@@ -130,7 +138,7 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
-//          self.cityTimer?.invalidate()
+        //          self.cityTimer?.invalidate()
     }
 }
 
@@ -139,16 +147,7 @@ extension TestCityScene{
 extension TestCityScene{
     
     private func putLayers(){
-        self.putBackgroundLayer()
         self.putGameLayer()
-    }
-    
-    private func putBackgroundLayer(){
-        
-        self.cityBackgroundLayer = CityBackgroundLayer()
-        self.cityBackgroundLayer.putBackground()
-        self.addChild(cityBackgroundLayer)
-        
     }
     
     
@@ -183,11 +182,17 @@ extension TestCityScene{
     
     func loadButtons(){
         
-        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: 100, name: "jumpButton")
+        let zValue = zPositionsCity.HUD.zPos
+        
+        jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: zValue, name: "jumpButton")
         cam.addChild(jumpButton!)
         
-        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: 100, name: "shootButton")
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: zValue, name: "shootButton")
         cam.addChild(shootButton!)
+        
+//        let status : SKSpriteNode = createSpriteNode("statusBar", position: CGPointMake(10, 375-10), zPosition: 1000000, name: "statusBar")
+        
+//        cam.addChild(status)
         
     }
     
@@ -219,9 +224,13 @@ extension TestCityScene{
     private func configureAnalogStick(){
         // Initialize an analog stick
         analogStick = AnalogStick()
-        
+        analogStick.alpha = 0.3
+
         analogStick.position = CGPointMake(-self.size.width/2.5, -self.size.height/3)
+        
         analogStick!.trackingHandler = { analogStick in
+            
+            analogStick.alpha = 1.0
             
             let xvelocity = analogStick.data.velocity.x
             self.cityGameLayer.agent31!.changeVelocity(xvelocity)
@@ -231,7 +240,7 @@ extension TestCityScene{
             
             
         }
-        analogStick!.zPosition = 100
+        analogStick!.zPosition = 1000000000
         cam.addChild(analogStick!)
     }
     

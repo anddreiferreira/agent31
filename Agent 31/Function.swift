@@ -8,21 +8,6 @@
 
 import Foundation
 
-//let date = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")
-//let nilDateValue : NSDate = (date == nil) ? NSDate() : date!
-//let nilDateValue: NSDate = NSDateFormatter().dateFromString("2012-10-02 15:00:00 +0000")!
-
-func nilDateValue() -> NSDate {
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "MM-dd-yyyy"
-    dateFormatter.timeZone = NSTimeZone.localTimeZone()
-    let stringDate = "01-01-1990"
-    
-    let nilDate = dateFormatter.dateFromString(stringDate) as NSDate!
-    
-    return nilDate
-}
-
 func minutesToSeconds(min: Int) -> Double
 {
     return Double(min) * 60.0
@@ -36,8 +21,7 @@ func gunLeveUp(gunName: String, var currentGunLevel: Int) -> (timeLevelUp: NSTim
     ++currentGunLevel
     switch gunName {
         case GunsData.sharedInstance.gun1Name:
-            return (minutesToSeconds(1), currentGunLevel * Int(pow(balanceGunResource, 1.0))) /* Retorno de teste */
-            //return (Double(currentGunLevel) * minutesToSeconds(5), currentGunLevel * Int(pow(balanceGunResource, 1.0)))
+            return (Double(currentGunLevel) * minutesToSeconds(5), currentGunLevel * Int(pow(balanceGunResource, 1.0)))
         case GunsData.sharedInstance.gun2Name:
             return (Double(currentGunLevel) * minutesToSeconds(10), currentGunLevel * Int(pow(balanceGunResource, 2.0)))
         case "gun3":

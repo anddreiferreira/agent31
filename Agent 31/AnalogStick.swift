@@ -152,6 +152,7 @@ public class AnalogStick: SKNode {
     
     private func resetStick() {
         
+        self.alpha = 0.3
         
         tracking = false
         data.velocity = CGPointZero

@@ -60,7 +60,7 @@ class GameObject: SKSpriteNode {
         
     }
     
-    func update(currentTime: NSTimeInterval){
+    func update(currentTime: Float){
 
     }
     

@@ -13,11 +13,14 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     var agent31 : Agent?
     
+    var cityEnd: CGFloat = 0
+    var cityBegin: CGFloat = -CGFloat(minimumWidthScene*baseSceneOperator)
     
     override init(){
         
         super.init()
         
+        self.fireClock()
 
     }
     
@@ -25,43 +28,135 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-
+    func fireClock(){
+        
+        let timer : NSTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "createRandomEnemy", userInfo: nil, repeats: true)
+        
+        timer.fire()
+        
+    }
+    
     
     func putGameLayer(){
-        self.putGround()
+        self.putInitialScenes()
         self.putAgent()
-        self.putTestEnemy()
         
-        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
-        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
+//        self.putTestEnemy()
+        
+//        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
+//        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
+        
     }
     
-    func putGround(){
-        let ground = Ground(imageName: "testCityGround", position: CGPointMake(middleOfTheScreenPoint.x, 0), zPosition: 1)
-        self.addChild(ground)
+    func putInitialScenes(){
+        
+        var positionOfScene = CGPointMake(-CGFloat(minimumWidthScene*baseSceneOperator), 20)
+        
+        for _ in 0..<5 {
+            
+            let base1 = BaseScene(position: positionOfScene, lar : minimumWidthScene*baseSceneOperator)
+            base1.zPosition = 10
+            
+            self.addChild(base1)
+            
+            positionOfScene.x += CGFloat(minimumWidthScene*baseSceneOperator)
+            cityEnd = positionOfScene.x
+        }
+    
     }
+    
+//    func putNewScene(directionOption: Int){
+//    
+//        // -1 left
+//        // 1 right
+//        
+//        if(directionOption == LEFT){
+//        
+//            positionLeft -= 468
+//
+//            let positionOfScene = CGPointMake(CGFloat(positionLeft), 20)
+//
+//            let base = BaseScene(position: positionOfScene, lar : 468)
+//            base.zPosition = 10
+//            
+//            self.addChild(base)
+//            
+//        }else if(directionOption == RIGHT){
+//            
+//            let positionOfScene = CGPointMake(CGFloat(positionRight), 20)
+//            
+//            let base = BaseScene(position: positionOfScene, lar : 468)
+//            base.zPosition = 10
+//        
+//            self.addChild(base)
+//
+//            positionRight += 468
+//            
+//        }
+//        
+//    }
+    
+    func putNewScene(actualXPosition: CGFloat, direction: Int){
+        // In future this will be randomized
+        let sceneWidth: Int = (Int(rand()%6)+3)*baseSceneOperator
+        
+        
+        // Calculate begining position of the new scene
+        var scenePosition: CGPoint? = nil
+        
+        if(direction == RIGHT){
+            scenePosition = CGPointMake(actualXPosition, 20)
+            
+            addScene(scenePosition!, width: sceneWidth)
+            
+            self.cityEnd += CGFloat(sceneWidth)
+            
+        }else if(direction == LEFT){
+            debugPrint("GERA PRA ESQUERDA")
+            scenePosition = CGPointMake(actualXPosition - CGFloat(sceneWidth), 20)
+            
+            addScene(scenePosition!, width: sceneWidth)
+            
+            self.cityBegin -= CGFloat(sceneWidth)
+        }
+        
+        
+        
+    }
+    
+    func addScene(position: CGPoint, width: Int){
+        
+        let newScene = BaseScene(position: position, lar: width)
+        newScene.zPosition = 10
+        self.addChild(newScene)
+        
+    }
+    
     
     func createBlock(position: CGPoint){
-        let block = Ground(imageName: "testCityBlock", position: position, zPosition: 1)
+        let block = Ground(size: CGSizeMake(500, 100), position: position, zPosition: 1)
         block.yScale = (block.yScale)/2
-        self.addChild(block)
+//        self.addChild(block)
+        block.zPosition = -10000
     }
     
     func putAgent(){
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
+        agent31?.zPosition = zPositionsCity.AGENT.zPos
         self.addChild(agent31!)
+
     }
     
     func putTestEnemy(){
-//        let testEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor))
-//        let secEnemy = GeneralEnemy(position: CGPointMake(middleOfTheScreenPoint.x - 100, yPositionFloor), enemyLevel: 5)
-//        self.addChild(testEnemy)
-//        self.addChild(secEnemy)
+
         
         let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
         let enemysec = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), enemyLevel: 10)
         let enemy3 = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 300, yPositionFloor), enemyLevel: 3)
+        
+        enemytest.zPosition = 100000
+        enemysec.zPosition = 100000
+        enemy3.zPosition = 100000
         
         self.addChild(enemysec)
         self.addChild(enemytest)
@@ -72,7 +167,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         return distanceBetweenPoints( self.agent31!.position, second: enemyPosition )
     }
     
-    func updateEnemy(currentTime: NSTimeInterval){
+    func updateEnemy(currentTime: Float){
         self.enumerateChildNodesWithName("enemy", usingBlock: {
             node, stop in
             // Block below is executed if a enemy is found
@@ -88,6 +183,83 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             
         })
     }
+    
+    func update2(currentTime: Float){
+//        debugPrint("CURRENT TIME \(currentTime)")
+        self.updateEnemy(currentTime)
+        
+        
+        // VERIFICAR A CADA 2 SEGUNDOS
+        // CHAMAR UPDATE SCENES
+        // CONSERTAR PARA CHAMAR APENAS 1 VEZ
+        if(Int(currentTime)%2 == 0){
+            manageScenes(currentTime)
+        }
+        
+    }
+    
+    func manageScenes(currentTime: Float){
+        
+        self.enumerateChildNodesWithName("cena", usingBlock: {
+            node, stop in
+            // Block below is executed if a enemy is found
+            
+            if let scene = node as? BaseScene{
+                
+                if(scene.end == self.cityEnd){
+                    
+                    // When agent is behind the scene end
+                    // The value is negative
+                    // Otherwise, the value is positive
+                    let xDiff = (self.agent31?.position.x)! - scene.end
+                    
+                    
+                    if(xDiff < 0){
+                        
+                        let range = -(scene.largura + 500)
+                        
+                        // If the player passed the range...
+                        if(xDiff > CGFloat(range)){
+                            self.putNewScene(scene.end, direction: RIGHT)
+                        }
+                        
+                    }else if(xDiff < -3000){
+                        scene.removeFromParent()
+                        self.cityEnd -= CGFloat(scene.largura)
+                    }
+                    
+                }else if(scene.begin == self.cityBegin){
+                    
+                    // When agent is behind the scene end
+                    // The value is negative
+                    // Otherwise, the value is positive
+                    let xDiff = (self.agent31?.position.x)! - scene.end
+                    
+                    if(xDiff > 0){
+                        
+                        let range = scene.largura + 500
+                        
+                        if(xDiff < CGFloat(range)){
+                            self.putNewScene(scene.begin, direction: LEFT)
+                        }else if(xDiff > 3000){
+                            scene.removeFromParent()
+                            self.cityBegin += CGFloat(scene.largura)
+                        }
+                    }
+                    
+                }
+                
+                
+            }else{
+                debugPrint("None node named 'cena' founded")
+            }
+            
+        })
+        
+        
+    }
+    
+    
 
 }
 
@@ -141,4 +313,16 @@ extension TestCityGameLayer{
         }
     }
     
+    func createRandomEnemy(){
+        
+        let numRandom : Int = Int(arc4random_uniform(800)) - 300
+        
+        let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - CGFloat(numRandom), yPositionFloor), withGun: true)
+        
+        enemytest.zPosition = 100000
+
+//        self.addChild(enemytest)
+        
+    }
+       
 }
