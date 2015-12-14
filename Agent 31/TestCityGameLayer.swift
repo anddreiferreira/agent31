@@ -20,6 +20,8 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
         super.init()
         
+        sceneTimer()
+        
 
     }
     
@@ -27,6 +29,10 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func sceneTimer(){
+        let timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "manageScenes", userInfo: nil, repeats: true)
+        timer.fire()
+    }
     
     
     func putGameLayer(){
@@ -90,7 +96,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putNewScene(actualXPosition: CGFloat, direction: Int){
         // In future this will be randomized
-        let sceneWidth: Int = (Int(rand()%6)+3)*baseSceneOperator
+        let sceneWidth: Int = (Int(rand()%3)+3)*baseSceneOperator
         
         
         // Calculate begining position of the new scene
@@ -187,16 +193,16 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 //        debugPrint("CURRENT TIME \(currentTime)")
         self.updateEnemy(currentTime)
         
-        // VERIFICAR A CADA 2 SEGUNDOS
-        // CHAMAR UPDATE SCENES
-        // CONSERTAR PARA CHAMAR APENAS 1 VEZ
-        if(Int(currentTime)%2 == 0){
-            manageScenes(currentTime)
-        }
+//        // VERIFICAR A CADA 2 SEGUNDOS
+//        // CHAMAR UPDATE SCENES
+//        // CONSERTAR PARA CHAMAR APENAS 1 VEZ
+//        if(Int(currentTime)%2 == 0){
+//            manageScenes(currentTime)
+//        }
         
     }
     
-    func manageScenes(currentTime: Float){
+    func manageScenes(){
         
         self.enumerateChildNodesWithName("cena", usingBlock: {
             node, stop in
@@ -221,7 +227,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                             self.putNewScene(scene.end, direction: RIGHT)
                         }
                         
-                    }else if(xDiff < -3000){
+                    }else if(xDiff < -4000){
                         scene.removeFromParent()
                         self.cityEnd -= CGFloat(scene.largura)
                     }
@@ -240,8 +246,9 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                         let range = 500
                         
                         if(xDiff < CGFloat(range)){
+                            debugPrint("Cria nova scene")
                             self.putNewScene(scene.begin, direction: LEFT)
-                        }else if(xDiff > 3000){
+                        }else if(xDiff > 4000){
                             let newBegin = self.cityBegin + CGFloat(scene.largura)
                             self.modifyCityBegin(newBegin)
                             scene.removeFromParent()
