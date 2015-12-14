@@ -12,13 +12,16 @@ import SpriteKit
 @available(iOS 9.0, *)
 class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
+    var telaArma : SKSpriteNode?
+    var telaTreino : SKSpriteNode?
+    
     var clock: NSTimer?
     var timeElapsed: Float = 0.0
     
     var cam = SKCameraNode()
     private var analogStick: AnalogStick!
     var jumpButton: SKSpriteNode?
-//    var shootButton: SKSpriteNode?
+    var shootButton: SKSpriteNode?
     var goToCity: SKSpriteNode?
     
     private var laboratoryBackgroundLayer : LaboratoryBackgroundLayer!
@@ -69,32 +72,86 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             let location = (touch as UITouch).locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            if let nodeName = node.name {
-                if nodeName == "jumpButtonLab" {
-                    buttonTapped(node)
-                    self.laboratoryGameLayer.agent31?.jump()
-                } else if node.name == "shootButton" {
-                    buttonTapped(node)
-                    self.laboratoryGameLayer.agent31?.shoot()
-                } else if node.name == "goToCity" {
-                    buttonTapped(node)
-                    //self.agentGoToCity()
-                    self.goToTestCity()
-                } else if node.name == "balloon" {
-                    self.showLabObjectLayer((node as? SKSpriteNode)!)
-                } else if node.name == "backBtn" {
-                    removeUpgradeLayer(node.parent!)
-                    configureAnalogStick()
-                    loadButtons()
-                } else if node.name!.hasPrefix("lblUpgrade") {
-                    loadUpgradeLayer(node.name!)
-                } else if node.name == "btnCancelUpgrade" {
-                    upgradeLayer.removeFromParent()
-                } else if node.name!.hasPrefix("btnDoUpgrade") {
-                    doUpgradeWithAttribute(node.name!)
-                }
+            debugPrint("NODE TOUCHED \(node) with name = \(node.name)")
+            
+            if node.name == "jumpButtonLab" {
+                buttonTapped(node)
+                self.laboratoryGameLayer.agent31?.jump()
+            } else if node.name == "shootButton" {
+                buttonTapped(node)
+                self.laboratoryGameLayer.agent31?.shoot()
+            } else if node.name == "goCity" {
+                buttonTapped(node)
+//                self.agentGoToCity()
+                self.goToTestCity()
+            } else if node.name == "balloon" {
+                self.showLabObjectLayer((node as? SKSpriteNode)!)
+            } else if node.name == "backBtn" {
+                removeUpgradeLayer(node.parent!)
+                configureAnalogStick()
+                loadButtons()
             }
+            else if node.name == "placeholderGun" {
+                self.trocarGun1()
+            }
+            else if node.name == "telagun1" {
+                self.tirarGun1()
+            }
+            else if node.name == "placeholderTreino1" {
+                self.trocarTreino1()
+            }
+            else if node.name == "telaTreino1" {
+                self.trocarTreino2()
+            }
+            else if node.name == "telaTreino2" {
+                self.tirarTreino()
+            }
+          
+//                else if node.name!.hasPrefix("lblUpgrade") {
+//                loadUpgradeLayer(node.name!)
+//            } else if node.name == "btnCancelUpgrade" {
+//                upgradeLayer.removeFromParent()
+//            } else if node.name!.hasPrefix("btnDoUpgrade") {
+//                doUpgradeWithAttribute(node.name!)
+//            }
         }
+    }
+    
+    func trocarTreino1(){
+        
+        self.telaTreino?.removeFromParent()
+        
+        self.telaTreino = createSpriteNode("telaTreino1", position: CGPointMake(self.cam.position.x - CGFloat(345), self.cam.position.y),zPosition: 1000000, name: "telaTreino1")
+        self.telaTreino?.setScale(0.5)
+        
+        self.cam.addChild(self.telaTreino!)
+    }
+    func trocarTreino2(){
+        
+        self.telaTreino?.removeFromParent()
+        
+        self.telaTreino = createSpriteNode("telaTreino1", position: CGPointMake(self.cam.position.x - CGFloat(345), self.cam.position.y),  zPosition: 1000000, name: "telaTreino2")
+        
+        self.cam.addChild(self.telaTreino!)
+        
+    }
+    func tirarTreino(){
+        
+        self.telaTreino?.removeFromParent()
+        
+    }
+    
+    func trocarGun1(){
+        
+        self.telaArma = createSpriteNode("telagun1", position: CGPointMake(self.cam.position.x - CGFloat(100), self.cam.position.y), zPosition: 1000000, name: "telagun1")
+        
+        self.cam.addChild(self.telaArma!)
+        
+    }
+    
+    func tirarGun1(){
+        
+        self.telaArma?.removeFromParent()
     }
     
     func loadUpgradeLayer(attributeName: String) {
@@ -281,8 +338,11 @@ extension LaboratoryScene{
         
         
         goToCity = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(-self.size.width/2 + 598, -self.size.height/2 + 315), zPosition: 100, name: "goToCity")
-        cam.addChild(goToCity!)
+//        cam.addChild(goToCity!)
         
+        shootButton = createSpriteNode("shootButton", position: CGPointMake(-self.size.width/2 + 479, -self.size.height/2 + 101), zPosition: 100, name: "shootButton")
+        
+        cam.addChild(shootButton!)
     }
     
 }

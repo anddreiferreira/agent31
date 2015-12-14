@@ -15,18 +15,10 @@ class CityScene: SKScene {
         
         debugPrint("City scene entered")
         
-        self.putBackgroundLayer()
         self.putBasicHudLayer()
         self.putGameLayer()
     }
     
-    func putBackgroundLayer(){
-        
-        self.cityBackgroundLayer = CityBackgroundLayer()
-        self.cityBackgroundLayer.putBackground()
-        self.addChild(cityBackgroundLayer)
-    
-    }
     
     func putBasicHudLayer(){
         

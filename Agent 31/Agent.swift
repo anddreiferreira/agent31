@@ -10,11 +10,11 @@ import SpriteKit
 
 class Agent: Character {
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
+    init(position: CGPoint = middleOfTheScreenPoint, withGun: Bool = true, gunName: String = "CA115"){
         
         debugPrint("Initializing Agent")
         
-        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: zPositionsCity.AGENT.rawValue, withGun: withGun, gunName: gunName)
         
         self.name = "agent"
         
@@ -43,8 +43,8 @@ class Agent: Character {
     }
     
     override func initializeAnimations(){
-        self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.15)
-        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.15)
+        self.stoppedTorso = actionWithAnimationName("agentStoppedTorso", numberOfImages: 6, timePerTexture: 0.1)
+        self.stoppedLegs = actionWithAnimationName("agentStoppedLegs", numberOfImages: 6, timePerTexture: 0.1)
         
         self.jumpingLegs = actionWithAnimationName("agentJumpingLegs", numberOfImages: 6, timePerTexture: 0.1)
         self.jumpingTorso = actionWithAnimationName("agentJumpingTorso", numberOfImages: 6, timePerTexture: 0.1)
@@ -63,7 +63,7 @@ class Agent: Character {
         
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(currentTime: Float) {
 
     }
     

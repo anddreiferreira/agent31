@@ -29,7 +29,7 @@ class CharacterData : NSObject {
     var backPack: Int
     var level: Int
     var lives: Int
-  
+    
     // Atributos do treinamento do Character
     var isTrainingNow: Bool
     var currentTrainingAttribute: String
@@ -110,10 +110,10 @@ extension CharacterData {
     }
     
     func initTraining( attribute: String ) {
-
+        
         // O valor atual do atributo é necessário para saber quanto tempo vai durar o treinamento
         let currentValue = self.getAttributeValue( attribute )
-
+        
         // recuperar o tempo e o custo necessário para o treinamento
         let tuple = characterLevelUp(attribute, currentAttributeLevel: currentValue)
         
@@ -147,7 +147,7 @@ extension CharacterData {
     }
     
     private func verifyResources( neededResources: Int ) -> Bool {
-    
+        
         return ResourcesData.sharedInstance.gold >= neededResources ? true : false
     }
     
@@ -163,7 +163,7 @@ extension CharacterData {
         let remainingTime = NSDate().timeIntervalSinceDate(self.finishTrainingDate)
         
         initTimer(remainingTime)
-
+        
     }
     
     func finishTraining(timer: NSTimer) {

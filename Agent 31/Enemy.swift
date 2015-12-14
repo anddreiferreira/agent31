@@ -18,13 +18,13 @@ class Enemy: Character {
     var hasBulletFrequency: Double = 1.0
     var enemyLevel: Int = 1
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
+    init(position: CGPoint = middleOfTheScreenPoint, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
         
         self.enemyLevel = enemyLevel
         
-        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: zPositionsCity.ENEMY.rawValue, withGun: withGun, gunName: gunName)
         
         self.name = "enemy"
         self.torso?.position = CGPointMake(0.0, -3.4)
@@ -80,15 +80,15 @@ extension Enemy{
         
         isAgentOver ? (self.lookingUp = true) : (self.lookingUp = false)
         
-        let isAgentInRight = self.agentPos?.x > self.position.x && self.orientation == TURNED_LEFT
-        let isAgentInLeft = self.agentPos?.x < self.position.x && self.orientation == TURNED_RIGHT
+        let isAgentInRight = self.agentPos?.x > self.position.x && self.orientation == LEFT
+        let isAgentInLeft = self.agentPos?.x < self.position.x && self.orientation == RIGHT
         
         if( isAgentInRight || isAgentInLeft ) {
             self.invertSpriteHorizontally(true)
         }
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(currentTime: Float) {
         enemyBehaviourGuarding()
         
         let yDiff = ((self.agentPos?.y)! - self.position.y)

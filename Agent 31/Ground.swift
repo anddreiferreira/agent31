@@ -19,11 +19,12 @@ class Ground: SKSpriteNode {
     USED ONLY FOR GROUND
     */
     init(size: CGSize, position: CGPoint, zPosition: CGFloat){
-        super.init(texture: nil, color: UIColor.yellowColor(), size: size)
+        super.init(texture: nil, color: UIColor.redColor(), size: size)
         self.position = position
         self.zPosition = zPosition
         self.alpha = 0.0
         self.setScale(1.0)
+//        self.anchorPoint = CGPointMake(1, 1)
         
         setBasicAttributes()
     }

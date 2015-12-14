@@ -13,7 +13,6 @@ class CityGameLayer: SKNode {
     var jumpButton : SKSpriteNode?
     var shootingButton : SKSpriteNode?
 
-    
     override init(){
         
         super.init()

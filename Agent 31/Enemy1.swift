@@ -10,12 +10,12 @@ import SpriteKit
 
 class Enemy1: Enemy {
     
-    override init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
+    override init(position: CGPoint = middleOfTheScreenPoint, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy 1")
         
         
-        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName, enemyLevel: enemyLevel)
+        super.init(position: position, withGun: withGun, gunName: gunName, enemyLevel: enemyLevel)
         
         self.torso?.position = CGPointMake(0.0, -3.4)
         
@@ -31,7 +31,9 @@ class Enemy1: Enemy {
         stoppedAnimationForever()
         self.setEnemyPhysics()
         
-        self.HP = HPAccordingToLevel()
+//        self.HP = HPAccordingToLevel()
+        
+        self.HP = 1000
     }
     
     

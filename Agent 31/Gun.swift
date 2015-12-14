@@ -24,7 +24,7 @@ class Gun : SKSpriteNode {
     var damageBase: Int
     var rangeBase: Int
     
-    init(gunName: String, level: Int = 1, damageBase: Int, rangeBase: Int, zPosition: CGFloat = 1.0, scale: CGFloat = 1.0, owner: String){
+    init(gunName: String, level: Int = 1, damageBase: Int, rangeBase: Int, scale: CGFloat = 1.0, owner: String){
         debugPrint("Initializing Gun")
         
         self.level = level
@@ -35,7 +35,7 @@ class Gun : SKSpriteNode {
         
         let texture: SKTexture! = generateTextureWithImage("\(gunName)Stopped1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-        self.zPosition = zPosition
+        self.zPosition = 1.0
         self.setScale(scale)
         self.name = gunName
         
@@ -61,7 +61,7 @@ extension Gun{
         self.attacking = actionWithAnimationName("\(gunName)Shooting", numberOfImages: 3, timePerTexture: 0.08)
         self.attackingUp = actionWithAnimationName("\(gunName)ShootingUp", numberOfImages: 3, timePerTexture: 0.08)
         self.lookingUp = actionWithAnimationName("\(gunName)ShootingUp", numberOfImages: 1, timePerTexture: 0.3)
-        self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.15)
+        self.stopped = actionWithAnimationName("\(gunName)Stopped", numberOfImages: 6, timePerTexture: 0.1)
         self.jumping = actionWithAnimationName("\(gunName)Jumping", numberOfImages: 6, timePerTexture: 0.1)
         self.gotHit = actionWithAnimationName("\(gunName)GotHit", numberOfImages: 4, timePerTexture: 0.1)
         

@@ -13,13 +13,13 @@ class Coin: GameObject {
     var value: Int
     var spinning: SKAction
     
-    init(position: CGPoint, zPosition: CGFloat = 5.0){
+    init(position: CGPoint){
         
         // Randomize a value between 10 and 1
         self.value = Int(arc4random() % 10 + 1)
         self.spinning = actionWithAnimationName("Coin", numberOfImages: 6, timePerTexture: 0.1)
         
-        super.init(imageName: "Coin1", position: position, zPosition: zPosition)
+        super.init(imageName: "Coin1", position: position, zPosition: zPositionsCity.RESOURCE.rawValue)
         
         attributes()
         basicProcedures()

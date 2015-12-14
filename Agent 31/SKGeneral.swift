@@ -11,21 +11,61 @@ import UIKit
 import SpriteKit
 
 // MARK: Defines
-let TURNED_LEFT: Int = -1
-let TURNED_UP: Int = 0
-let TURNED_RIGHT: Int = 1
+let LEFT: Int = -1
+let UP: Int = 0
+let RIGHT: Int = 1
 let MAX_CHARACTER_VELOCITY: CGFloat = 40.0
 let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
 let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
-let yPositionFloor: CGFloat = 93.6249923706055
+let yPositionFloor: CGFloat = 118.174987792969
+
+let baseSceneOperator: Int = 468
+let minimumWidthScene: Int = 3
+let maxWidthScene: Int = 8
 
 let zPosition1st: CGFloat = 1000
 let zPosition2nd: CGFloat = 2000
 let zPosition3rd: CGFloat = 3000
 let zPosition4th: CGFloat = 4000
 
+enum zPositionsCity : CGFloat {
+    
+    case BACKGROUND = -2.0
+    case BACKGROUND_BUILDING = -1.0
+    case GROUND = 0.0
+    case BUILDING = 1.0
+    case POST = 2.0
+    case AGENT = 100.0
+    case RESOURCE = 130.0
+    case HUD = 150.0
+    case ENEMY = 90.0
+    case BULLET = 120.0
+    
+//    var zPos:CGFloat {
+//        switch self {
+//        case BACKGROUND :
+//            return -2
+//        case BACKGROUND_BUILDING :
+//            return -1
+//        case GROUND :
+//            return 0
+//        case BUILDING :
+//            return 1
+//        case POST :
+//            return 1
+//        case AGENT :
+//            return 100
+//        case HUD :
+//            return 110
+//        default :
+//            return 0
+//        }
+//    }
+
+}
+    
 func createSpriteNode(imageName: String, position: CGPoint = middleOfTheScreenPoint, anchorPoint: CGPoint = defaultAnchorPoint, scale: CGFloat = 0.5, zPosition: CGFloat = 1.0, name: String) -> SKSpriteNode{
     var sprite: SKSpriteNode
     let spriteTexture = generateTextureWithImage(imageName)
@@ -95,7 +135,7 @@ func loadAnimationTexturesArray(mainText: String, numberOfImages: Int) -> Array<
     for(var i = initialIndex; i<=numberOfImages; i++){
         
         let imageName = String(format: "%@%i", arguments: [mainText, i])
-        debugPrint("loadAnimation: Using texture named \(imageName)")
+//        debugPrint("loadAnimation: Using texture named \(imageName)")
         let texture: SKTexture = generateTextureWithImage(imageName)
         
         texturesArray.append(texture)

@@ -9,7 +9,7 @@
 import SpriteKit
 
 class LaboratoryGameLayer: SKNode {
-
+    
     var agent31 : Agent?
     var placeHolder : SKSpriteNode?
     
@@ -19,10 +19,11 @@ class LaboratoryGameLayer: SKNode {
     var television : LabObject?
     var trainingCenter : LabObject?
     var duelMode: LabObject?
+    var cityPlaceholder: SKSpriteNode?
     
     var tapObjectButton : SKSpriteNode?
     
-
+    
     override init(){
         
         super.init()
@@ -43,13 +44,16 @@ class LaboratoryGameLayer: SKNode {
         self.gunDevelopmentCenter = LabObject(imageNamed: "placeHolderMesaArmas", groundPosition: CGPointMake(250, 100))
         self.duelMode = LabObject(imageNamed: "placeHolderDuelMode", groundPosition: CGPointMake(-600, 100))
         
-
+        self.cityPlaceholder = createSpriteNode("cityButtonPlaceHolder", position: CGPointMake(570, 375-70), zPosition: 1000, name: "goCity")
+        
+        
         self.addChild(desk!)
         self.addChild(computer!)
         self.addChild(television!)
         self.addChild(gunDevelopmentCenter!)
         self.addChild(trainingCenter!)
         self.addChild(duelMode!)
+        self.addChild(cityPlaceholder!)
     }
     
     func putGameLayer(){
@@ -63,14 +67,13 @@ class LaboratoryGameLayer: SKNode {
     
     
     func putGround(){
-
+        
         let ground = Ground(size: CGSizeMake(5340, 100), position: CGPointMake(middleOfTheScreenPoint.x, -10), zPosition: 1)
-
+        
         self.addChild(ground)
     }
     
     func putAgent(){
-        
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor),withGun: false)
         self.addChild(agent31!)
         

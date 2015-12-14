@@ -12,12 +12,12 @@ class Metal: GameObject {
     
     var value: Int
     
-    init(position: CGPoint, zPosition: CGFloat = 5.0){
+    init(position: CGPoint){
         
         // Randomize a value between 10 and 1
         self.value = Int(arc4random() % 10 + 1)
         
-        super.init(imageName: "Metal", position: position, zPosition: zPosition)
+        super.init(imageName: "Metal", position: position, zPosition: zPositionsCity.RESOURCE.rawValue)
         
         attributes()
         basicProcedures()
