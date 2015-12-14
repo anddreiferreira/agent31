@@ -45,7 +45,9 @@ class Enemy: Character {
     }
     
     func HPAccordingToLevel()->Int{
-        return 30;
+        let factor = Int(rand()%2 + 8)
+        
+        return factor * enemyLevel;
     }
     
 
@@ -126,7 +128,7 @@ extension Enemy{
                 if(rand()%2+1 == 1){
                     shootIfHasBullet()
                 }else{
-//                    self.run(self.enemyLevel)
+                    self.run(self.enemyLevel)
                 }
                 
             }else{
