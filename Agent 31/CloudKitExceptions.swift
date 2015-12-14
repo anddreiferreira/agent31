@@ -15,12 +15,14 @@ class CloudKitExceptions : NSObject {
     var resourcesDataException: Bool
     var gunsDataException: Bool
     var internetException: Bool
+    var accountException: Bool
     
     private override init() {
         characterDataException = false
         resourcesDataException = false
         gunsDataException = false
         internetException = false
+        accountException = false
     }
     
     class var sharedInstance: CloudKitExceptions {
