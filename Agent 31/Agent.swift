@@ -10,11 +10,11 @@ import SpriteKit
 
 class Agent: Character {
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
+    init(position: CGPoint = middleOfTheScreenPoint, withGun: Bool = true, gunName: String = "CA115"){
         
         debugPrint("Initializing Agent")
         
-        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: zPositionsCity.AGENT.rawValue, withGun: withGun, gunName: gunName)
         
         self.name = "agent"
         

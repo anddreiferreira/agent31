@@ -39,7 +39,7 @@ class Character: GameObject {
     var jumpingTorso: SKAction?
     var gotHitTorso: SKAction?
     
-    init(legsImage: String = "agentStoppedLegs1", torsoImage: String = "agentStoppedTorso2", position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "CA115"){
+    init(legsImage: String = "agentStoppedLegs1", torsoImage: String = "agentStoppedTorso2", position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = zPositionsCity.ENEMY.rawValue, withGun: Bool = true, gunName: String = "CA115"){
         
         super.init(imageName: legsImage, position: position, zPosition: zPosition)
         
@@ -209,7 +209,7 @@ extension Character{
             if(lookingUp == false){
                 self.attackingAnimationOnce()
                 
-                let bullet = Bullet(ownerGun: self.gun!, orientation: self.orientation!, zPosition: 5)
+                let bullet = Bullet(ownerGun: self.gun!, orientation: self.orientation!)
                 self.parent?.addChild(bullet)
                 
                 bullet.fire()
@@ -218,7 +218,7 @@ extension Character{
                 
                 self.attackingUpAnimationOnce()
                 let initialPosition = CGPointMake(self.position.x, self.position.y + (self.size.height/2)*1.08)
-                let bullet = Bullet(initialPosition: initialPosition, orientation: UP, zPosition: 3)
+                let bullet = Bullet(initialPosition: initialPosition, orientation: UP)
                 self.parent?.addChild(bullet)
                 
                 bullet.fire()

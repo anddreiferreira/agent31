@@ -24,7 +24,7 @@ class Gun : SKSpriteNode {
     var damageBase: Int
     var rangeBase: Int
     
-    init(gunName: String, level: Int = 1, damageBase: Int, rangeBase: Int, zPosition: CGFloat = 1.0, scale: CGFloat = 1.0, owner: String){
+    init(gunName: String, level: Int = 1, damageBase: Int, rangeBase: Int, scale: CGFloat = 1.0, owner: String){
         debugPrint("Initializing Gun")
         
         self.level = level
@@ -35,7 +35,7 @@ class Gun : SKSpriteNode {
         
         let texture: SKTexture! = generateTextureWithImage("\(gunName)Stopped1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-        self.zPosition = zPosition
+        self.zPosition = 1.0
         self.setScale(scale)
         self.name = gunName
         

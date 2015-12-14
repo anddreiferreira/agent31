@@ -41,7 +41,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         self.putInitialScenes()
         self.putAgent()
         
-//        self.putTestEnemy()
+        self.putTestEnemy()
         
 //        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
 //        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
@@ -112,7 +112,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             self.cityEnd += CGFloat(sceneWidth)
             
         }else if(direction == LEFT){
-            debugPrint("GERA PRA ESQUERDA")
             scenePosition = CGPointMake(actualXPosition - CGFloat(sceneWidth), 20)
             
             addScene(scenePosition!, width: sceneWidth)
@@ -142,7 +141,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func putAgent(){
         agent31 = Agent(position: CGPointMake(middleOfTheScreenPoint.x, yPositionFloor))
-        agent31?.zPosition = zPositionsCity.AGENT.zPos
+        agent31?.zPosition = zPositionsCity.AGENT.rawValue
         self.addChild(agent31!)
 
     }
@@ -150,17 +149,23 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     func putTestEnemy(){
 
         
-        let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
-        let enemysec = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), enemyLevel: 10)
-        let enemy3 = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 300, yPositionFloor), enemyLevel: 3)
+//        let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
+//        let enemysec = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), enemyLevel: 10)
+//        let enemy3 = Enemy2(position: CGPointMake(middleOfTheScreenPoint.x - 300, yPositionFloor), enemyLevel: 3)
+//        
+//        enemytest.zPosition = 100000
+//        enemysec.zPosition = 100000
+//        enemy3.zPosition = 100000
+//        
+//        self.addChild(enemysec)
+//        self.addChild(enemytest)
+//        self.addChild(enemy3)
         
-        enemytest.zPosition = 100000
-        enemysec.zPosition = 100000
-        enemy3.zPosition = 100000
-        
-        self.addChild(enemysec)
-        self.addChild(enemytest)
-        self.addChild(enemy3)
+        for _ in 0..<10{
+            let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
+            
+            self.addChild(enemytest)
+        }
     }
     
     func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {

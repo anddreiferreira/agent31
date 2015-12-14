@@ -30,38 +30,39 @@ let zPosition2nd: CGFloat = 2000
 let zPosition3rd: CGFloat = 3000
 let zPosition4th: CGFloat = 4000
 
-enum zPositionsCity {
+enum zPositionsCity : CGFloat {
     
-    case BACKGROUND
-    case BACKGROUND_BUILDING
-    case GROUND
-    case BUILDING
-    case POST
-    case AGENT
-    case HUD
-    case ENEMY
-    case BULLET
+    case BACKGROUND = -2.0
+    case BACKGROUND_BUILDING = -1.0
+    case GROUND = 0.0
+    case BUILDING = 1.0
+    case POST = 2.0
+    case AGENT = 100.0
+    case RESOURCE = 130.0
+    case HUD = 150.0
+    case ENEMY = 90.0
+    case BULLET = 120.0
     
-    var zPos:CGFloat {
-        switch self {
-        case BACKGROUND :
-            return -2
-        case BACKGROUND_BUILDING :
-            return -1
-        case GROUND :
-            return 0
-        case BUILDING :
-            return 1
-        case POST :
-            return 1
-        case AGENT :
-            return 100
-        case HUD :
-            return 110
-        default :
-            return 0
-        }
-    }
+//    var zPos:CGFloat {
+//        switch self {
+//        case BACKGROUND :
+//            return -2
+//        case BACKGROUND_BUILDING :
+//            return -1
+//        case GROUND :
+//            return 0
+//        case BUILDING :
+//            return 1
+//        case POST :
+//            return 1
+//        case AGENT :
+//            return 100
+//        case HUD :
+//            return 110
+//        default :
+//            return 0
+//        }
+//    }
 
 }
     

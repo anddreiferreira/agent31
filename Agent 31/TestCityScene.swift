@@ -182,7 +182,7 @@ extension TestCityScene{
     
     func loadButtons(){
         
-        let zValue = zPositionsCity.HUD.zPos
+        let zValue = zPositionsCity.HUD.rawValue
         
         jumpButton = createSpriteNode("jumpButton", position: CGPointMake(-middleOfTheScreenPoint.x + 580, -middleOfTheScreenPoint.y + 140), zPosition: zValue, name: "jumpButton")
         cam.addChild(jumpButton!)

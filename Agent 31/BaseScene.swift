@@ -34,7 +34,7 @@ class BaseScene: SKNode {
         
         self.name = "cena"
         self.position = position
-        self.putGround()
+        self.putGroundPhysic()
         self.putAllFloorSprites()
 
         self.manageBackground()
@@ -47,12 +47,12 @@ class BaseScene: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func putGround(){
+    func putGroundPhysic(){
         let anchorPointCorrection : CGFloat = CGFloat(self.largura) / 2.0
         
         let groundPosition = CGPointMake(anchorPointCorrection, 0)
         
-        let ground = Ground(size: CGSizeMake(CGFloat(largura), 100), position: groundPosition, zPosition: zPositionsCity.GROUND.zPos)
+        let ground = Ground(size: CGSizeMake(CGFloat(largura), 100), position: groundPosition, zPosition: zPositionsCity.GROUND.rawValue)
         
         self.addChild(ground)
     }
@@ -66,10 +66,7 @@ class BaseScene: SKNode {
         
             point = CGPoint(x: CGFloat(xStart) * 156, y: 0)
             
-            let tileIndex : Int = Int(arc4random_uniform(3)) + 1
-            let tileName : String = "ground\(tileIndex)"
-            
-            putSingleGround(tileName, pos: point)
+            putSingleGround(point)
             
             xStart = i + 1
             
@@ -77,11 +74,13 @@ class BaseScene: SKNode {
         
     }
     
-    func putSingleGround(name : String, pos : CGPoint){
+    func putSingleGround(pos : CGPoint){
         
-        print("Criando tile com nome \(name) e \(pos)")
+        let tileIndex : Int = Int(arc4random_uniform(3)) + 1
+        let tileName : String = "ground\(tileIndex)"
 
-        let sprite = createSpriteNode(name, position: pos, anchorPoint:  CGPointZero, name: name);
+        let sprite = createSpriteNode(tileName, position: pos, anchorPoint:  CGPointZero, zPosition: zPositionsCity.GROUND.rawValue, name: tileName)
+    
         self.addChild(sprite)
     
     }
@@ -92,7 +91,7 @@ class BaseScene: SKNode {
         
         let predioNovo : Building = Building(largura: predioInfo.largura, altura: predioInfo.altura, andares: predioInfo.qtdAndares, pilastras: 0, posicalIncialX: predioInfo.posicaoInicialX)
         
-        predioNovo.zPosition = zPositionsCity.BUILDING.zPos
+        predioNovo.zPosition = zPositionsCity.BUILDING.rawValue
 //        predioNovo.zPosition = 1000000000
 
 //        self.addChild(predioNovo)

@@ -18,13 +18,13 @@ class Enemy: Character {
     var hasBulletFrequency: Double = 1.0
     var enemyLevel: Int = 1
     
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
+    init(position: CGPoint = middleOfTheScreenPoint, withGun: Bool = true, gunName: String = "enemy1Gun", enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy")
         
         self.enemyLevel = enemyLevel
         
-        super.init(position: position, zPosition: 1.0, withGun: withGun, gunName: gunName)
+        super.init(position: position, zPosition: zPositionsCity.ENEMY.rawValue, withGun: withGun, gunName: gunName)
         
         self.name = "enemy"
         self.torso?.position = CGPointMake(0.0, -3.4)

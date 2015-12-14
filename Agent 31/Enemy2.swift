@@ -10,11 +10,11 @@ import SpriteKit
 
 class Enemy2: Enemy {
 
-    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = 1.0, enemyLevel: Int = 1){
+    init(position: CGPoint = middleOfTheScreenPoint, zPosition: CGFloat = zPositionsCity.ENEMY.rawValue, enemyLevel: Int = 1){
         
         debugPrint("Initializing Enemy 2")
         
-        super.init(position: position, zPosition: 1.0, withGun: false, gunName: "sword", enemyLevel: enemyLevel)
+        super.init(position: position, withGun: false, gunName: "sword", enemyLevel: enemyLevel)
         
         self.anchorPoint = CGPointMake(0.5, 0.65)
         self.torso?.position = CGPointMake(0.0, -10.0)

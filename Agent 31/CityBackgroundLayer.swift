@@ -34,7 +34,7 @@ class CityBackgroundLayer: SKNode {
         
         let sprite = createSpriteNode(backName, position: pos, anchorPoint:  CGPointZero ,name: backName)
         
-        sprite.zPosition = zPositionsCity.BACKGROUND.zPos
+        sprite.zPosition = zPositionsCity.BACKGROUND.rawValue
         
         self.background.addChild(sprite)
     }
@@ -45,7 +45,7 @@ class CityBackgroundLayer: SKNode {
         
         let sprite = createSpriteNode(backBuildingName, position: pos, anchorPoint:  CGPointZero ,name: backBuildingName);
         
-        sprite.zPosition = zPositionsCity.BACKGROUND_BUILDING.zPos
+        sprite.zPosition = zPositionsCity.BACKGROUND_BUILDING.rawValue
         
         self.addChild(sprite)
         

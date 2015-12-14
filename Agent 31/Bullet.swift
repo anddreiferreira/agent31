@@ -17,7 +17,7 @@ class Bullet : GameObject {
     var ownerGun: Gun!
     var ownerCharacter: String
 
-    init(ownerGun: Gun, orientation: Int, zPosition: CGFloat){
+    init(ownerGun: Gun, orientation: Int, zPosition: CGFloat = zPositionsCity.BULLET.rawValue){
         self.ownerGun = ownerGun
         self.imageName = "bullet1"
         self.orientation = orientation
@@ -30,7 +30,7 @@ class Bullet : GameObject {
         self.setBulletAttributes()
     }
     
-    init(initialPosition: CGPoint, orientation: Int, zPosition: CGFloat){
+    init(initialPosition: CGPoint, orientation: Int, zPosition: CGFloat = zPositionsCity.BULLET.rawValue){
         self.imageName = "bullet1"
         self.orientation = orientation
         self.ownerCharacter = "enemy"
@@ -95,7 +95,6 @@ class Bullet : GameObject {
     private func setBulletAttributes(){
         self.setScale(0.5)
         
-        debugPrint("BULLET | CATEGORY = \(self.physicsBody?.categoryBitMask) CONTACT = \(self.physicsBody?.contactTestBitMask) COLLISION = \(self.physicsBody?.contactTestBitMask)")
     }
     
     private func defineDirection(orientation: Int)->CGVector{
