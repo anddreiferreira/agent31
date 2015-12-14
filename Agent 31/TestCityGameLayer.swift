@@ -52,7 +52,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
             let base1 = BaseScene(position: positionOfScene, lar : minimumWidthScene*baseSceneOperator)
             
             self.addChild(base1)
-            base1.putSpawner()
             
             positionOfScene.x += CGFloat(minimumWidthScene*baseSceneOperator)
             cityEnd = positionOfScene.x
@@ -94,7 +93,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         let newScene = BaseScene(position: position, lar: width)
         newScene.zPosition = 10
         self.addChild(newScene)
-        newScene.putSpawner()
         
     }
     

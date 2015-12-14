@@ -40,6 +40,10 @@ class BaseScene: SKNode {
 
         self.manageBackground()
         self.manageBuilding()
+        
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            self.putSpawner()
+        })
     
         self.addChild(self.backgroundLayer)
     }
@@ -58,7 +62,7 @@ class BaseScene: SKNode {
         self.addChild(ground)
     }
     
-    func putSpawner(){
+    private func putSpawner(){
 
         let xposition = Int(rand())%largura + Int(self.begin)
         
