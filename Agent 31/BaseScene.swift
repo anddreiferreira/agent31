@@ -34,6 +34,7 @@ class BaseScene: SKNode {
         
         self.name = "cena"
         self.position = position
+        self.zPosition = 10
         self.putGroundPhysic()
         self.putAllFloorSprites()
 
@@ -58,9 +59,12 @@ class BaseScene: SKNode {
     }
     
     func putSpawner(){
+
         let xposition = Int(rand())%largura + Int(self.begin)
         
         let spawn = Spawner(position: CGPointMake(CGFloat(xposition), yPositionFloor))
+        spawn.zPosition += self.zPosition
+        
         self.parent?.addChild(spawn)
     }
     
