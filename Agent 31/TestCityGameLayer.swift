@@ -55,9 +55,9 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         for _ in 0..<5 {
             
             let base1 = BaseScene(position: positionOfScene, lar : minimumWidthScene*baseSceneOperator)
-            base1.zPosition = 10
             
             self.addChild(base1)
+            base1.putSpawner()
             
             positionOfScene.x += CGFloat(minimumWidthScene*baseSceneOperator)
             cityEnd = positionOfScene.x
@@ -128,6 +128,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         let newScene = BaseScene(position: position, lar: width)
         newScene.zPosition = 10
         self.addChild(newScene)
+        newScene.putSpawner()
         
     }
     
@@ -161,11 +162,11 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 //        self.addChild(enemytest)
 //        self.addChild(enemy3)
         
-        for _ in 0..<10{
-            let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
-            
-            self.addChild(enemytest)
-        }
+//        for _ in 0..<10{
+//            let enemytest = Enemy1(position: CGPointMake(middleOfTheScreenPoint.x - 200, yPositionFloor), withGun: true)
+//            
+//            self.addChild(enemytest)
+//        }
     }
     
     func calculateDistanceToAgent( enemyPosition: CGPoint ) -> CGFloat {
@@ -192,8 +193,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     func update2(currentTime: Float){
 //        debugPrint("CURRENT TIME \(currentTime)")
         self.updateEnemy(currentTime)
-        
-        debugPrint(self.agent31!.position.y)
         
         // VERIFICAR A CADA 2 SEGUNDOS
         // CHAMAR UPDATE SCENES

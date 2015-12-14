@@ -57,6 +57,13 @@ class BaseScene: SKNode {
         self.addChild(ground)
     }
     
+    func putSpawner(){
+        let xposition = Int(rand())%largura + Int(self.begin)
+        
+        let spawn = Spawner(position: CGPointMake(CGFloat(xposition), yPositionFloor))
+        self.parent?.addChild(spawn)
+    }
+    
     func putAllFloorSprites(){
     
         var point : CGPoint = CGPointZero
