@@ -59,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CKContainer.defaultContainer().accountStatusWithCompletionHandler({
             accountStatus, error in
             if accountStatus == CKAccountStatus.NoAccount {
-                debugPrint("THERE IS NO ACCOUNT LOGGED")
+                CloudKitExceptions.sharedInstance.accountException = true
+                self.hasException = true
             }
         })
         
