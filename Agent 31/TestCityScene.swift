@@ -138,7 +138,6 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
-        //          self.cityTimer?.invalidate()
     }
 }
 

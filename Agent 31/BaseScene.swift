@@ -154,6 +154,11 @@ class BaseScene: SKNode {
         
     }
     
+    func deallocBaseScene(){
+        self.removeAllActions()
+        self.removeAllChildren()
+        
+    }
       
 
 }

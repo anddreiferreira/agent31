@@ -12,6 +12,8 @@ class Spawner: GameObject {
     
     init(position: CGPoint) {
         super.init(imageName: "door", position: position, zPosition: zPositionsCity.BUILDING.rawValue)
+        
+        self.name = "spawner"
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -20,5 +22,9 @@ class Spawner: GameObject {
     
     override func setBasicAttributes() {
         // Spawner can't have a physics body
+    }
+    
+    func generateEnemy(){
+        debugPrint("VOU GERAR UM INIMIGO")
     }
 }

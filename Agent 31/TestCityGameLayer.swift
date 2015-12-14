@@ -162,6 +162,12 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     func manageScenes(){
         
+        sceneGenerationHandling()
+        
+        spawnerHandling()
+    }
+    
+    func sceneGenerationHandling(){
         self.enumerateChildNodesWithName("cena", usingBlock: {
             node, stop in
             // Block below is executed if a enemy is found
@@ -197,13 +203,11 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                     // Otherwise, the value is positive
                     let xDiff = (self.agent31?.position.x)! - scene.end
                     
-                    
                     if(xDiff > 0){
                         
                         let range = 500
                         
                         if(xDiff < CGFloat(range)){
-                            debugPrint("Cria nova scene")
                             self.putNewScene(scene.begin, direction: LEFT)
                         }else if(xDiff > 4000){
                             let newBegin = self.cityBegin + CGFloat(scene.largura)
@@ -216,12 +220,30 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                 
                 
             }else{
-                debugPrint("None node named 'cena' founded")
+                debugPrint("None node named 'cena' not founded")
             }
             
         })
-        
-        
+    }
+    
+    func spawnerHandling(){
+        self.enumerateChildNodesWithName("spawner", usingBlock: {
+            node, stop in
+            // Block below is executed if a enemy is found
+            
+            if let spawn = node as? Spawner{
+                
+                // Verify the proximity between spawner and agent
+                let xDiff = fabs((self.agent31?.position.x)! - spawn.position.x)
+                if(xDiff < 667){
+                    spawn.generateEnemy()
+                }
+                
+            }else{
+                debugPrint("Node named 'spawner' not founded")
+            }
+            
+        })
     }
     
     func modifyCityBegin(value: CGFloat){
