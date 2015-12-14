@@ -28,7 +28,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     var jumpButton : SKSpriteNode?
     var shootButton : SKSpriteNode?
     
-    var gotHitHud = createSpriteNode("gotHitScreen", position: CGPointMake(0, 0), anchorPoint: CGPointMake(0.5, 0.5), scale: 1.0, zPosition: 1000, name: "gotHitHud")
+    var gotHitHud = createSpriteNode("gotHitScreen", position: CGPointMake(0, 0), anchorPoint: CGPointMake(0.5, 0.5), scale: 1.0, zPosition: (zPositionsCity.HUD.rawValue - 10.0), name: "gotHitHud")
     
     override func didMoveToView(view: SKView) {
         
@@ -197,9 +197,9 @@ extension TestCityScene{
     }
     
     func trembleCameraAction() -> SKAction{
-        let trembleA = SKAction.rotateByAngle(0.008, duration: 0.1)
+        let trembleA = SKAction.rotateByAngle(0.005, duration: 0.1)
         let trembleA2 = SKAction.reversedAction(trembleA)
-        let trembleB = SKAction.rotateByAngle(-0.008, duration: 0.1)
+        let trembleB = SKAction.rotateByAngle(-0.005, duration: 0.1)
         let trembleB2 = SKAction.reversedAction(trembleB)
         
         let sequence = SKAction.sequence([trembleA, trembleA2(), trembleB, trembleB2()])

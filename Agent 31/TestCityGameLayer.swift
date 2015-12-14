@@ -193,6 +193,7 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 //        debugPrint("CURRENT TIME \(currentTime)")
         self.updateEnemy(currentTime)
         
+        debugPrint(self.agent31!.position.y)
         
         // VERIFICAR A CADA 2 SEGUNDOS
         // CHAMAR UPDATE SCENES

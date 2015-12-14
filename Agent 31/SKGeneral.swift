@@ -19,7 +19,7 @@ let MIN_CHARACTER_VELOCITY: CGFloat = -40.0
 let defaultAnchorPoint: CGPoint = CGPointMake(0, 1)
 let middleOfTheScreenPoint: CGPoint = CGPointMake(667/2, 375/2)
 let defaultFontName: String = "copperplate"
-let yPositionFloor: CGFloat = 93.6249923706055
+let yPositionFloor: CGFloat = 118.174987792969
 
 let baseSceneOperator: Int = 468
 let minimumWidthScene: Int = 3
