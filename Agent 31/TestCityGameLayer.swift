@@ -41,9 +41,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
         self.putTestEnemy()
         
-//        createBlock(CGPointMake(middleOfTheScreenPoint.x/2, middleOfTheScreenPoint.y))
-//        createBlock(CGPointMake(middleOfTheScreenPoint.x*2, middleOfTheScreenPoint.y*2))
-        
     }
     
     func putInitialScenes(){
@@ -63,36 +60,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
     
     }
     
-//    func putNewScene(directionOption: Int){
-//    
-//        // -1 left
-//        // 1 right
-//        
-//        if(directionOption == LEFT){
-//        
-//            positionLeft -= 468
-//
-//            let positionOfScene = CGPointMake(CGFloat(positionLeft), 20)
-//
-//            let base = BaseScene(position: positionOfScene, lar : 468)
-//            base.zPosition = 10
-//            
-//            self.addChild(base)
-//            
-//        }else if(directionOption == RIGHT){
-//            
-//            let positionOfScene = CGPointMake(CGFloat(positionRight), 20)
-//            
-//            let base = BaseScene(position: positionOfScene, lar : 468)
-//            base.zPosition = 10
-//        
-//            self.addChild(base)
-//
-//            positionRight += 468
-//            
-//        }
-//        
-//    }
     
     func putNewScene(actualXPosition: CGFloat, direction: Int){
         // In future this will be randomized
@@ -193,13 +160,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
 //        debugPrint("CURRENT TIME \(currentTime)")
         self.updateEnemy(currentTime)
         
-//        // VERIFICAR A CADA 2 SEGUNDOS
-//        // CHAMAR UPDATE SCENES
-//        // CONSERTAR PARA CHAMAR APENAS 1 VEZ
-//        if(Int(currentTime)%2 == 0){
-//            manageScenes(currentTime)
-//        }
-        
     }
     
     func manageScenes(){
@@ -239,7 +199,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
                     // Otherwise, the value is positive
                     let xDiff = (self.agent31?.position.x)! - scene.end
                     
-                    debugPrint("xDiff = \(xDiff) | City Begin = \(self.cityBegin)")
                     
                     if(xDiff > 0){
                         
