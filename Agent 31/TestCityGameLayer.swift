@@ -20,7 +20,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         
         super.init()
         
-        self.fireClock()
 
     }
     
@@ -28,13 +27,6 @@ class TestCityGameLayer: SKNode, EnemyDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fireClock(){
-        
-        let timer : NSTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "createRandomEnemy", userInfo: nil, repeats: true)
-        
-        timer.fire()
-        
-    }
     
     
     func putGameLayer(){
