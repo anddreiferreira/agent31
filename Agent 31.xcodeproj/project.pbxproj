@@ -221,9 +221,6 @@
 		09F54B471C207EC40095D9A2 /* enemy2WalkingTorso4.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A021C207EC40095D9A2 /* enemy2WalkingTorso4.png */; };
 		09F54B481C207EC40095D9A2 /* enemy2WalkingTorso5.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A031C207EC40095D9A2 /* enemy2WalkingTorso5.png */; };
 		09F54B491C207EC40095D9A2 /* enemy2WalkingTorso6.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A041C207EC40095D9A2 /* enemy2WalkingTorso6.png */; };
-		09F54B4A1C207EC40095D9A2 /* chargeBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A061C207EC40095D9A2 /* chargeBar.png */; };
-		09F54B4B1C207EC40095D9A2 /* chargeBarLevelSlot.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A071C207EC40095D9A2 /* chargeBarLevelSlot.png */; };
-		09F54B4C1C207EC40095D9A2 /* chargeBarRect.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A081C207EC40095D9A2 /* chargeBarRect.png */; };
 		09F54B4D1C207EC40095D9A2 /* backBuilding.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A0A1C207EC40095D9A2 /* backBuilding.png */; };
 		09F54B4E1C207EC40095D9A2 /* backgroundCity.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A0B1C207EC40095D9A2 /* backgroundCity.png */; };
 		09F54B4F1C207EC40095D9A2 /* goToLab.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A0C1C207EC40095D9A2 /* goToLab.png */; };
@@ -239,7 +236,6 @@
 		09F54B591C207EC40095D9A2 /* lifeCity3.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A191C207EC40095D9A2 /* lifeCity3.png */; };
 		09F54B5A1C207EC40095D9A2 /* lifeCity4.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A1A1C207EC40095D9A2 /* lifeCity4.png */; };
 		09F54B5B1C207EC40095D9A2 /* lifeCity5.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A1B1C207EC40095D9A2 /* lifeCity5.png */; };
-		09F54B5C1C207EC40095D9A2 /* placeholderChao.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A1C1C207EC40095D9A2 /* placeholderChao.png */; };
 		09F54B5D1C207EC40095D9A2 /* Coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A1F1C207EC40095D9A2 /* Coin1.png */; };
 		09F54B5E1C207EC40095D9A2 /* Coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A201C207EC40095D9A2 /* Coin2.png */; };
 		09F54B5F1C207EC40095D9A2 /* Coin3.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A211C207EC40095D9A2 /* Coin3.png */; };
@@ -256,7 +252,6 @@
 		09F54B6A1C207EC40095D9A2 /* life3.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A2F1C207EC40095D9A2 /* life3.png */; };
 		09F54B6B1C207EC40095D9A2 /* life4.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A301C207EC40095D9A2 /* life4.png */; };
 		09F54B6C1C207EC40095D9A2 /* life5.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A311C207EC40095D9A2 /* life5.png */; };
-		09F54B6D1C207EC40095D9A2 /* resourcesLabImages.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A321C207EC40095D9A2 /* resourcesLabImages.png */; };
 		09F54B6E1C207EC40095D9A2 /* armaPlaceholder2.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A341C207EC40095D9A2 /* armaPlaceholder2.png */; };
 		09F54B6F1C207EC40095D9A2 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A351C207EC40095D9A2 /* Background1.png */; };
 		09F54B701C207EC40095D9A2 /* backgroundGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F54A361C207EC40095D9A2 /* backgroundGame.png */; };
@@ -2139,7 +2134,6 @@
 				09F54AC21C207EC40095D9A2 /* agentWalkingLegs1.png in Resources */,
 				09F54ABF1C207EC40095D9A2 /* CA115Walking4.png in Resources */,
 				09F54B281C207EC40095D9A2 /* enemy2JumpingTorso3.png in Resources */,
-				09F54B5C1C207EC40095D9A2 /* placeholderChao.png in Resources */,
 				09F54B471C207EC40095D9A2 /* enemy2WalkingTorso4.png in Resources */,
 				09F54B8A1C207EC40095D9A2 /* placeHolderAgent.png in Resources */,
 				09F54B0F1C207EC40095D9A2 /* enemy1WalkingLegs4.png in Resources */,
@@ -2167,7 +2161,6 @@
 				09F54AAB1C207EC40095D9A2 /* CA115Stopped2.png in Resources */,
 				09F54A811C207EC40095D9A2 /* jumpButton.png in Resources */,
 				09F54B561C207EC40095D9A2 /* slot.png in Resources */,
-				09F54B4C1C207EC40095D9A2 /* chargeBarRect.png in Resources */,
 				09F54AFD1C207EC40095D9A2 /* enemy1StoppedLegs4.png in Resources */,
 				09F54B891C207EC40095D9A2 /* tapHereButton.png in Resources */,
 				09F54BA51C207EC40095D9A2 /* tetoDireita.png in Resources */,
@@ -2246,7 +2239,6 @@
 				09F54B161C207EC40095D9A2 /* enemy1WalkingTorso5.png in Resources */,
 				09F54A971C207EC40095D9A2 /* agentJumpingLegs6.png in Resources */,
 				09F54ACD1C207EC40095D9A2 /* agentWalkingTorso6.png in Resources */,
-				09F54B6D1C207EC40095D9A2 /* resourcesLabImages.png in Resources */,
 				09F54ACA1C207EC40095D9A2 /* agentWalkingTorso3.png in Resources */,
 				09F54B061C207EC40095D9A2 /* enemy1GunWalking1.png in Resources */,
 				09F54A801C207EC40095D9A2 /* analogBtn.png in Resources */,
@@ -2307,7 +2299,6 @@
 				09F54ADF1C207EC40095D9A2 /* enemy1JumpingLegs4.png in Resources */,
 				09F54B711C207EC40095D9A2 /* mesaPlaceholder2.png in Resources */,
 				09F54A841C207EC40095D9A2 /* CA115GotHit1.png in Resources */,
-				09F54B4B1C207EC40095D9A2 /* chargeBarLevelSlot.png in Resources */,
 				09F54B3C1C207EC40095D9A2 /* enemy2StoppedTorso5.png in Resources */,
 				09F54AAD1C207EC40095D9A2 /* CA115Stopped4.png in Resources */,
 				09F54B441C207EC40095D9A2 /* enemy2WalkingTorso1.png in Resources */,
@@ -2321,7 +2312,6 @@
 				09F54B411C207EC40095D9A2 /* enemy2WalkingLegs4.png in Resources */,
 				09F54B0C1C207EC40095D9A2 /* enemy1WalkingLegs1.png in Resources */,
 				09F54B141C207EC40095D9A2 /* enemy1WalkingTorso3.png in Resources */,
-				09F54B4A1C207EC40095D9A2 /* chargeBar.png in Resources */,
 				09F54AC31C207EC40095D9A2 /* agentWalkingLegs2.png in Resources */,
 				09F54B6F1C207EC40095D9A2 /* Background1.png in Resources */,
 				09F54B0D1C207EC40095D9A2 /* enemy1WalkingLegs2.png in Resources */,
