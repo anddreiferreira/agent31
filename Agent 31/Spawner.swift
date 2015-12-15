@@ -10,6 +10,8 @@ import SpriteKit
 
 class Spawner: GameObject {
     
+    var canCreate = true
+    
     init(position: CGPoint) {
         super.init(imageName: "door", position: position, zPosition: zPositionsCity.BUILDING.rawValue)
         
@@ -25,9 +27,27 @@ class Spawner: GameObject {
     }
     
     func generateEnemy(){
-//        let level = Int(rand())%10+1
-//        let newEnemy = createEnemy1(level)
-//        self.parent?.addChild(newEnemy)
+        
+        if(canCreate){
+            let level = Int(rand())%10+1
+            
+            let probability = Int(rand())%100+1
+            
+            var newEnemy: Enemy? = nil
+            
+            if(probability < 65){
+                newEnemy = createEnemy2(level)
+            }else{
+                newEnemy = createEnemy1(level)
+            }
+            
+            
+            if(newEnemy != nil){
+                self.parent?.addChild(newEnemy!)
+            }
+            
+            timeIntervalToCreateNewEnemy()
+        }
     }
     
     func createEnemy1(level: Int) -> Enemy1{
@@ -36,6 +56,13 @@ class Spawner: GameObject {
     
     func createEnemy2(level: Int) -> Enemy2 {
         return Enemy2(position: self.position, enemyLevel: level)
+    }
+    
+    func timeIntervalToCreateNewEnemy(){
+        canCreate = false
+        self.runAction(SKAction.waitForDuration(NSTimeInterval(Int(rand())%3+2)), completion: {
+            self.canCreate = true
+        })
     }
 
 }
