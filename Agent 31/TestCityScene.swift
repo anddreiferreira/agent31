@@ -42,7 +42,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         
         self.configureCamera()
         
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor(red: 255/255.0, green: 239/255.0, blue: 130/255.0, alpha: 1)
         
         // criacao de informacoes randomicas do novo predio
         let predioInfo = BuildingInformation()
@@ -91,6 +91,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
     func goToLab(){
         
+        self.backgroundColor = UIColor.blackColor()
         let transition = SKTransition.crossFadeWithDuration(1.0)
         let nextScene = LaboratoryScene(size: self.scene!.size)
         nextScene.scaleMode = SKSceneScaleMode.AspectFill

@@ -25,6 +25,17 @@ class Spawner: GameObject {
     }
     
     func generateEnemy(){
-        debugPrint("VOU GERAR UM INIMIGO")
+//        let level = Int(rand())%10+1
+//        let newEnemy = createEnemy1(level)
+//        self.parent?.addChild(newEnemy)
     }
+    
+    func createEnemy1(level: Int) -> Enemy1{
+        return Enemy1(position: self.position, enemyLevel: level)
+    }
+    
+    func createEnemy2(level: Int) -> Enemy2 {
+        return Enemy2(position: self.position, enemyLevel: level)
+    }
+
 }
