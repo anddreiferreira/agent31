@@ -56,7 +56,7 @@ class LaboratoryGameLayer: SKNode {
         
         self.putGround()
         self.putAgent()
-        self.putObjectPlaceHolder()
+        // self.putObjectPlaceHolder()
         
     }
     

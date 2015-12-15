@@ -227,7 +227,7 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     func update2(time: CGFloat) {
         self.timeElapsed += 0.05
         self.conformAgentToAnalogic()
-        self.laboratoryGameLayer.updateLabGameLayer()
+//        self.laboratoryGameLayer.updateLabGameLayer()
     }
     
     deinit{
