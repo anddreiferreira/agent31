@@ -323,7 +323,6 @@
 		59A6D66E1BE820C800A84A33 /* ResourcesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6D66D1BE820C800A84A33 /* ResourcesData.swift */; };
 		59BED8391BE135DF00B734BF /* CloudKitHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BED8381BE135DF00B734BF /* CloudKitHelperTests.swift */; };
 		59E57C4C1C10AC5D0038F16A /* CharacterLivesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E57C4B1C10AC5D0038F16A /* CharacterLivesManager.swift */; };
-		59EBA42D1BDEA95C00F67D67 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */; };
 		59F081981C0D25B700A50711 /* CloudKitExceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F081971C0D25B700A50711 /* CloudKitExceptions.swift */; };
 		6B0B8E6F1C19FA54004EECD2 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B8E6E1C19FA54004EECD2 /* BaseScene.swift */; };
 		6B2D98BC1BB1C6E7005B342E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D98BA1BB1C6E7005B342E /* Main.storyboard */; };
@@ -711,7 +710,6 @@
 		59A6D66D1BE820C800A84A33 /* ResourcesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesData.swift; sourceTree = "<group>"; };
 		59BED8381BE135DF00B734BF /* CloudKitHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelperTests.swift; sourceTree = "<group>"; };
 		59E57C4B1C10AC5D0038F16A /* CharacterLivesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterLivesManager.swift; sourceTree = "<group>"; };
-		59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		59F081971C0D25B700A50711 /* CloudKitExceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitExceptions.swift; sourceTree = "<group>"; };
 		6B0B8E6E1C19FA54004EECD2 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		6B2D98AD1BB1C6E7005B342E /* Agent 31.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agent 31.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -768,7 +766,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59EBA42D1BDEA95C00F67D67 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1901,7 +1898,6 @@
 		6B2D98A41BB1C6E7005B342E = {
 			isa = PBXGroup;
 			children = (
-				59EBA42C1BDEA95C00F67D67 /* CloudKit.framework */,
 				6B2D98AF1BB1C6E7005B342E /* Agent 31 */,
 				6B2D98C91BB1C6E8005B342E /* Agent 31Tests */,
 				6B2D98AE1BB1C6E7005B342E /* Products */,
@@ -2047,9 +2043,10 @@
 				TargetAttributes = {
 					6B2D98AC1BB1C6E7005B342E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = Z9U8Q8N7WL;
 						SystemCapabilities = {
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -2587,13 +2584,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Agent 31/Agent 31.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "Julio.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2605,13 +2601,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Agent 31/Agent 31.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Agent 31/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CarlosAlberto.Agent-31";
+				PRODUCT_BUNDLE_IDENTIFIER = "Julio.Agent-31";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -13,12 +13,10 @@ private let _sharedInstance = ResourcesData()
 class ResourcesData : NSObject {
     var gold: Int
     var metal: Int
-    var diamond: Int
     
     private override init() {
-        gold = -1
-        metal = -1
-        diamond = -1
+        gold = 0
+        metal = 0
     }
     
     class var sharedInstance: ResourcesData {
