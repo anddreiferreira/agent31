@@ -53,21 +53,21 @@ class UpgradeLayer: SKNode
     
     func loadSecondPlan() {
         
-        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: zPosition4th, name: "btnCancelUpgrade")
-        self.addChild(cancelButton!)
-        
-        animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: zPosition4th, name: "animationArea")
-        self.addChild(animationArea!)
-        
-        if CharacterData.sharedInstance.isTrainingNow == false {
-            upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
-        } else {
-            upgradeButton = createLabelNode("Upgrading", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoNotUpgrade")
-        }
-        self.addChild(upgradeButton!)
-        
-        upgradeDuration = createLabelNode("", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 180), fontSize: 15, zPosition: zPosition4th, name: "lblUpgradeDuration")
-        self.addChild(upgradeDuration!)
+//        cancelButton = createSpriteNode("exitButton", position: CGPoint(x: -middleOfTheScreenPoint.x + 570, y: -middleOfTheScreenPoint.y + 355), zPosition: zPosition4th, name: "btnCancelUpgrade")
+//        self.addChild(cancelButton!)
+//        
+//        animationArea = createSpriteNode("animationArea", position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 300), zPosition: zPosition4th, name: "animationArea")
+//        self.addChild(animationArea!)
+//        
+//        if CharacterData.sharedInstance.isTrainingNow == false {
+//            upgradeButton = createLabelNode("TRAIN NOW", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoUpgrade" + upgradeItem!)
+//        } else {
+//            upgradeButton = createLabelNode("Upgrading", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 200), fontSize: 40, zPosition: zPosition4th, name: "btnDoNotUpgrade")
+//        }
+//        self.addChild(upgradeButton!)
+//        
+//        upgradeDuration = createLabelNode("", position: CGPoint(x: -middleOfTheScreenPoint.x + 485, y: -middleOfTheScreenPoint.y + 180), fontSize: 15, zPosition: zPosition4th, name: "lblUpgradeDuration")
+//        self.addChild(upgradeDuration!)
         
     }
     
@@ -80,29 +80,29 @@ class UpgradeLayer: SKNode
     
     func loadAttributeLevel(attributeName: String) {
         
-        var attributeLevel = 0
-        
-        switch attributeName {
-        case "Speed":
-            attributeLevel = CharacterData.sharedInstance.speed
-        case "Jump":
-            attributeLevel = CharacterData.sharedInstance.jump
-        case "Shoot. Power":
-            attributeLevel = CharacterData.sharedInstance.shootingPower
-        case "Shoot. Range":
-            attributeLevel = CharacterData.sharedInstance.shootingRange
-        case "Backpack":
-            attributeLevel = CharacterData.sharedInstance.backPack
-        case GunsData.sharedInstance.gun1Name:
-            attributeLevel = GunsData.sharedInstance.gun1Level
-        case GunsData.sharedInstance.gun2Name:
-            attributeLevel = GunsData.sharedInstance.gun2Level
-        default: ()
-            
-        }
-        
-        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblLevel")
-        self.addChild(upgradeLevel!)
+//        var attributeLevel = 0
+//        
+//        switch attributeName {
+//        case "Speed":
+//            attributeLevel = CharacterData.sharedInstance.speed
+//        case "Jump":
+//            attributeLevel = CharacterData.sharedInstance.jump
+//        case "Shoot. Power":
+//            attributeLevel = CharacterData.sharedInstance.shootingPower
+//        case "Shoot. Range":
+//            attributeLevel = CharacterData.sharedInstance.shootingRange
+//        case "Backpack":
+//            attributeLevel = CharacterData.sharedInstance.backPack
+//        case GunsData.sharedInstance.gun1Name:
+//            attributeLevel = GunsData.sharedInstance.gun1Level
+//        case GunsData.sharedInstance.gun2Name:
+//            attributeLevel = GunsData.sharedInstance.gun2Level
+//        default: ()
+//            
+//        }
+//        
+//        upgradeLevel = createLabelNode("Level " + String(attributeLevel), position: CGPoint(x: -middleOfTheScreenPoint.x + 50, y: -middleOfTheScreenPoint.y + 310), fontSize: 15, zPosition: zPosition4th, alignmentMode: SKLabelHorizontalAlignmentMode.Left, name: "lblLevel")
+//        self.addChild(upgradeLevel!)
         
     }
     

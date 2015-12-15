@@ -83,7 +83,7 @@ class Agent: Character {
     override func die() {
         super.die()
         
-        CharacterData.sharedInstance.decreaseLife()
+//        CharacterData.sharedInstance.decreaseLife()
     }
     
 }

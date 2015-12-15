@@ -187,24 +187,24 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     func doUpgradeWithAttribute(attributeName: String) {
         
-        if CharacterData.sharedInstance.isTrainingNow == false && GunsData.sharedInstance.isUpgradingNow == false {
-            let startIndex = attributeName.startIndex.advancedBy(12)
-            let rangeSubstring = startIndex ..< attributeName.endIndex
-            
-            attributeName.hasSuffix(GunsData.sharedInstance.gun1Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun1Name) : (attributeName.hasSuffix(GunsData.sharedInstance.gun2Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun2Name) : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring)))
-            
-            var time: NSTimeInterval
-            CharacterData.sharedInstance.isTrainingNow == true ? (time = CharacterData.sharedInstance.timeLevelUp) : (time = GunsData.sharedInstance.timeLevelUp)
-            
-            let hours = UInt32(time/3600)
-            time -= (NSTimeInterval(hours)*3600)
-            let minutes = UInt32(time/60.0)
-            let strHours = String(format: "%02d", hours)
-            let strMinutes = String(format: "%02d", minutes)
-            upgradeLayer.upgradeDuration?.text = "Finish in \(strHours)h\(strMinutes)m"
-            upgradeLayer.upgradeButton?.text = "Upgrading"
-            
-        }
+//        if CharacterData.sharedInstance.isTrainingNow == false && GunsData.sharedInstance.isUpgradingNow == false {
+//            let startIndex = attributeName.startIndex.advancedBy(12)
+//            let rangeSubstring = startIndex ..< attributeName.endIndex
+//            
+//            attributeName.hasSuffix(GunsData.sharedInstance.gun1Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun1Name) : (attributeName.hasSuffix(GunsData.sharedInstance.gun2Name) ? GunsData.sharedInstance.initUpgrading(GunsData.sharedInstance.gun2Name) : CharacterData.sharedInstance.initTraining(attributeName.substringWithRange(rangeSubstring)))
+//            
+//            var time: NSTimeInterval
+//            CharacterData.sharedInstance.isTrainingNow == true ? (time = CharacterData.sharedInstance.timeLevelUp) : (time = GunsData.sharedInstance.timeLevelUp)
+//            
+//            let hours = UInt32(time/3600)
+//            time -= (NSTimeInterval(hours)*3600)
+//            let minutes = UInt32(time/60.0)
+//            let strHours = String(format: "%02d", hours)
+//            let strMinutes = String(format: "%02d", minutes)
+//            upgradeLayer.upgradeDuration?.text = "Finish in \(strHours)h\(strMinutes)m"
+//            upgradeLayer.upgradeButton?.text = "Upgrading"
+//            
+//        }
     }
     
     private func agentGoToCity() {

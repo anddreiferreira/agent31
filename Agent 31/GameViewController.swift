@@ -62,6 +62,7 @@ class GameViewController: UIViewController {
         let skView = self.view as! SKView
        
         if skView.scene == nil {
+            ResourcesData.sharedInstance.load()
             let scene = LaboratoryScene(size:skView.bounds.size)
 
             skView.ignoresSiblingOrder = false

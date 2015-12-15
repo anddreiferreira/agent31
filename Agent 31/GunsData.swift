@@ -92,9 +92,9 @@ extension GunsData {
         initTimer(tuple.timeLevelUp)
         timeLevelUp = tuple.timeLevelUp
         // Save the current upgrade
-        let ckhelper = CloudKitHelper()
-        ckhelper.saveGunsProperties(self)
-        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
+//        let ckhelper = CloudKitHelper()
+//        ckhelper.saveGunsProperties(self)
+//        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         // Schedule notification
         scheduleNotification(tuple.timeLevelUp, itemName: gunName, itemLevel: getGunLevel(gunName))
     }
@@ -122,8 +122,8 @@ extension GunsData {
         setGunLevel(currentUpgradingGun, value: getGunLevel(currentUpgradingGun) + 1)
         currentUpgradingGun = "nil"
         // Saves the new level
-        let ck = CloudKitHelper()
-        ck.saveGunsProperties(self)
+//        let ck = CloudKitHelper()
+//        ck.saveGunsProperties(self)
         debugPrint("Upgrade de \(currentUpgradingGun) para o nível \(getGunLevel(currentUpgradingGun)) concluído")
     }
  

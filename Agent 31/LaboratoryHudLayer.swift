@@ -27,7 +27,7 @@ class LaboratoryHudLayer: SKNode {
         super.init()
         
         self.loadheader()
-        self.loadLifeBar()
+//        self.loadLifeBar()
         self.loadGolds()
         self.loadMetals()
         
@@ -82,45 +82,45 @@ class LaboratoryHudLayer: SKNode {
         self.addChild(laboratoryDiamondLabel)
     }
     
-    func loadLifeBar(){
-    
-        // Load quantity from SINGLETON
-        // For now...
-        let livesNumber : Int = CharacterData.sharedInstance.lives
-        let livesPosition = CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359)
-        
-        laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 4, name: "laboratoryLifeBar")
-        
-        self.addChild(laboratoryLifeBar!)
-        
-        loadMessageLifeBar()
-        
-    }
-    
-    func loadMessageLifeBar(){
-    
-        let number : Int = CharacterData.sharedInstance.lives
-        let messagePosition = CGPointMake(-middleOfTheScreenPoint.x + 95, -middleOfTheScreenPoint.y + 323)
-        
-        if number == 5 {
-            
-            messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 4, name: "messageRaminingLife")
-            self.addChild(messageRemainingLife!)
-        }
-        else{
-        
-            messageRemainingLife = createLabelNode("Time remaining for next life", position: messagePosition, fontName: "Helvetica",fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
-            self.addChild(messageRemainingLife!)
-        }
-    
-    }
+//    func loadLifeBar(){
+//    
+//        // Load quantity from SINGLETON
+//        // For now...
+//        let livesNumber : Int = CharacterData.sharedInstance.lives
+//        let livesPosition = CGPointMake(-middleOfTheScreenPoint.x + 37, -middleOfTheScreenPoint.y + 359)
+//        
+//        laboratoryLifeBar = createSpriteNode("life\(livesNumber)", position: livesPosition, zPosition: 4, name: "laboratoryLifeBar")
+//        
+//        self.addChild(laboratoryLifeBar!)
+//        
+//        loadMessageLifeBar()
+//        
+//    }
+//    
+//    func loadMessageLifeBar(){
+//    
+//        let number : Int = CharacterData.sharedInstance.lives
+//        let messagePosition = CGPointMake(-middleOfTheScreenPoint.x + 95, -middleOfTheScreenPoint.y + 323)
+//        
+//        if number == 5 {
+//            
+//            messageRemainingLife = createLabelNode("ALL LIVES AVAIABLE", fontName: "Helvetica", position: messagePosition, fontSize: 10, zPosition: 4, name: "messageRaminingLife")
+//            self.addChild(messageRemainingLife!)
+//        }
+//        else{
+//        
+//            messageRemainingLife = createLabelNode("Time remaining for next life", position: messagePosition, fontName: "Helvetica",fontSize: 10, zPosition: 2, alignmentMode: SKLabelHorizontalAlignmentMode.Center, name: "messageRaminingLife")
+//            self.addChild(messageRemainingLife!)
+//        }
+//    
+//    }
     
     func reloadLifeBarAndMessage() {
         
         self.messageRemainingLife?.removeFromParent()
         self.laboratoryLifeBar?.removeFromParent()
         
-        loadLifeBar()
+//        loadLifeBar()
     }
     
     func reloadLaboratoryGoldLabel() {

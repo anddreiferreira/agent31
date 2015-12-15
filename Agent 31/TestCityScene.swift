@@ -99,8 +99,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         self.cleanScene()
         
         // Saving resources collected into cloudkit
-        let ckhelper = CloudKitHelper()
-        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
+//        let ckhelper = CloudKitHelper()
+//        ckhelper.saveResourcesProperties(ResourcesData.sharedInstance)
         //ckhelper.saveResourcesProperties(ResourcesData.sharedInstance.gold, metal: ResourcesData.sharedInstance.metal, diamond: ResourcesData.sharedInstance.diamond)
     }
     
