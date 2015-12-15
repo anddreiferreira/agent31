@@ -11,9 +11,10 @@ import SpriteKit
 class Spawner: GameObject {
     
     var canCreate = true
+    var brokenAnimation: SKAction?
     
     init(position: CGPoint) {
-        super.init(imageName: "door", position: position, zPosition: zPositionsCity.BUILDING.rawValue)
+        super.init(imageName: "window1", position: position, zPosition: zPositionsCity.BUILDING.rawValue)
         
         self.name = "spawner"
     }
@@ -23,6 +24,7 @@ class Spawner: GameObject {
     }
     
     override func setBasicAttributes() {
+        loadBrokenAnimation()
         // Spawner can't have a physics body
     }
     
@@ -43,6 +45,7 @@ class Spawner: GameObject {
             
             
             if(newEnemy != nil){
+                broken()
                 self.parent?.addChild(newEnemy!)
             }
             
@@ -50,19 +53,30 @@ class Spawner: GameObject {
         }
     }
     
-    func createEnemy1(level: Int) -> Enemy1{
+    private func createEnemy1(level: Int) -> Enemy1{
         return Enemy1(position: self.position, enemyLevel: level)
     }
     
-    func createEnemy2(level: Int) -> Enemy2 {
+    private func createEnemy2(level: Int) -> Enemy2 {
         return Enemy2(position: self.position, enemyLevel: level)
     }
     
-    func timeIntervalToCreateNewEnemy(){
+    private func timeIntervalToCreateNewEnemy(){
         canCreate = false
         self.runAction(SKAction.waitForDuration(NSTimeInterval(Int(rand())%3+2)), completion: {
             self.canCreate = true
         })
     }
+    
+    private func loadBrokenAnimation(){
+        brokenAnimation = actionWithAnimationName("window", numberOfImages: 2, timePerTexture: 0.3)
+    }
+    
+    private func broken(){
+        if(brokenAnimation != nil){
+            self.runAction(brokenAnimation!)
+        }
+    }
+    
 
 }

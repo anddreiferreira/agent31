@@ -66,7 +66,7 @@ class BaseScene: SKNode {
 
         let xposition = Int(rand())%largura + Int(self.begin)
         
-        let spawn = Spawner(position: CGPointMake(CGFloat(xposition), yPositionFloor))
+        let spawn = Spawner(position: CGPointMake(CGFloat(xposition), yPositionFloor + 10))
         spawn.zPosition += self.zPosition
         
         self.parent?.addChild(spawn)
