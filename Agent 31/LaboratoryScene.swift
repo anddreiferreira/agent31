@@ -38,9 +38,9 @@ class LaboratoryScene: SKScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     override func didMoveToView(view: SKView) {
         print("Laboratory scene entered")
         
-        if CloudKitExceptions.sharedInstance.internetException || CloudKitExceptions.sharedInstance.accountException {
-            alert()
-        }
+//        if CloudKitExceptions.sharedInstance.internetException || CloudKitExceptions.sharedInstance.accountException {
+//            alert()
+//        }
         
         // Put all necessary layers
         self.putBackgroundLayer()
@@ -403,40 +403,40 @@ extension LaboratoryScene {
     }
 }
 
-// MARK: Exceptions
-@available(iOS 9.0, *)
-extension LaboratoryScene {
-    func alert() {
-        debugPrint("MOSTRA ALERT PARA O USUARIO")
-        
-        let alertView: UIAlertView
-        
-        if( CloudKitExceptions.sharedInstance.internetException == true ) {
-            alertView = UIAlertView(title: "Internet Error", message: "You're not connected to the internet", delegate: self, cancelButtonTitle: "OK" )
-        } else if (CloudKitExceptions.sharedInstance.accountException == true) {
-            alertView = UIAlertView(title: "Account Error", message: "You're not logged in your iCloud account", delegate: self, cancelButtonTitle: "OK")
-        } else { // Internet exception
-            alertView = UIAlertView(title: "iCloud Error", message: "Cannot connect to iCloud", delegate: self, cancelButtonTitle: "OK")
-        }
-        
-        alertView.show()
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        
-        // If the game cannot connect to the internet or fetch data from cloudkit, it will close.
-        if buttonIndex == 0 {
-            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-            appDel.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
-            if appDel.hasException == true {
-                alert()
-            } else {
-                CloudKitExceptions.sharedInstance.internetException = false
-                CloudKitExceptions.sharedInstance.accountException = false
-                putHudLayer()
-            }
-        }
-    }
-
-}
+//// MARK: Exceptions
+//@available(iOS 9.0, *)
+//extension LaboratoryScene {
+//    func alert() {
+//        debugPrint("MOSTRA ALERT PARA O USUARIO")
+//        
+//        let alertView: UIAlertView
+//        
+//        if( CloudKitExceptions.sharedInstance.internetException == true ) {
+//            alertView = UIAlertView(title: "Internet Error", message: "You're not connected to the internet", delegate: self, cancelButtonTitle: "OK" )
+//        } else if (CloudKitExceptions.sharedInstance.accountException == true) {
+//            alertView = UIAlertView(title: "Account Error", message: "You're not logged in your iCloud account", delegate: self, cancelButtonTitle: "OK")
+//        } else { // Internet exception
+//            alertView = UIAlertView(title: "iCloud Error", message: "Cannot connect to iCloud", delegate: self, cancelButtonTitle: "OK")
+//        }
+//        
+//        alertView.show()
+//    }
+//    
+//    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+//        
+//        // If the game cannot connect to the internet or fetch data from cloudkit, it will close.
+//        if buttonIndex == 0 {
+//            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//            
+//            appDel.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
+//            if appDel.hasException == true {
+//                alert()
+//            } else {
+//                CloudKitExceptions.sharedInstance.internetException = false
+//                CloudKitExceptions.sharedInstance.accountException = false
+//                putHudLayer()
+//            }
+//        }
+//    }
+//
+//}
