@@ -31,9 +31,8 @@ class Enemy1: Enemy {
         stoppedAnimationForever()
         self.setEnemyPhysics()
         
-//        self.HP = HPAccordingToLevel()
+        self.HP = HPAccordingToLevel()
         
-        self.HP = 1000
     }
     
     

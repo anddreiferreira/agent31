@@ -31,6 +31,8 @@ class LaboratoryHudLayer: SKNode {
         self.loadGolds()
         self.loadMetals()
         
+        self.zPosition = 100
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLifeBarAndMessage", name: "ReloadLifeBarNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLaboratoryGoldLabel", name: "ReloadGoldNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadLaboratoryMetalLabel", name: "ReloadMetalNotification", object: nil)

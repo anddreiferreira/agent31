@@ -27,6 +27,7 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     private var analogStick: AnalogStick!
     var jumpButton : SKSpriteNode?
     var shootButton : SKSpriteNode?
+    var goToLabButton: SKSpriteNode?
     
     var gotHitHud = createSpriteNode("gotHitScreen", position: CGPointMake(0, 0), anchorPoint: CGPointMake(0.5, 0.5), scale: 1.0, zPosition: (zPositionsCity.HUD.rawValue - 10.0), name: "gotHitHud")
     
@@ -68,15 +69,6 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
         //        cityTimer?.fire()
     }
     
-    //    // Delete this when the city and the enemy`s generator are finished
-    //    func reduceTime() {
-    //        self.secondsToBackToLab = self.secondsToBackToLab - 1
-    //
-    //        if( self.secondsToBackToLab < 0 ) {
-    //            goToLab()
-    //        }
-    //    }
-    
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         for touch in touches {
@@ -90,6 +82,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
             }else if node.name == "shootButton"{
                 buttonTapped(node)
                 self.cityGameLayer.agent31!.shoot()
+            }else if node.name == "goToLab"{
+                self.goToLab()
             }
         }
         
@@ -97,7 +91,8 @@ class TestCityScene: SKScene, SKPhysicsContactDelegate{
     
     func goToLab(){
         
-        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        self.backgroundColor = UIColor.blackColor()
+        let transition = SKTransition.crossFadeWithDuration(1.0)
         let nextScene = LaboratoryScene(size: self.scene!.size)
         nextScene.scaleMode = SKSceneScaleMode.AspectFill
         self.view?.presentScene(nextScene, transition: transition)
@@ -138,7 +133,6 @@ extension TestCityScene{
         self.removeAllActions()
         self.removeAllChildren()
         self.clock?.invalidate()
-        //          self.cityTimer?.invalidate()
     }
 }
 
@@ -190,9 +184,8 @@ extension TestCityScene{
         shootButton = createSpriteNode("shootButton", position: CGPointMake(-middleOfTheScreenPoint.x + 520, -middleOfTheScreenPoint.y + 80), zPosition: zValue, name: "shootButton")
         cam.addChild(shootButton!)
         
-//        let status : SKSpriteNode = createSpriteNode("statusBar", position: CGPointMake(10, 375-10), zPosition: 1000000, name: "statusBar")
-        
-//        cam.addChild(status)
+        goToLabButton = createSpriteNode("goToLab", position: CGPointMake(-self.size.width/2, -self.size.height/2 + 365), zPosition: 100, scale: 0.45, name: "goToLab")
+        cam.addChild(goToLabButton!)
         
     }
     

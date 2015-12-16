@@ -34,11 +34,16 @@ class BaseScene: SKNode {
         
         self.name = "cena"
         self.position = position
+        self.zPosition = 10
         self.putGroundPhysic()
         self.putAllFloorSprites()
 
         self.manageBackground()
         self.manageBuilding()
+        
+        self.runAction(SKAction.waitForDuration(0.1), completion: {
+            self.putSpawner()
+        })
     
         self.addChild(self.backgroundLayer)
     }
@@ -55,6 +60,16 @@ class BaseScene: SKNode {
         let ground = Ground(size: CGSizeMake(CGFloat(largura), 100), position: groundPosition, zPosition: zPositionsCity.GROUND.rawValue)
         
         self.addChild(ground)
+    }
+    
+    private func putSpawner(){
+
+        let xposition = Int(rand())%largura + Int(self.begin)
+        
+        let spawn = Spawner(position: CGPointMake(CGFloat(xposition), yPositionFloor + 10))
+        spawn.zPosition += self.zPosition
+        
+        self.parent?.addChild(spawn)
     }
     
     func putAllFloorSprites(){
@@ -139,6 +154,11 @@ class BaseScene: SKNode {
         
     }
     
+    func deallocBaseScene(){
+        self.removeAllActions()
+        self.removeAllChildren()
+        
+    }
       
 
 }

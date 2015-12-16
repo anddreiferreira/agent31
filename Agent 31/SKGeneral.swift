@@ -23,7 +23,7 @@ let yPositionFloor: CGFloat = 118.174987792969
 
 let baseSceneOperator: Int = 468
 let minimumWidthScene: Int = 3
-let maxWidthScene: Int = 8
+let maxWidthScene: Int = 5
 
 let zPosition1st: CGFloat = 1000
 let zPosition2nd: CGFloat = 2000
